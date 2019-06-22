@@ -47,15 +47,11 @@ describe('expand', () => {
     const schema = dump([
       {
         name: 'pet',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'store',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'basic')
 
@@ -96,9 +92,7 @@ describe('expand', () => {
     const schema = dump(
       [{
         name: 'person',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }],
       'basic with inflections'
     )
@@ -124,9 +118,7 @@ describe('expand', () => {
       [{
         name: 'pet',
         immutable: true,
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }],
       'basic with immutability'
     )
@@ -157,9 +149,7 @@ describe('expand#fns', () => {
           method: 'get',
           name: 'requestMedicalRecords'
         }],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }],
       'custom function'
     )
@@ -254,23 +244,17 @@ describe('expand#belongsTo', () => {
     const schema = dump([
       {
         name: 'org',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'repo',
         belongsTo: 'org',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'commit',
         belongsTo: 'repo',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'belongsTo')
 
@@ -318,30 +302,22 @@ describe('expand#belongsTo', () => {
     const schema = dump([
       {
         name: 'owner',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'committer',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'repo',
         hasMany: [{ name: 'owners' }],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'commit',
         belongsTo: 'repo',
         hasMany: [{ name: 'committers' }],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'belongsTo with hasMany')
 
@@ -427,16 +403,12 @@ describe('expand#hasMany', () => {
     const schema = dump([
       {
         name: 'pet',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'person',
         hasMany: [{ name: 'pets' }],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'hasMany')
 
@@ -484,9 +456,7 @@ describe('expand#hasMany', () => {
     const schema = dump([
       {
         name: 'person',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'pet',
@@ -494,9 +464,7 @@ describe('expand#hasMany', () => {
           { name: 'people', as: 'owner' },
           { name: 'people', as: 'doctor' }
         ],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'hasMany polymorphism')
 
@@ -609,9 +577,7 @@ describe('expand#treeOf', () => {
         name: 'group',
         treeOf: 'subgroups',
         belongsTo: 'region',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'treeOf with belongsTo')
 
@@ -661,15 +627,11 @@ describe('expand#treeOf', () => {
         name: 'group',
         treeOf: 'subgroups',
         hasMany: [{ name: 'widgets' }],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'widget',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'treeOf with hasMany')
 
@@ -742,16 +704,12 @@ describe('expand#treeOf', () => {
       {
         name: 'group',
         treeOf: 'subgroups',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'region',
         hasMany: [{ name: 'groups' }],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'treeOf target of hasMany')
 
@@ -813,16 +771,12 @@ describe('expand#users', () => {
     const schema = dump([
       {
         name: 'user',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'course',
         belongsTo: 'user',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'users with belongsTo')
 
@@ -870,16 +824,12 @@ describe('expand#users', () => {
     const schema = dump([
       {
         name: 'course',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'user',
         hasMany: [{ name: 'courses' }],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'users with hasMany')
 
@@ -939,9 +889,7 @@ describe('expand#users', () => {
     const schema = dump([
       {
         name: 'course',
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       },
       {
         name: 'user',
@@ -949,9 +897,7 @@ describe('expand#users', () => {
           { name: 'courses', as: 'contributor' },
           { name: 'courses', as: 'learner' }
         ],
-        model: {
-          properties: { name: { type: 'string' } }
-        }
+        model: { properties: { name: { type: 'string' } } }
       }
     ], 'users with polymorphic hasMany')
 

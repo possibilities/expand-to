@@ -2,6 +2,8 @@ const { expandToOpenApi } = require('../expandToOpenApi')
 const mapValues = require('lodash/mapValues')
 
 const {
+  emptyOutput,
+  errorOutput,
   allEntityVerbs,
   allCollectionVerbs
 } = require('../common')
@@ -607,35 +609,6 @@ describe('expandToOpenApi#paths', () => {
     })
   })
 })
-
-// TODO currently copied from implementation
-const emptyOutput = { type: 'object' }
-const errorOutput = {
-  type: 'object',
-  properties: {
-    code: {
-      type: 'number',
-      readOnly: true
-    },
-    message: {
-      type: 'string',
-      readOnly: true
-    },
-    status: {
-      type: 'string',
-      readOnly: true
-    },
-    details: {
-      type: 'array',
-      items: { type: 'string' },
-      readOnly: true
-    }
-  },
-  required: [
-    'statusCode',
-    'message'
-  ]
-}
 
 test('expandToOpenApi#components', () => {
   const expanded = expandToOpenApi(spec)

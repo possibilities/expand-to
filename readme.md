@@ -15,6 +15,12 @@ Tools for expanding JSON-schema models into dev/build/test/run-time application 
 
 ### API
 
-#### `expand(resources)`
+###### `expand(resources)`
+###### `expandToOpenApi(resources, info)`
 
-#### `expandToOpenApi(resources, info)`
+#### Resource helpers
+
+###### `getOperationId(verb, resource)`
+###### `getTags(verb, resource)`
+###### `getNamespace(verb, resource)`
+###### `getParameters(verb, resource)`

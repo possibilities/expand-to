@@ -1,6 +1,6 @@
 ### Expand-to
 
-Tools for expanding JSON-schema models into dev/build/test/run-time application tools
+Tools for transforming JSON-schema models into dev/build/test/run-time application tools
 
 ### Features
 
@@ -15,13 +15,16 @@ Tools for expanding JSON-schema models into dev/build/test/run-time application 
 
 ### API
 
-###### `expand(resources)`
-###### `expandToOpenApi(resources, info)`
+A single low level function is provided to tranform a spec into a raw description of the resources and models. Usually this will not be called directly.
 
-#### Resource helpers
+* `expandToResources(spec, config = {})` → `{ paths, models }`
 
-###### `getOperationId(verb, resource)`
-###### `getTags(verb, resource)`
-###### `getSummary(verb, resource)`
-###### `getNamespace(verb, resource)`
-###### `getParameters(verb, resource)`
+The most common use case is to use the following functions that take a spec and an optional config and return an object that is useful to your application.
+
+* `expandToOperations(spec, config = {})` → `{ paths, models, operations }`
+* `expandToOpenApi(spec, config = {})` → `openApiSpec`
+
+Alternatively each core API function exposes a lower level function that can be used to compose your own custom tranformations.
+
+* `expandToOperations({ paths, models }, config = {})` → `{ paths, models, operations }`
+* `expandToOpenApi({ operations, models }, config = {})` → `{ operations, models, spec }`

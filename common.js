@@ -53,18 +53,21 @@ module.exports.paginationParameters = [
   {
     in: 'query',
     name: 'perPage',
+    required: false,
     description: 'Per page',
     schema: { type: 'string' }
   },
   {
     in: 'query',
     name: 'page',
+    required: false,
     description: 'Page number',
     schema: { type: 'string' }
   },
   {
     in: 'query',
     name: 'orderBy',
+    required: false,
     description: 'Order by',
     schema: { type: 'string' }
   }

@@ -1,5 +1,6 @@
-const omit = require('lodash/omit')
-const omitFp = require('lodash/fp/omit')
+const fromPairs = require('lodash/fromPairs')
+const toPairs = require('lodash/toPairs')
+const pickFp = require('lodash/fp/pick')
 const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
 const without = require('lodash/without')
@@ -13,16 +14,27 @@ const immutableEntityVerbs = without(allEntityVerbs, 'put', 'patch')
 const singularize = str => inflection.singularize(str)
 const pluralize = str => inflection.pluralize(str)
 
+const stripReadOnly = model => {
+  const properties =
+    fromPairs(toPairs(model.properties).filter(([name, value]) => !value.readOnly))
+  return { ...model, properties }
+}
+
 const expandModels = models => {
-  let expandedModels = mapValues(keyBy(models, 'name'), 'model')
+  let expandedModels = mapValues(keyBy(models, 'name'), model => ({
+    in: stripReadOnly(model.model),
+    out: model.model
+  }))
+
   models.forEach(model => {
     if (model.treeOf) {
       expandedModels = {
         ...expandedModels,
-        [singularize(model.treeOf)]: model.model
+        [singularize(model.treeOf)]: { in: stripReadOnly(model.model), out: model.model }
       }
     }
   })
+
   return expandedModels
 }
 
@@ -52,7 +64,7 @@ const expandToUnmountedResources = schema => {
       ...resource,
       type: 'collection',
       methods: allCollectionVerbs,
-      path: [pluralize(resource.name)]
+      pathParts: [pluralize(resource.name)]
     })
     resources.push({
       modelName: resource.name,
@@ -61,7 +73,7 @@ const expandToUnmountedResources = schema => {
       methods: resource.immutable
         ? immutableEntityVerbs
         : allEntityVerbs,
-      path: [pluralize(resource.name), `{${resource.name}Id}`]
+      pathParts: [pluralize(resource.name), `{${resource.name}Id}`]
     })
   })
   return resources
@@ -84,128 +96,73 @@ const recursiveMountPathsFor = (resource, allResources) => {
   return mountPaths
 }
 
-const recursiveIdsFor = (resource, allResources) => {
-  let ids = {}
-  if (resource.belongsTo) {
-    const belongsToResource =
-      allResources.find(r => r.name === resource.belongsTo)
-    if (belongsToResource) {
-      ids = {
-        ...ids,
-        [pluralize(belongsToResource.name)]: `${belongsToResource.name}Id`
-      }
-      return {
-        ...recursiveIdsFor(belongsToResource, allResources), ...ids
-      }
-    }
-  }
-  return ids
-}
-
-const expandToMountedResources = unmountedResources => {
-  return unmountedResources.map(resource => ({
+const expandToMountedResources = unmountedResources =>
+  unmountedResources.map(resource => ({
     ...resource,
     mountPath: recursiveMountPathsFor(resource, unmountedResources)
   }))
-}
 
 const expandPaths = mountedResources => {
-  let paths = []
-  const resourcesByNameAndType =
-    keyBy(mountedResources, r => `${r.name}-${r.type}`)
-
-  mountedResources.forEach(resource => {
-    if (resource.type === 'entity') {
-      paths.push({
-        ...resource,
-        ids: {
-          ...recursiveIdsFor(resource, mountedResources),
-          [pluralize(resource.name)]: `${resource.name}Id`
-        }
-      })
-    } else {
-      paths.push({
-        ...resource,
-        ids: recursiveIdsFor(resource, mountedResources)
-      })
-    }
-
-    forEach(resource.fns, fn => {
-      if (resource.type === 'entity') return
-      paths.push({
-        name: fn.name,
-        type: 'custom-function',
-        methods: [fn.method],
-        ids: recursiveIdsFor(resource, mountedResources),
-        path: [pluralize(resource.name), 'fns', fn.name],
-        mountPath: resource.mountPath,
-        modelName: resource.name,
-        isCustomFunction: true
-      })
-    })
-
-    if (resource.belongsTo === 'user' && resource.type === 'collection') {
-      paths.push({
-        ...resource,
-        type: 'collection-for-user',
-        methods: allCollectionVerbs,
-        ids: omit({
-          [pluralize(resource.name)]: `${resource.name}Id`
-        }, 'users'),
-        path: [pluralize(resource.name)],
-        modelName: resource.name,
-        mountPath: ['users']
-      })
-
-      paths.push({
-        ...resource,
-        type: 'entity-for-user',
-        methods: resource.immutable
-          ? immutableEntityVerbs
-          : allEntityVerbs,
-        path: [pluralize(resource.name), `{${resource.name}Id}`],
-        ids: omit({
-          [pluralize(resource.name)]: `${resource.name}Id`
-        }, 'users'),
-        modelName: resource.name,
-        mountPath: ['users']
-      })
-    }
-  })
+  let paths = [...mountedResources]
 
   const mountedEntityResources =
     mountedResources.filter(r => r.type === 'entity')
 
+  const mountedEntityResourcesByName =
+    keyBy(mountedResources, 'name')
+
   mountedEntityResources.forEach(resource => {
+    forEach(resource.fns, fn => {
+      paths.push({
+        name: fn.name,
+        methods: [fn.method],
+        pathParts: [pluralize(resource.name), `invoke.${fn.name}`],
+        mountPath: resource.mountPath,
+        modelName: resource.name,
+        isCustomFunctionResource: true
+      })
+    })
+
+    if (resource.belongsTo === 'user') {
+      paths.push({
+        ...resource,
+        isUserCentricResource: true,
+        methods: allCollectionVerbs,
+        pathParts: [pluralize(resource.name)],
+        modelName: resource.name,
+        mountPath: ['users']
+      })
+
+      paths.push({
+        ...resource,
+        isUserCentricResource: true,
+        methods: resource.immutable
+          ? immutableEntityVerbs
+          : allEntityVerbs,
+        pathParts: [pluralize(resource.name), `{${resource.name}Id}`],
+        modelName: resource.name,
+        mountPath: ['users']
+      })
+    }
+
     forEach(resource.hasMany, relation => {
       const relatedResource =
-        resourcesByNameAndType[`${singularize(relation.name)}-entity`]
-      const resourceMountPath = [...resource.mountPath, ...resource.path]
+        mountedEntityResourcesByName[singularize(relation.name)]
+      const resourceMountPath = [...resource.mountPath, ...resource.pathParts]
       const resourceName = relation.as ? relation.as : relatedResource.name
 
       paths.push({
         ...relatedResource,
-        type: 'collection',
         methods: allCollectionVerbs,
-        ids: {
-          ...recursiveIdsFor(resource, mountedResources),
-          [pluralize(resource.name)]: `${resource.name}Id`
-        },
-        path: [pluralize(resourceName)],
+        pathParts: [pluralize(resourceName)],
         modelName: relatedResource.name,
         mountPath: resourceMountPath
       })
 
       paths.push({
         ...relatedResource,
-        type: 'entity',
         methods: allEntityVerbs,
-        path: [pluralize(resourceName), `{${resourceName}Id}`],
-        ids: {
-          ...recursiveIdsFor(resource, mountedResources),
-          [pluralize(resource.name)]: `${resource.name}Id`,
-          [pluralize(resourceName)]: `${resourceName}Id`
-        },
+        pathParts: [pluralize(resourceName), `{${resourceName}Id}`],
         modelName: relatedResource.name,
         mountPath: resourceMountPath
       })
@@ -213,27 +170,18 @@ const expandPaths = mountedResources => {
       if (resource.name === 'user') {
         paths.push({
           ...relatedResource,
-          type: 'collection-for-user',
+          isUserCentricResource: true,
           methods: allCollectionVerbs,
-          ids: omit({
-            ...recursiveIdsFor(resource, mountedResources),
-            [pluralize(resource.name)]: `${resource.name}Id`
-          }, 'users'),
-          path: [pluralize(resourceName)],
+          pathParts: [pluralize(resourceName)],
           modelName: relatedResource.name,
           mountPath: ['users']
         })
 
         paths.push({
           ...relatedResource,
-          type: 'entity-for-user',
+          isUserCentricResource: true,
           methods: allEntityVerbs,
-          path: [pluralize(resourceName), `{${resourceName}Id}`],
-          ids: omit({
-            ...recursiveIdsFor(resource, mountedResources),
-            [pluralize(resource.name)]: `${resource.name}Id`,
-            [pluralize(resourceName)]: `${resourceName}Id`
-          }, 'users'),
+          pathParts: [pluralize(resourceName), `{${resourceName}Id}`],
           modelName: relatedResource.name,
           mountPath: ['users']
         })
@@ -241,31 +189,35 @@ const expandPaths = mountedResources => {
     })
   })
 
-  return paths.map(p => ({ ...p, path: [...p.mountPath, ...p.path] })).map(omitFp([
-    'belongsTo',
-    'hasMany',
-    'type',
-    'name',
-    'treeOf',
-    'fns',
+  return paths.map(resource => ({
+    ...resource,
+    model: resource.modelName,
+    operations: resource.methods,
+    pathParts: [
+      ...resource.mountPath,
+      ...resource.pathParts
+    ]
+  })).map(pickFp([
     'model',
-    'immutable',
-    'mountPath'
+    'pathParts',
+    'operations',
+    'isUserCentricResource',
+    'isCustomFunctionResource'
   ]))
 }
 
-const expand = models => {
+const expandToResources = spec => {
   // Create necessary virtual resources for tree-resources
-  const treeResources = expandTreeResources(models)
+  const treeResources = expandTreeResources(spec)
   // Figure out as much as possible prior to calculation mount points
   const unmountedResources = expandToUnmountedResources(treeResources)
   // Calculate the mount point and add to every resource
   const mountedResources = expandToMountedResources(unmountedResources)
   // Expand each resource into spec paths and pass through models
   return {
-    models: expandModels(models),
+    models: expandModels(spec),
     paths: expandPaths(mountedResources)
   }
 }
 
-module.exports = expand
+module.exports = expandToResources

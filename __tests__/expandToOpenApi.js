@@ -1,3 +1,4 @@
+const { expandToOperations } = require('../expandToOperations')
 const { expandToOpenApi } = require('../expandToOpenApi')
 const mapValues = require('lodash/mapValues')
 
@@ -25,57 +26,90 @@ const pathMethodRequestBodiesView = spec =>
   mapValues(spec.paths, path => mapValues(path, method => method.requestBody))
 
 const spec = {
-  models: {
-    pet: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    store: { properties: { name: { type: 'string' } } }
-  },
   paths: [
     {
-      ids: {},
-      path: ['pets'],
-      modelName: 'pet',
-      methods: allCollectionVerbs
+      model: 'pet',
+      pathParts: ['pets'],
+      operations: allCollectionVerbs
     },
     {
-      ids: { pets: 'petId' },
-      path: ['pets', '{petId}'],
-      modelName: 'pet',
-      methods: allEntityVerbs
+      model: 'pet',
+      pathParts: ['pets', 'invoke.requestMedicalRecords'],
+      operations: ['get'],
+      isCustomFunctionResource: true,
+      fns: [{
+        method: 'get',
+        name: 'requestMedicalRecords'
+      }]
     },
     {
-      ids: { stores: 'storeId', pets: 'petId' },
-      path: ['stores', '{storeId}', 'pets', '{petId}'],
-      modelName: 'pet',
-      methods: allEntityVerbs
+      model: 'pet',
+      pathParts: ['pets', '{petId}'],
+      operations: allEntityVerbs
     },
     {
-      ids: { stores: 'storeId' },
-      path: ['stores', '{storeId}', 'pets'],
-      modelName: 'store',
-      methods: allCollectionVerbs
+      model: 'store',
+      pathParts: ['stores'],
+      operations: allCollectionVerbs
     },
     {
-      ids: {},
-      isCustomFunction: true,
-      modelName: 'pet',
-      path: ['pets', 'requestMedicalRecords'],
-      methods: ['get']
+      model: 'store',
+      pathParts: ['stores', '{storeId}'],
+      operations: allEntityVerbs
+    },
+    {
+      model: 'manager',
+      pathParts: ['stores', '{storeId}', 'managers'],
+      operations: allCollectionVerbs
+    },
+    {
+      model: 'manager',
+      pathParts: ['stores', '{storeId}', 'managers', '{managerId}'],
+      operations: allEntityVerbs
     }
-  ]
+  ],
+  models: {
+    pet: {
+      in: { properties: { name: { type: 'string' }, } },
+      out: {
+        properties: {
+          name: { type: 'string' },
+          id: { type: 'string', readOnly: true }
+        }
+      },
+    },
+    store: {
+      in: { properties: { name: { type: 'string' }, } },
+      out: {
+        properties: {
+          name: { type: 'string' },
+          id: { type: 'string', readOnly: true }
+        }
+      },
+    },
+    manager: {
+      in: { properties: { name: { type: 'string' }, } },
+      out: {
+        properties: {
+          name: { type: 'string' },
+          id: { type: 'string', readOnly: true }
+        }
+      },
+    },
+  },
 }
 
 describe('expandToOpenApi#paths', () => {
   test('tags', () => {
-    const expanded = expandToOpenApi(spec)
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi({ models, operations })
     expect(pathMethodTagsView(expanded)).toEqual({
       '/pets': {
         get: ['pets'],
         post: ['pets']
+      },
+      '/pets/invoke.requestMedicalRecords': {
+        get: ['pets']
       },
       '/pets/{petId}': {
         delete: ['pets'],
@@ -84,25 +118,34 @@ describe('expandToOpenApi#paths', () => {
         patch: ['pets'],
         put: ['pets']
       },
-      '/pets/request_medical_records': {
-        get: ['pets']
+      '/stores': {
+        get: ['stores'],
+        post: ['stores']
       },
-      '/stores/{storeId}/pets': {
-        get: ['stores', 'pets'],
-        post: ['stores', 'pets']
+      '/stores/{storeId}': {
+        delete: ['stores'],
+        get: ['stores'],
+        head: ['stores'],
+        patch: ['stores'],
+        put: ['stores']
       },
-      '/stores/{storeId}/pets/{petId}': {
-        delete: ['stores', 'pets'],
-        get: ['stores', 'pets'],
-        head: ['stores', 'pets'],
-        patch: ['stores', 'pets'],
-        put: ['stores', 'pets']
+      '/stores/{storeId}/managers': {
+        get: ['stores', 'managers'],
+        post: ['stores', 'managers']
+      },
+      '/stores/{storeId}/managers/{managerId}': {
+        delete: ['stores', 'managers'],
+        get: ['stores', 'managers'],
+        head: ['stores', 'managers'],
+        patch: ['stores', 'managers'],
+        put: ['stores', 'managers']
       }
     })
   })
 
   test('operationIds', () => {
-    const expanded = expandToOpenApi(spec)
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi({ models, operations })
     expect(pathMethodOperationIdsView(expanded)).toEqual({
       '/pets': {
         get: 'listPets',
@@ -115,25 +158,37 @@ describe('expandToOpenApi#paths', () => {
         patch: 'updatePet',
         put: 'replacePet'
       },
-      '/pets/request_medical_records': {
-        get: 'requestMedicalRecordsForPets'
+      '/pets/invoke.requestMedicalRecords': {
+        get: 'invokeRequestMedicalRecordsForPet'
       },
-      '/stores/{storeId}/pets': {
-        get: 'listStorePets',
-        post: 'createStorePet'
+      '/stores': {
+        get: 'listStores',
+        post: 'createStore'
       },
-      '/stores/{storeId}/pets/{petId}': {
-        delete: 'deleteStorePet',
-        get: 'getStorePet',
-        head: 'checkStorePet',
-        patch: 'updateStorePet',
-        put: 'replaceStorePet'
+      '/stores/{storeId}': {
+        delete: 'deleteStore',
+        get: 'getStore',
+        head: 'checkStore',
+        patch: 'updateStore',
+        put: 'replaceStore'
+      },
+      '/stores/{storeId}/managers': {
+        get: 'listStoreManagers',
+        post: 'createStoreManager'
+      },
+      '/stores/{storeId}/managers/{managerId}': {
+        delete: 'deleteStoreManager',
+        get: 'getStoreManager',
+        head: 'checkStoreManager',
+        patch: 'updateStoreManager',
+        put: 'replaceStoreManager'
       }
     })
   })
 
   test('summaries', () => {
-    const expanded = expandToOpenApi(spec)
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi({ models, operations })
     expect(pathMethodSummariesView(expanded)).toEqual({
       '/pets': {
         get: 'List pets',
@@ -146,19 +201,30 @@ describe('expandToOpenApi#paths', () => {
         patch: 'Update pet',
         put: 'Replace pet'
       },
-      '/pets/request_medical_records': {
-        get: 'Invoke `requestMedicalRecords` for pets'
+      '/pets/invoke.requestMedicalRecords': {
+        get: 'Invoke `requestMedicalRecords` for pet'
       },
-      '/stores/{storeId}/pets': {
-        get: 'List store pets',
-        post: 'Create store pet'
+      '/stores': {
+        get: 'List stores',
+        post: 'Create store'
       },
-      '/stores/{storeId}/pets/{petId}': {
-        delete: 'Delete store pet',
-        get: 'Get store pet',
-        head: 'Check store pet',
-        patch: 'Update store pet',
-        put: 'Replace store pet'
+      '/stores/{storeId}': {
+        delete: 'Delete store',
+        get: 'Get store',
+        head: 'Check store',
+        patch: 'Update store',
+        put: 'Replace store'
+      },
+      '/stores/{storeId}/managers': {
+        get: 'List store managers',
+        post: 'Create store manager'
+      },
+      '/stores/{storeId}/managers/{managerId}': {
+        delete: 'Delete store manager',
+        get: 'Get store manager',
+        head: 'Check store manager',
+        patch: 'Update store manager',
+        put: 'Replace store manager'
       }
     })
   })
@@ -169,29 +235,33 @@ describe('expandToOpenApi#paths', () => {
         in: 'path',
         name: 'petId',
         required: true,
-        description: 'Pets id',
-        schema: {
-          format: 'uuid',
-          type: 'string'
-        }
+        description: 'Pet id',
+        schema: { format: 'uuid', type: 'string' }
       }
     ]
-    const storesParams = [
+    const storeParams = [
       {
         in: 'path',
         name: 'storeId',
         required: true,
-        description: 'Stores id',
-        schema: {
-          format: 'uuid',
-          type: 'string'
-        }
+        description: 'Store id',
+        schema: { format: 'uuid', type: 'string' }
+      }
+    ]
+    const managerParams = [
+      {
+        in: 'path',
+        name: 'managerId',
+        required: true,
+        description: 'Manager id',
+        schema: { format: 'uuid', type: 'string' }
       }
     ]
 
-    const storesPetsParams = [...storesParams, ...petsParams]
+    const storeManagersParams = [...storeParams, ...managerParams]
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi({ models, operations })
 
-    const expanded = expandToOpenApi(spec)
     expect(pathMethodParametersView(expanded)).toEqual({
       '/pets': { get: paginationParameters, post: [] },
       '/pets/{petId}': {
@@ -201,23 +271,32 @@ describe('expandToOpenApi#paths', () => {
         patch: petsParams,
         put: petsParams
       },
-      '/pets/request_medical_records': { get: [] },
-      '/stores/{storeId}/pets': {
-        get: [...storesParams, ...paginationParameters],
-        post: storesParams
+      '/pets/invoke.requestMedicalRecords': { get: [] },
+      '/stores': { get: paginationParameters, post: [] },
+      '/stores/{storeId}': {
+        delete: storeParams,
+        get: storeParams,
+        head: storeParams,
+        patch: storeParams,
+        put: storeParams
       },
-      '/stores/{storeId}/pets/{petId}': {
-        delete: storesPetsParams,
-        get: storesPetsParams,
-        head: storesPetsParams,
-        patch: storesPetsParams,
-        put: storesPetsParams
-      }
+      '/stores/{storeId}/managers': {
+        post: storeParams,
+        get: [...storeParams, ...paginationParameters],
+      },
+      '/stores/{storeId}/managers/{managerId}': {
+        delete: storeManagersParams,
+        get: storeManagersParams,
+        head: storeManagersParams,
+        patch: storeManagersParams,
+        put: storeManagersParams
+      },
     })
   })
 
   test('requestBodies', () => {
-    const expanded = expandToOpenApi(spec)
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi({ models, operations })
     expect(pathMethodRequestBodiesView(expanded)).toEqual({
       '/pets': {
         get: undefined,
@@ -251,28 +330,28 @@ describe('expandToOpenApi#paths', () => {
           required: true
         }
       },
-      '/pets/request_medical_records': {
+      '/pets/invoke.requestMedicalRecords': {
         get: undefined
       },
-      '/stores/{storeId}/pets': {
+      '/stores': {
         get: undefined,
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/CreateStorePetInput` }
+              schema: { '$ref': `#/components/schemas/CreateStoreInput` }
             }
           },
           required: true
         }
       },
-      '/stores/{storeId}/pets/{petId}': {
+      '/stores/{storeId}': {
         delete: undefined,
         get: undefined,
         head: undefined,
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/UpdateStorePetInput` }
+              schema: { '$ref': `#/components/schemas/UpdateStoreInput` }
             }
           },
           required: true
@@ -280,17 +359,50 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ReplaceStorePetInput` }
+              schema: { '$ref': `#/components/schemas/ReplaceStoreInput` }
             }
           },
           required: true
         }
-      }
+      },
+      '/stores/{storeId}/managers': {
+        get: undefined,
+        post: {
+          content: {
+            'application/json': {
+              schema: { '$ref': `#/components/schemas/CreateStoreManagerInput` }
+            }
+          },
+          required: true
+        }
+      },
+      '/stores/{storeId}/managers/{managerId}': {
+        delete: undefined,
+        get: undefined,
+        head: undefined,
+        patch: {
+          content: {
+            'application/json': {
+              schema: { '$ref': `#/components/schemas/UpdateStoreManagerInput` }
+            }
+          },
+          required: true
+        },
+        put: {
+          content: {
+            'application/json': {
+              schema: { '$ref': `#/components/schemas/ReplaceStoreManagerInput` }
+            }
+          },
+          required: true
+        }
+      },
     })
   })
 
   test('responses', () => {
-    const expanded = expandToOpenApi(spec)
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi({ models, operations })
     expect(pathMethodResponsesView(expanded)).toEqual({
       '/pets': {
         get: {
@@ -407,15 +519,15 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/request_medical_records': {
+      '/pets/invoke.requestMedicalRecords': {
         get: {
           '200': {
             content: {
               'application/json': {
                 schema: {
                   properties: {
-                    petRequestMedicalRecord: {
-                      '$ref': `#/components/schemas/RequestMedicalRecordsForPetsOutput`
+                    pet: {
+                      '$ref': `#/components/schemas/InvokeRequestMedicalRecordsForPetOutput`
                     }
                   }
                 }
@@ -423,18 +535,18 @@ describe('expandToOpenApi#paths', () => {
             },
             description: 'Get succeeded'
           },
-          ...collectionErrors
+          ...entityErrors
         }
       },
-      '/stores/{storeId}/pets': {
+      '/stores': {
         get: {
           '200': {
             content: {
               'application/json': {
                 schema: {
                   properties: {
-                    storePets: {
-                      '$ref': `#/components/schemas/ListStorePetsOutput`
+                    stores: {
+                      '$ref': `#/components/schemas/ListStoresOutput`
                     }
                   }
                 }
@@ -450,8 +562,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storePet: {
-                      '$ref': `#/components/schemas/CreateStorePetOutput`
+                    store: {
+                      '$ref': `#/components/schemas/CreateStoreOutput`
                     }
                   }
                 }
@@ -462,7 +574,7 @@ describe('expandToOpenApi#paths', () => {
           ...collectionErrors
         }
       },
-      '/stores/{storeId}/pets/{petId}': {
+      '/stores/{storeId}': {
         delete: {
           '204': {
             content: {
@@ -482,8 +594,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storePet: {
-                      '$ref': `#/components/schemas/GetStorePetOutput`
+                    store: {
+                      '$ref': `#/components/schemas/GetStoreOutput`
                     }
                   }
                 }
@@ -512,8 +624,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storePet: {
-                      '$ref': `#/components/schemas/UpdateStorePetOutput`
+                    store: {
+                      '$ref': `#/components/schemas/UpdateStoreOutput`
                     }
                   }
                 }
@@ -529,8 +641,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storePet: {
-                      '$ref': `#/components/schemas/ReplaceStorePetOutput`
+                    store: {
+                      '$ref': `#/components/schemas/ReplaceStoreOutput`
                     }
                   }
                 }
@@ -540,13 +652,129 @@ describe('expandToOpenApi#paths', () => {
           },
           ...entityErrors
         }
-      }
+      },
+      '/stores/{storeId}/managers': {
+        get: {
+          '200': {
+            content: {
+              'application/json': {
+                schema: {
+                  properties: {
+                   storeManagers: {
+                      '$ref': `#/components/schemas/ListStoreManagersOutput`
+                    }
+                  }
+                }
+              }
+            },
+            description: 'List succeeded'
+          },
+          ...collectionErrors
+        },
+        post: {
+          '201': {
+            content: {
+              'application/json': {
+                schema: {
+                  properties: {
+                    storeManager: {
+                      '$ref': `#/components/schemas/CreateStoreManagerOutput`
+                    }
+                  }
+                }
+              }
+            },
+            description: 'Create succeeded'
+          },
+          ...collectionErrors
+        }
+      },
+      '/stores/{storeId}/managers/{managerId}': {
+        delete: {
+          '204': {
+            content: {
+              'application/json': {
+                schema: {
+                  '$ref': `#/components/schemas/EmptyOutput`
+                }
+              }
+            },
+            description: 'Delete succeeded'
+          },
+          ...entityErrors
+        },
+        get: {
+          '200': {
+            content: {
+              'application/json': {
+                schema: {
+                  properties: {
+                    storeManager: {
+                      '$ref': `#/components/schemas/GetStoreManagerOutput`
+                    }
+                  }
+                }
+              }
+            },
+            description: 'Get succeeded'
+          },
+          ...entityErrors
+        },
+        head: {
+          '200': {
+            content: {
+              'application/json': {
+                schema: {
+                  '$ref': `#/components/schemas/EmptyOutput`
+                }
+              }
+            },
+            description: 'Check succeeded'
+          },
+          ...entityErrors
+        },
+        patch: {
+          '200': {
+            content: {
+              'application/json': {
+                schema: {
+                  properties: {
+                    storeManager: {
+                      '$ref': `#/components/schemas/UpdateStoreManagerOutput`
+                    }
+                  }
+                }
+              }
+            },
+            description: 'Update succeeded'
+          },
+          ...entityErrors
+        },
+        put: {
+          '200': {
+            content: {
+              'application/json': {
+                schema: {
+                  properties: {
+                    storeManager: {
+                      '$ref': `#/components/schemas/ReplaceStoreManagerOutput`
+                    }
+                  }
+                }
+              }
+            },
+            description: 'Replace succeeded'
+          },
+          ...entityErrors
+        }
+      },
     })
   })
 })
 
 test('expandToOpenApi#components', () => {
-  const expanded = expandToOpenApi(spec)
+  const { models, operations } = expandToOperations(spec)
+  const expanded = expandToOpenApi({ models, operations })
   expect(expanded.components.schemas).toEqual({
     ErrorOutput: errorOutput,
     EmptyOutput: emptyOutput,
@@ -583,55 +811,109 @@ test('expandToOpenApi#components', () => {
         id: { type: 'string', readOnly: true }
       }
     },
-    UpdateStorePetOutput: {
+    InvokeRequestMedicalRecordsForPetOutput: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
     },
-    UpdateStorePetInput: { properties: { name: { type: 'string' } } },
-    CreateStorePetOutput: { properties: { name: { type: 'string' } } },
-    CreateStorePetInput: { properties: { name: { type: 'string' } } },
-    ReplaceStorePetOutput: {
+
+    UpdateStoreOutput: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
     },
-    ReplaceStorePetInput: { properties: { name: { type: 'string' } } },
-    GetStorePetOutput: {
+    UpdateStoreInput: { properties: { name: { type: 'string' } } },
+    CreateStoreOutput: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
     },
-    ListStorePetsOutput: { properties: { name: { type: 'string' } } },
-    RequestMedicalRecordsForPetsOutput: {
+    CreateStoreInput: { properties: { name: { type: 'string' } } },
+    ReplaceStoreOutput: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
-    }
+    },
+    ReplaceStoreInput: { properties: { name: { type: 'string' } } },
+    GetStoreOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true }
+      }
+    },
+    ListStoresOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true }
+      }
+    },
+
+    UpdateStoreManagerOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true }
+      }
+    },
+    UpdateStoreManagerInput: { properties: { name: { type: 'string' } } },
+    CreateStoreManagerOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true }
+      }
+    },
+    CreateStoreManagerInput: { properties: { name: { type: 'string' } } },
+    ReplaceStoreManagerOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true }
+      }
+    },
+    ReplaceStoreManagerInput: { properties: { name: { type: 'string' } } },
+    GetStoreManagerOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true }
+      }
+    },
+    ListStoreManagersOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true }
+      }
+    },
   })
 })
 
 describe('expandToOpenApi#info', () => {
   test('defaults', () => {
-    const expanded = expandToOpenApi(spec)
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi({ models, operations })
     expect(expanded.info).toEqual({
       title: 'API spec',
       version: '0.0.0'
     })
   })
   test('with title', () => {
-    const expanded = expandToOpenApi(spec, { title: 'Pet API' })
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi(
+      { models, operations },
+      { info: { title: 'Pet API' } }
+    )
     expect(expanded.info).toEqual({
       title: 'Pet API',
       version: '0.0.0'
     })
   })
   test('with version', () => {
-    const expanded = expandToOpenApi(spec, { version: '3.3.3' })
+    const { models, operations } = expandToOperations(spec)
+    const expanded = expandToOpenApi(
+      { models, operations },
+      { info: { version: '3.3.3' } }
+    )
     expect(expanded.info).toEqual({
       title: 'API spec',
       version: '3.3.3'

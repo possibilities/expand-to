@@ -14,6 +14,7 @@ const { emptyOutput, errorOutput } = require('./common')
 const getOperationId = require('./getOperationId')
 const getNamespace = require('./getNamespace')
 const getParameters = require('./getParameters')
+const getSummary = require('./getSummary')
 const getTags = require('./getTags')
 
 // Make map safe
@@ -41,20 +42,6 @@ const getRequestBody = (verb, resource) => {
       }
     }
   }
-}
-
-const getSummary = (verb, resource) => {
-  if (resource.isCustomFunction) {
-    return `Invoke \`${last(resource.path)}\` for ${resource.path[0]}`
-  }
-  const namespace = getNamespace(resource)
-  const noun = last(namespace)
-  const space = initial(namespace)
-  return [
-    upperFirst(labelToVerb[verb] || verb),
-    ...space.map(singularize),
-    verb === 'list' ? noun : singularize(noun)
-  ].filter(Boolean).join(' ')
 }
 
 const createResponse = (status, verb, resourceName) => ({

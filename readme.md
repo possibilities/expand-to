@@ -22,5 +22,6 @@ Tools for expanding JSON-schema models into dev/build/test/run-time application 
 
 ###### `getOperationId(verb, resource)`
 ###### `getTags(verb, resource)`
+###### `getSummary(verb, resource)`
 ###### `getNamespace(verb, resource)`
 ###### `getParameters(verb, resource)`

@@ -137,7 +137,7 @@ const expandPaths = mountedResources => {
         type: 'custom-function',
         methods: [fn.method],
         ids: recursiveIdsFor(resource, mountedResources),
-        path: [pluralize(resource.name), fn.name],
+        path: [pluralize(resource.name), 'fns', fn.name],
         mountPath: resource.mountPath,
         modelName: resource.name,
         isCustomFunction: true

@@ -198,7 +198,7 @@ describe('expand#fns', () => {
 
     expect(pathView(expand(schema))).toEqual([
       'pets',
-      'pets/requestMedicalRecords',
+      'pets/fns/requestMedicalRecords',
       'pets/{petId}'
     ])
 
@@ -214,7 +214,7 @@ describe('expand#fns', () => {
         ids: {},
         mountPath: [],
         isCustomFunction: true,
-        path: ['pets', 'requestMedicalRecords'],
+        path: ['pets', 'fns', 'requestMedicalRecords'],
         modelName: 'pet',
         methods: ['get']
       },
@@ -254,7 +254,7 @@ describe('expand#fns', () => {
       'orgs',
       'orgs/{orgId}',
       'orgs/{orgId}/repos',
-      'orgs/{orgId}/repos/getTopContributors',
+      'orgs/{orgId}/repos/fns/getTopContributors',
       'orgs/{orgId}/repos/{repoId}'
     ])
 
@@ -284,7 +284,7 @@ describe('expand#fns', () => {
         ids: { orgs: 'orgId' },
         mountPath: ['orgs', '{orgId}'],
         isCustomFunction: true,
-        path: ['repos', 'getTopContributors'],
+        path: ['repos', 'fns', 'getTopContributors'],
         modelName: 'repo',
         methods: ['get']
       },

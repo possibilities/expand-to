@@ -3,8 +3,6 @@ const toPairs = require('lodash/toPairs')
 const fromPairs = require('lodash/fromPairs')
 const mapValues = require('lodash/mapValues')
 const forEach = require('lodash/forEach')
-const memoize = require('lodash/memoize')
-const first = require('lodash/first')
 const initial = require('lodash/initial')
 const last = require('lodash/last')
 const keyBy = require('lodash/keyBy')
@@ -12,40 +10,21 @@ const upperFirst = require('lodash/upperFirst')
 const lowerFirst = require('lodash/lowerFirst')
 const expand = require('./expand')
 const inflection = require('inflection')
-const {
-  emptyOutput,
-  errorOutput,
-  paginationParameters
-} = require('./common')
+const { emptyOutput, errorOutput } = require('./common')
+const getOperationId = require('./getOperationId')
+const getNamespace = require('./getNamespace')
+const getParameters = require('./getParameters')
+const getTags = require('./getTags')
 
 // Make map safe
 const singularize = str => inflection.singularize(str)
 const pluralize = str => inflection.pluralize(str)
-
-const getNamespace = memoize(resource => {
-  return [...resource.mountPath, ...resource.path]
-    .filter(p => !p.startsWith('{'))
-})
 
 const labelToVerb = {
   post: 'create',
   head: 'check',
   put: 'replace',
   patch: 'update'
-}
-
-const getOperationId = (verb, resource) => {
-  const namespace = getNamespace(resource).map(upperFirst)
-  if (resource.isCustomFunction) {
-    return `${resource.path[1]}For${upperFirst(resource.path[0])}`
-  }
-  const noun = last(namespace)
-  const space = initial(namespace)
-  return [
-    labelToVerb[verb] || verb,
-    ...space.map(singularize),
-    verb === 'list' ? noun : singularize(noun)
-  ].join('')
 }
 
 const bodylessActions = ['list', 'delete', 'head', 'get']
@@ -76,33 +55,6 @@ const getSummary = (verb, resource) => {
     ...space.map(singularize),
     verb === 'list' ? noun : singularize(noun)
   ].filter(Boolean).join(' ')
-}
-
-const getTags = (verb, resource) => {
-  const namespace = getNamespace(resource)
-  return resource.isCustomFunction
-    ? [first(namespace)]
-    : namespace
-}
-
-const getParameters = (type, resource) => {
-  let params = []
-
-  forEach(resource.ids, (idName, resourceName) => {
-    params.push({
-      in: 'path',
-      name: idName,
-      description: upperFirst(resourceName) + ' id',
-      schema: { type: 'string', format: 'uuid' },
-      required: true
-    })
-  })
-
-  if (type === 'list') {
-    params = [...params, ...paginationParameters]
-  }
-
-  return params
 }
 
 const createResponse = (status, verb, resourceName) => ({

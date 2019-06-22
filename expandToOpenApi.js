@@ -1,4 +1,6 @@
 const snakeCase = require('lodash/snakeCase')
+const toPairs = require('lodash/toPairs')
+const fromPairs = require('lodash/fromPairs')
 const mapValues = require('lodash/mapValues')
 const forEach = require('lodash/forEach')
 const memoize = require('lodash/memoize')
@@ -228,6 +230,12 @@ const methodsForResource = resource => {
 const bodylessVerbs = ['get', 'delete', 'head']
 const responselessVerbs = ['head', 'delete']
 
+const stripReadOnly = model => {
+  const properties =
+    fromPairs(toPairs(model.properties).filter(([name, value]) => !value.readOnly))
+  return { ...model, properties }
+}
+
 const schemasFromSpec = (spec, models) => {
   let schemas = { EmptyOutput: emptyOutput, ErrorOutput: errorOutput }
   forEach(spec, path => {
@@ -236,7 +244,7 @@ const schemasFromSpec = (spec, models) => {
       const name = upperFirst(path.operationId)
       const model = models[resource.modelName]
       if (path.requestBody && !bodylessVerbs.includes(method)) {
-        schemas = { ...schemas, [`${name}Input`]: model }
+        schemas = { ...schemas, [`${name}Input`]: stripReadOnly(model) }
       }
       if (!responselessVerbs.includes(method)) {
         schemas = { ...schemas, [`${name}Output`]: model }

@@ -70,7 +70,12 @@ const entityErrors = {
 
 const spec = {
   models: {
-    pet: { properties: { name: { type: 'string' } } },
+    pet: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true }
+      }
+    },
     store: { properties: { name: { type: 'string' } } }
   },
   paths: [
@@ -615,23 +620,68 @@ test('expandToOpenApi#components', () => {
   expect(expanded.components.schemas).toEqual({
     ErrorOutput: errorOutput,
     EmptyOutput: emptyOutput,
-    UpdatePetOutput: { properties: { name: { type: 'string' } } },
+    UpdatePetOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    },
     UpdatePetInput: { properties: { name: { type: 'string' } } },
-    CreatePetOutput: { properties: { name: { type: 'string' } } },
+    CreatePetOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    },
     CreatePetInput: { properties: { name: { type: 'string' } } },
-    ReplacePetOutput: { properties: { name: { type: 'string' } } },
+    ReplacePetOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    },
     ReplacePetInput: { properties: { name: { type: 'string' } } },
-    GetPetOutput: { properties: { name: { type: 'string' } } },
-    ListPetsOutput: { properties: { name: { type: 'string' } } },
-    UpdateStorePetOutput: { properties: { name: { type: 'string' } } },
+    GetPetOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    },
+    ListPetsOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    },
+    UpdateStorePetOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    },
     UpdateStorePetInput: { properties: { name: { type: 'string' } } },
     CreateStorePetOutput: { properties: { name: { type: 'string' } } },
     CreateStorePetInput: { properties: { name: { type: 'string' } } },
-    ReplaceStorePetOutput: { properties: { name: { type: 'string' } } },
+    ReplaceStorePetOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    },
     ReplaceStorePetInput: { properties: { name: { type: 'string' } } },
-    GetStorePetOutput: { properties: { name: { type: 'string' } } },
+    GetStorePetOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    },
     ListStorePetsOutput: { properties: { name: { type: 'string' } } },
-    RequestMedicalRecordsForPetsOutput: { properties: { name: { type: 'string' } } }
+    RequestMedicalRecordsForPetsOutput: {
+      properties: {
+        name: { type: 'string' },
+        id: { type: 'string', readOnly: true },
+      }
+    }
   })
 })
 

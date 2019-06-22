@@ -2,9 +2,12 @@ const omit = require('lodash/omit')
 const omitFp = require('lodash/fp/omit')
 const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
+const without = require('lodash/without')
 const forEach = require('lodash/forEach')
 const inflection = require('inflection')
 const { allCollectionVerbs, allEntityVerbs } = require('./common')
+
+const immutableEntityVerbs = without(allEntityVerbs, 'put', 'patch')
 
 // Make map safe
 const singularize = str => inflection.singularize(str)
@@ -55,7 +58,9 @@ const expandToUnmountedResources = schema => {
       modelName: resource.name,
       ...resource,
       type: 'entity',
-      methods: allEntityVerbs,
+      methods: resource.immutable
+        ? immutableEntityVerbs
+        : allEntityVerbs,
       path: [pluralize(resource.name), `{${resource.name}Id}`]
     })
   })
@@ -154,7 +159,9 @@ const expandPaths = mountedResources => {
       paths.push({
         ...resource,
         type: 'entity-for-user',
-        methods: allEntityVerbs,
+        methods: resource.immutable
+          ? immutableEntityVerbs
+          : allEntityVerbs,
         path: [pluralize(resource.name), `{${resource.name}Id}`],
         ids: omit({
           [pluralize(resource.name)]: `${resource.name}Id`
@@ -238,7 +245,8 @@ const expandPaths = mountedResources => {
     'name',
     'treeOf',
     'fns',
-    'model'
+    'model',
+    'immutable'
   ]))
 }
 

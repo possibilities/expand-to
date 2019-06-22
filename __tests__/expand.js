@@ -1,3 +1,4 @@
+const without = require('lodash/without')
 const sortBy = require('lodash/sortBy')
 const expand = require('../expand')
 const expandToOpenApi = require('../expandToOpenApi')
@@ -135,6 +136,41 @@ describe('expand', () => {
         ids: { people: 'personId' },
         path: ['people', '{personId}'],
         methods: allEntityVerbs
+      }
+    ])
+  })
+
+  test('with immutability', () => {
+    const schema = dump(
+      [{
+        name: 'pet',
+        immutable: true,
+        model: {
+          properties: { name: { type: 'string' } }
+        }
+      }],
+      'basic with immutability'
+    )
+
+    expect(pathView(expand(schema))).toEqual([
+      'pets',
+      'pets/{petId}'
+    ])
+
+    expect(expandedView(expand(schema))).toEqual([
+      {
+        ids: {},
+        modelName: 'pet',
+        mountPath: [],
+        path: ['pets'],
+        methods: allCollectionVerbs
+      },
+      {
+        mountPath: [],
+        modelName: 'pet',
+        ids: { pets: 'petId' },
+        path: ['pets', '{petId}'],
+        methods: without(allEntityVerbs, 'patch', 'put')
       }
     ])
   })

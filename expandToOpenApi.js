@@ -195,9 +195,10 @@ const getResponses = (verb, resource) => {
     }
   }
 
-  const errorResponses = resource.isCustomFunction || ['list', 'post'].includes(verb)
-    ? getErrorResponses(400, 401, 403)
-    : getErrorResponses(400, 401, 403, 404)
+  const errorResponses =
+    resource.isCustomFunction || ['list', 'post'].includes(verb)
+      ? getErrorResponses(400, 401, 403)
+      : getErrorResponses(400, 401, 403, 404)
 
   return { ...response, ...errorResponses }
 }
@@ -224,22 +225,19 @@ const methodsForResource = resource => {
 
 const bodylessVerbs = ['get', 'delete', 'head']
 const responselessVerbs = ['head', 'delete']
+
 const schemasFromSpec = (spec, models) => {
   let schemas = { EmptyOutput: emptyOutput, ErrorOutput: errorOutput }
   forEach(spec, path => {
     const { resource, methods } = path
     forEach(methods, (path, method) => {
+      const name = upperFirst(path.operationId)
+      const model = models[resource.modelName]
       if (path.requestBody && !bodylessVerbs.includes(method)) {
-        schemas = {
-          ...schemas,
-          [`${upperFirst(path.operationId)}Input`]: models[resource.modelName]
-        }
+        schemas = { ...schemas, [`${name}Input`]: model }
       }
       if (!responselessVerbs.includes(method)) {
-        schemas = {
-          ...schemas,
-          [`${upperFirst(path.operationId)}Output`]: models[resource.modelName]
-        }
+        schemas = { ...schemas, [`${name}Output`]: model }
       }
     })
   })

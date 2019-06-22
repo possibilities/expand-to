@@ -70,7 +70,8 @@ const expandToUnmountedResources = schema => {
 const recursiveMountPathsFor = (resource, allResources) => {
   let mountPaths = []
   if (resource.belongsTo) {
-    const belongsToResource = allResources.find(r => r.name === resource.belongsTo)
+    const belongsToResource =
+      allResources.find(r => r.name === resource.belongsTo)
     if (belongsToResource) {
       mountPaths.push(pluralize(belongsToResource.name))
       mountPaths.push(`{${belongsToResource.name}Id}`)
@@ -172,11 +173,13 @@ const expandPaths = mountedResources => {
     }
   })
 
-  const mountedEntityResources = mountedResources.filter(r => r.type === 'entity')
+  const mountedEntityResources =
+    mountedResources.filter(r => r.type === 'entity')
 
   mountedEntityResources.forEach(resource => {
     forEach(resource.hasMany, relation => {
-      const relatedResource = resourcesByNameAndType[`${singularize(relation.name)}-entity`]
+      const relatedResource =
+        resourcesByNameAndType[`${singularize(relation.name)}-entity`]
       const resourceMountPath = [...resource.mountPath, ...resource.path]
       const resourceName = relation.as ? relation.as : relatedResource.name
 

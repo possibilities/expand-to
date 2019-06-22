@@ -44,9 +44,9 @@ const getOperationId = (verb, resource) => {
   ].join('')
 }
 
-const bodylessActions = ['list', 'delete', 'head', 'get']
+const bodylessVerbs = ['list', 'delete', 'head', 'get']
 const getRequestBody = (verb, resource) => {
-  if (bodylessActions.includes(verb)) return
+  if (bodylessVerbs.includes(verb)) return
   const operationId = getOperationId(verb, resource)
   return {
     required: true,

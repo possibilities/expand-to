@@ -1,6 +1,6 @@
-module.exports.allEntityActions = ['head', 'get', 'put', 'patch', 'delete']
+module.exports.allEntityVerbs = ['head', 'get', 'put', 'patch', 'delete']
 
-module.exports.allCollectionActions = ['list', 'post']
+module.exports.allCollectionVerbs = ['list', 'post']
 
 const collectionErrors = module.exports.collectionErrors = {
   400: {

@@ -4,7 +4,7 @@ const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
 const forEach = require('lodash/forEach')
 const inflection = require('inflection')
-const { allCollectionActions, allEntityActions } = require('./common')
+const { allCollectionVerbs, allEntityVerbs } = require('./common')
 
 // Make map safe
 const singularize = str => inflection.singularize(str)
@@ -49,14 +49,14 @@ const expand = models => {
         modelName: resource.name,
         ...resource,
         type: 'collection',
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         path: [pluralize(resource.name)]
       })
       resources.push({
         modelName: resource.name,
         ...resource,
         type: 'entity',
-        methods: allEntityActions,
+        methods: allEntityVerbs,
         path: [pluralize(resource.name), `{${resource.name}Id}`]
       })
     })
@@ -143,7 +143,7 @@ const expand = models => {
         paths.push({
           ...resource,
           type: 'collection-for-user',
-          methods: allCollectionActions,
+          methods: allCollectionVerbs,
           ids: omit({
             [pluralize(resource.name)]: `${resource.name}Id`
           }, 'users'),
@@ -155,7 +155,7 @@ const expand = models => {
         paths.push({
           ...resource,
           type: 'entity-for-user',
-          methods: allEntityActions,
+          methods: allEntityVerbs,
           path: [pluralize(resource.name), `{${resource.name}Id}`],
           ids: omit({
             [pluralize(resource.name)]: `${resource.name}Id`
@@ -177,7 +177,7 @@ const expand = models => {
         paths.push({
           ...relatedResource,
           type: 'collection',
-          methods: allCollectionActions,
+          methods: allCollectionVerbs,
           ids: {
             ...recursiveIdsFor(resource, mountedResources),
             [pluralize(resource.name)]: `${resource.name}Id`
@@ -190,7 +190,7 @@ const expand = models => {
         paths.push({
           ...relatedResource,
           type: 'entity',
-          methods: allEntityActions,
+          methods: allEntityVerbs,
           path: [pluralize(resourceName), `{${resourceName}Id}`],
           ids: {
             ...recursiveIdsFor(resource, mountedResources),
@@ -205,7 +205,7 @@ const expand = models => {
           paths.push({
             ...relatedResource,
             type: 'collection-for-user',
-            methods: allCollectionActions,
+            methods: allCollectionVerbs,
             ids: omit({
               ...recursiveIdsFor(resource, mountedResources),
               [pluralize(resource.name)]: `${resource.name}Id`
@@ -218,7 +218,7 @@ const expand = models => {
           paths.push({
             ...relatedResource,
             type: 'entity-for-user',
-            methods: allEntityActions,
+            methods: allEntityVerbs,
             path: [pluralize(resourceName), `{${resourceName}Id}`],
             ids: omit({
               ...recursiveIdsFor(resource, mountedResources),

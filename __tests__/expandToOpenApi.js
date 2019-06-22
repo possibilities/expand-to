@@ -2,8 +2,8 @@ const { expandToOpenApi } = require('../expandToOpenApi')
 const mapValues = require('lodash/mapValues')
 
 const {
-  allEntityActions,
-  allCollectionActions
+  allEntityVerbs,
+  allCollectionVerbs
 } = require('../common')
 
 const pathMethodOperationIdsView = spec =>
@@ -77,28 +77,28 @@ const spec = {
       mountPath: [],
       path: ['pets'],
       modelName: 'pet',
-      methods: allCollectionActions
+      methods: allCollectionVerbs
     },
     {
       ids: { pets: 'petId' },
       mountPath: [],
       path: ['pets', '{petId}'],
       modelName: 'pet',
-      methods: allEntityActions
+      methods: allEntityVerbs
     },
     {
       ids: { stores: 'storeId', pets: 'petId' },
       mountPath: ['stores', '{storeId}'],
       path: ['pets', '{petId}'],
       modelName: 'pet',
-      methods: allEntityActions
+      methods: allEntityVerbs
     },
     {
       ids: { stores: 'storeId' },
       mountPath: ['stores', '{storeId}'],
       path: ['pets'],
       modelName: 'store',
-      methods: allCollectionActions
+      methods: allCollectionVerbs
     },
     {
       ids: {},

@@ -5,8 +5,8 @@ const { writeFileSync, mkdirsSync } = require('fs-extra')
 const OpenAPISchemaValidator = require('openapi-schema-validator').default
 
 const {
-  allEntityActions,
-  allCollectionActions
+  allEntityVerbs,
+  allCollectionVerbs
 } = require('../common')
 
 const validator = new OpenAPISchemaValidator({ version: 3 })
@@ -79,28 +79,28 @@ describe('expand', () => {
         modelName: 'pet',
         mountPath: [],
         path: ['pets'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'pet',
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         ids: {},
         modelName: 'store',
         mountPath: [],
         path: ['stores'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'store',
         mountPath: [],
         ids: { stores: 'storeId' },
         path: ['stores', '{storeId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -127,14 +127,14 @@ describe('expand', () => {
         modelName: 'person',
         mountPath: [],
         path: ['people'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'person',
         ids: { people: 'personId' },
         path: ['people', '{personId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -172,7 +172,7 @@ describe('expand#fns', () => {
         modelName: 'pet',
         mountPath: [],
         path: ['pets'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         ids: {},
@@ -187,7 +187,7 @@ describe('expand#fns', () => {
         mountPath: [],
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -224,19 +224,19 @@ describe('expand#belongsTo', () => {
         modelName: 'org',
         mountPath: [],
         path: ['orgs'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'org',
         ids: { orgs: 'orgId' },
         path: ['orgs', '{orgId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         path: ['repos'],
         modelName: 'repo',
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         mountPath: ['orgs', '{orgId}'],
         ids: { orgs: 'orgId' }
       },
@@ -245,19 +245,19 @@ describe('expand#belongsTo', () => {
         path: ['repos', '{repoId}'],
         mountPath: ['orgs', '{orgId}'],
         ids: { repos: 'repoId', orgs: 'orgId' },
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'commit',
         path: ['commits'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: { repos: 'repoId', orgs: 'orgId' },
         mountPath: ['orgs', '{orgId}', 'repos', '{repoId}']
       },
       {
         modelName: 'commit',
         path: ['commits', '{commitId}'],
-        methods: allEntityActions,
+        methods: allEntityVerbs,
         mountPath: ['orgs', '{orgId}', 'repos', '{repoId}'],
         ids: { commits: 'commitId', repos: 'repoId', orgs: 'orgId' }
       }
@@ -316,48 +316,48 @@ describe('expand#belongsTo', () => {
         mountPath: [],
         modelName: 'committer',
         path: ['committers'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'committer',
         ids: { committers: 'committerId' },
         path: ['committers', '{committerId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         ids: {},
         mountPath: [],
         modelName: 'owner',
         path: ['owners'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'owner',
         ids: { owners: 'ownerId' },
         path: ['owners', '{ownerId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         ids: {},
         modelName: 'repo',
         mountPath: [],
         path: ['repos'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'repo',
         mountPath: [],
         ids: { repos: 'repoId' },
         path: ['repos', '{repoId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'commit',
         path: ['commits'],
         ids: { repos: 'repoId' },
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         mountPath: ['repos', '{repoId}']
       },
       {
@@ -365,12 +365,12 @@ describe('expand#belongsTo', () => {
         path: ['commits', '{commitId}'],
         mountPath: ['repos', '{repoId}'],
         ids: { commits: 'commitId', repos: 'repoId' },
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'committer',
         path: ['committers'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: { commits: 'commitId', repos: 'repoId' },
         mountPath: ['repos', '{repoId}', 'commits', '{commitId}']
       },
@@ -378,13 +378,13 @@ describe('expand#belongsTo', () => {
         modelName: 'committer',
         mountPath: ['repos', '{repoId}', 'commits', '{commitId}'],
         path: ['committers', '{committerId}'],
-        methods: allEntityActions,
+        methods: allEntityVerbs,
         ids: { repos: 'repoId', committers: 'committerId', commits: 'commitId' }
       },
       {
         modelName: 'owner',
         path: ['owners'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         mountPath: ['repos', '{repoId}'],
         ids: { repos: 'repoId' }
       },
@@ -393,7 +393,7 @@ describe('expand#belongsTo', () => {
         path: ['owners', '{ownerId}'],
         mountPath: ['repos', '{repoId}'],
         ids: { owners: 'ownerId', repos: 'repoId' },
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -432,19 +432,19 @@ describe('expand#hasMany', () => {
         mountPath: [],
         path: ['people'],
         modelName: 'person',
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'person',
         ids: { people: 'personId' },
         path: ['people', '{personId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         path: ['pets'],
         modelName: 'pet',
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: { people: 'personId' },
         mountPath: ['people', '{personId}']
       },
@@ -453,21 +453,21 @@ describe('expand#hasMany', () => {
         ids: { pets: 'petId', people: 'personId' },
         path: ['pets', '{petId}'],
         mountPath: ['people', '{personId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         ids: {},
         mountPath: [],
         path: ['pets'],
         modelName: 'pet',
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'pet',
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -509,33 +509,33 @@ describe('expand#hasMany', () => {
         mountPath: [],
         path: ['people'],
         modelName: 'person',
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'person',
         ids: { people: 'personId' },
         path: ['people', '{personId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'pet',
         ids: {},
         mountPath: [],
         path: ['pets'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'pet',
         mountPath: [],
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'person',
         path: ['doctors'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: { pets: 'petId' },
         mountPath: ['pets', '{petId}']
       },
@@ -544,12 +544,12 @@ describe('expand#hasMany', () => {
         ids: { doctors: 'doctorId', pets: 'petId' },
         path: ['doctors', '{doctorId}'],
         mountPath: ['pets', '{petId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'person',
         path: ['owners'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: { pets: 'petId' },
         mountPath: ['pets', '{petId}']
       },
@@ -558,7 +558,7 @@ describe('expand#hasMany', () => {
         ids: { owners: 'ownerId', pets: 'petId' },
         path: ['owners', '{ownerId}'],
         mountPath: ['pets', '{petId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -586,27 +586,27 @@ describe('expand#treeOf', () => {
         mountPath: [],
         path: ['groups'],
         modelName: 'group',
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'group',
         ids: { groups: 'groupId' },
         path: ['groups', '{groupId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         ids: { groups: 'groupId' },
         modelName: 'group',
         path: ['subgroups'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         mountPath: ['groups', '{groupId}']
       },
       {
         modelName: 'group',
         ids: { groups: 'groupId', subgroups: 'subgroupId' },
         path: ['subgroups', '{subgroupId}'],
-        methods: allEntityActions,
+        methods: allEntityVerbs,
         mountPath: ['groups', '{groupId}']
       }
     ])
@@ -636,41 +636,41 @@ describe('expand#treeOf', () => {
         mountPath: [],
         modelName: 'region',
         path: ['regions'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'region',
         ids: { regions: 'regionId' },
         path: ['regions', '{regionId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'group',
         ids: { regions: 'regionId' },
         mountPath: ['regions', '{regionId}'],
         path: ['groups'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'group',
         mountPath: ['regions', '{regionId}'],
         ids: { groups: 'groupId', regions: 'regionId' },
         path: ['groups', '{groupId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'group',
         ids: { groups: 'groupId', regions: 'regionId' },
         path: ['subgroups'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         mountPath: ['regions', '{regionId}', 'groups', '{groupId}']
       },
       {
         modelName: 'group',
         ids: { groups: 'groupId', subgroups: 'subgroupId', regions: 'regionId' },
         path: ['subgroups', '{subgroupId}'],
-        methods: allEntityActions,
+        methods: allEntityVerbs,
         mountPath: ['regions', '{regionId}', 'groups', '{groupId}']
       }
     ])
@@ -713,70 +713,70 @@ describe('expand#treeOf', () => {
         mountPath: [],
         ids: {},
         modelName: 'group',
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'group',
         path: ['groups', '{groupId}'],
         mountPath: [],
         ids: { groups: 'groupId' },
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'group',
         path: ['subgroups'],
         mountPath: ['groups', '{groupId}'],
         ids: { groups: 'groupId' },
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'group',
         path: ['subgroups', '{subgroupId}'],
         mountPath: ['groups', '{groupId}'],
         ids: { groups: 'groupId', subgroups: 'subgroupId' },
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'widget',
         path: ['widgets'],
         mountPath: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
         ids: { groups: 'groupId', subgroups: 'subgroupId' },
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'widget',
         path: ['widgets', '{widgetId}'],
         mountPath: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
         ids: { groups: 'groupId', subgroups: 'subgroupId', widgets: 'widgetId' },
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'widget',
         path: ['widgets'],
         mountPath: ['groups', '{groupId}'],
         ids: { groups: 'groupId' },
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'widget',
         path: ['widgets', '{widgetId}'],
         mountPath: ['groups', '{groupId}'],
         ids: { groups: 'groupId', widgets: 'widgetId' },
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'widget',
         path: ['widgets'],
         mountPath: [],
         ids: {},
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'widget',
         path: ['widgets', '{widgetId}'],
         mountPath: [],
         ids: { widgets: 'widgetId' },
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -816,27 +816,27 @@ describe('expand#treeOf', () => {
         mountPath: [],
         modelName: 'group',
         path: ['groups'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'group',
         ids: { groups: 'groupId' },
         path: ['groups', '{groupId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         ids: { groups: 'groupId' },
         modelName: 'group',
         path: ['subgroups'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         mountPath: ['groups', '{groupId}']
       },
       {
         modelName: 'group',
         ids: { groups: 'groupId', subgroups: 'subgroupId' },
         path: ['subgroups', '{subgroupId}'],
-        methods: allEntityActions,
+        methods: allEntityVerbs,
         mountPath: ['groups', '{groupId}']
       },
       {
@@ -844,28 +844,28 @@ describe('expand#treeOf', () => {
         mountPath: [],
         path: ['regions'],
         modelName: 'region',
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'region',
         ids: { regions: 'regionId' },
         path: ['regions', '{regionId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'group',
         ids: { regions: 'regionId' },
         mountPath: ['regions', '{regionId}'],
         path: ['groups'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'group',
         mountPath: ['regions', '{regionId}'],
         ids: { groups: 'groupId', regions: 'regionId' },
         path: ['groups', '{groupId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -904,42 +904,42 @@ describe('expand#users', () => {
         modelName: 'user',
         mountPath: [],
         path: ['users'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'course',
         mountPath: ['users'],
         ids: { courses: 'courseId' },
         path: ['courses'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'course',
         mountPath: ['users'],
         ids: { courses: 'courseId' },
         path: ['courses', '{courseId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         mountPath: [],
         modelName: 'user',
         ids: { users: 'userId' },
         path: ['users', '{userId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         modelName: 'course',
         mountPath: ['users', '{userId}'],
         ids: { users: 'userId' },
         path: ['courses'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         modelName: 'course',
         mountPath: ['users', '{userId}'],
         ids: { users: 'userId', courses: 'courseId' },
         path: ['courses', '{courseId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -977,26 +977,26 @@ describe('expand#users', () => {
         ids: {},
         mountPath: [],
         path: ['courses'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         modelName: 'course'
       },
       {
         mountPath: [],
         ids: { courses: 'courseId' },
         path: ['courses', '{courseId}'],
-        methods: allEntityActions,
+        methods: allEntityVerbs,
         modelName: 'course'
       },
       {
         ids: {},
         mountPath: [],
         path: ['users'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         modelName: 'user'
       },
       {
         path: ['courses'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: {},
         modelName: 'course',
         mountPath: ['users']
@@ -1006,18 +1006,18 @@ describe('expand#users', () => {
         path: ['courses', '{courseId}'],
         mountPath: ['users'],
         modelName: 'course',
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         mountPath: [],
         ids: { users: 'userId' },
         path: ['users', '{userId}'],
         modelName: 'user',
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         path: ['courses'],
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: { users: 'userId' },
         modelName: 'course',
         mountPath: ['users', '{userId}']
@@ -1027,7 +1027,7 @@ describe('expand#users', () => {
         path: ['courses', '{courseId}'],
         mountPath: ['users', '{userId}'],
         modelName: 'course',
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })
@@ -1073,26 +1073,26 @@ describe('expand#users', () => {
         mountPath: [],
         path: ['courses'],
         modelName: 'course',
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         mountPath: [],
         modelName: 'course',
         ids: { courses: 'courseId' },
         path: ['courses', '{courseId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         ids: {},
         mountPath: [],
         modelName: 'user',
         path: ['users'],
-        methods: allCollectionActions
+        methods: allCollectionVerbs
       },
       {
         path: ['contributors'],
         modelName: 'course',
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: {},
         mountPath: ['users']
       },
@@ -1101,12 +1101,12 @@ describe('expand#users', () => {
         modelName: 'course',
         path: ['contributors', '{contributorId}'],
         mountPath: ['users'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         path: ['learners'],
         modelName: 'course',
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: {},
         mountPath: ['users']
       },
@@ -1115,19 +1115,19 @@ describe('expand#users', () => {
         modelName: 'course',
         path: ['learners', '{learnerId}'],
         mountPath: ['users'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         mountPath: [],
         modelName: 'user',
         ids: { users: 'userId' },
         path: ['users', '{userId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         path: ['contributors'],
         modelName: 'course',
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: { users: 'userId' },
         mountPath: ['users', '{userId}']
       },
@@ -1136,12 +1136,12 @@ describe('expand#users', () => {
         modelName: 'course',
         path: ['contributors', '{contributorId}'],
         mountPath: ['users', '{userId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       },
       {
         path: ['learners'],
         modelName: 'course',
-        methods: allCollectionActions,
+        methods: allCollectionVerbs,
         ids: { users: 'userId' },
         mountPath: ['users', '{userId}']
       },
@@ -1150,7 +1150,7 @@ describe('expand#users', () => {
         modelName: 'course',
         path: ['learners', '{learnerId}'],
         mountPath: ['users', '{userId}'],
-        methods: allEntityActions
+        methods: allEntityVerbs
       }
     ])
   })

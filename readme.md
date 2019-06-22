@@ -11,3 +11,9 @@ Tools for expanding a JSON-schema model for creation of dev, build, and run-time
 * `treeOf`: adds routes for accessing and mutating a hierarchical resource
 * `versioned: true`: adds routes for listing, accessing, and restoring versioned entities (TODO)
 * `undeletable: true`: adds routes for listing, accessing, and undeleting soft deleted entities (TODO)
+
+### API
+
+#### `expand(model)`
+
+#### `expandToOpenApi(model, info)`

@@ -227,6 +227,76 @@ describe('expand#fns', () => {
       }
     ])
   })
+
+  test('with `belongsTo`', () => {
+    const schema = dump(
+      [{
+        name: 'org',
+        model: { properties: { name: { type: 'string' } } }
+      }, {
+        name: 'repo',
+        fns: [{
+          method: 'get',
+          name: 'getTopContributors'
+        }],
+        model: { properties: { name: { type: 'string' } } },
+        belongsTo: 'org'
+      }],
+      'custom function with belongsTo'
+    )
+
+    expect(expand(schema).models).toEqual({
+      org: { properties: { name: { type: 'string' } } },
+      repo: { properties: { name: { type: 'string' } } }
+    })
+
+    expect(pathView(expand(schema))).toEqual([
+      'orgs',
+      'orgs/{orgId}',
+      'orgs/{orgId}/repos',
+      'orgs/{orgId}/repos/getTopContributors',
+      'orgs/{orgId}/repos/{repoId}',
+    ])
+
+    expect(expandedView(expand(schema))).toEqual([
+      {
+        ids: {},
+        modelName: 'org',
+        mountPath: [],
+        path: ['orgs'],
+        methods: allCollectionVerbs
+      },
+      {
+        modelName: 'org',
+        mountPath: [],
+        ids: { orgs: 'orgId' },
+        path: ['orgs', '{orgId}'],
+        methods: allEntityVerbs
+      },
+      {
+        ids: { orgs: 'orgId' },
+        modelName: 'repo',
+        mountPath: ['orgs', '{orgId}'],
+        path: ['repos'],
+        methods: allCollectionVerbs
+      },
+      {
+        ids: { orgs: 'orgId' },
+        mountPath: ['orgs', '{orgId}'],
+        isCustomFunction: true,
+        path: ['repos', 'getTopContributors'],
+        modelName: 'repo',
+        methods: ['get']
+      },
+      {
+        modelName: 'repo',
+        mountPath: ['orgs', '{orgId}'],
+        ids: { repos: 'repoId', orgs: 'orgId' },
+        path: ['repos', '{repoId}'],
+        methods: allEntityVerbs
+      },
+    ])
+  })
 })
 
 describe('expand#belongsTo', () => {

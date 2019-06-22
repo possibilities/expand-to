@@ -201,7 +201,6 @@ const expandToOpenApi = (spec, options = {}) => {
   const resourcesByPath = keyBy(
     spec.paths,
     resource => '/' + [
-      ...resource.mountPath,
       ...initial(resource.path),
       resource.isCustomFunction
         ? snakeCase(last(resource.path))

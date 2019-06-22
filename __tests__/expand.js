@@ -13,11 +13,11 @@ const {
 const validator = new OpenAPISchemaValidator({ version: 3 })
 
 const pathView = schema => schema.paths
-  .map(resource => [...resource.mountPath, ...resource.path].join('/')).sort()
+  .map(resource => resource.path.join('/')).sort()
 
 const expandedView = schema => sortBy(
   schema.paths,
-  schema => [...schema.mountPath, ...schema.path].join('/')
+  schema => schema.path.join('/')
 )
 
 // Examples here are emblamatic so we dump io of each test run
@@ -78,12 +78,10 @@ describe('expand', () => {
       {
         ids: {},
         modelName: 'pet',
-        mountPath: [],
         path: ['pets'],
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'pet',
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
@@ -92,13 +90,11 @@ describe('expand', () => {
       {
         ids: {},
         modelName: 'store',
-        mountPath: [],
         path: ['stores'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'store',
-        mountPath: [],
         ids: { stores: 'storeId' },
         path: ['stores', '{storeId}'],
         methods: allEntityVerbs
@@ -126,12 +122,10 @@ describe('expand', () => {
       {
         ids: {},
         modelName: 'person',
-        mountPath: [],
         path: ['people'],
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'person',
         ids: { people: 'personId' },
         path: ['people', '{personId}'],
@@ -161,12 +155,10 @@ describe('expand', () => {
       {
         ids: {},
         modelName: 'pet',
-        mountPath: [],
         path: ['pets'],
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'pet',
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
@@ -206,13 +198,11 @@ describe('expand#fns', () => {
       {
         ids: {},
         modelName: 'pet',
-        mountPath: [],
         path: ['pets'],
         methods: allCollectionVerbs
       },
       {
         ids: {},
-        mountPath: [],
         isCustomFunction: true,
         path: ['pets', 'fns', 'requestMedicalRecords'],
         modelName: 'pet',
@@ -220,7 +210,6 @@ describe('expand#fns', () => {
       },
       {
         modelName: 'pet',
-        mountPath: [],
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
         methods: allEntityVerbs
@@ -262,13 +251,11 @@ describe('expand#fns', () => {
       {
         ids: {},
         modelName: 'org',
-        mountPath: [],
         path: ['orgs'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'org',
-        mountPath: [],
         ids: { orgs: 'orgId' },
         path: ['orgs', '{orgId}'],
         methods: allEntityVerbs
@@ -276,23 +263,20 @@ describe('expand#fns', () => {
       {
         ids: { orgs: 'orgId' },
         modelName: 'repo',
-        mountPath: ['orgs', '{orgId}'],
-        path: ['repos'],
+        path: ['orgs', '{orgId}', 'repos'],
         methods: allCollectionVerbs
       },
       {
         ids: { orgs: 'orgId' },
-        mountPath: ['orgs', '{orgId}'],
         isCustomFunction: true,
-        path: ['repos', 'fns', 'getTopContributors'],
+        path: ['orgs', '{orgId}', 'repos', 'fns', 'getTopContributors'],
         modelName: 'repo',
         methods: ['get']
       },
       {
         modelName: 'repo',
-        mountPath: ['orgs', '{orgId}'],
         ids: { repos: 'repoId', orgs: 'orgId' },
-        path: ['repos', '{repoId}'],
+        path: ['orgs', '{orgId}', 'repos', '{repoId}'],
         methods: allEntityVerbs
       }
     ])
@@ -328,43 +312,37 @@ describe('expand#belongsTo', () => {
       {
         ids: {},
         modelName: 'org',
-        mountPath: [],
         path: ['orgs'],
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'org',
         ids: { orgs: 'orgId' },
         path: ['orgs', '{orgId}'],
         methods: allEntityVerbs
       },
       {
-        path: ['repos'],
+        path: ['orgs', '{orgId}', 'repos'],
         modelName: 'repo',
         methods: allCollectionVerbs,
-        mountPath: ['orgs', '{orgId}'],
         ids: { orgs: 'orgId' }
       },
       {
         modelName: 'repo',
-        path: ['repos', '{repoId}'],
-        mountPath: ['orgs', '{orgId}'],
+        path: ['orgs', '{orgId}', 'repos', '{repoId}'],
         ids: { repos: 'repoId', orgs: 'orgId' },
         methods: allEntityVerbs
       },
       {
         modelName: 'commit',
-        path: ['commits'],
+        path: ['orgs', '{orgId}', 'repos', '{repoId}', 'commits'],
         methods: allCollectionVerbs,
-        ids: { repos: 'repoId', orgs: 'orgId' },
-        mountPath: ['orgs', '{orgId}', 'repos', '{repoId}']
+        ids: { repos: 'repoId', orgs: 'orgId' }
       },
       {
         modelName: 'commit',
-        path: ['commits', '{commitId}'],
+        path: ['orgs', '{orgId}', 'repos', '{repoId}', 'commits', '{commitId}'],
         methods: allEntityVerbs,
-        mountPath: ['orgs', '{orgId}', 'repos', '{repoId}'],
         ids: { commits: 'commitId', repos: 'repoId', orgs: 'orgId' }
       }
     ])
@@ -419,13 +397,11 @@ describe('expand#belongsTo', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
-        mountPath: [],
         modelName: 'committer',
         path: ['committers'],
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'committer',
         ids: { committers: 'committerId' },
         path: ['committers', '{committerId}'],
@@ -433,13 +409,11 @@ describe('expand#belongsTo', () => {
       },
       {
         ids: {},
-        mountPath: [],
         modelName: 'owner',
         path: ['owners'],
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'owner',
         ids: { owners: 'ownerId' },
         path: ['owners', '{ownerId}'],
@@ -448,56 +422,48 @@ describe('expand#belongsTo', () => {
       {
         ids: {},
         modelName: 'repo',
-        mountPath: [],
         path: ['repos'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'repo',
-        mountPath: [],
         ids: { repos: 'repoId' },
         path: ['repos', '{repoId}'],
         methods: allEntityVerbs
       },
       {
         modelName: 'commit',
-        path: ['commits'],
+        path: ['repos', '{repoId}', 'commits'],
         ids: { repos: 'repoId' },
-        methods: allCollectionVerbs,
-        mountPath: ['repos', '{repoId}']
+        methods: allCollectionVerbs
       },
       {
         modelName: 'commit',
-        path: ['commits', '{commitId}'],
-        mountPath: ['repos', '{repoId}'],
+        path: ['repos', '{repoId}', 'commits', '{commitId}'],
         ids: { commits: 'commitId', repos: 'repoId' },
         methods: allEntityVerbs
       },
       {
         modelName: 'committer',
-        path: ['committers'],
+        path: ['repos', '{repoId}', 'commits', '{commitId}', 'committers'],
         methods: allCollectionVerbs,
-        ids: { commits: 'commitId', repos: 'repoId' },
-        mountPath: ['repos', '{repoId}', 'commits', '{commitId}']
+        ids: { commits: 'commitId', repos: 'repoId' }
       },
       {
         modelName: 'committer',
-        mountPath: ['repos', '{repoId}', 'commits', '{commitId}'],
-        path: ['committers', '{committerId}'],
+        path: ['repos', '{repoId}', 'commits', '{commitId}', 'committers', '{committerId}'],
         methods: allEntityVerbs,
         ids: { repos: 'repoId', committers: 'committerId', commits: 'commitId' }
       },
       {
         modelName: 'owner',
-        path: ['owners'],
+        path: ['repos', '{repoId}', 'owners'],
         methods: allCollectionVerbs,
-        mountPath: ['repos', '{repoId}'],
         ids: { repos: 'repoId' }
       },
       {
         modelName: 'owner',
-        path: ['owners', '{ownerId}'],
-        mountPath: ['repos', '{repoId}'],
+        path: ['repos', '{repoId}', 'owners', '{ownerId}'],
         ids: { owners: 'ownerId', repos: 'repoId' },
         methods: allEntityVerbs
       }
@@ -535,41 +501,35 @@ describe('expand#hasMany', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
-        mountPath: [],
         path: ['people'],
         modelName: 'person',
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'person',
         ids: { people: 'personId' },
         path: ['people', '{personId}'],
         methods: allEntityVerbs
       },
       {
-        path: ['pets'],
+        path: ['people', '{personId}', 'pets'],
         modelName: 'pet',
         methods: allCollectionVerbs,
-        ids: { people: 'personId' },
-        mountPath: ['people', '{personId}']
+        ids: { people: 'personId' }
       },
       {
         modelName: 'pet',
         ids: { pets: 'petId', people: 'personId' },
-        path: ['pets', '{petId}'],
-        mountPath: ['people', '{personId}'],
+        path: ['people', '{personId}', 'pets', '{petId}'],
         methods: allEntityVerbs
       },
       {
         ids: {},
-        mountPath: [],
         path: ['pets'],
         modelName: 'pet',
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'pet',
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
@@ -612,13 +572,11 @@ describe('expand#hasMany', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
-        mountPath: [],
         path: ['people'],
         modelName: 'person',
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'person',
         ids: { people: 'personId' },
         path: ['people', '{personId}'],
@@ -627,43 +585,37 @@ describe('expand#hasMany', () => {
       {
         modelName: 'pet',
         ids: {},
-        mountPath: [],
         path: ['pets'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'pet',
-        mountPath: [],
         ids: { pets: 'petId' },
         path: ['pets', '{petId}'],
         methods: allEntityVerbs
       },
       {
         modelName: 'person',
-        path: ['doctors'],
+        path: ['pets', '{petId}', 'doctors'],
         methods: allCollectionVerbs,
-        ids: { pets: 'petId' },
-        mountPath: ['pets', '{petId}']
+        ids: { pets: 'petId' }
       },
       {
         modelName: 'person',
         ids: { doctors: 'doctorId', pets: 'petId' },
-        path: ['doctors', '{doctorId}'],
-        mountPath: ['pets', '{petId}'],
+        path: ['pets', '{petId}', 'doctors', '{doctorId}'],
         methods: allEntityVerbs
       },
       {
         modelName: 'person',
-        path: ['owners'],
+        path: ['pets', '{petId}', 'owners'],
         methods: allCollectionVerbs,
-        ids: { pets: 'petId' },
-        mountPath: ['pets', '{petId}']
+        ids: { pets: 'petId' }
       },
       {
         modelName: 'person',
         ids: { owners: 'ownerId', pets: 'petId' },
-        path: ['owners', '{ownerId}'],
-        mountPath: ['pets', '{petId}'],
+        path: ['pets', '{petId}', 'owners', '{ownerId}'],
         methods: allEntityVerbs
       }
     ])
@@ -689,13 +641,11 @@ describe('expand#treeOf', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
-        mountPath: [],
         path: ['groups'],
         modelName: 'group',
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'group',
         ids: { groups: 'groupId' },
         path: ['groups', '{groupId}'],
@@ -704,16 +654,14 @@ describe('expand#treeOf', () => {
       {
         ids: { groups: 'groupId' },
         modelName: 'group',
-        path: ['subgroups'],
-        methods: allCollectionVerbs,
-        mountPath: ['groups', '{groupId}']
+        path: ['groups', '{groupId}', 'subgroups'],
+        methods: allCollectionVerbs
       },
       {
         modelName: 'group',
         ids: { groups: 'groupId', subgroups: 'subgroupId' },
-        path: ['subgroups', '{subgroupId}'],
-        methods: allEntityVerbs,
-        mountPath: ['groups', '{groupId}']
+        path: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        methods: allEntityVerbs
       }
     ])
   })
@@ -739,13 +687,11 @@ describe('expand#treeOf', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
-        mountPath: [],
         modelName: 'region',
         path: ['regions'],
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'region',
         ids: { regions: 'regionId' },
         path: ['regions', '{regionId}'],
@@ -754,30 +700,26 @@ describe('expand#treeOf', () => {
       {
         modelName: 'group',
         ids: { regions: 'regionId' },
-        mountPath: ['regions', '{regionId}'],
-        path: ['groups'],
+        path: ['regions', '{regionId}', 'groups'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'group',
-        mountPath: ['regions', '{regionId}'],
         ids: { groups: 'groupId', regions: 'regionId' },
-        path: ['groups', '{groupId}'],
+        path: ['regions', '{regionId}', 'groups', '{groupId}'],
         methods: allEntityVerbs
       },
       {
         modelName: 'group',
         ids: { groups: 'groupId', regions: 'regionId' },
-        path: ['subgroups'],
-        methods: allCollectionVerbs,
-        mountPath: ['regions', '{regionId}', 'groups', '{groupId}']
+        path: ['regions', '{regionId}', 'groups', '{groupId}', 'subgroups'],
+        methods: allCollectionVerbs
       },
       {
         modelName: 'group',
         ids: { groups: 'groupId', subgroups: 'subgroupId', regions: 'regionId' },
-        path: ['subgroups', '{subgroupId}'],
-        methods: allEntityVerbs,
-        mountPath: ['regions', '{regionId}', 'groups', '{groupId}']
+        path: ['regions', '{regionId}', 'groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        methods: allEntityVerbs
       }
     ])
   })
@@ -816,7 +758,6 @@ describe('expand#treeOf', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         path: ['groups'],
-        mountPath: [],
         ids: {},
         modelName: 'group',
         methods: allCollectionVerbs
@@ -824,63 +765,54 @@ describe('expand#treeOf', () => {
       {
         modelName: 'group',
         path: ['groups', '{groupId}'],
-        mountPath: [],
         ids: { groups: 'groupId' },
         methods: allEntityVerbs
       },
       {
         modelName: 'group',
-        path: ['subgroups'],
-        mountPath: ['groups', '{groupId}'],
+        path: ['groups', '{groupId}', 'subgroups'],
         ids: { groups: 'groupId' },
         methods: allCollectionVerbs
       },
       {
         modelName: 'group',
-        path: ['subgroups', '{subgroupId}'],
-        mountPath: ['groups', '{groupId}'],
+        path: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
         ids: { groups: 'groupId', subgroups: 'subgroupId' },
         methods: allEntityVerbs
       },
       {
         modelName: 'widget',
-        path: ['widgets'],
-        mountPath: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        path: ['groups', '{groupId}', 'subgroups', '{subgroupId}', 'widgets'],
         ids: { groups: 'groupId', subgroups: 'subgroupId' },
         methods: allCollectionVerbs
       },
       {
         modelName: 'widget',
-        path: ['widgets', '{widgetId}'],
-        mountPath: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        path: ['groups', '{groupId}', 'subgroups', '{subgroupId}', 'widgets', '{widgetId}'],
         ids: { groups: 'groupId', subgroups: 'subgroupId', widgets: 'widgetId' },
         methods: allEntityVerbs
       },
       {
         modelName: 'widget',
-        path: ['widgets'],
-        mountPath: ['groups', '{groupId}'],
+        path: ['groups', '{groupId}', 'widgets'],
         ids: { groups: 'groupId' },
         methods: allCollectionVerbs
       },
       {
         modelName: 'widget',
-        path: ['widgets', '{widgetId}'],
-        mountPath: ['groups', '{groupId}'],
+        path: ['groups', '{groupId}', 'widgets', '{widgetId}'],
         ids: { groups: 'groupId', widgets: 'widgetId' },
         methods: allEntityVerbs
       },
       {
         modelName: 'widget',
         path: ['widgets'],
-        mountPath: [],
         ids: {},
         methods: allCollectionVerbs
       },
       {
         modelName: 'widget',
         path: ['widgets', '{widgetId}'],
-        mountPath: [],
         ids: { widgets: 'widgetId' },
         methods: allEntityVerbs
       }
@@ -919,13 +851,11 @@ describe('expand#treeOf', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
-        mountPath: [],
         modelName: 'group',
         path: ['groups'],
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'group',
         ids: { groups: 'groupId' },
         path: ['groups', '{groupId}'],
@@ -934,26 +864,22 @@ describe('expand#treeOf', () => {
       {
         ids: { groups: 'groupId' },
         modelName: 'group',
-        path: ['subgroups'],
-        methods: allCollectionVerbs,
-        mountPath: ['groups', '{groupId}']
+        path: ['groups', '{groupId}', 'subgroups'],
+        methods: allCollectionVerbs
       },
       {
         modelName: 'group',
         ids: { groups: 'groupId', subgroups: 'subgroupId' },
-        path: ['subgroups', '{subgroupId}'],
-        methods: allEntityVerbs,
-        mountPath: ['groups', '{groupId}']
+        path: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        methods: allEntityVerbs
       },
       {
         ids: {},
-        mountPath: [],
         path: ['regions'],
         modelName: 'region',
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'region',
         ids: { regions: 'regionId' },
         path: ['regions', '{regionId}'],
@@ -962,15 +888,13 @@ describe('expand#treeOf', () => {
       {
         modelName: 'group',
         ids: { regions: 'regionId' },
-        mountPath: ['regions', '{regionId}'],
-        path: ['groups'],
+        path: ['regions', '{regionId}', 'groups'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'group',
-        mountPath: ['regions', '{regionId}'],
         ids: { groups: 'groupId', regions: 'regionId' },
-        path: ['groups', '{groupId}'],
+        path: ['regions', '{regionId}', 'groups', '{groupId}'],
         methods: allEntityVerbs
       }
     ])
@@ -1008,26 +932,22 @@ describe('expand#users', () => {
       {
         ids: {},
         modelName: 'user',
-        mountPath: [],
         path: ['users'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'course',
-        mountPath: ['users'],
         ids: { courses: 'courseId' },
-        path: ['courses'],
+        path: ['users', 'courses'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'course',
-        mountPath: ['users'],
         ids: { courses: 'courseId' },
-        path: ['courses', '{courseId}'],
+        path: ['users', 'courses', '{courseId}'],
         methods: allEntityVerbs
       },
       {
-        mountPath: [],
         modelName: 'user',
         ids: { users: 'userId' },
         path: ['users', '{userId}'],
@@ -1035,16 +955,14 @@ describe('expand#users', () => {
       },
       {
         modelName: 'course',
-        mountPath: ['users', '{userId}'],
         ids: { users: 'userId' },
-        path: ['courses'],
+        path: ['users', '{userId}', 'courses'],
         methods: allCollectionVerbs
       },
       {
         modelName: 'course',
-        mountPath: ['users', '{userId}'],
         ids: { users: 'userId', courses: 'courseId' },
-        path: ['courses', '{courseId}'],
+        path: ['users', '{userId}', 'courses', '{courseId}'],
         methods: allEntityVerbs
       }
     ])
@@ -1081,13 +999,11 @@ describe('expand#users', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
-        mountPath: [],
         path: ['courses'],
         methods: allCollectionVerbs,
         modelName: 'course'
       },
       {
-        mountPath: [],
         ids: { courses: 'courseId' },
         path: ['courses', '{courseId}'],
         methods: allEntityVerbs,
@@ -1095,43 +1011,37 @@ describe('expand#users', () => {
       },
       {
         ids: {},
-        mountPath: [],
         path: ['users'],
         methods: allCollectionVerbs,
         modelName: 'user'
       },
       {
-        path: ['courses'],
+        path: ['users', 'courses'],
         methods: allCollectionVerbs,
         ids: {},
-        modelName: 'course',
-        mountPath: ['users']
+        modelName: 'course'
       },
       {
         ids: { courses: 'courseId' },
-        path: ['courses', '{courseId}'],
-        mountPath: ['users'],
+        path: ['users', 'courses', '{courseId}'],
         modelName: 'course',
         methods: allEntityVerbs
       },
       {
-        mountPath: [],
         ids: { users: 'userId' },
         path: ['users', '{userId}'],
         modelName: 'user',
         methods: allEntityVerbs
       },
       {
-        path: ['courses'],
+        path: ['users', '{userId}', 'courses'],
         methods: allCollectionVerbs,
         ids: { users: 'userId' },
-        modelName: 'course',
-        mountPath: ['users', '{userId}']
+        modelName: 'course'
       },
       {
         ids: { courses: 'courseId', users: 'userId' },
-        path: ['courses', '{courseId}'],
-        mountPath: ['users', '{userId}'],
+        path: ['users', '{userId}', 'courses', '{courseId}'],
         modelName: 'course',
         methods: allEntityVerbs
       }
@@ -1176,13 +1086,11 @@ describe('expand#users', () => {
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
-        mountPath: [],
         path: ['courses'],
         modelName: 'course',
         methods: allCollectionVerbs
       },
       {
-        mountPath: [],
         modelName: 'course',
         ids: { courses: 'courseId' },
         path: ['courses', '{courseId}'],
@@ -1190,72 +1098,62 @@ describe('expand#users', () => {
       },
       {
         ids: {},
-        mountPath: [],
         modelName: 'user',
         path: ['users'],
         methods: allCollectionVerbs
       },
       {
-        path: ['contributors'],
+        path: ['users', 'contributors'],
         modelName: 'course',
         methods: allCollectionVerbs,
-        ids: {},
-        mountPath: ['users']
+        ids: {}
       },
       {
         ids: { contributors: 'contributorId' },
         modelName: 'course',
-        path: ['contributors', '{contributorId}'],
-        mountPath: ['users'],
+        path: ['users', 'contributors', '{contributorId}'],
         methods: allEntityVerbs
       },
       {
-        path: ['learners'],
+        path: ['users', 'learners'],
         modelName: 'course',
         methods: allCollectionVerbs,
-        ids: {},
-        mountPath: ['users']
+        ids: {}
       },
       {
         ids: { learners: 'learnerId' },
         modelName: 'course',
-        path: ['learners', '{learnerId}'],
-        mountPath: ['users'],
+        path: ['users', 'learners', '{learnerId}'],
         methods: allEntityVerbs
       },
       {
-        mountPath: [],
         modelName: 'user',
         ids: { users: 'userId' },
         path: ['users', '{userId}'],
         methods: allEntityVerbs
       },
       {
-        path: ['contributors'],
+        path: ['users', '{userId}', 'contributors'],
         modelName: 'course',
         methods: allCollectionVerbs,
-        ids: { users: 'userId' },
-        mountPath: ['users', '{userId}']
+        ids: { users: 'userId' }
       },
       {
         ids: { contributors: 'contributorId', users: 'userId' },
         modelName: 'course',
-        path: ['contributors', '{contributorId}'],
-        mountPath: ['users', '{userId}'],
+        path: ['users', '{userId}', 'contributors', '{contributorId}'],
         methods: allEntityVerbs
       },
       {
-        path: ['learners'],
+        path: ['users', '{userId}', 'learners'],
         modelName: 'course',
         methods: allCollectionVerbs,
-        ids: { users: 'userId' },
-        mountPath: ['users', '{userId}']
+        ids: { users: 'userId' }
       },
       {
         ids: { learners: 'learnerId', users: 'userId' },
         modelName: 'course',
-        path: ['learners', '{learnerId}'],
-        mountPath: ['users', '{userId}'],
+        path: ['users', '{userId}', 'learners', '{learnerId}'],
         methods: allEntityVerbs
       }
     ])

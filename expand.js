@@ -241,7 +241,7 @@ const expandPaths = mountedResources => {
     })
   })
 
-  return paths.map(omitFp([
+  return paths.map(p => ({ ...p, path: [...p.mountPath, ...p.path] })).map(omitFp([
     'belongsTo',
     'hasMany',
     'type',
@@ -249,7 +249,8 @@ const expandPaths = mountedResources => {
     'treeOf',
     'fns',
     'model',
-    'immutable'
+    'immutable',
+    'mountPath'
   ]))
 }
 

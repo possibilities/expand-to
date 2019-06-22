@@ -37,35 +37,30 @@ const spec = {
   paths: [
     {
       ids: {},
-      mountPath: [],
       path: ['pets'],
       modelName: 'pet',
       methods: allCollectionVerbs
     },
     {
       ids: { pets: 'petId' },
-      mountPath: [],
       path: ['pets', '{petId}'],
       modelName: 'pet',
       methods: allEntityVerbs
     },
     {
       ids: { stores: 'storeId', pets: 'petId' },
-      mountPath: ['stores', '{storeId}'],
-      path: ['pets', '{petId}'],
+      path: ['stores', '{storeId}', 'pets', '{petId}'],
       modelName: 'pet',
       methods: allEntityVerbs
     },
     {
       ids: { stores: 'storeId' },
-      mountPath: ['stores', '{storeId}'],
-      path: ['pets'],
+      path: ['stores', '{storeId}', 'pets'],
       modelName: 'store',
       methods: allCollectionVerbs
     },
     {
       ids: {},
-      mountPath: [],
       isCustomFunction: true,
       modelName: 'pet',
       path: ['pets', 'requestMedicalRecords'],

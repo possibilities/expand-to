@@ -12,9 +12,6 @@ const {
 
 const validator = new OpenAPISchemaValidator({ version: 3 })
 
-const pathView = schema => schema.paths
-  .map(resource => resource.path.join('/')).sort()
-
 const expandedView = schema => sortBy(
   schema.paths,
   schema => schema.path.join('/')
@@ -67,13 +64,6 @@ describe('expand', () => {
       store: { properties: { name: { type: 'string' } } }
     })
 
-    expect(pathView(expand(schema))).toEqual([
-      'pets',
-      'pets/{petId}',
-      'stores',
-      'stores/{storeId}'
-    ])
-
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
@@ -113,11 +103,6 @@ describe('expand', () => {
       'basic with inflections'
     )
 
-    expect(pathView(expand(schema))).toEqual([
-      'people',
-      'people/{personId}'
-    ])
-
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
@@ -145,11 +130,6 @@ describe('expand', () => {
       }],
       'basic with immutability'
     )
-
-    expect(pathView(expand(schema))).toEqual([
-      'pets',
-      'pets/{petId}'
-    ])
 
     expect(expandedView(expand(schema))).toEqual([
       {
@@ -187,12 +167,6 @@ describe('expand#fns', () => {
     expect(expand(schema).models).toEqual({
       pet: { properties: { name: { type: 'string' } } }
     })
-
-    expect(pathView(expand(schema))).toEqual([
-      'pets',
-      'pets/fns/requestMedicalRecords',
-      'pets/{petId}'
-    ])
 
     expect(expandedView(expand(schema))).toEqual([
       {
@@ -238,14 +212,6 @@ describe('expand#fns', () => {
       org: { properties: { name: { type: 'string' } } },
       repo: { properties: { name: { type: 'string' } } }
     })
-
-    expect(pathView(expand(schema))).toEqual([
-      'orgs',
-      'orgs/{orgId}',
-      'orgs/{orgId}/repos',
-      'orgs/{orgId}/repos/fns/getTopContributors',
-      'orgs/{orgId}/repos/{repoId}'
-    ])
 
     expect(expandedView(expand(schema))).toEqual([
       {
@@ -379,21 +345,6 @@ describe('expand#belongsTo', () => {
       }
     ], 'belongsTo with hasMany')
 
-    expect(pathView(expand(schema))).toEqual([
-      'committers',
-      'committers/{committerId}',
-      'owners',
-      'owners/{ownerId}',
-      'repos',
-      'repos/{repoId}',
-      'repos/{repoId}/commits',
-      'repos/{repoId}/commits/{commitId}',
-      'repos/{repoId}/commits/{commitId}/committers',
-      'repos/{repoId}/commits/{commitId}/committers/{committerId}',
-      'repos/{repoId}/owners',
-      'repos/{repoId}/owners/{ownerId}'
-    ])
-
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
@@ -489,15 +440,6 @@ describe('expand#hasMany', () => {
       }
     ], 'hasMany')
 
-    expect(pathView(expand(schema))).toEqual([
-      'people',
-      'people/{personId}',
-      'people/{personId}/pets',
-      'people/{personId}/pets/{petId}',
-      'pets',
-      'pets/{petId}'
-    ])
-
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
@@ -557,17 +499,6 @@ describe('expand#hasMany', () => {
         }
       }
     ], 'hasMany polymorphism')
-
-    expect(pathView(expand(schema))).toEqual([
-      'people',
-      'people/{personId}',
-      'pets',
-      'pets/{petId}',
-      'pets/{petId}/doctors',
-      'pets/{petId}/doctors/{doctorId}',
-      'pets/{petId}/owners',
-      'pets/{petId}/owners/{ownerId}'
-    ])
 
     expect(expandedView(expand(schema))).toEqual([
       {
@@ -742,19 +673,6 @@ describe('expand#treeOf', () => {
       }
     ], 'treeOf with hasMany')
 
-    expect(pathView(expand(schema))).toEqual([
-      'groups',
-      'groups/{groupId}',
-      'groups/{groupId}/subgroups',
-      'groups/{groupId}/subgroups/{subgroupId}',
-      'groups/{groupId}/subgroups/{subgroupId}/widgets',
-      'groups/{groupId}/subgroups/{subgroupId}/widgets/{widgetId}',
-      'groups/{groupId}/widgets',
-      'groups/{groupId}/widgets/{widgetId}',
-      'widgets',
-      'widgets/{widgetId}'
-    ])
-
     expect(expandedView(expand(schema))).toEqual([
       {
         path: ['groups'],
@@ -837,17 +755,6 @@ describe('expand#treeOf', () => {
       }
     ], 'treeOf target of hasMany')
 
-    expect(pathView(expand(schema))).toEqual([
-      'groups',
-      'groups/{groupId}',
-      'groups/{groupId}/subgroups',
-      'groups/{groupId}/subgroups/{subgroupId}',
-      'regions',
-      'regions/{regionId}',
-      'regions/{regionId}/groups',
-      'regions/{regionId}/groups/{groupId}'
-    ])
-
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
@@ -919,15 +826,6 @@ describe('expand#users', () => {
       }
     ], 'users with belongsTo')
 
-    expect(pathView(expand(schema))).toEqual([
-      'users',
-      'users/courses',
-      'users/courses/{courseId}',
-      'users/{userId}',
-      'users/{userId}/courses',
-      'users/{userId}/courses/{courseId}'
-    ])
-
     expect(expandedView(expand(schema))).toEqual([
       {
         ids: {},
@@ -984,17 +882,6 @@ describe('expand#users', () => {
         }
       }
     ], 'users with hasMany')
-
-    expect(pathView(expand(schema))).toEqual([
-      'courses',
-      'courses/{courseId}',
-      'users',
-      'users/courses',
-      'users/courses/{courseId}',
-      'users/{userId}',
-      'users/{userId}/courses',
-      'users/{userId}/courses/{courseId}'
-    ])
 
     expect(expandedView(expand(schema))).toEqual([
       {
@@ -1067,21 +954,6 @@ describe('expand#users', () => {
         }
       }
     ], 'users with polymorphic hasMany')
-
-    expect(pathView(expand(schema))).toEqual([
-      'courses',
-      'courses/{courseId}',
-      'users',
-      'users/contributors',
-      'users/contributors/{contributorId}',
-      'users/learners',
-      'users/learners/{learnerId}',
-      'users/{userId}',
-      'users/{userId}/contributors',
-      'users/{userId}/contributors/{contributorId}',
-      'users/{userId}/learners',
-      'users/{userId}/learners/{learnerId}'
-    ])
 
     expect(expandedView(expand(schema))).toEqual([
       {

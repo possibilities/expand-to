@@ -2,6 +2,8 @@ const snakeCase = require('lodash/snakeCase')
 const mapValues = require('lodash/mapValues')
 const forEach = require('lodash/forEach')
 const memoize = require('lodash/memoize')
+const first = require('lodash/first')
+const initial = require('lodash/initial')
 const last = require('lodash/last')
 const keyBy = require('lodash/keyBy')
 const upperFirst = require('lodash/upperFirst')
@@ -36,7 +38,7 @@ const getOperationId = (verb, resource) => {
     return `${resource.path[1]}For${upperFirst(resource.path[0])}`
   }
   const noun = last(namespace)
-  const space = namespace.slice(0, -1)
+  const space = initial(namespace)
   return [
     labelToVerb[verb] || verb,
     ...space.map(singularize),
@@ -66,7 +68,7 @@ const getSummary = (verb, resource) => {
   }
   const namespace = getNamespace(resource)
   const noun = last(namespace)
-  const space = namespace.slice(0, -1)
+  const space = initial(namespace)
   return [
     upperFirst(labelToVerb[verb] || verb),
     ...space.map(singularize),
@@ -77,7 +79,7 @@ const getSummary = (verb, resource) => {
 const getTags = (verb, resource) => {
   const namespace = getNamespace(resource)
   return resource.isCustomFunction
-    ? namespace.slice(0, 1)
+    ? [first(namespace)]
     : namespace
 }
 
@@ -253,7 +255,7 @@ const expandToOpenApi = (spec, options = {}) => {
     spec.paths,
     resource => '/' + [
       ...resource.mountPath,
-      ...resource.path.slice(0, -1),
+      ...initial(resource.path),
       resource.isCustomFunction
         ? snakeCase(last(resource.path))
         : last(resource.path)

@@ -276,9 +276,7 @@ const expandToOpenApi = (spec, options = {}) => {
   return { openapi: '3.0.0', info, paths, components }
 }
 
-module.exports = (spec, info) => {
-  const expandedSpec = expand(spec)
-  return expandToOpenApi(expandedSpec, info)
-}
+module.exports = (spec, info) =>
+  expandToOpenApi(expand(spec), info)
 
 module.exports.expandToOpenApi = expandToOpenApi

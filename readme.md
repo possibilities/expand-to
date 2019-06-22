@@ -14,6 +14,8 @@ Tools for expanding JSON-schema models into dev, build, and run-time application
 
 ### API
 
+TODO fill in docs
+
 #### `expand(model)`
 
 #### `expandToOpenApi(model, info)`

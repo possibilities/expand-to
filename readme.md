@@ -1,6 +1,6 @@
 ### Expand-to
 
-Tools for expanding a JSON-schema model for creation of dev, build, and run-time app tools.
+Tools for expanding JSON-schema models into dev, build, and run-time application tools.
 
 ### Features
 

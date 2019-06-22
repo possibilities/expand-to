@@ -11,6 +11,7 @@ Tools for expanding JSON-schema models into dev, build, and run-time application
 * `treeOf`: adds routes for accessing and mutating a hierarchical resource
 * `versioned: true`: adds routes for listing, accessing, and restoring versioned entities (TODO)
 * `undeletable: true`: adds routes for listing, accessing, and undeleting soft deleted entities (TODO)
+* `immutable: true`: omits method that would mutate the resource (TODO)
 
 ### API
 

@@ -140,7 +140,7 @@ const expandPaths = mountedResources => {
         path: [pluralize(resource.name), fn.name],
         mountPath: resource.mountPath,
         modelName: resource.name,
-        isCustomFunction: true,
+        isCustomFunction: true
       })
     })
 

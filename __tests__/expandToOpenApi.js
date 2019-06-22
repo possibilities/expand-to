@@ -558,40 +558,40 @@ test('expandToOpenApi#components', () => {
     UpdatePetOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     },
     UpdatePetInput: { properties: { name: { type: 'string' } } },
     CreatePetOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     },
     CreatePetInput: { properties: { name: { type: 'string' } } },
     ReplacePetOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     },
     ReplacePetInput: { properties: { name: { type: 'string' } } },
     GetPetOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     },
     ListPetsOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     },
     UpdateStorePetOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     },
     UpdateStorePetInput: { properties: { name: { type: 'string' } } },
@@ -600,21 +600,21 @@ test('expandToOpenApi#components', () => {
     ReplaceStorePetOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     },
     ReplaceStorePetInput: { properties: { name: { type: 'string' } } },
     GetStorePetOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     },
     ListStorePetsOutput: { properties: { name: { type: 'string' } } },
     RequestMedicalRecordsForPetsOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true },
+        id: { type: 'string', readOnly: true }
       }
     }
   })

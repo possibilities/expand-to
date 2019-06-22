@@ -255,7 +255,7 @@ describe('expand#fns', () => {
       'orgs/{orgId}',
       'orgs/{orgId}/repos',
       'orgs/{orgId}/repos/getTopContributors',
-      'orgs/{orgId}/repos/{repoId}',
+      'orgs/{orgId}/repos/{repoId}'
     ])
 
     expect(expandedView(expand(schema))).toEqual([
@@ -294,7 +294,7 @@ describe('expand#fns', () => {
         ids: { repos: 'repoId', orgs: 'orgId' },
         path: ['repos', '{repoId}'],
         methods: allEntityVerbs
-      },
+      }
     ])
   })
 })

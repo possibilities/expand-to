@@ -158,7 +158,7 @@ describe('expandToResources', () => {
           }
         }
       }
-    ], 'basic')
+    ], 'basic with readOnly properties ')
 
     expect(expandToResources(schema).models).toEqual({
       pet: {

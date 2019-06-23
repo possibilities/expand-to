@@ -3,13 +3,8 @@ const groupBy = require('lodash/groupBy')
 const expandToOperations = require('./expandToOperations')
 const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
-const inflection = require('inflection')
 const forEach = require('lodash/forEach')
 const { emptyOutput, errorOutput } = require('./common')
-
-// Make map safe
-const singularize = str => inflection.singularize(str)
-const pluralize = str => inflection.pluralize(str)
 
 const actionToLabel = {
   post: 'create',
@@ -21,28 +16,28 @@ const actionToLabel = {
 const responselessActions = ['head', 'delete']
 const bodylessActions = ['list', 'delete', 'head', 'get']
 
-const createResponse = (status, action, resourceName) => ({
+const createResponse = (status, action, modelName) => ({
   [status]: {
     description: `${upperFirst(actionToLabel[action] || action)} succeeded`,
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${resourceName}Output`
+          '$ref': `#/components/schemas/${upperFirst(modelName)}Output`
         }
       }
     }
   }
 })
 
-const createModelResponse = (status, action, resourceName, operationId) => ({
+const createModelResponse = (status, action, modelName) => ({
   [status]: {
     description: `${upperFirst(actionToLabel[action] || action)} succeeded`,
     content: {
       'application/json': {
         schema: {
           properties: {
-            [resourceName]: {
-              '$ref': `#/components/schemas/${upperFirst(operationId)}Output`
+            [lowerFirst(modelName)]: {
+              '$ref': `#/components/schemas/${upperFirst(modelName)}Output`
             }
           }
         }
@@ -107,7 +102,7 @@ const getRequestBody = operation => {
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${upperFirst(operation.id)}Input`
+          '$ref': `#/components/schemas/${upperFirst(operation.model)}Input`
         }
       }
     }
@@ -120,32 +115,21 @@ const getResponses = operation => {
     response = createModelResponse(
       200,
       operation.action,
-      lowerFirst(operation.namespace.map(upperFirst).map(singularize).join('')),
-      operation.id
+      upperFirst(operation.model)
     )
   } else {
     switch (operation.action) {
       case 'post':
-        response = createModelResponse(
-          201,
-          'create',
-          lowerFirst(operation.namespace.map(upperFirst).map(singularize).join('')),
-          operation.id
-        )
+        response = createModelResponse(201, 'create', operation.model)
         break
       case 'list':
-        response = createModelResponse(
-          200,
-          'list',
-          lowerFirst(pluralize(operation.namespace.map(upperFirst).map(singularize).join(''))),
-          operation.id
-        )
+        response = createModelResponse(200, 'list', operation.model)
         break
       case 'delete':
-        response = createResponse(204, 'delete', 'Empty', operation.id)
+        response = createResponse(204, 'delete', 'Empty', operation.model)
         break
       case 'head':
-        response = createResponse(200, 'check', 'Empty', operation.id)
+        response = createResponse(200, 'check', 'Empty', operation.model)
         break
     }
   }
@@ -173,7 +157,7 @@ const getSchemas = (operations, models = {}) => {
   let schemas = { EmptyOutput: emptyOutput, ErrorOutput: errorOutput }
 
   operations.forEach(operation => {
-    const name = upperFirst(operation.id)
+    const name = upperFirst(operation.model)
     if (!bodylessActions.includes(operation.action)) {
       schemas = { ...schemas, [`${name}Input`]: models[operation.model].in }
     }

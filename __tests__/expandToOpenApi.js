@@ -371,7 +371,7 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/CreatePetInput` }
+              schema: { '$ref': `#/components/schemas/PetInput` }
             }
           },
           required: true
@@ -384,7 +384,7 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/UpdatePetInput` }
+              schema: { '$ref': `#/components/schemas/PetInput` }
             }
           },
           required: true
@@ -392,7 +392,7 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ReplacePetInput` }
+              schema: { '$ref': `#/components/schemas/PetInput` }
             }
           },
           required: true
@@ -406,7 +406,7 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/CreateStoreInput` }
+              schema: { '$ref': `#/components/schemas/StoreInput` }
             }
           },
           required: true
@@ -419,7 +419,7 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/UpdateStoreInput` }
+              schema: { '$ref': `#/components/schemas/StoreInput` }
             }
           },
           required: true
@@ -427,7 +427,7 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ReplaceStoreInput` }
+              schema: { '$ref': `#/components/schemas/StoreInput` }
             }
           },
           required: true
@@ -438,7 +438,7 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/CreateStoreManagerInput` }
+              schema: { '$ref': `#/components/schemas/ManagerInput` }
             }
           },
           required: true
@@ -451,7 +451,7 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/UpdateStoreManagerInput` }
+              schema: { '$ref': `#/components/schemas/ManagerInput` }
             }
           },
           required: true
@@ -459,7 +459,7 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ReplaceStoreManagerInput` }
+              schema: { '$ref': `#/components/schemas/ManagerInput` }
             }
           },
           required: true
@@ -479,8 +479,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    pets: {
-                      '$ref': `#/components/schemas/ListPetsOutput`
+                    pet: {
+                      '$ref': `#/components/schemas/PetOutput`
                     }
                   }
                 }
@@ -497,7 +497,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/CreatePetOutput`
+                      '$ref': `#/components/schemas/PetOutput`
                     }
                   }
                 }
@@ -529,7 +529,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/GetPetOutput`
+                      '$ref': `#/components/schemas/PetOutput`
                     }
                   }
                 }
@@ -559,7 +559,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/UpdatePetOutput`
+                      '$ref': `#/components/schemas/PetOutput`
                     }
                   }
                 }
@@ -576,7 +576,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/ReplacePetOutput`
+                      '$ref': `#/components/schemas/PetOutput`
                     }
                   }
                 }
@@ -595,7 +595,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/InvokeRequestMedicalRecordsForPetOutput`
+                      '$ref': `#/components/schemas/PetOutput`
                     }
                   }
                 }
@@ -613,8 +613,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    stores: {
-                      '$ref': `#/components/schemas/ListStoresOutput`
+                    store: {
+                      '$ref': `#/components/schemas/StoreOutput`
                     }
                   }
                 }
@@ -631,7 +631,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/CreateStoreOutput`
+                      '$ref': `#/components/schemas/StoreOutput`
                     }
                   }
                 }
@@ -663,7 +663,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/GetStoreOutput`
+                      '$ref': `#/components/schemas/StoreOutput`
                     }
                   }
                 }
@@ -693,7 +693,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/UpdateStoreOutput`
+                      '$ref': `#/components/schemas/StoreOutput`
                     }
                   }
                 }
@@ -710,7 +710,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/ReplaceStoreOutput`
+                      '$ref': `#/components/schemas/StoreOutput`
                     }
                   }
                 }
@@ -728,8 +728,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storeManagers: {
-                      '$ref': `#/components/schemas/ListStoreManagersOutput`
+                    manager: {
+                      '$ref': `#/components/schemas/ManagerOutput`
                     }
                   }
                 }
@@ -745,8 +745,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storeManager: {
-                      '$ref': `#/components/schemas/CreateStoreManagerOutput`
+                    manager: {
+                      '$ref': `#/components/schemas/ManagerOutput`
                     }
                   }
                 }
@@ -777,8 +777,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storeManager: {
-                      '$ref': `#/components/schemas/GetStoreManagerOutput`
+                    manager: {
+                      '$ref': `#/components/schemas/ManagerOutput`
                     }
                   }
                 }
@@ -807,8 +807,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storeManager: {
-                      '$ref': `#/components/schemas/UpdateStoreManagerOutput`
+                    manager: {
+                      '$ref': `#/components/schemas/ManagerOutput`
                     }
                   }
                 }
@@ -824,8 +824,8 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    storeManager: {
-                      '$ref': `#/components/schemas/ReplaceStoreManagerOutput`
+                    manager: {
+                      '$ref': `#/components/schemas/ManagerOutput`
                     }
                   }
                 }
@@ -846,113 +846,27 @@ test('expandToOpenApi#components', () => {
   expect(expanded.components.schemas).toEqual({
     ErrorOutput: errorOutput,
     EmptyOutput: emptyOutput,
-    UpdatePetOutput: {
+    PetInput: { properties: { name: { type: 'string' } } },
+    PetOutput: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
     },
-    UpdatePetInput: { properties: { name: { type: 'string' } } },
-    CreatePetOutput: {
+    StoreOutput: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
     },
-    CreatePetInput: { properties: { name: { type: 'string' } } },
-    ReplacePetOutput: {
+    StoreInput: { properties: { name: { type: 'string' } } },
+    ManagerOutput: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
     },
-    ReplacePetInput: { properties: { name: { type: 'string' } } },
-    GetPetOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    ListPetsOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    InvokeRequestMedicalRecordsForPetOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-
-    UpdateStoreOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    UpdateStoreInput: { properties: { name: { type: 'string' } } },
-    CreateStoreOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    CreateStoreInput: { properties: { name: { type: 'string' } } },
-    ReplaceStoreOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    ReplaceStoreInput: { properties: { name: { type: 'string' } } },
-    GetStoreOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    ListStoresOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-
-    UpdateStoreManagerOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    UpdateStoreManagerInput: { properties: { name: { type: 'string' } } },
-    CreateStoreManagerOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    CreateStoreManagerInput: { properties: { name: { type: 'string' } } },
-    ReplaceStoreManagerOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    ReplaceStoreManagerInput: { properties: { name: { type: 'string' } } },
-    GetStoreManagerOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    },
-    ListStoreManagersOutput: {
-      properties: {
-        name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
-      }
-    }
+    ManagerInput: { properties: { name: { type: 'string' } } }
   })
 })
 

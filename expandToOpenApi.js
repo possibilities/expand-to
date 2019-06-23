@@ -1,4 +1,5 @@
 const mapValues = require('lodash/mapValues')
+const omit = require('lodash/omit')
 const groupBy = require('lodash/groupBy')
 const expandToOperations = require('./expandToOperations')
 const lowerFirst = require('lodash/lowerFirst')
@@ -71,18 +72,18 @@ const getErrorResponses = (...codes) => {
   return errors
 }
 
-const getParameters = operation => {
+const getParameters = (operation, models) => {
   return [
     ...operation.parameters.map(param => {
+      const schema = models[operation.model].out.properties.id
+        ? omit(models[operation.model].out.properties.id, 'readOnly')
+        : { type: 'string' }
       return {
+        schema,
         in: 'path',
         required: true,
         name: param.name,
-        description: param.description,
-        schema: {
-          type: 'string',
-          format: 'uuid'
-        }
+        description: param.description
       }
     }),
     ...operation.query.map(query => {
@@ -142,12 +143,12 @@ const getResponses = operation => {
   return { ...response, ...errorResponses }
 }
 
-const getMethod = operation => {
+const getMethod = (operation, models) => {
   return {
     operationId: operation.id,
     tags: operation.namespace,
     summary: operation.summary,
-    parameters: getParameters(operation),
+    parameters: getParameters(operation, models),
     requestBody: getRequestBody(operation),
     responses: getResponses(operation)
   }
@@ -177,7 +178,7 @@ const expandToOpenApi = ({ operations, models }, options = {}) => {
     path => (
       mapValues(
         groupBy(path, 'verb'),
-        operation => getMethod(operation.pop())
+        operation => getMethod(operation.pop(), models)
       )
     )
   )

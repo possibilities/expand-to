@@ -142,7 +142,11 @@ const spec = {
       out: {
         properties: {
           name: { type: 'string' },
-          id: { type: 'string', readOnly: true }
+          id: {
+            type: 'string',
+            format: 'uuid',
+            readOnly: true,
+          }
         }
       }
     },
@@ -313,7 +317,7 @@ describe('expandToOpenApi#paths', () => {
         name: 'storeId',
         required: true,
         description: 'Store id',
-        schema: { format: 'uuid', type: 'string' }
+        schema: { type: 'string' }
       }
     ]
     const managerParams = [
@@ -322,7 +326,7 @@ describe('expandToOpenApi#paths', () => {
         name: 'managerId',
         required: true,
         description: 'Manager id',
-        schema: { format: 'uuid', type: 'string' }
+        schema: { type: 'string' }
       }
     ]
 
@@ -850,7 +854,7 @@ test('expandToOpenApi#components', () => {
     PetOutput: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
+        id: { type: 'string', format: 'uuid', readOnly: true }
       }
     },
     StoreOutput: {

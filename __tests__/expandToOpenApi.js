@@ -138,8 +138,8 @@ const spec = {
   ],
   models: {
     pet: {
-      in: { properties: { name: { type: 'string' } } },
-      out: {
+      request: { properties: { name: { type: 'string' } } },
+      response: {
         properties: {
           name: { type: 'string' },
           id: {
@@ -151,8 +151,8 @@ const spec = {
       }
     },
     store: {
-      in: { properties: { name: { type: 'string' } } },
-      out: {
+      request: { properties: { name: { type: 'string' } } },
+      response: {
         properties: {
           name: { type: 'string' },
           id: { type: 'string', readOnly: true }
@@ -160,8 +160,8 @@ const spec = {
       }
     },
     manager: {
-      in: { properties: { name: { type: 'string' } } },
-      out: {
+      request: { properties: { name: { type: 'string' } } },
+      response: {
         properties: {
           name: { type: 'string' },
           id: { type: 'string', readOnly: true }

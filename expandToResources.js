@@ -22,15 +22,18 @@ const stripReadOnly = model => {
 
 const expandModels = models => {
   let expandedModels = mapValues(keyBy(models, 'name'), model => ({
-    in: stripReadOnly(model.model),
-    out: model.model
+    request: stripReadOnly(model.model),
+    response: model.model
   }))
 
   models.forEach(model => {
     if (model.treeOf) {
       expandedModels = {
         ...expandedModels,
-        [singularize(model.treeOf)]: { in: stripReadOnly(model.model), out: model.model }
+        [singularize(model.treeOf)]: {
+          request: stripReadOnly(model.model),
+          response: model.model
+        }
       }
     }
   })

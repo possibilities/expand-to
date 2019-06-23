@@ -53,12 +53,12 @@ describe('expandToResources', () => {
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       store: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -97,8 +97,8 @@ describe('expandToResources', () => {
 
     expect(expandToResources(schema).models).toEqual({
       person: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -128,8 +128,8 @@ describe('expandToResources', () => {
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -162,8 +162,8 @@ describe('expandToResources', () => {
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
-        in: { properties: { name: { type: 'string' } } },
-        out: {
+        request: { properties: { name: { type: 'string' } } },
+        response: {
           properties: {
             name: { type: 'string' },
             fieldThatIsReadOnly: { type: 'string', readOnly: true }
@@ -190,8 +190,8 @@ describe('expand#fns', () => {
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -234,12 +234,12 @@ describe('expand#fns', () => {
 
     expect(expandToResources(schema).models).toEqual({
       org: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       repo: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -295,16 +295,16 @@ describe('expand#belongsTo', () => {
 
     expect(expandToResources(schema).models).toEqual({
       org: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       repo: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       commit: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -367,20 +367,20 @@ describe('expand#belongsTo', () => {
 
     expect(expandToResources(schema).models).toEqual({
       owner: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       committer: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       repo: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       commit: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -465,12 +465,12 @@ describe('expand#hasMany', () => {
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       person: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -526,12 +526,12 @@ describe('expand#hasMany', () => {
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       person: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -593,12 +593,12 @@ describe('expand#treeOf', () => {
 
     expect(expandToResources(schema).models).toEqual({
       group: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       subgroup: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -644,16 +644,16 @@ describe('expand#treeOf', () => {
 
     expect(expandToResources(schema).models).toEqual({
       region: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       group: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       subgroup: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -707,16 +707,16 @@ describe('expand#treeOf', () => {
 
     expect(expandToResources(schema).models).toEqual({
       widget: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       group: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       subgroup: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -790,16 +790,16 @@ describe('expand#treeOf', () => {
 
     expect(expandToResources(schema).models).toEqual({
       region: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       group: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       subgroup: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -864,12 +864,12 @@ describe('expand#users', () => {
 
     expect(expandToResources(schema).models).toEqual({
       user: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       course: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -924,12 +924,12 @@ describe('expand#users', () => {
 
     expect(expandToResources(schema).models).toEqual({
       user: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       course: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 
@@ -997,12 +997,12 @@ describe('expand#users', () => {
 
     expect(expandToResources(schema).models).toEqual({
       user: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       },
       course: {
-        in: { properties: { name: { type: 'string' } } },
-        out: { properties: { name: { type: 'string' } } }
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
       }
     })
 

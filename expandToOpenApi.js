@@ -75,8 +75,8 @@ const getErrorResponses = (...codes) => {
 const getParameters = (operation, models) => {
   return [
     ...operation.parameters.map(param => {
-      const schema = models[operation.model].out.properties.id
-        ? omit(models[operation.model].out.properties.id, 'readOnly')
+      const schema = models[operation.model].response.properties.id
+        ? omit(models[operation.model].response.properties.id, 'readOnly')
         : { type: 'string' }
       return {
         schema,
@@ -160,10 +160,10 @@ const getSchemas = (operations, models = {}) => {
   operations.forEach(operation => {
     const name = upperFirst(operation.model)
     if (!bodylessActions.includes(operation.action)) {
-      schemas = { ...schemas, [`${name}Request`]: models[operation.model].in }
+      schemas = { ...schemas, [`${name}Request`]: models[operation.model].request }
     }
     if (!responselessActions.includes(operation.action)) {
-      schemas = { ...schemas, [`${name}Response`]: models[operation.model].out }
+      schemas = { ...schemas, [`${name}Response`]: models[operation.model].response }
     }
   })
 

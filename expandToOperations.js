@@ -8,7 +8,7 @@ const inflection = require('inflection')
 // Make map safe
 const singularize = str => inflection.singularize(str)
 
-const  actionToLabel = {
+const actionToLabel = {
   post: 'create',
   head: 'check',
   put: 'replace',
@@ -70,7 +70,7 @@ const getParameters = path => {
     parameters.push({
       schema: { type: 'string' },
       name: pathPart.slice(1, -1),
-      description: upperFirst(pathPart.slice(1, -3)) + ' id',
+      description: upperFirst(pathPart.slice(1, -3)) + ' id'
     })
   })
   return parameters

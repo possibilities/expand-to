@@ -5,8 +5,6 @@ const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
 const inflection = require('inflection')
 const forEach = require('lodash/forEach')
-const toPairs = require('lodash/toPairs')
-const fromPairs = require('lodash/fromPairs')
 const { emptyOutput, errorOutput } = require('./common')
 
 // Make map safe
@@ -96,7 +94,7 @@ const getParameters = operation => {
       return {
         ...query,
         in: 'query',
-        required: false,
+        required: false
       }
     })
   ]
@@ -186,7 +184,6 @@ const getSchemas = (operations, models = {}) => {
 
   return schemas
 }
-
 
 const expandToOpenApi = ({ operations, models }, options = {}) => {
   const { version = '0.0.0', title = 'API spec' } = (options.info || {})

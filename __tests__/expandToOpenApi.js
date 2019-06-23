@@ -70,33 +70,33 @@ const spec = {
   ],
   models: {
     pet: {
-      in: { properties: { name: { type: 'string' }, } },
+      in: { properties: { name: { type: 'string' } } },
       out: {
         properties: {
           name: { type: 'string' },
           id: { type: 'string', readOnly: true }
         }
-      },
+      }
     },
     store: {
-      in: { properties: { name: { type: 'string' }, } },
+      in: { properties: { name: { type: 'string' } } },
       out: {
         properties: {
           name: { type: 'string' },
           id: { type: 'string', readOnly: true }
         }
-      },
+      }
     },
     manager: {
-      in: { properties: { name: { type: 'string' }, } },
+      in: { properties: { name: { type: 'string' } } },
       out: {
         properties: {
           name: { type: 'string' },
           id: { type: 'string', readOnly: true }
         }
-      },
-    },
-  },
+      }
+    }
+  }
 }
 
 describe('expandToOpenApi#paths', () => {
@@ -282,7 +282,7 @@ describe('expandToOpenApi#paths', () => {
       },
       '/stores/{storeId}/managers': {
         post: storeParams,
-        get: [...storeParams, ...paginationParameters],
+        get: [...storeParams, ...paginationParameters]
       },
       '/stores/{storeId}/managers/{managerId}': {
         delete: storeManagersParams,
@@ -290,7 +290,7 @@ describe('expandToOpenApi#paths', () => {
         head: storeManagersParams,
         patch: storeManagersParams,
         put: storeManagersParams
-      },
+      }
     })
   })
 
@@ -396,7 +396,7 @@ describe('expandToOpenApi#paths', () => {
           },
           required: true
         }
-      },
+      }
     })
   })
 
@@ -660,7 +660,7 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                   storeManagers: {
+                    storeManagers: {
                       '$ref': `#/components/schemas/ListStoreManagersOutput`
                     }
                   }
@@ -767,7 +767,7 @@ describe('expandToOpenApi#paths', () => {
           },
           ...entityErrors
         }
-      },
+      }
     })
   })
 })
@@ -884,7 +884,7 @@ test('expandToOpenApi#components', () => {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
-    },
+    }
   })
 })
 

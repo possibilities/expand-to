@@ -2,9 +2,9 @@ module.exports.allEntityVerbs = ['head', 'get', 'put', 'patch', 'delete']
 
 module.exports.allCollectionVerbs = ['list', 'post']
 
-module.exports.emptyOutput = { type: 'object' }
+module.exports.emptyResponse = { type: 'object' }
 
-module.exports.errorOutput = {
+module.exports.errorResponse = {
   type: 'object',
   properties: {
     code: {

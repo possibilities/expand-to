@@ -5,7 +5,7 @@ const expandToOperations = require('./expandToOperations')
 const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
-const { emptyOutput, errorOutput } = require('./common')
+const { emptyResponse, errorResponse } = require('./common')
 
 const actionToLabel = {
   post: 'create',
@@ -23,7 +23,7 @@ const createResponse = (status, action, modelName) => ({
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${upperFirst(modelName)}Output`
+          '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
         }
       }
     }
@@ -38,7 +38,7 @@ const createModelResponse = (status, action, modelName) => ({
         schema: {
           properties: {
             [lowerFirst(modelName)]: {
-              '$ref': `#/components/schemas/${upperFirst(modelName)}Output`
+              '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
             }
           }
         }
@@ -63,7 +63,7 @@ const getErrorResponses = (...codes) => {
         description: errorMessage[code],
         content: {
           'application/json': {
-            schema: { '$ref': '#/components/schemas/ErrorOutput' }
+            schema: { '$ref': '#/components/schemas/ErrorResponse' }
           }
         }
       }
@@ -103,7 +103,7 @@ const getRequestBody = operation => {
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${upperFirst(operation.model)}Input`
+          '$ref': `#/components/schemas/${upperFirst(operation.model)}Request`
         }
       }
     }
@@ -155,15 +155,15 @@ const getMethod = (operation, models) => {
 }
 
 const getSchemas = (operations, models = {}) => {
-  let schemas = { EmptyOutput: emptyOutput, ErrorOutput: errorOutput }
+  let schemas = { EmptyResponse: emptyResponse, ErrorResponse: errorResponse }
 
   operations.forEach(operation => {
     const name = upperFirst(operation.model)
     if (!bodylessActions.includes(operation.action)) {
-      schemas = { ...schemas, [`${name}Input`]: models[operation.model].in }
+      schemas = { ...schemas, [`${name}Request`]: models[operation.model].in }
     }
     if (!responselessActions.includes(operation.action)) {
-      schemas = { ...schemas, [`${name}Output`]: models[operation.model].out }
+      schemas = { ...schemas, [`${name}Response`]: models[operation.model].out }
     }
   })
 

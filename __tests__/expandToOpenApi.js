@@ -3,8 +3,8 @@ const { expandToOpenApi } = require('../expandToOpenApi')
 const mapValues = require('lodash/mapValues')
 
 const {
-  emptyOutput,
-  errorOutput,
+  emptyResponse,
+  errorResponse,
   allEntityVerbs,
   allCollectionVerbs
 } = require('../common')
@@ -52,7 +52,7 @@ const collectionErrors = {
     content: {
       'application/json': {
         schema: {
-          '$ref': '#/components/schemas/ErrorOutput'
+          '$ref': '#/components/schemas/ErrorResponse'
         }
       }
     }
@@ -62,7 +62,7 @@ const collectionErrors = {
     content: {
       'application/json': {
         schema: {
-          '$ref': '#/components/schemas/ErrorOutput'
+          '$ref': '#/components/schemas/ErrorResponse'
         }
       }
     }
@@ -72,7 +72,7 @@ const collectionErrors = {
     content: {
       'application/json': {
         schema: {
-          '$ref': '#/components/schemas/ErrorOutput'
+          '$ref': '#/components/schemas/ErrorResponse'
         }
       }
     }
@@ -86,7 +86,7 @@ const entityErrors = {
     content: {
       'application/json': {
         schema: {
-          '$ref': '#/components/schemas/ErrorOutput'
+          '$ref': '#/components/schemas/ErrorResponse'
         }
       }
     }
@@ -375,7 +375,7 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/PetInput` }
+              schema: { '$ref': `#/components/schemas/PetRequest` }
             }
           },
           required: true
@@ -388,7 +388,7 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/PetInput` }
+              schema: { '$ref': `#/components/schemas/PetRequest` }
             }
           },
           required: true
@@ -396,7 +396,7 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/PetInput` }
+              schema: { '$ref': `#/components/schemas/PetRequest` }
             }
           },
           required: true
@@ -410,7 +410,7 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/StoreInput` }
+              schema: { '$ref': `#/components/schemas/StoreRequest` }
             }
           },
           required: true
@@ -423,7 +423,7 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/StoreInput` }
+              schema: { '$ref': `#/components/schemas/StoreRequest` }
             }
           },
           required: true
@@ -431,7 +431,7 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/StoreInput` }
+              schema: { '$ref': `#/components/schemas/StoreRequest` }
             }
           },
           required: true
@@ -442,7 +442,7 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ManagerInput` }
+              schema: { '$ref': `#/components/schemas/ManagerRequest` }
             }
           },
           required: true
@@ -455,7 +455,7 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ManagerInput` }
+              schema: { '$ref': `#/components/schemas/ManagerRequest` }
             }
           },
           required: true
@@ -463,7 +463,7 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ManagerInput` }
+              schema: { '$ref': `#/components/schemas/ManagerRequest` }
             }
           },
           required: true
@@ -484,7 +484,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/PetOutput`
+                      '$ref': `#/components/schemas/PetResponse`
                     }
                   }
                 }
@@ -501,7 +501,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/PetOutput`
+                      '$ref': `#/components/schemas/PetResponse`
                     }
                   }
                 }
@@ -518,7 +518,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  '$ref': `#/components/schemas/EmptyOutput`
+                  '$ref': `#/components/schemas/EmptyResponse`
                 }
               }
             },
@@ -533,7 +533,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/PetOutput`
+                      '$ref': `#/components/schemas/PetResponse`
                     }
                   }
                 }
@@ -548,7 +548,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  '$ref': `#/components/schemas/EmptyOutput`
+                  '$ref': `#/components/schemas/EmptyResponse`
                 }
               }
             },
@@ -563,7 +563,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/PetOutput`
+                      '$ref': `#/components/schemas/PetResponse`
                     }
                   }
                 }
@@ -580,7 +580,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/PetOutput`
+                      '$ref': `#/components/schemas/PetResponse`
                     }
                   }
                 }
@@ -599,7 +599,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     pet: {
-                      '$ref': `#/components/schemas/PetOutput`
+                      '$ref': `#/components/schemas/PetResponse`
                     }
                   }
                 }
@@ -618,7 +618,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/StoreOutput`
+                      '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
                 }
@@ -635,7 +635,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/StoreOutput`
+                      '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
                 }
@@ -652,7 +652,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  '$ref': `#/components/schemas/EmptyOutput`
+                  '$ref': `#/components/schemas/EmptyResponse`
                 }
               }
             },
@@ -667,7 +667,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/StoreOutput`
+                      '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
                 }
@@ -682,7 +682,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  '$ref': `#/components/schemas/EmptyOutput`
+                  '$ref': `#/components/schemas/EmptyResponse`
                 }
               }
             },
@@ -697,7 +697,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/StoreOutput`
+                      '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
                 }
@@ -714,7 +714,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     store: {
-                      '$ref': `#/components/schemas/StoreOutput`
+                      '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
                 }
@@ -733,7 +733,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     manager: {
-                      '$ref': `#/components/schemas/ManagerOutput`
+                      '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
                 }
@@ -750,7 +750,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     manager: {
-                      '$ref': `#/components/schemas/ManagerOutput`
+                      '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
                 }
@@ -767,7 +767,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  '$ref': `#/components/schemas/EmptyOutput`
+                  '$ref': `#/components/schemas/EmptyResponse`
                 }
               }
             },
@@ -782,7 +782,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     manager: {
-                      '$ref': `#/components/schemas/ManagerOutput`
+                      '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
                 }
@@ -797,7 +797,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  '$ref': `#/components/schemas/EmptyOutput`
+                  '$ref': `#/components/schemas/EmptyResponse`
                 }
               }
             },
@@ -812,7 +812,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     manager: {
-                      '$ref': `#/components/schemas/ManagerOutput`
+                      '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
                 }
@@ -829,7 +829,7 @@ describe('expandToOpenApi#paths', () => {
                 schema: {
                   properties: {
                     manager: {
-                      '$ref': `#/components/schemas/ManagerOutput`
+                      '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
                 }
@@ -848,29 +848,29 @@ test('expandToOpenApi#components', () => {
   const { models, operations } = expandToOperations(spec)
   const expanded = expandToOpenApi({ models, operations })
   expect(expanded.components.schemas).toEqual({
-    ErrorOutput: errorOutput,
-    EmptyOutput: emptyOutput,
-    PetInput: { properties: { name: { type: 'string' } } },
-    PetOutput: {
+    ErrorResponse: errorResponse,
+    EmptyResponse: emptyResponse,
+    PetRequest: { properties: { name: { type: 'string' } } },
+    PetResponse: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', format: 'uuid', readOnly: true }
       }
     },
-    StoreOutput: {
+    StoreResponse: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
     },
-    StoreInput: { properties: { name: { type: 'string' } } },
-    ManagerOutput: {
+    StoreRequest: { properties: { name: { type: 'string' } } },
+    ManagerResponse: {
       properties: {
         name: { type: 'string' },
         id: { type: 'string', readOnly: true }
       }
     },
-    ManagerInput: { properties: { name: { type: 'string' } } }
+    ManagerRequest: { properties: { name: { type: 'string' } } }
   })
 })
 

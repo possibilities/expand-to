@@ -3,13 +3,10 @@ const { expandToOpenApi } = require('../expandToOpenApi')
 const mapValues = require('lodash/mapValues')
 
 const {
-  entityErrors,
-  collectionErrors,
   emptyOutput,
   errorOutput,
   allEntityVerbs,
-  allCollectionVerbs,
-  paginationParameters
+  allCollectionVerbs
 } = require('../common')
 
 const pathMethodOperationIdsView = spec =>
@@ -24,6 +21,77 @@ const pathMethodResponsesView = spec =>
   mapValues(spec.paths, path => mapValues(path, method => method.responses))
 const pathMethodRequestBodiesView = spec =>
   mapValues(spec.paths, path => mapValues(path, method => method.requestBody))
+
+const paginationParameters = [
+  {
+    in: 'query',
+    name: 'perPage',
+    required: false,
+    description: 'Per page',
+    schema: { type: 'string' }
+  },
+  {
+    in: 'query',
+    name: 'page',
+    required: false,
+    description: 'Page number',
+    schema: { type: 'string' }
+  },
+  {
+    in: 'query',
+    name: 'orderBy',
+    required: false,
+    description: 'Order by',
+    schema: { type: 'string' }
+  }
+]
+
+const collectionErrors = {
+  400: {
+    description: 'Bad request',
+    content: {
+      'application/json': {
+        schema: {
+          '$ref': '#/components/schemas/ErrorOutput'
+        }
+      }
+    }
+  },
+  401: {
+    description: 'Unauthorized',
+    content: {
+      'application/json': {
+        schema: {
+          '$ref': '#/components/schemas/ErrorOutput'
+        }
+      }
+    }
+  },
+  403: {
+    description: 'Forbidden',
+    content: {
+      'application/json': {
+        schema: {
+          '$ref': '#/components/schemas/ErrorOutput'
+        }
+      }
+    }
+  }
+}
+
+const entityErrors = {
+  ...collectionErrors,
+  404: {
+    description: 'Not found',
+    content: {
+      'application/json': {
+        schema: {
+          '$ref': '#/components/schemas/ErrorOutput'
+        }
+      }
+    }
+  }
+}
 
 const spec = {
   paths: [

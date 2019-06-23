@@ -145,7 +145,7 @@ const spec = {
           id: {
             type: 'string',
             format: 'uuid',
-            readOnly: true,
+            readOnly: true
           }
         }
       }

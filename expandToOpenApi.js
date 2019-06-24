@@ -153,7 +153,7 @@ const getRequestBody = (operation, models) => {
 const getResponses = (operation, models) => {
   let response
   const modelName = isObject(get(models[operation.name], 'response'))
-    ? operation.name
+    ? operation.resourceName
     : get(models[operation.name], 'response', operation.model)
   if (['put', 'patch', 'get'].includes(operation.action)) {
     response = createModelResponse(200, operation.action, modelName)

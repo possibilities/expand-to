@@ -1,5 +1,6 @@
 const expandToResources = require('./expandToResources')
 const initial = require('lodash/initial')
+const pick = require('lodash/pick')
 const last = require('lodash/last')
 const snakeCase = require('lodash/snakeCase')
 const upperFirst = require('lodash/upperFirst')
@@ -117,10 +118,8 @@ const expandToOperations = ({ paths, models }) => {
     path.operations.forEach(action => {
       operations.push({
         action,
-        name: path.name,
-        model: path.model,
-        resourceName: path.resourceName,
         id: getId(action, path),
+        ...pick(path, ['name', 'model', 'resourceName']),
         summary: getSummary(action, path),
         path: path.isCustomFunctionResource
           ? [

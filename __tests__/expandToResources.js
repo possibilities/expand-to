@@ -202,7 +202,7 @@ describe('expand#fns', () => {
               request: { properties: { state: { type: 'string' } } },
               response: { properties: { adoptionDate: { type: 'string' } } }
             }
-          },
+          }
         ],
         model: { properties: { name: { type: 'string' } } }
       }],
@@ -253,7 +253,7 @@ describe('expand#fns', () => {
         model: 'pet',
         pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecords'],
         operations: ['get']
-      },
+      }
     ])
   })
 

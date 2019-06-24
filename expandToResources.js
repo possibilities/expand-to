@@ -136,7 +136,7 @@ const expandPaths = mountedResources => {
           allEntityVerbs.includes(fn.method) && `{${resource.name}Id}`,
           `invoke.${fn.name}`
         ]),
-        mountPath: resource.mountPath,
+        mountPath: resource.mountPath
       })
     })
 

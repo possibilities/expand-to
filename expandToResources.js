@@ -15,15 +15,15 @@ const immutableEntityVerbs = without(allEntityVerbs, 'put', 'patch')
 const singularize = str => inflection.singularize(str)
 const pluralize = str => inflection.pluralize(str)
 
-const stripReadOnly = model => {
-  const properties =
-    fromPairs(toPairs(model.properties).filter(([name, value]) => !value.readOnly))
-  return { ...model, properties }
-}
+const stripReadOnlyProperties = model => ({
+  ...model,
+  properties: fromPairs(toPairs(model.properties)
+    .filter(([name, value]) => !value.readOnly))
+})
 
 const expandModels = models => {
   let expandedModels = mapValues(keyBy(models, 'name'), model => ({
-    request: stripReadOnly(model.model),
+    request: stripReadOnlyProperties(model.model),
     response: model.model
   }))
 
@@ -32,7 +32,7 @@ const expandModels = models => {
       expandedModels = {
         ...expandedModels,
         [singularize(model.treeOf)]: {
-          request: stripReadOnly(model.model),
+          request: stripReadOnlyProperties(model.model),
           response: model.model
         }
       }

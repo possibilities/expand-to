@@ -1,5 +1,6 @@
 const { expandToOperations } = require('../expandToOperations')
 const {
+  errors,
   allEntityVerbs,
   allCollectionVerbs,
   emptyResponse,
@@ -468,29 +469,29 @@ describe('expandToOperations', () => {
       expect(
         expandToOperations(spec).operations.map(path => path.errorStatuses)
       ).toEqual([
-        [400, 401, 403],
-        [400, 401, 403],
-        [400, 401, 403, 404],
-        [400, 401, 403],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403],
-        [400, 401, 403],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403],
-        [400, 401, 403],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404],
-        [400, 401, 403, 404]
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound]
       ])
     })
   })

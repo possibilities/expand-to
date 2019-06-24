@@ -6,6 +6,7 @@ const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
 const inflection = require('inflection')
+const { errors } = require('./common')
 
 // Make map safe
 const pluralize = str => inflection.pluralize(str)
@@ -153,8 +154,17 @@ const getResponses = operation => {
   }
 
   const errorResponses = ['list', 'post'].includes(operation.action)
-    ? getErrorResponses(400, 401, 403)
-    : getErrorResponses(400, 401, 403, 404)
+    ? getErrorResponses(
+      errors.badRequest,
+      errors.unauthorized,
+      errors.forbidden
+    )
+    : getErrorResponses(
+      errors.badRequest,
+      errors.unauthorized,
+      errors.forbidden,
+      errors.notFound
+    )
 
   return { ...response, ...errorResponses }
 }

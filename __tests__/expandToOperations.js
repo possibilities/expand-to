@@ -438,7 +438,9 @@ describe('expandToOperations', () => {
     })
 
     test('successStatus', () => {
-      expect(expandToOperations(spec).operations.map(path => path.successStatus)).toEqual([
+      expect(
+        expandToOperations(spec).operations.map(path => path.successStatus)
+      ).toEqual([
         200,
         201,
         200,

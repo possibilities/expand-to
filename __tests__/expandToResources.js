@@ -182,21 +182,21 @@ describe('expand#fns', () => {
         fns: [
           {
             method: 'get',
-            name: 'requestMedicalRecords'
+            name: 'customFunctionWithGetAction'
           },
           {
             method: 'list',
-            name: 'requestMedicalRecordHistory'
+            name: 'customFunctionWithListAction'
           },
           {
             method: 'get',
-            name: 'checkInsurance',
+            name: 'customCheckWithModel',
             // With response body
             model: { properties: { insuranceName: { type: 'string' } } }
           },
           {
             method: 'post',
-            name: 'checkAdoptionHistory',
+            name: 'customCheckWithSeparateModels',
             // With request and response bodied
             model: {
               request: { properties: { state: { type: 'string' } } },
@@ -214,10 +214,10 @@ describe('expand#fns', () => {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
       },
-      checkInsurance: {
+      customCheckWithModel: {
         response: { properties: { insuranceName: { type: 'string' } } }
       },
-      checkAdoptionHistory: {
+      customCheckWithSeparateModels: {
         request: { properties: { state: { type: 'string' } } },
         response: { properties: { adoptionDate: { type: 'string' } } }
       }
@@ -230,14 +230,14 @@ describe('expand#fns', () => {
         operations: allCollectionVerbs
       },
       {
-        model: 'checkAdoptionHistory',
-        pathParts: ['pets', 'invoke.checkAdoptionHistory'],
+        model: 'customCheckWithSeparateModels',
+        pathParts: ['pets', 'invoke.customCheckWithSeparateModels'],
         isCustomFunctionResource: true,
         operations: ['post']
       },
       {
         model: 'pet',
-        pathParts: ['pets', 'invoke.requestMedicalRecordHistory'],
+        pathParts: ['pets', 'invoke.customFunctionWithListAction'],
         isCustomFunctionResource: true,
         operations: ['list']
       },
@@ -247,14 +247,14 @@ describe('expand#fns', () => {
         operations: allEntityVerbs
       },
       {
-        model: 'checkInsurance',
-        pathParts: ['pets', '{petId}', 'invoke.checkInsurance'],
+        model: 'customCheckWithModel',
+        pathParts: ['pets', '{petId}', 'invoke.customCheckWithModel'],
         isCustomFunctionResource: true,
         operations: ['get']
       },
       {
         model: 'pet',
-        pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecords'],
+        pathParts: ['pets', '{petId}', 'invoke.customFunctionWithGetAction'],
         isCustomFunctionResource: true,
         operations: ['get']
       }
@@ -268,10 +268,7 @@ describe('expand#fns', () => {
         model: { properties: { name: { type: 'string' } } }
       }, {
         name: 'repo',
-        fns: [{
-          method: 'get',
-          name: 'getTopContributors'
-        }],
+        fns: [{ method: 'get', name: 'customFunctionWithBelongsTo' }],
         model: { properties: { name: { type: 'string' } } },
         belongsTo: 'org'
       }],
@@ -311,7 +308,13 @@ describe('expand#fns', () => {
         operations: allEntityVerbs
       },
       {
-        pathParts: ['orgs', '{orgId}', 'repos', '{repoId}', 'invoke.getTopContributors'],
+        pathParts: [
+          'orgs',
+          '{orgId}',
+          'repos',
+          '{repoId}',
+          'invoke.customFunctionWithBelongsTo'
+        ],
         model: 'repo',
         isCustomFunctionResource: true,
         operations: ['get']

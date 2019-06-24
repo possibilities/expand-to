@@ -1,5 +1,6 @@
 const mapValues = require('lodash/mapValues')
 const omit = require('lodash/omit')
+const get = require('lodash/get')
 const groupBy = require('lodash/groupBy')
 const expandToOperations = require('./expandToOperations')
 const lowerFirst = require('lodash/lowerFirst')
@@ -93,7 +94,7 @@ const getErrorResponses = (...codes) => {
 const getParameters = (operation, models) => {
   return [
     ...operation.parameters.map(param => {
-      const schema = models[operation.model].response.properties.id
+      const schema = get(models[operation.model].response, 'properties.id')
         ? omit(models[operation.model].response.properties.id, 'readOnly')
         : { type: 'string' }
       return {

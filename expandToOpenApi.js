@@ -6,6 +6,10 @@ const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
 const { emptyResponse, errorResponse } = require('./common')
+const inflection = require('inflection')
+
+// Make map safe
+const pluralize = str => inflection.pluralize(str)
 
 const actionToLabel = {
   post: 'create',
@@ -30,22 +34,25 @@ const createResponse = (status, action, modelName) => ({
   }
 })
 
-const createModelResponse = (status, action, modelName) => ({
-  [status]: {
-    description: `${upperFirst(actionToLabel[action] || action)} succeeded`,
-    content: {
-      'application/json': {
-        schema: {
-          properties: {
-            [lowerFirst(modelName)]: {
-              '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
+const createModelResponse = (status, action, modelName) => {
+  const responseName = lowerFirst(modelName)
+  return {
+    [status]: {
+      description: `${upperFirst(actionToLabel[action] || action)} succeeded`,
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              [action === 'list' ? pluralize(responseName) : responseName]: {
+                '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
+              }
             }
           }
         }
       }
     }
   }
-})
+}
 
 const errorMessage = {
   400: 'Bad request',

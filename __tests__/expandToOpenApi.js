@@ -482,7 +482,7 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    pet: {
+                    pets: {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
@@ -616,7 +616,7 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    store: {
+                    stores: {
                       '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
@@ -731,7 +731,7 @@ describe('expandToOpenApi#paths', () => {
               'application/json': {
                 schema: {
                   properties: {
-                    manager: {
+                    managers: {
                       '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }

@@ -120,16 +120,30 @@ const getParameters = (operation, models) => {
 const getRequestBody = (operation, models) => {
   if (bodylessActions.includes(operation.action)) return
 
-  const modelName = isObject(get(models[operation.name], 'request'))
-    ? operation.name
-    : get(models[operation.name], 'request', operation.model)
+  let modelName = operation.resourceName
+  if (isObject(get(models[operation.name], 'request'))) {
+    modelName = get(models[operation.name], 'request')
+  }
+
+  if (models[modelName] && models[modelName].request) {
+    return {
+      required: true,
+      content: {
+        'application/json': {
+          schema: {
+            '$ref': `#/components/schemas/${upperFirst(modelName)}Request`
+          }
+        }
+      }
+    }
+  }
 
   return {
     required: true,
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${upperFirst(modelName)}Request`
+          '$ref': `#/components/schemas/${upperFirst(operation.resourceName)}Request`
         }
       }
     }

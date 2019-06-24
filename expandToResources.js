@@ -68,6 +68,7 @@ const expandTreeResources = resources => {
           ...resource,
           modelName: resource.name,
           belongsTo: resource.name,
+          resourceName: resource.name,
           name: singularize(resource.treeOf)
         }
       ]
@@ -84,7 +85,8 @@ const expandToUnmountedResources = schema => {
       ...resource,
       type: 'collection',
       methods: allCollectionVerbs,
-      pathParts: [pluralize(resource.name)]
+      pathParts: [pluralize(resource.name)],
+      resourceName: resource.resourceName || resource.name
     })
     resources.push({
       modelName: resource.name,
@@ -93,7 +95,8 @@ const expandToUnmountedResources = schema => {
       methods: resource.immutable
         ? immutableEntityVerbs
         : allEntityVerbs,
-      pathParts: [pluralize(resource.name), `{${resource.name}Id}`]
+      pathParts: [pluralize(resource.name), `{${resource.name}Id}`],
+      resourceName: resource.resourceName || resource.name
     })
   })
   return resources
@@ -137,6 +140,7 @@ const expandPaths = mountedResources => {
         name: fn.name,
         methods: [fn.method],
         isCustomFunctionResource: true,
+        resourceName: resource.name,
         modelName: fn.model ? fn.name : resource.name,
         pathParts: compact([
           pluralize(resource.name),
@@ -217,7 +221,6 @@ const expandPaths = mountedResources => {
     ...resource,
     model: resource.modelName,
     operations: resource.methods,
-    resourceName: resource.name,
     pathParts: [
       ...resource.mountPath,
       ...resource.pathParts

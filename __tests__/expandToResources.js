@@ -18,7 +18,7 @@ const { allEntityVerbs, allCollectionVerbs } = require('../common')
 const tempDir = `/tmp/${Date.now()}`
 mkdirsSync(tempDir)
 const dump = (spec, title) => {
-  const openApiSpec = expandToOpenApi(spec, { title: `Example: ${title}` })
+  const openApiSpec = expandToOpenApi(spec, { info: { title: `Example: ${title}` } })
   writeFileSync(
     `${tempDir}/${title.toLowerCase().replace(/ /g, '-')}.json`,
     JSON.stringify(openApiSpec, null, 2)
@@ -302,7 +302,7 @@ describe('expandToResources#fns', () => {
       {
         name: 'customFunctionWithListAction',
         model: 'pet',
-        resourceName: 'customFunctionWithListAction',
+        resourceName: 'pet',
         pathParts: ['pets', 'invoke.customFunctionWithListAction'],
         isCustomFunctionResource: true,
         operations: ['list']
@@ -310,7 +310,7 @@ describe('expandToResources#fns', () => {
       {
         name: 'customFunctionWithSeparateModels',
         model: 'customFunctionWithSeparateModels',
-        resourceName: 'customFunctionWithSeparateModels',
+        resourceName: 'pet',
         pathParts: ['pets', 'invoke.customFunctionWithSeparateModels'],
         isCustomFunctionResource: true,
         operations: ['post']
@@ -319,14 +319,14 @@ describe('expandToResources#fns', () => {
         name: 'customFunctionWithStringyModel',
         model: 'customFunctionWithStringyModel',
         pathParts: ['pets', 'invoke.customFunctionWithStringyModel'],
-        resourceName: 'customFunctionWithStringyModel',
+        resourceName: 'pet',
         isCustomFunctionResource: true,
         operations: ['post']
       },
       {
         name: 'customFunctionWithStringyResponseModel',
         model: 'customFunctionWithStringyResponseModel',
-        resourceName: 'customFunctionWithStringyResponseModel',
+        resourceName: 'pet',
         pathParts: ['pets', 'invoke.customFunctionWithStringyResponseModel'],
         isCustomFunctionResource: true,
         operations: ['post']
@@ -334,7 +334,7 @@ describe('expandToResources#fns', () => {
       {
         name: 'customFunctionWithStringySeparateModels',
         model: 'customFunctionWithStringySeparateModels',
-        resourceName: 'customFunctionWithStringySeparateModels',
+        resourceName: 'pet',
         pathParts: ['pets', 'invoke.customFunctionWithStringySeparateModels'],
         isCustomFunctionResource: true,
         operations: ['post']
@@ -349,7 +349,7 @@ describe('expandToResources#fns', () => {
       {
         name: 'customFunctionWithGetAction',
         model: 'pet',
-        resourceName: 'customFunctionWithGetAction',
+        resourceName: 'pet',
         pathParts: ['pets', '{petId}', 'invoke.customFunctionWithGetAction'],
         isCustomFunctionResource: true,
         operations: ['get']
@@ -357,7 +357,7 @@ describe('expandToResources#fns', () => {
       {
         name: 'customFunctionWithModel',
         model: 'customFunctionWithModel',
-        resourceName: 'customFunctionWithModel',
+        resourceName: 'pet',
         pathParts: ['pets', '{petId}', 'invoke.customFunctionWithModel'],
         isCustomFunctionResource: true,
         operations: ['get']
@@ -777,14 +777,14 @@ describe('expandToResources#treeOf', () => {
         pathParts: ['groups', '{groupId}', 'subgroups'],
         name: 'subgroup',
         model: 'group',
-        resourceName: 'subgroup',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
         name: 'subgroup',
         model: 'group',
-        resourceName: 'subgroup',
+        resourceName: 'group',
         operations: allEntityVerbs
       }
     ])
@@ -854,14 +854,14 @@ describe('expandToResources#treeOf', () => {
         pathParts: ['regions', '{regionId}', 'groups', '{groupId}', 'subgroups'],
         name: 'subgroup',
         model: 'group',
-        resourceName: 'subgroup',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['regions', '{regionId}', 'groups', '{groupId}', 'subgroups', '{subgroupId}'],
         name: 'subgroup',
         model: 'group',
-        resourceName: 'subgroup',
+        resourceName: 'group',
         operations: allEntityVerbs
       }
     ])
@@ -915,14 +915,14 @@ describe('expandToResources#treeOf', () => {
         pathParts: ['groups', '{groupId}', 'subgroups'],
         name: 'subgroup',
         model: 'group',
-        resourceName: 'subgroup',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
         name: 'subgroup',
         model: 'group',
-        resourceName: 'subgroup',
+        resourceName: 'group',
         operations: allEntityVerbs
       },
       {
@@ -1018,14 +1018,14 @@ describe('expandToResources#treeOf', () => {
         pathParts: ['groups', '{groupId}', 'subgroups'],
         name: 'subgroup',
         model: 'group',
-        resourceName: 'subgroup',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
         name: 'subgroup',
         model: 'group',
-        resourceName: 'subgroup',
+        resourceName: 'group',
         operations: allEntityVerbs
       },
       {

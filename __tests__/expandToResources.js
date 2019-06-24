@@ -221,7 +221,7 @@ describe('expand#fns', () => {
         model: 'pet',
         pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecords'],
         operations: ['get']
-      },
+      }
     ])
   })
 
@@ -278,7 +278,7 @@ describe('expand#fns', () => {
         pathParts: ['orgs', '{orgId}', 'repos', '{repoId}', 'invoke.getTopContributors'],
         model: 'repo',
         operations: ['get']
-      },
+      }
     ])
   })
 })

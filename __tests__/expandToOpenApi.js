@@ -102,6 +102,7 @@ const spec = {
     },
     {
       model: 'pet',
+      isCustomFunctionResource: true,
       pathParts: ['pets', 'invoke.requestMedicalRecords'],
       operations: ['get'],
       fns: [{

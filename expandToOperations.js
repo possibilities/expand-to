@@ -25,7 +25,7 @@ const getId = (action, path) => {
   const pathSubject = last(namespace)
   const pathContext = initial(namespace).map(singularize)
 
-  if (last(path.pathParts).startsWith('invoke.')) {
+  if (path.isCustomFunctionResource) {
     return [
       'invoke',
       upperFirst(last(path.pathParts).split('.').pop()),
@@ -53,7 +53,7 @@ const getId = (action, path) => {
 }
 
 const getSummary = (action, path) => {
-  if (last(path.pathParts).startsWith('invoke.')) {
+  if (path.isCustomFunctionResource) {
     const fnName = last(path.pathParts).split('.').slice(1).join('.')
     const resourceName = action === 'list' ? pluralize(path.model) : path.model
     return `Invoke \`${fnName}\` for ${resourceName}`

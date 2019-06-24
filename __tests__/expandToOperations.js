@@ -12,11 +12,13 @@ const spec = {
     {
       model: 'pet',
       pathParts: ['pets', 'invoke.requestMedicalRecords'],
+      isCustomFunctionResource: true,
       operations: ['get']
     },
     {
       model: 'pet',
       pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecordHistory'],
+      isCustomFunctionResource: true,
       operations: ['list']
     },
     {

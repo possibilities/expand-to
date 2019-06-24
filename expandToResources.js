@@ -130,6 +130,7 @@ const expandPaths = mountedResources => {
       paths.push({
         name: fn.name,
         methods: [fn.method],
+        isCustomFunctionResource: true,
         modelName: fn.model ? fn.name : resource.name,
         pathParts: compact([
           pluralize(resource.name),
@@ -218,7 +219,8 @@ const expandPaths = mountedResources => {
     'model',
     'pathParts',
     'operations',
-    'isUserCentricResource'
+    'isUserCentricResource',
+    'isCustomFunctionResource'
   ]))
 }
 

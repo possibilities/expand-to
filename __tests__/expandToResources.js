@@ -232,11 +232,13 @@ describe('expand#fns', () => {
       {
         model: 'checkAdoptionHistory',
         pathParts: ['pets', 'invoke.checkAdoptionHistory'],
+        isCustomFunctionResource: true,
         operations: ['post']
       },
       {
         model: 'pet',
         pathParts: ['pets', 'invoke.requestMedicalRecordHistory'],
+        isCustomFunctionResource: true,
         operations: ['list']
       },
       {
@@ -247,11 +249,13 @@ describe('expand#fns', () => {
       {
         model: 'checkInsurance',
         pathParts: ['pets', '{petId}', 'invoke.checkInsurance'],
+        isCustomFunctionResource: true,
         operations: ['get']
       },
       {
         model: 'pet',
         pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecords'],
+        isCustomFunctionResource: true,
         operations: ['get']
       }
     ])
@@ -309,6 +313,7 @@ describe('expand#fns', () => {
       {
         pathParts: ['orgs', '{orgId}', 'repos', '{repoId}', 'invoke.getTopContributors'],
         model: 'repo',
+        isCustomFunctionResource: true,
         operations: ['get']
       }
     ])

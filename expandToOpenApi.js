@@ -5,7 +5,6 @@ const expandToOperations = require('./expandToOperations')
 const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
-const { emptyResponse, errorResponse } = require('./common')
 const inflection = require('inflection')
 
 // Make map safe
@@ -37,24 +36,22 @@ const createResponse = (status, action, modelName) => ({
 const createModelResponse = (status, action, modelName) => {
   const responseName = lowerFirst(modelName)
 
+  const schemaName = `${upperFirst(modelName)}Response`
   const schema = action === 'list'
     ? {
       type: 'object',
       properties: {
         [pluralize(responseName)]: {
           type: 'array',
-          items: {
-            '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
-          }
-        }
+          items: { '$ref': `#/components/schemas/${schemaName}` }
+        },
+        pages: { '$ref': '#/components/schemas/PaginationResponse' }
       }
     }
     : {
       type: 'object',
       properties: {
-        [responseName]: {
-          '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
-        }
+        [responseName]: { '$ref': `#/components/schemas/${schemaName}` }
       }
     }
 
@@ -174,15 +171,25 @@ const getMethod = (operation, models) => {
 }
 
 const getSchemas = (operations, models = {}) => {
-  let schemas = { EmptyResponse: emptyResponse, ErrorResponse: errorResponse }
+  let schemas = {
+    EmptyResponse: models.empty.response,
+    ErrorResponse: models.error.response,
+    PaginationResponse: models.pagination.response
+  }
 
   operations.forEach(operation => {
     const name = upperFirst(operation.model)
     if (!bodylessActions.includes(operation.action)) {
-      schemas = { ...schemas, [`${name}Request`]: models[operation.model].request }
+      schemas = {
+        ...schemas,
+        [`${name}Request`]: models[operation.model].request
+      }
     }
     if (!responselessActions.includes(operation.action)) {
-      schemas = { ...schemas, [`${name}Response`]: models[operation.model].response }
+      schemas = {
+        ...schemas,
+        [`${name}Response`]: models[operation.model].response
+      }
     }
   })
 
@@ -203,7 +210,6 @@ const expandToOpenApi = ({ operations, models }, options = {}) => {
   )
 
   const components = { schemas: getSchemas(operations, models) }
-
   return { openapi: '3.0.0', info, paths, components }
 }
 

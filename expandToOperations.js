@@ -3,6 +3,11 @@ const initial = require('lodash/initial')
 const last = require('lodash/last')
 const upperFirst = require('lodash/upperFirst')
 const inflection = require('inflection')
+const {
+  emptyResponse,
+  errorResponse,
+  paginationResponse
+} = require('./common')
 
 // Make map safe
 const singularize = str => inflection.singularize(str)
@@ -94,16 +99,24 @@ const getQuery = (action, path) => {
 const collectionActions = { list: true, post: true }
 const successStatuses = { post: 201, delete: 204 }
 
+const expandModels = models => ({
+  ...models,
+  empty: { response: emptyResponse },
+  error: { response: errorResponse },
+  pagination: { response: paginationResponse }
+})
+
 const expandToOperations = ({ paths, models }) => {
+  const expandedModels = expandModels(models)
   let operations = []
   paths.forEach(path => {
     path.operations.forEach(action => {
       operations.push({
+        action,
         model: path.model,
         id: getId(action, path),
         summary: getSummary(action, path),
         path: `/${path.pathParts.join('/')}`,
-        action,
         verb: action === 'list' ? 'get' : action,
         namespace: getNamespace(path),
         parameters: getParameters(path),
@@ -115,7 +128,12 @@ const expandToOperations = ({ paths, models }) => {
       })
     })
   })
-  return { paths, models, operations }
+
+  return {
+    paths,
+    operations,
+    models: expandedModels
+  }
 }
 
 module.exports = spec => {

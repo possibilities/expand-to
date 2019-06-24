@@ -5,6 +5,7 @@ const mapValues = require('lodash/mapValues')
 const {
   emptyResponse,
   errorResponse,
+  paginationResponse,
   allEntityVerbs,
   allCollectionVerbs
 } = require('../common')
@@ -489,6 +490,9 @@ describe('expandToOpenApi#paths', () => {
                       items: {
                         '$ref': `#/components/schemas/PetResponse`
                       }
+                    },
+                    pages: {
+                      '$ref': `#/components/schemas/PaginationResponse`
                     }
                   }
                 }
@@ -632,6 +636,9 @@ describe('expandToOpenApi#paths', () => {
                       items: {
                         '$ref': `#/components/schemas/StoreResponse`
                       }
+                    },
+                    pages: {
+                      '$ref': `#/components/schemas/PaginationResponse`
                     }
                   }
                 }
@@ -755,6 +762,9 @@ describe('expandToOpenApi#paths', () => {
                       items: {
                         '$ref': `#/components/schemas/ManagerResponse`
                       }
+                    },
+                    pages: {
+                      '$ref': `#/components/schemas/PaginationResponse`
                     }
                   }
                 }
@@ -873,8 +883,9 @@ test('expandToOpenApi#components', () => {
   const { models, operations } = expandToOperations(spec)
   const expanded = expandToOpenApi({ models, operations })
   expect(expanded.components.schemas).toEqual({
-    ErrorResponse: errorResponse,
     EmptyResponse: emptyResponse,
+    ErrorResponse: errorResponse,
+    PaginationResponse: paginationResponse,
     PetRequest: { properties: { name: { type: 'string' } } },
     PetResponse: {
       properties: {

@@ -30,3 +30,14 @@ module.exports.errorResponse = {
     'message'
   ]
 }
+
+module.exports.paginationResponse = {
+  type: 'object',
+  properties: {
+    firstPage: { type: 'number' },
+    lastPage: { type: 'number' },
+    nextPage: { type: 'number' },
+    prevPage: { type: 'number' }
+  },
+  required: ['firstPage', 'lastPage', 'nextPage', 'prevPage']
+}

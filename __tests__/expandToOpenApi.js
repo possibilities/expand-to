@@ -210,7 +210,11 @@ const spec = {
         properties: {
           customFunctionModelWithRequestAndStringyResponseField: {
             type: 'string'
-          }
+          },
+          // Expands to object ref
+          customFunctionModelWithRequestAndStringyResponseField: 'pet',
+          // Expands to array ref
+          customFunctionModelWithRequestAndStringyResponseField: ['pet']
         }
       },
       response: 'pet'
@@ -1070,6 +1074,15 @@ test('expandToOpenApi#components', () => {
       properties: {
         customFunctionModelWithRequestAndStringyResponseField: {
           type: 'string'
+        },
+        customFunctionModelWithRequestAndStringyResponseField: {
+          '$ref': '#/components/schemas/PetResponse'
+        },
+        customFunctionModelWithRequestAndStringyResponseField: {
+          type: 'array',
+          items: {
+            '$ref': '#/components/schemas/PetResponse'
+          }
         }
       }
     }

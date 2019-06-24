@@ -214,6 +214,27 @@ const getMethod = (operation, models) => {
   }
 }
 
+const expandProperties = model => {
+  return {
+    ...model,
+    properties: mapValues(model.properties, prop => {
+      if (isString(prop)) {
+        return {
+          '$ref': `#/components/schemas/${upperFirst(prop)}Response`
+        }
+      } else if (Array.isArray(prop)) {
+        return {
+          type: 'array',
+          items: {
+            '$ref': `#/components/schemas/${upperFirst(prop)}Response`
+          }
+        }
+      }
+      return prop
+    })
+  }
+}
+
 const getSchemas = (operations, models = {}) => {
   let schemas = {
     EmptyResponse: models.empty.response,
@@ -230,7 +251,7 @@ const getSchemas = (operations, models = {}) => {
     ) {
       schemas = {
         ...schemas,
-        [`${name}Request`]: models[operation.model].request
+        [`${name}Request`]: expandProperties(models[operation.model].request)
       }
     }
     if (
@@ -239,7 +260,7 @@ const getSchemas = (operations, models = {}) => {
     ) {
       schemas = {
         ...schemas,
-        [`${name}Response`]: models[operation.model].response
+        [`${name}Response`]: expandProperties(models[operation.model].response)
       }
     }
   })

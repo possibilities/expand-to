@@ -36,19 +36,32 @@ const createResponse = (status, action, modelName) => ({
 
 const createModelResponse = (status, action, modelName) => {
   const responseName = lowerFirst(modelName)
+
+  const schema = action === 'list'
+    ? {
+      type: 'object',
+      properties: {
+        [pluralize(responseName)]: {
+          type: 'array',
+          items: {
+            '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
+          }
+        }
+      }
+    }
+    : {
+      type: 'object',
+      properties: {
+        [responseName]: {
+          '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
+        }
+      }
+    }
+
   return {
     [status]: {
       description: `${upperFirst(actionToLabel[action] || action)} succeeded`,
-      content: {
-        'application/json': {
-          schema: {
-            properties: {
-              [action === 'list' ? pluralize(responseName) : responseName]: {
-                '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
-              }
-            }
-          }
-        }
+      content: { 'application/json': { schema }
       }
     }
   }

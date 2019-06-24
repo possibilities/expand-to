@@ -481,9 +481,13 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     pets: {
-                      '$ref': `#/components/schemas/PetResponse`
+                      type: 'array',
+                      items: {
+                        '$ref': `#/components/schemas/PetResponse`
+                      }
                     }
                   }
                 }
@@ -498,6 +502,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     pet: {
                       '$ref': `#/components/schemas/PetResponse`
@@ -530,6 +535,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     pet: {
                       '$ref': `#/components/schemas/PetResponse`
@@ -560,6 +566,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     pet: {
                       '$ref': `#/components/schemas/PetResponse`
@@ -577,6 +584,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     pet: {
                       '$ref': `#/components/schemas/PetResponse`
@@ -596,6 +604,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     pet: {
                       '$ref': `#/components/schemas/PetResponse`
@@ -615,9 +624,13 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     stores: {
-                      '$ref': `#/components/schemas/StoreResponse`
+                      type: 'array',
+                      items: {
+                        '$ref': `#/components/schemas/StoreResponse`
+                      }
                     }
                   }
                 }
@@ -632,6 +645,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     store: {
                       '$ref': `#/components/schemas/StoreResponse`
@@ -664,6 +678,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     store: {
                       '$ref': `#/components/schemas/StoreResponse`
@@ -694,6 +709,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     store: {
                       '$ref': `#/components/schemas/StoreResponse`
@@ -711,6 +727,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     store: {
                       '$ref': `#/components/schemas/StoreResponse`
@@ -730,9 +747,13 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     managers: {
-                      '$ref': `#/components/schemas/ManagerResponse`
+                      type: 'array',
+                      items: {
+                        '$ref': `#/components/schemas/ManagerResponse`
+                      }
                     }
                   }
                 }
@@ -747,6 +768,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     manager: {
                       '$ref': `#/components/schemas/ManagerResponse`
@@ -779,6 +801,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     manager: {
                       '$ref': `#/components/schemas/ManagerResponse`
@@ -809,6 +832,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     manager: {
                       '$ref': `#/components/schemas/ManagerResponse`
@@ -826,6 +850,7 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
+                  type: 'object',
                   properties: {
                     manager: {
                       '$ref': `#/components/schemas/ManagerResponse`

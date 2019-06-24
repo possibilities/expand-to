@@ -135,10 +135,9 @@ const getResponses = operation => {
     }
   }
 
-  const errorResponses =
-    operation.isCustomFunctionResource || ['list', 'post'].includes(operation.action)
-      ? getErrorResponses(400, 401, 403)
-      : getErrorResponses(400, 401, 403, 404)
+  const errorResponses = ['list', 'post'].includes(operation.action)
+    ? getErrorResponses(400, 401, 403)
+    : getErrorResponses(400, 401, 403, 404)
 
   return { ...response, ...errorResponses }
 }

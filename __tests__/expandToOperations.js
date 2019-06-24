@@ -13,7 +13,6 @@ const spec = {
       model: 'pet',
       pathParts: ['pets', 'invoke.requestMedicalRecords'],
       operations: ['get'],
-      isCustomFunctionResource: true,
       fns: [{
         method: 'get',
         name: 'requestMedicalRecords'
@@ -438,10 +437,12 @@ describe('expandToOperations', () => {
   })
 
   test('errorStatuses', () => {
-    expect(expandToOperations(spec).operations.map(path => path.errorStatuses)).toEqual([
+    expect(
+      expandToOperations(spec).operations.map(path => path.errorStatuses)
+    ).toEqual([
       [400, 401, 403, 500],
       [400, 401, 403, 500],
-      [400, 401, 403, 500],
+      [400, 401, 403, 404, 500],
       [400, 401, 403, 404, 500],
       [400, 401, 403, 404, 500],
       [400, 401, 403, 404, 500],

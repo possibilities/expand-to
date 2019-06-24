@@ -202,7 +202,6 @@ describe('expand#fns', () => {
         operations: allCollectionVerbs
       },
       {
-        isCustomFunctionResource: true,
         pathParts: ['pets', 'invoke.requestMedicalRecords'],
         model: 'pet',
         operations: ['get']
@@ -260,7 +259,6 @@ describe('expand#fns', () => {
         operations: allCollectionVerbs
       },
       {
-        isCustomFunctionResource: true,
         pathParts: ['orgs', '{orgId}', 'repos', 'invoke.getTopContributors'],
         model: 'repo',
         operations: ['get']

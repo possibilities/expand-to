@@ -1,5 +1,4 @@
 const expandToResources = require('./expandToResources')
-const compact = require('lodash/compact')
 const initial = require('lodash/initial')
 const last = require('lodash/last')
 const upperFirst = require('lodash/upperFirst')
@@ -25,7 +24,7 @@ const getOperationId = (action, path) => {
   const pathSubject = last(namespace)
   const pathContext = initial(namespace).map(singularize)
 
-  if (path.isCustomFunctionResource) {
+  if (last(path.pathParts).startsWith('invoke.')) {
     return [
       'invoke',
       upperFirst(last(path.pathParts).split('.').pop()),
@@ -51,8 +50,9 @@ const getOperationId = (action, path) => {
 }
 
 const getSummary = (action, path) => {
-  if (path.isCustomFunctionResource) {
-    return `Invoke \`${last(path.pathParts).split('.').slice(1).join('.')}\` for ${path.model}`
+  if (last(path.pathParts).startsWith('invoke.')) {
+    const name = last(path.pathParts).split('.').slice(1).join('.')
+    return `Invoke \`${name}\` for ${path.model}`
   }
   const namespace = getNamespace(path)
   const noun = last(namespace)
@@ -107,13 +107,7 @@ const expandToOperations = ({ paths, models }) => {
         successStatus: successStatuses[action] || 200,
         errorStatuses: collectionActions[action]
           ? [400, 401, 403, 500]
-          : compact([
-            400,
-            401,
-            403,
-            path.isCustomFunctionResource ? null : 404,
-            500
-          ])
+          : [400, 401, 403, 404, 500]
       })
     })
   })

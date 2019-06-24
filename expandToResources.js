@@ -121,8 +121,7 @@ const expandPaths = mountedResources => {
         methods: [fn.method],
         pathParts: [pluralize(resource.name), `invoke.${fn.name}`],
         mountPath: resource.mountPath,
-        modelName: resource.name,
-        isCustomFunctionResource: true
+        modelName: resource.name
       })
     })
 
@@ -204,8 +203,7 @@ const expandPaths = mountedResources => {
     'model',
     'pathParts',
     'operations',
-    'isUserCentricResource',
-    'isCustomFunctionResource'
+    'isUserCentricResource'
   ]))
 }
 

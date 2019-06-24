@@ -4,6 +4,7 @@ const last = require('lodash/last')
 const upperFirst = require('lodash/upperFirst')
 const inflection = require('inflection')
 const {
+  errors,
   emptyResponse,
   errorResponse,
   paginationResponse
@@ -123,8 +124,17 @@ const expandToOperations = ({ paths, models }) => {
         query: getQuery(action, path),
         successStatus: successStatuses[action] || 200,
         errorStatuses: collectionActions[action]
-          ? [400, 401, 403]
-          : [400, 401, 403, 404]
+          ? [
+            errors.badRequest,
+            errors.unauthorized,
+            errors.forbidden
+          ]
+          : [
+            errors.badRequest,
+            errors.unauthorized,
+            errors.forbidden,
+            errors.notFound
+          ]
       })
     })
   })

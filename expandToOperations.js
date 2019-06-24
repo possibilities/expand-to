@@ -123,8 +123,8 @@ const expandToOperations = ({ paths, models }) => {
         query: getQuery(action, path),
         successStatus: successStatuses[action] || 200,
         errorStatuses: collectionActions[action]
-          ? [400, 401, 403, 500]
-          : [400, 401, 403, 404, 500]
+          ? [400, 401, 403]
+          : [400, 401, 403, 404]
       })
     })
   })

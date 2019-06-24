@@ -187,7 +187,22 @@ describe('expand#fns', () => {
           {
             method: 'list',
             name: 'requestMedicalRecordHistory'
-          }
+          },
+          {
+            method: 'get',
+            name: 'checkInsurance',
+            // With response body
+            model: { properties: { insuranceName: { type: 'string' } } }
+          },
+          {
+            method: 'post',
+            name: 'checkAdoptionHistory',
+            // With request and response bodied
+            model: {
+              request: { properties: { state: { type: 'string' } } },
+              response: { properties: { adoptionDate: { type: 'string' } } }
+            }
+          },
         ],
         model: { properties: { name: { type: 'string' } } }
       }],
@@ -198,6 +213,13 @@ describe('expand#fns', () => {
       pet: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
+      },
+      checkInsurance: {
+        response: { properties: { insuranceName: { type: 'string' } } }
+      },
+      checkAdoptionHistory: {
+        request: { properties: { state: { type: 'string' } } },
+        response: { properties: { adoptionDate: { type: 'string' } } }
       }
     })
 
@@ -206,6 +228,11 @@ describe('expand#fns', () => {
         pathParts: ['pets'],
         model: 'pet',
         operations: allCollectionVerbs
+      },
+      {
+        model: 'checkAdoptionHistory',
+        pathParts: ['pets', 'invoke.checkAdoptionHistory'],
+        operations: ['post']
       },
       {
         model: 'pet',
@@ -218,10 +245,15 @@ describe('expand#fns', () => {
         operations: allEntityVerbs
       },
       {
+        model: 'checkInsurance',
+        pathParts: ['pets', '{petId}', 'invoke.checkInsurance'],
+        operations: ['get']
+      },
+      {
         model: 'pet',
         pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecords'],
         operations: ['get']
-      }
+      },
     ])
   })
 

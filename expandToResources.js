@@ -21,7 +21,7 @@ const stripReadOnlyProperties = model => ({
     .filter(([name, value]) => !value.readOnly))
 })
 
-const expandModels = models => {
+const expandModels = (models, resources) => {
   let expandedModels = mapValues(keyBy(models, 'name'), model => ({
     request: stripReadOnlyProperties(model.model),
     response: model.model
@@ -37,6 +37,16 @@ const expandModels = models => {
         }
       }
     }
+  })
+
+  resources.forEach(resource => {
+    forEach(resource.fns, fn => {
+      if (!fn.model) return
+      const model = fn.model.request || fn.model.response
+        ? fn.model
+        : { response: fn.model }
+      expandedModels = { ...expandedModels, [fn.name]: model }
+    })
   })
 
   return expandedModels
@@ -120,13 +130,13 @@ const expandPaths = mountedResources => {
       paths.push({
         name: fn.name,
         methods: [fn.method],
+        modelName: fn.model ? fn.name : resource.name,
         pathParts: compact([
           pluralize(resource.name),
           allEntityVerbs.includes(fn.method) && `{${resource.name}Id}`,
           `invoke.${fn.name}`
         ]),
         mountPath: resource.mountPath,
-        modelName: resource.name
       })
     })
 
@@ -219,11 +229,10 @@ const expandToResources = spec => {
   const unmountedResources = expandToUnmountedResources(treeResources)
   // Calculate the mount point and add to every resource
   const mountedResources = expandToMountedResources(unmountedResources)
-  // Expand each resource into spec paths and pass through models
-  return {
-    models: expandModels(spec),
-    paths: expandPaths(mountedResources)
-  }
+  // Expand each resource into spec paths and models
+  const paths = expandPaths(mountedResources)
+  const models = expandModels(spec, mountedResources)
+  return { models, paths }
 }
 
 module.exports = expandToResources

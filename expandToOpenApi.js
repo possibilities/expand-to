@@ -138,6 +138,19 @@ const getRequestBody = (operation, models) => {
     }
   }
 
+  if (isObject(modelName)) {
+    return {
+      required: true,
+      content: {
+        'application/json': {
+          schema: {
+            '$ref': `#/components/schemas/${upperFirst(operation.model)}Request`
+          }
+        }
+      }
+    }
+  }
+
   return {
     required: true,
     content: {
@@ -212,7 +225,8 @@ const getSchemas = (operations, models = {}) => {
     const name = upperFirst(operation.model)
     if (
       !bodylessActions.includes(operation.action) &&
-      !isString(models[operation.model].response)
+      !isString(models[operation.model].request) &&
+      models[operation.model].request
     ) {
       schemas = {
         ...schemas,

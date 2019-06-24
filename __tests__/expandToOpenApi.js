@@ -127,6 +127,14 @@ const spec = {
       operations: ['post']
     },
     {
+      model: 'customFunctionModelWithRequestAndStringyResponse',
+      name: 'customFunctionModelWithRequestAndStringyResponse',
+      resourceName: 'pet',
+      isCustomFunctionResource: true,
+      pathParts: ['pets', 'invoke.customFunctionModelWithRequestAndStringyResponse'],
+      operations: ['post']
+    },
+    {
       model: 'pet',
       resourceName: 'pet',
       pathParts: ['pets', '{petId}'],
@@ -196,6 +204,16 @@ const spec = {
     customFunctionModelWithStringyRequestAndResponse: {
       request: 'pet',
       response: 'pet'
+    },
+    customFunctionModelWithRequestAndStringyResponse: {
+      request: {
+        properties: {
+          customFunctionModelWithRequestAndStringyResponseField: {
+            type: 'string'
+          }
+        }
+      },
+      response: 'pet'
     }
   }
 }
@@ -216,6 +234,9 @@ describe('expandToOpenApi#paths', () => {
         get: ['pets']
       },
       '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
+        post: ['pets']
+      },
+      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
         post: ['pets']
       },
       '/pets/{petId}': {
@@ -274,6 +295,9 @@ describe('expandToOpenApi#paths', () => {
       '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
         post: 'invokeCustomFunctionModelWithStringyRequestAndResponseForPet'
       },
+      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
+        post: 'invokeCustomFunctionModelWithRequestAndStringyResponseForPet'
+      },
       '/stores': {
         get: 'listStores',
         post: 'createStore'
@@ -322,6 +346,9 @@ describe('expandToOpenApi#paths', () => {
       },
       '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
         post: 'Invoke `customFunctionModelWithStringyRequestAndResponse` for pet'
+      },
+      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
+        post: 'Invoke `customFunctionModelWithRequestAndStringyResponse` for pet'
       },
       '/stores': {
         get: 'List stores',
@@ -393,6 +420,7 @@ describe('expandToOpenApi#paths', () => {
       '/pets/invoke.custom_function': { get: [] },
       '/pets/invoke.custom_function_model_with_stringy_response': { get: [] },
       '/pets/invoke.custom_function_model_with_stringy_request_and_response': { post: [] },
+      '/pets/invoke.custom_function_model_with_request_and_stringy_response': { post: [] },
       '/stores': { get: paginationParameters, post: [] },
       '/stores/{storeId}': {
         delete: storeParams,
@@ -462,6 +490,16 @@ describe('expandToOpenApi#paths', () => {
           content: {
             'application/json': {
               schema: { '$ref': `#/components/schemas/PetRequest` }
+            }
+          },
+          required: true
+        }
+      },
+      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
+        post: {
+          content: {
+            'application/json': {
+              schema: { '$ref': `#/components/schemas/CustomFunctionModelWithRequestAndStringyResponseRequest` }
             }
           },
           required: true
@@ -705,6 +743,26 @@ describe('expandToOpenApi#paths', () => {
         }
       },
       '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
+        post: {
+          '201': {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    pet: {
+                      '$ref': `#/components/schemas/PetResponse`
+                    }
+                  }
+                }
+              }
+            },
+            description: 'Create succeeded'
+          },
+          ...collectionErrors
+        }
+      },
+      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
         post: {
           '201': {
             content: {
@@ -1007,7 +1065,14 @@ test('expandToOpenApi#components', () => {
         id: { type: 'string', readOnly: true }
       }
     },
-    ManagerRequest: { properties: { name: { type: 'string' } } }
+    ManagerRequest: { properties: { name: { type: 'string' } } },
+    CustomFunctionModelWithRequestAndStringyResponseRequest: {
+      properties: {
+        customFunctionModelWithRequestAndStringyResponseField: {
+          type: 'string'
+        }
+      }
+    }
   })
 })
 

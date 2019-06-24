@@ -44,8 +44,8 @@ const expandModels = (models, resources) => {
       if (!fn.model) return
       const model = fn.model.request || fn.model.response
         ? {
-          request: fn.model.request,
-          response: fn.model.response || fn.model
+          request: fn.model.request || fn.resourceName,
+          response: fn.model.response || fn.resourceName
         }
         : {
           request: fn.model,

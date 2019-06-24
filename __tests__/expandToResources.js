@@ -244,6 +244,18 @@ describe('expandToResources#fns', () => {
             method: 'post',
             name: 'customFunctionWithStringySeparateModels',
             model: { request: 'pet', response: 'pet' }
+          },
+          {
+            method: 'post',
+            name: 'customFunctionModelWithRequestAndStringyResponse',
+            model: {
+              request: {
+                properties: {
+                  customFunctionModelWithRequestAndStringyResponseField: { type: 'string' }
+                }
+              },
+              response: 'pet'
+            }
           }
         ],
         model: { properties: { name: { type: 'string' } } }
@@ -288,6 +300,14 @@ describe('expandToResources#fns', () => {
       customFunctionWithStringySeparateModels: {
         request: 'pet',
         response: 'pet'
+      },
+      customFunctionModelWithRequestAndStringyResponse: {
+        request: {
+          properties: {
+            customFunctionModelWithRequestAndStringyResponseField: { type: 'string' }
+          }
+        },
+        response: 'pet'
       }
     })
 
@@ -298,6 +318,14 @@ describe('expandToResources#fns', () => {
         model: 'pet',
         resourceName: 'pet',
         operations: allCollectionVerbs
+      },
+      {
+        name: 'customFunctionModelWithRequestAndStringyResponse',
+        model: 'customFunctionModelWithRequestAndStringyResponse',
+        resourceName: 'pet',
+        pathParts: ['pets', 'invoke.customFunctionModelWithRequestAndStringyResponse'],
+        isCustomFunctionResource: true,
+        operations: ['post']
       },
       {
         name: 'customFunctionWithListAction',

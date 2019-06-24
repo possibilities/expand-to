@@ -1,3 +1,5 @@
+const isObject = require('lodash/isObject')
+const isString = require('lodash/isString')
 const mapValues = require('lodash/mapValues')
 const omit = require('lodash/omit')
 const get = require('lodash/get')
@@ -37,8 +39,8 @@ const createResponse = (status, action, modelName) => ({
 
 const createModelResponse = (status, action, modelName) => {
   const responseName = lowerFirst(modelName)
-
   const schemaName = `${upperFirst(modelName)}Response`
+
   const schema = action === 'list'
     ? {
       type: 'object',
@@ -115,41 +117,45 @@ const getParameters = (operation, models) => {
   ]
 }
 
-const getRequestBody = operation => {
+const getRequestBody = (operation, models) => {
   if (bodylessActions.includes(operation.action)) return
+
+  const modelName = isObject(get(models[operation.name], 'request'))
+    ? operation.name
+    : get(models[operation.name], 'request', operation.model)
+
   return {
     required: true,
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${upperFirst(operation.model)}Request`
+          '$ref': `#/components/schemas/${upperFirst(modelName)}Request`
         }
       }
     }
   }
 }
 
-const getResponses = operation => {
+const getResponses = (operation, models) => {
   let response
+  const modelName = isObject(get(models[operation.name], 'response'))
+    ? operation.name
+    : get(models[operation.name], 'response', operation.model)
   if (['put', 'patch', 'get'].includes(operation.action)) {
-    response = createModelResponse(
-      200,
-      operation.action,
-      upperFirst(operation.model)
-    )
+    response = createModelResponse(200, operation.action, modelName)
   } else {
     switch (operation.action) {
       case 'post':
-        response = createModelResponse(201, 'create', operation.model)
+        response = createModelResponse(201, 'create', modelName)
         break
       case 'list':
-        response = createModelResponse(200, 'list', operation.model)
+        response = createModelResponse(200, 'list', modelName)
         break
       case 'delete':
-        response = createResponse(204, 'delete', 'Empty', operation.model)
+        response = createResponse(204, 'delete', 'Empty', modelName)
         break
       case 'head':
-        response = createResponse(200, 'check', 'Empty', operation.model)
+        response = createResponse(200, 'check', 'Empty', modelName)
         break
     }
   }
@@ -176,8 +182,8 @@ const getMethod = (operation, models) => {
     tags: operation.namespace,
     summary: operation.summary,
     parameters: getParameters(operation, models),
-    requestBody: getRequestBody(operation),
-    responses: getResponses(operation)
+    requestBody: getRequestBody(operation, models),
+    responses: getResponses(operation, models)
   }
 }
 
@@ -190,13 +196,19 @@ const getSchemas = (operations, models = {}) => {
 
   operations.forEach(operation => {
     const name = upperFirst(operation.model)
-    if (!bodylessActions.includes(operation.action)) {
+    if (
+      !bodylessActions.includes(operation.action) &&
+      !isString(models[operation.model].response)
+    ) {
       schemas = {
         ...schemas,
         [`${name}Request`]: models[operation.model].request
       }
     }
-    if (!responselessActions.includes(operation.action)) {
+    if (
+      !responselessActions.includes(operation.action) &&
+      !isString(models[operation.model].response)
+    ) {
       schemas = {
         ...schemas,
         [`${name}Response`]: models[operation.model].response

@@ -99,40 +99,60 @@ const spec = {
     {
       model: 'pet',
       pathParts: ['pets'],
+      resourceName: 'pet',
       operations: allCollectionVerbs
     },
     {
       model: 'pet',
+      name: 'customFunction',
+      resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.requestMedicalRecords'],
-      operations: ['get'],
-      fns: [{
-        method: 'get',
-        name: 'requestMedicalRecords'
-      }]
+      pathParts: ['pets', 'invoke.customFunction'],
+      operations: ['get']
+    },
+    {
+      model: 'customFunctionModelWithStringyResponse',
+      name: 'customFunctionModelWithStringyResponse',
+      resourceName: 'pet',
+      isCustomFunctionResource: true,
+      pathParts: ['pets', 'invoke.customFunctionModelWithStringyResponse'],
+      operations: ['get']
+    },
+    {
+      model: 'customFunctionModelWithStringyRequestAndResponse',
+      name: 'customFunctionModelWithStringyRequestAndResponse',
+      resourceName: 'pet',
+      isCustomFunctionResource: true,
+      pathParts: ['pets', 'invoke.customFunctionModelWithStringyRequestAndResponse'],
+      operations: ['post']
     },
     {
       model: 'pet',
+      resourceName: 'pet',
       pathParts: ['pets', '{petId}'],
       operations: allEntityVerbs
     },
     {
       model: 'store',
+      resourceName: 'store',
       pathParts: ['stores'],
       operations: allCollectionVerbs
     },
     {
       model: 'store',
+      resourceName: 'store',
       pathParts: ['stores', '{storeId}'],
       operations: allEntityVerbs
     },
     {
       model: 'manager',
+      resourceName: 'manager',
       pathParts: ['stores', '{storeId}', 'managers'],
       operations: allCollectionVerbs
     },
     {
       model: 'manager',
+      resourceName: 'manager',
       pathParts: ['stores', '{storeId}', 'managers', '{managerId}'],
       operations: allEntityVerbs
     }
@@ -168,6 +188,14 @@ const spec = {
           id: { type: 'string', readOnly: true }
         }
       }
+    },
+    customFunctionModelWithStringyResponse: {
+      request: undefined,
+      response: 'pet'
+    },
+    customFunctionModelWithStringyRequestAndResponse: {
+      request: 'pet',
+      response: 'pet'
     }
   }
 }
@@ -181,8 +209,14 @@ describe('expandToOpenApi#paths', () => {
         get: ['pets'],
         post: ['pets']
       },
-      '/pets/invoke.requestMedicalRecords': {
+      '/pets/invoke.customFunction': {
         get: ['pets']
+      },
+      '/pets/invoke.customFunctionModelWithStringyResponse': {
+        get: ['pets']
+      },
+      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+        post: ['pets']
       },
       '/pets/{petId}': {
         delete: ['pets'],
@@ -231,8 +265,14 @@ describe('expandToOpenApi#paths', () => {
         patch: 'updatePet',
         put: 'replacePet'
       },
-      '/pets/invoke.requestMedicalRecords': {
-        get: 'invokeRequestMedicalRecordsForPet'
+      '/pets/invoke.customFunction': {
+        get: 'invokeCustomFunctionForPet'
+      },
+      '/pets/invoke.customFunctionModelWithStringyResponse': {
+        get: 'invokeCustomFunctionModelWithStringyResponseForPet'
+      },
+      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+        post: 'invokeCustomFunctionModelWithStringyRequestAndResponseForPet'
       },
       '/stores': {
         get: 'listStores',
@@ -274,8 +314,14 @@ describe('expandToOpenApi#paths', () => {
         patch: 'Update pet',
         put: 'Replace pet'
       },
-      '/pets/invoke.requestMedicalRecords': {
-        get: 'Invoke `requestMedicalRecords` for pet'
+      '/pets/invoke.customFunction': {
+        get: 'Invoke `customFunction` for pet'
+      },
+      '/pets/invoke.customFunctionModelWithStringyResponse': {
+        get: 'Invoke `customFunctionModelWithStringyResponse` for pet'
+      },
+      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+        post: 'Invoke `customFunctionModelWithStringyRequestAndResponse` for pet'
       },
       '/stores': {
         get: 'List stores',
@@ -344,7 +390,9 @@ describe('expandToOpenApi#paths', () => {
         patch: petsParams,
         put: petsParams
       },
-      '/pets/invoke.requestMedicalRecords': { get: [] },
+      '/pets/invoke.customFunction': { get: [] },
+      '/pets/invoke.customFunctionModelWithStringyResponse': { get: [] },
+      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': { post: [] },
       '/stores': { get: paginationParameters, post: [] },
       '/stores/{storeId}': {
         delete: storeParams,
@@ -403,8 +451,21 @@ describe('expandToOpenApi#paths', () => {
           required: true
         }
       },
-      '/pets/invoke.requestMedicalRecords': {
+      '/pets/invoke.customFunction': {
         get: undefined
+      },
+      '/pets/invoke.customFunctionModelWithStringyResponse': {
+        get: undefined
+      },
+      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+        post: {
+          content: {
+            'application/json': {
+              schema: { '$ref': `#/components/schemas/PetRequest` }
+            }
+          },
+          required: true
+        }
       },
       '/stores': {
         get: undefined,
@@ -603,7 +664,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.requestMedicalRecords': {
+      '/pets/invoke.customFunction': {
         get: {
           '200': {
             content: {
@@ -621,6 +682,46 @@ describe('expandToOpenApi#paths', () => {
             description: 'Get succeeded'
           },
           ...entityErrors
+        }
+      },
+      '/pets/invoke.customFunctionModelWithStringyResponse': {
+        get: {
+          '200': {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    pet: {
+                      '$ref': `#/components/schemas/PetResponse`
+                    }
+                  }
+                }
+              }
+            },
+            description: 'Get succeeded'
+          },
+          ...entityErrors
+        }
+      },
+      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+        post: {
+          '201': {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    pet: {
+                      '$ref': `#/components/schemas/PetResponse`
+                    }
+                  }
+                }
+              }
+            },
+            description: 'Create succeeded'
+          },
+          ...collectionErrors
         }
       },
       '/stores': {

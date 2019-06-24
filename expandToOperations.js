@@ -37,8 +37,8 @@ const getId = (action, path) => {
       upperFirst(last(path.pathParts).split('.').pop()),
       'For',
       action === 'list'
-        ? pluralize(upperFirst(path.model))
-        : upperFirst(path.model)
+        ? pluralize(upperFirst(path.resourceName))
+        : upperFirst(path.resourceName)
     ].join('')
   }
 
@@ -61,7 +61,9 @@ const getId = (action, path) => {
 const getSummary = (action, path) => {
   if (path.isCustomFunctionResource) {
     const fnName = last(path.pathParts).split('.').slice(1).join('.')
-    const resourceName = action === 'list' ? pluralize(path.model) : path.model
+    const resourceName = action === 'list'
+      ? pluralize(path.resourceName)
+      : path.resourceName
     return `Invoke \`${fnName}\` for ${resourceName}`
   }
   const namespace = getNamespace(path)
@@ -114,7 +116,9 @@ const expandToOperations = ({ paths, models }) => {
     path.operations.forEach(action => {
       operations.push({
         action,
+        name: path.name,
         model: path.model,
+        resourceName: path.resourceName,
         id: getId(action, path),
         summary: getSummary(action, path),
         path: `/${path.pathParts.join('/')}`,

@@ -28,6 +28,7 @@ const dump = (spec, title) => {
   const { errors } = validator.validate(openApiSpec)
   if (errors.length) {
     console.error(errors)
+    console.error(errors.length + ' validation errors')
     throw new Error('OpenAPI validation failed: ' + title)
   }
 
@@ -65,22 +66,30 @@ describe('expandToResources', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['pets'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['pets', '{petId}'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allEntityVerbs
       },
       {
         pathParts: ['stores'],
+        name: 'store',
         model: 'store',
+        resourceName: 'store',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['stores', '{storeId}'],
+        name: 'store',
         model: 'store',
+        resourceName: 'store',
         operations: allEntityVerbs
       }
     ])
@@ -105,12 +114,16 @@ describe('expandToResources', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['people'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['people', '{personId}'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allEntityVerbs
       }
     ])
@@ -136,12 +149,16 @@ describe('expandToResources', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['pets'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['pets', '{petId}'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: ['head', 'get', 'delete']
       }
     ])
@@ -174,7 +191,7 @@ describe('expandToResources', () => {
   })
 })
 
-describe('expand#fns', () => {
+describe('expandToResources#fns', () => {
   test('basic', () => {
     const schema = dump(
       [{
@@ -190,18 +207,43 @@ describe('expand#fns', () => {
           },
           {
             method: 'get',
-            name: 'customCheckWithModel',
-            // With response body
-            model: { properties: { insuranceName: { type: 'string' } } }
+            name: 'customFunctionWithModel',
+            model: {
+              properties: {
+                customFunctionModelField: { type: 'string' }
+              }
+            }
           },
           {
             method: 'post',
-            name: 'customCheckWithSeparateModels',
-            // With request and response bodied
+            name: 'customFunctionWithSeparateModels',
             model: {
-              request: { properties: { state: { type: 'string' } } },
-              response: { properties: { adoptionDate: { type: 'string' } } }
+              request: {
+                properties: {
+                  customFunctionRequestModelField: { type: 'string' }
+                }
+              },
+              response: {
+                properties: {
+                  customFunctionResponseModelField: { type: 'string' }
+                }
+              }
             }
+          },
+          {
+            method: 'post',
+            name: 'customFunctionWithStringyModel',
+            model: 'pet'
+          },
+          {
+            method: 'post',
+            name: 'customFunctionWithStringyResponseModel',
+            model: { response: 'pet' }
+          },
+          {
+            method: 'post',
+            name: 'customFunctionWithStringySeparateModels',
+            model: { request: 'pet', response: 'pet' }
           }
         ],
         model: { properties: { name: { type: 'string' } } }
@@ -214,108 +256,109 @@ describe('expand#fns', () => {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
       },
-      customCheckWithModel: {
-        response: { properties: { insuranceName: { type: 'string' } } }
+      customFunctionWithModel: {
+        request: {
+          properties: {
+            customFunctionModelField: { type: 'string' }
+          }
+        },
+        response: {
+          properties: {
+            customFunctionModelField: { type: 'string' }
+          }
+        }
       },
-      customCheckWithSeparateModels: {
-        request: { properties: { state: { type: 'string' } } },
-        response: { properties: { adoptionDate: { type: 'string' } } }
+      customFunctionWithSeparateModels: {
+        request: {
+          properties: {
+            customFunctionRequestModelField: { type: 'string' }
+          }
+        },
+        response: {
+          properties: {
+            customFunctionResponseModelField: { type: 'string' }
+          }
+        }
+      },
+      customFunctionWithStringyModel: { request: 'pet', response: 'pet' },
+      customFunctionWithStringyResponseModel: {
+        request: undefined,
+        response: 'pet'
+      },
+      customFunctionWithStringySeparateModels: {
+        request: 'pet',
+        response: 'pet'
       }
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['pets'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allCollectionVerbs
       },
       {
-        model: 'customCheckWithSeparateModels',
-        pathParts: ['pets', 'invoke.customCheckWithSeparateModels'],
-        isCustomFunctionResource: true,
-        operations: ['post']
-      },
-      {
+        name: 'customFunctionWithListAction',
         model: 'pet',
+        resourceName: 'customFunctionWithListAction',
         pathParts: ['pets', 'invoke.customFunctionWithListAction'],
         isCustomFunctionResource: true,
         operations: ['list']
       },
       {
+        name: 'customFunctionWithSeparateModels',
+        model: 'customFunctionWithSeparateModels',
+        resourceName: 'customFunctionWithSeparateModels',
+        pathParts: ['pets', 'invoke.customFunctionWithSeparateModels'],
+        isCustomFunctionResource: true,
+        operations: ['post']
+      },
+      {
+        name: 'customFunctionWithStringyModel',
+        model: 'customFunctionWithStringyModel',
+        pathParts: ['pets', 'invoke.customFunctionWithStringyModel'],
+        resourceName: 'customFunctionWithStringyModel',
+        isCustomFunctionResource: true,
+        operations: ['post']
+      },
+      {
+        name: 'customFunctionWithStringyResponseModel',
+        model: 'customFunctionWithStringyResponseModel',
+        resourceName: 'customFunctionWithStringyResponseModel',
+        pathParts: ['pets', 'invoke.customFunctionWithStringyResponseModel'],
+        isCustomFunctionResource: true,
+        operations: ['post']
+      },
+      {
+        name: 'customFunctionWithStringySeparateModels',
+        model: 'customFunctionWithStringySeparateModels',
+        resourceName: 'customFunctionWithStringySeparateModels',
+        pathParts: ['pets', 'invoke.customFunctionWithStringySeparateModels'],
+        isCustomFunctionResource: true,
+        operations: ['post']
+      },
+      {
         pathParts: ['pets', '{petId}'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allEntityVerbs
       },
       {
-        model: 'customCheckWithModel',
-        pathParts: ['pets', '{petId}', 'invoke.customCheckWithModel'],
-        isCustomFunctionResource: true,
-        operations: ['get']
-      },
-      {
+        name: 'customFunctionWithGetAction',
         model: 'pet',
+        resourceName: 'customFunctionWithGetAction',
         pathParts: ['pets', '{petId}', 'invoke.customFunctionWithGetAction'],
         isCustomFunctionResource: true,
         operations: ['get']
-      }
-    ])
-  })
-
-  test('with `belongsTo`', () => {
-    const schema = dump(
-      [{
-        name: 'org',
-        model: { properties: { name: { type: 'string' } } }
-      }, {
-        name: 'repo',
-        fns: [{ method: 'get', name: 'customFunctionWithBelongsTo' }],
-        model: { properties: { name: { type: 'string' } } },
-        belongsTo: 'org'
-      }],
-      'custom function with belongsTo'
-    )
-
-    expect(expandToResources(schema).models).toEqual({
-      org: {
-        request: { properties: { name: { type: 'string' } } },
-        response: { properties: { name: { type: 'string' } } }
-      },
-      repo: {
-        request: { properties: { name: { type: 'string' } } },
-        response: { properties: { name: { type: 'string' } } }
-      }
-    })
-
-    expect(expandedView(expandToResources(schema))).toEqual([
-      {
-        pathParts: ['orgs'],
-        model: 'org',
-        operations: allCollectionVerbs
       },
       {
-        pathParts: ['orgs', '{orgId}'],
-        model: 'org',
-        operations: allEntityVerbs
-      },
-      {
-        pathParts: ['orgs', '{orgId}', 'repos'],
-        model: 'repo',
-        operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['orgs', '{orgId}', 'repos', '{repoId}'],
-        model: 'repo',
-        operations: allEntityVerbs
-      },
-      {
-        pathParts: [
-          'orgs',
-          '{orgId}',
-          'repos',
-          '{repoId}',
-          'invoke.customFunctionWithBelongsTo'
-        ],
-        model: 'repo',
+        name: 'customFunctionWithModel',
+        model: 'customFunctionWithModel',
+        resourceName: 'customFunctionWithModel',
+        pathParts: ['pets', '{petId}', 'invoke.customFunctionWithModel'],
         isCustomFunctionResource: true,
         operations: ['get']
       }
@@ -323,7 +366,7 @@ describe('expand#fns', () => {
   })
 })
 
-describe('expand#belongsTo', () => {
+describe('expandToResources#belongsTo', () => {
   test('basic', () => {
     const schema = dump([
       {
@@ -360,32 +403,44 @@ describe('expand#belongsTo', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['orgs'],
+        name: 'org',
         model: 'org',
+        resourceName: 'org',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['orgs', '{orgId}'],
+        name: 'org',
         model: 'org',
+        resourceName: 'org',
         operations: allEntityVerbs
       },
       {
         pathParts: ['orgs', '{orgId}', 'repos'],
+        name: 'repo',
         model: 'repo',
+        resourceName: 'repo',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['orgs', '{orgId}', 'repos', '{repoId}'],
+        name: 'repo',
         model: 'repo',
+        resourceName: 'repo',
         operations: allEntityVerbs
       },
       {
         pathParts: ['orgs', '{orgId}', 'repos', '{repoId}', 'commits'],
+        name: 'commit',
         model: 'commit',
+        resourceName: 'commit',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['orgs', '{orgId}', 'repos', '{repoId}', 'commits', '{commitId}'],
+        name: 'commit',
         model: 'commit',
+        resourceName: 'commit',
         operations: allEntityVerbs
       }
     ])
@@ -436,69 +491,93 @@ describe('expand#belongsTo', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['committers'],
+        name: 'committer',
         model: 'committer',
+        resourceName: 'committer',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['committers', '{committerId}'],
+        name: 'committer',
         model: 'committer',
+        resourceName: 'committer',
         operations: allEntityVerbs
       },
       {
         pathParts: ['owners'],
+        name: 'owner',
         model: 'owner',
+        resourceName: 'owner',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['owners', '{ownerId}'],
+        name: 'owner',
         model: 'owner',
+        resourceName: 'owner',
         operations: allEntityVerbs
       },
       {
         pathParts: ['repos'],
+        name: 'repo',
         model: 'repo',
+        resourceName: 'repo',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['repos', '{repoId}'],
+        name: 'repo',
         model: 'repo',
+        resourceName: 'repo',
         operations: allEntityVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'commits'],
+        name: 'commit',
         model: 'commit',
+        resourceName: 'commit',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'commits', '{commitId}'],
+        name: 'commit',
         model: 'commit',
+        resourceName: 'commit',
         operations: allEntityVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'commits', '{commitId}', 'committers'],
+        name: 'committer',
         model: 'committer',
+        resourceName: 'committer',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'commits', '{commitId}', 'committers', '{committerId}'],
+        name: 'committer',
         model: 'committer',
+        resourceName: 'committer',
         operations: allEntityVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'owners'],
+        name: 'owner',
         model: 'owner',
+        resourceName: 'owner',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'owners', '{ownerId}'],
+        name: 'owner',
         model: 'owner',
+        resourceName: 'owner',
         operations: allEntityVerbs
       }
     ])
   })
 })
 
-describe('expand#hasMany', () => {
+describe('expandToResources#hasMany', () => {
   test('basic', () => {
     const schema = dump([
       {
@@ -526,32 +605,44 @@ describe('expand#hasMany', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['people'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['people', '{personId}'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allEntityVerbs
       },
       {
         pathParts: ['people', '{personId}', 'pets'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['people', '{personId}', 'pets', '{petId}'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allEntityVerbs
       },
       {
         pathParts: ['pets'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['pets', '{petId}'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allEntityVerbs
       }
     ])
@@ -587,49 +678,65 @@ describe('expand#hasMany', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['people'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['people', '{personId}'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allEntityVerbs
       },
       {
         pathParts: ['pets'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['pets', '{petId}'],
+        name: 'pet',
         model: 'pet',
+        resourceName: 'pet',
         operations: allEntityVerbs
       },
       {
         pathParts: ['pets', '{petId}', 'doctors'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['pets', '{petId}', 'doctors', '{doctorId}'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allEntityVerbs
       },
       {
         pathParts: ['pets', '{petId}', 'owners'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['pets', '{petId}', 'owners', '{ownerId}'],
+        name: 'person',
         model: 'person',
+        resourceName: 'person',
         operations: allEntityVerbs
       }
     ])
   })
 })
 
-describe('expand#treeOf', () => {
+describe('expandToResources#treeOf', () => {
   test('basic', () => {
     const schema = dump(
       [{
@@ -654,22 +761,30 @@ describe('expand#treeOf', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['groups'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allEntityVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups'],
+        name: 'subgroup',
         model: 'group',
+        resourceName: 'subgroup',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        name: 'subgroup',
         model: 'group',
+        resourceName: 'subgroup',
         operations: allEntityVerbs
       }
     ])
@@ -709,32 +824,44 @@ describe('expand#treeOf', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['regions'],
+        name: 'region',
         model: 'region',
+        resourceName: 'region',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['regions', '{regionId}'],
+        name: 'region',
         model: 'region',
+        resourceName: 'region',
         operations: allEntityVerbs
       },
       {
         pathParts: ['regions', '{regionId}', 'groups'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['regions', '{regionId}', 'groups', '{groupId}'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allEntityVerbs
       },
       {
         pathParts: ['regions', '{regionId}', 'groups', '{groupId}', 'subgroups'],
+        name: 'subgroup',
         model: 'group',
+        resourceName: 'subgroup',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['regions', '{regionId}', 'groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        name: 'subgroup',
         model: 'group',
+        resourceName: 'subgroup',
         operations: allEntityVerbs
       }
     ])
@@ -772,52 +899,72 @@ describe('expand#treeOf', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['groups'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allEntityVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups'],
+        name: 'subgroup',
         model: 'group',
+        resourceName: 'subgroup',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        name: 'subgroup',
         model: 'group',
+        resourceName: 'subgroup',
         operations: allEntityVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}', 'widgets'],
+        name: 'widget',
         model: 'widget',
+        resourceName: 'widget',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}', 'widgets', '{widgetId}'],
+        name: 'widget',
         model: 'widget',
+        resourceName: 'widget',
         operations: allEntityVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'widgets'],
+        name: 'widget',
         model: 'widget',
+        resourceName: 'widget',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'widgets', '{widgetId}'],
+        name: 'widget',
         model: 'widget',
+        resourceName: 'widget',
         operations: allEntityVerbs
       },
       {
         pathParts: ['widgets'],
+        name: 'widget',
         model: 'widget',
+        resourceName: 'widget',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['widgets', '{widgetId}'],
+        name: 'widget',
         model: 'widget',
+        resourceName: 'widget',
         operations: allEntityVerbs
       }
     ])
@@ -855,49 +1002,65 @@ describe('expand#treeOf', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['groups'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allEntityVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups'],
+        name: 'subgroup',
         model: 'group',
+        resourceName: 'subgroup',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}'],
+        name: 'subgroup',
         model: 'group',
+        resourceName: 'subgroup',
         operations: allEntityVerbs
       },
       {
         pathParts: ['regions'],
+        name: 'region',
         model: 'region',
+        resourceName: 'region',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['regions', '{regionId}'],
+        name: 'region',
         model: 'region',
+        resourceName: 'region',
         operations: allEntityVerbs
       },
       {
         pathParts: ['regions', '{regionId}', 'groups'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['regions', '{regionId}', 'groups', '{groupId}'],
+        name: 'group',
         model: 'group',
+        resourceName: 'group',
         operations: allEntityVerbs
       }
     ])
   })
 })
 
-describe('expand#users', () => {
+describe('expandToResources#users', () => {
   test('with `belongsTo`', () => {
     const schema = dump([
       {
@@ -925,34 +1088,46 @@ describe('expand#users', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['users'],
+        name: 'user',
         model: 'user',
+        resourceName: 'user',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', 'courses'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         isUserCentricResource: true,
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', 'courses', '{courseId}'],
         isUserCentricResource: true,
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}'],
+        name: 'user',
         model: 'user',
+        resourceName: 'user',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}', 'courses'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}', 'courses', '{courseId}'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allEntityVerbs
       }
     ])
@@ -985,44 +1160,60 @@ describe('expand#users', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['courses'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['courses', '{courseId}'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users'],
+        name: 'user',
         model: 'user',
+        resourceName: 'user',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', 'courses'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         isUserCentricResource: true,
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', 'courses', '{courseId}'],
         isUserCentricResource: true,
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}'],
+        name: 'user',
         model: 'user',
+        resourceName: 'user',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}', 'courses'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}', 'courses', '{courseId}'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allEntityVerbs
       }
     ])
@@ -1058,66 +1249,90 @@ describe('expand#users', () => {
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['courses'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['courses', '{courseId}'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users'],
+        name: 'user',
         model: 'user',
+        resourceName: 'user',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', 'contributors'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         isUserCentricResource: true,
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', 'contributors', '{contributorId}'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         isUserCentricResource: true,
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', 'learners'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         isUserCentricResource: true,
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', 'learners', '{learnerId}'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         isUserCentricResource: true,
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}'],
+        name: 'user',
         model: 'user',
+        resourceName: 'user',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}', 'contributors'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}', 'contributors', '{contributorId}'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}', 'learners'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}', 'learners', '{learnerId}'],
+        name: 'course',
         model: 'course',
+        resourceName: 'course',
         operations: allEntityVerbs
       }
     ])

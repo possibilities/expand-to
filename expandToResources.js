@@ -1,6 +1,5 @@
 const fromPairs = require('lodash/fromPairs')
 const compact = require('lodash/compact')
-const isString = require('lodash/isString')
 const toPairs = require('lodash/toPairs')
 const pickFp = require('lodash/fp/pick')
 const mapValues = require('lodash/mapValues')
@@ -45,17 +44,12 @@ const expandModels = (models, resources) => {
       if (!fn.model) return
       const model = fn.model.request || fn.model.response
         ? {
-          request: isString(fn.model.request)
-            ? models[fn.model]
-            : fn.model.request,
-          response: isString(fn.model.response)
-            ? models[fn.model]
-            : fn.model.response,
+          request: fn.model.request,
+          response: fn.model.response || fn.model
         }
         : {
-          response: isString(fn.model)
-            ? models[fn.model]
-            : fn.model
+          request: fn.model,
+          response: fn.model
         }
       expandedModels = { ...expandedModels, [fn.name]: model }
     })
@@ -223,14 +217,17 @@ const expandPaths = mountedResources => {
     ...resource,
     model: resource.modelName,
     operations: resource.methods,
+    resourceName: resource.name,
     pathParts: [
       ...resource.mountPath,
       ...resource.pathParts
     ]
   })).map(pickFp([
+    'name',
     'model',
     'pathParts',
     'operations',
+    'resourceName',
     'isUserCentricResource',
     'isCustomFunctionResource'
   ]))

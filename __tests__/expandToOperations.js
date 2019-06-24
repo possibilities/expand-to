@@ -14,42 +14,50 @@ const spec = {
     {
       model: 'pet',
       pathParts: ['pets'],
+      resourceName: 'pet',
       operations: allCollectionVerbs
     },
     {
       model: 'pet',
       pathParts: ['pets', 'invoke.requestMedicalRecords'],
+      resourceName: 'pet',
       isCustomFunctionResource: true,
       operations: ['get']
     },
     {
       model: 'pet',
       pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecordHistory'],
+      resourceName: 'pet',
       isCustomFunctionResource: true,
       operations: ['list']
     },
     {
       model: 'pet',
+      resourceName: 'pet',
       pathParts: ['pets', '{petId}'],
       operations: allEntityVerbs
     },
     {
       model: 'store',
+      resourceName: 'store',
       pathParts: ['stores'],
       operations: allCollectionVerbs
     },
     {
       model: 'store',
+      resourceName: 'store',
       pathParts: ['stores', '{storeId}'],
       operations: allEntityVerbs
     },
     {
       model: 'manager',
+      resourceName: 'manager',
       pathParts: ['stores', '{storeId}', 'managers'],
       operations: allCollectionVerbs
     },
     {
       model: 'manager',
+      resourceName: 'manager',
       pathParts: ['stores', '{storeId}', 'managers', '{managerId}'],
       operations: allEntityVerbs
     }

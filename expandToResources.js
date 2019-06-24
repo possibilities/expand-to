@@ -1,4 +1,5 @@
 const fromPairs = require('lodash/fromPairs')
+const compact = require('lodash/compact')
 const toPairs = require('lodash/toPairs')
 const pickFp = require('lodash/fp/pick')
 const mapValues = require('lodash/mapValues')
@@ -119,7 +120,11 @@ const expandPaths = mountedResources => {
       paths.push({
         name: fn.name,
         methods: [fn.method],
-        pathParts: [pluralize(resource.name), `invoke.${fn.name}`],
+        pathParts: compact([
+          pluralize(resource.name),
+          allEntityVerbs.includes(fn.method) && `{${resource.name}Id}`,
+          `invoke.${fn.name}`
+        ]),
         mountPath: resource.mountPath,
         modelName: resource.name
       })

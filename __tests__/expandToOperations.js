@@ -12,11 +12,12 @@ const spec = {
     {
       model: 'pet',
       pathParts: ['pets', 'invoke.requestMedicalRecords'],
-      operations: ['get'],
-      fns: [{
-        method: 'get',
-        name: 'requestMedicalRecords'
-      }]
+      operations: ['get']
+    },
+    {
+      model: 'pet',
+      pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecordHistory'],
+      operations: ['list']
     },
     {
       model: 'pet',
@@ -57,6 +58,7 @@ describe('expandToOperations', () => {
       'pet',
       'pet',
       'pet',
+      'pet',
       'store',
       'store',
       'store',
@@ -79,6 +81,7 @@ describe('expandToOperations', () => {
       'listPets',
       'createPet',
       'invokeRequestMedicalRecordsForPet',
+      'invokeRequestMedicalRecordHistoryForPets',
       'checkPet',
       'getPet',
       'replacePet',
@@ -106,6 +109,7 @@ describe('expandToOperations', () => {
       'List pets',
       'Create pet',
       'Invoke `requestMedicalRecords` for pet',
+      'Invoke `requestMedicalRecordHistory` for pets',
       'Check pet',
       'Get pet',
       'Replace pet',
@@ -133,6 +137,7 @@ describe('expandToOperations', () => {
       '/pets',
       '/pets',
       '/pets/invoke.requestMedicalRecords',
+      '/pets/{petId}/invoke.requestMedicalRecordHistory',
       '/pets/{petId}',
       '/pets/{petId}',
       '/pets/{petId}',
@@ -159,6 +164,7 @@ describe('expandToOperations', () => {
     expect(expandToOperations(spec).operations.map(path => path.verb)).toEqual([
       'get',
       'post',
+      'get',
       'get',
       'head',
       'get',
@@ -189,6 +195,7 @@ describe('expandToOperations', () => {
       'list',
       'post',
       'get',
+      'list',
       'head',
       'get',
       'put',
@@ -223,6 +230,7 @@ describe('expandToOperations', () => {
       ['pets'],
       ['pets'],
       ['pets'],
+      ['pets'],
       ['stores'],
       ['stores'],
       ['stores'],
@@ -245,6 +253,11 @@ describe('expandToOperations', () => {
       [],
       [],
       [],
+      [{
+        name: 'petId',
+        description: 'Pet id',
+        schema: { type: 'string' }
+      }],
       [{
         name: 'petId',
         description: 'Pet id',
@@ -379,6 +392,11 @@ describe('expandToOperations', () => {
       ],
       [],
       [],
+      [
+        { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
+        { name: 'page', description: 'Page number', schema: { type: 'string' } },
+        { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
+      ],
       [],
       [],
       [],
@@ -418,6 +436,7 @@ describe('expandToOperations', () => {
       200,
       200,
       200,
+      200,
       204,
       200,
       201,
@@ -443,6 +462,7 @@ describe('expandToOperations', () => {
       [400, 401, 403, 500],
       [400, 401, 403, 500],
       [400, 401, 403, 404, 500],
+      [400, 401, 403, 500],
       [400, 401, 403, 404, 500],
       [400, 401, 403, 404, 500],
       [400, 401, 403, 404, 500],

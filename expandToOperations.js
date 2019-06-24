@@ -6,6 +6,7 @@ const inflection = require('inflection')
 
 // Make map safe
 const singularize = str => inflection.singularize(str)
+const pluralize = str => inflection.pluralize(str)
 
 const actionToLabel = {
   post: 'create',
@@ -19,7 +20,7 @@ const getNamespace = path =>
     .filter(p => !p.startsWith('{'))
     .filter(p => !p.startsWith('invoke.'))
 
-const getOperationId = (action, path) => {
+const getId = (action, path) => {
   const namespace = getNamespace(path).map(upperFirst)
   const pathSubject = last(namespace)
   const pathContext = initial(namespace).map(singularize)
@@ -29,7 +30,9 @@ const getOperationId = (action, path) => {
       'invoke',
       upperFirst(last(path.pathParts).split('.').pop()),
       'For',
-      upperFirst(path.model)
+      action === 'list'
+        ? pluralize(upperFirst(path.model))
+        : upperFirst(path.model)
     ].join('')
   }
 
@@ -51,8 +54,9 @@ const getOperationId = (action, path) => {
 
 const getSummary = (action, path) => {
   if (last(path.pathParts).startsWith('invoke.')) {
-    const name = last(path.pathParts).split('.').slice(1).join('.')
-    return `Invoke \`${name}\` for ${path.model}`
+    const fnName = last(path.pathParts).split('.').slice(1).join('.')
+    const resourceName = action === 'list' ? pluralize(path.model) : path.model
+    return `Invoke \`${fnName}\` for ${resourceName}`
   }
   const namespace = getNamespace(path)
   const noun = last(namespace)
@@ -96,7 +100,7 @@ const expandToOperations = ({ paths, models }) => {
     path.operations.forEach(action => {
       operations.push({
         model: path.model,
-        id: getOperationId(action, path),
+        id: getId(action, path),
         summary: getSummary(action, path),
         path: `/${path.pathParts.join('/')}`,
         action,

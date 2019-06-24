@@ -179,10 +179,16 @@ describe('expand#fns', () => {
     const schema = dump(
       [{
         name: 'pet',
-        fns: [{
-          method: 'get',
-          name: 'requestMedicalRecords'
-        }],
+        fns: [
+          {
+            method: 'get',
+            name: 'requestMedicalRecords'
+          },
+          {
+            method: 'list',
+            name: 'requestMedicalRecordHistory'
+          }
+        ],
         model: { properties: { name: { type: 'string' } } }
       }],
       'custom function'
@@ -202,15 +208,20 @@ describe('expand#fns', () => {
         operations: allCollectionVerbs
       },
       {
-        pathParts: ['pets', 'invoke.requestMedicalRecords'],
         model: 'pet',
-        operations: ['get']
+        pathParts: ['pets', 'invoke.requestMedicalRecordHistory'],
+        operations: ['list']
       },
       {
         pathParts: ['pets', '{petId}'],
         model: 'pet',
         operations: allEntityVerbs
-      }
+      },
+      {
+        model: 'pet',
+        pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecords'],
+        operations: ['get']
+      },
     ])
   })
 
@@ -259,15 +270,15 @@ describe('expand#fns', () => {
         operations: allCollectionVerbs
       },
       {
-        pathParts: ['orgs', '{orgId}', 'repos', 'invoke.getTopContributors'],
-        model: 'repo',
-        operations: ['get']
-      },
-      {
         pathParts: ['orgs', '{orgId}', 'repos', '{repoId}'],
         model: 'repo',
         operations: allEntityVerbs
-      }
+      },
+      {
+        pathParts: ['orgs', '{orgId}', 'repos', '{repoId}', 'invoke.getTopContributors'],
+        model: 'repo',
+        operations: ['get']
+      },
     ])
   })
 })

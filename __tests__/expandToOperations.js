@@ -154,8 +154,8 @@ describe('expandToOperations', () => {
       expect(expandToOperations(spec).operations.map(path => path.path)).toEqual([
         '/pets',
         '/pets',
-        '/pets/invoke.requestMedicalRecords',
-        '/pets/{petId}/invoke.requestMedicalRecordHistory',
+        '/pets/invoke.request_medical_records',
+        '/pets/{petId}/invoke.request_medical_record_history',
         '/pets/{petId}',
         '/pets/{petId}',
         '/pets/{petId}',

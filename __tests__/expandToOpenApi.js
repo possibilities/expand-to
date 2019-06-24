@@ -209,13 +209,13 @@ describe('expandToOpenApi#paths', () => {
         get: ['pets'],
         post: ['pets']
       },
-      '/pets/invoke.customFunction': {
+      '/pets/invoke.custom_function': {
         get: ['pets']
       },
-      '/pets/invoke.customFunctionModelWithStringyResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_response': {
         get: ['pets']
       },
-      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
         post: ['pets']
       },
       '/pets/{petId}': {
@@ -265,13 +265,13 @@ describe('expandToOpenApi#paths', () => {
         patch: 'updatePet',
         put: 'replacePet'
       },
-      '/pets/invoke.customFunction': {
+      '/pets/invoke.custom_function': {
         get: 'invokeCustomFunctionForPet'
       },
-      '/pets/invoke.customFunctionModelWithStringyResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_response': {
         get: 'invokeCustomFunctionModelWithStringyResponseForPet'
       },
-      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
         post: 'invokeCustomFunctionModelWithStringyRequestAndResponseForPet'
       },
       '/stores': {
@@ -314,13 +314,13 @@ describe('expandToOpenApi#paths', () => {
         patch: 'Update pet',
         put: 'Replace pet'
       },
-      '/pets/invoke.customFunction': {
+      '/pets/invoke.custom_function': {
         get: 'Invoke `customFunction` for pet'
       },
-      '/pets/invoke.customFunctionModelWithStringyResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_response': {
         get: 'Invoke `customFunctionModelWithStringyResponse` for pet'
       },
-      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
         post: 'Invoke `customFunctionModelWithStringyRequestAndResponse` for pet'
       },
       '/stores': {
@@ -390,9 +390,9 @@ describe('expandToOpenApi#paths', () => {
         patch: petsParams,
         put: petsParams
       },
-      '/pets/invoke.customFunction': { get: [] },
-      '/pets/invoke.customFunctionModelWithStringyResponse': { get: [] },
-      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': { post: [] },
+      '/pets/invoke.custom_function': { get: [] },
+      '/pets/invoke.custom_function_model_with_stringy_response': { get: [] },
+      '/pets/invoke.custom_function_model_with_stringy_request_and_response': { post: [] },
       '/stores': { get: paginationParameters, post: [] },
       '/stores/{storeId}': {
         delete: storeParams,
@@ -451,13 +451,13 @@ describe('expandToOpenApi#paths', () => {
           required: true
         }
       },
-      '/pets/invoke.customFunction': {
+      '/pets/invoke.custom_function': {
         get: undefined
       },
-      '/pets/invoke.customFunctionModelWithStringyResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_response': {
         get: undefined
       },
-      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
         post: {
           content: {
             'application/json': {
@@ -664,7 +664,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.customFunction': {
+      '/pets/invoke.custom_function': {
         get: {
           '200': {
             content: {
@@ -684,7 +684,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.customFunctionModelWithStringyResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_response': {
         get: {
           '200': {
             content: {
@@ -704,7 +704,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.customFunctionModelWithStringyRequestAndResponse': {
+      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
         post: {
           '201': {
             content: {

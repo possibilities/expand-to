@@ -1,6 +1,7 @@
 const expandToResources = require('./expandToResources')
 const initial = require('lodash/initial')
 const last = require('lodash/last')
+const snakeCase = require('lodash/snakeCase')
 const upperFirst = require('lodash/upperFirst')
 const inflection = require('inflection')
 const {
@@ -121,7 +122,13 @@ const expandToOperations = ({ paths, models }) => {
         resourceName: path.resourceName,
         id: getId(action, path),
         summary: getSummary(action, path),
-        path: `/${path.pathParts.join('/')}`,
+        path: path.isCustomFunctionResource
+          ? [
+            '',
+            ...initial(path.pathParts),
+            snakeCase(last(path.pathParts)).replace('invoke_', 'invoke.')
+          ].join('/')
+          : `/${path.pathParts.join('/')}`,
         verb: action === 'list' ? 'get' : action,
         namespace: getNamespace(path),
         parameters: getParameters(path),

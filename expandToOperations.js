@@ -102,7 +102,37 @@ const getQuery = (action, path) => {
 }
 
 const collectionActions = { list: true, post: true }
-const successStatuses = { post: 201, delete: 204 }
+
+const successStatuses = {
+  list: {
+    code: 200,
+    description: 'List succeeded'
+  },
+  post: {
+    code: 201,
+    description: 'Create succeeded'
+  },
+  delete: {
+    code: 204,
+    description: 'Delete succeeded'
+  },
+  get: {
+    code: 200,
+    description: 'Get succeeded'
+  },
+  head: {
+    code: 200,
+    description: 'Check succeeded'
+  },
+  put: {
+    code: 200,
+    description: 'Replace succeeded'
+  },
+  patch: {
+    code: 200,
+    description: 'Update succeeded'
+  },
+}
 
 const expandModels = models => ({
   ...models,
@@ -132,7 +162,7 @@ const expandToOperations = ({ paths, models }) => {
         namespace: getNamespace(path),
         parameters: getParameters(path),
         query: getQuery(action, path),
-        successStatus: successStatuses[action] || 200,
+        successStatus: successStatuses[action],
         errorStatuses: collectionActions[action]
           ? [
             errors.badRequest,

@@ -62,8 +62,7 @@ const createModelResponse = (status, action, modelName) => {
   return {
     [status]: {
       description: `${upperFirst(actionToLabel[action] || action)} succeeded`,
-      content: { 'application/json': { schema }
-      }
+      content: { 'application/json': { schema } }
     }
   }
 }

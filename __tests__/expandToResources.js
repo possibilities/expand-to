@@ -516,12 +516,12 @@ describe('expandToResources#belongsTo', () => {
       },
       commitCommitter: {
         request: { properties: { committerId: { type: 'string' } } },
-        response: { properties: { committerId: { type: 'string' } } },
+        response: { properties: { committerId: { type: 'string' } } }
       },
       repoOwner: {
         request: { properties: { ownerId: { type: 'string' } } },
-        response: { properties: { ownerId: { type: 'string' } } },
-      },
+        response: { properties: { ownerId: { type: 'string' } } }
+      }
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -638,7 +638,7 @@ describe('expandToResources#hasMany', () => {
       },
       personPet: {
         request: { properties: { petId: { type: 'string' } } },
-        response: { properties: { petId: { type: 'string' } } },
+        response: { properties: { petId: { type: 'string' } } }
       }
     })
 
@@ -715,11 +715,11 @@ describe('expandToResources#hasMany', () => {
       },
       petOwner: {
         request: { properties: { ownerId: { type: 'string' } } },
-        response: { properties: { ownerId: { type: 'string' } } },
+        response: { properties: { ownerId: { type: 'string' } } }
       },
       petDoctor: {
         request: { properties: { doctorId: { type: 'string' } } },
-        response: { properties: { doctorId: { type: 'string' } } },
+        response: { properties: { doctorId: { type: 'string' } } }
       }
     })
 
@@ -944,12 +944,12 @@ describe('expandToResources#treeOf', () => {
       },
       groupWidget: {
         request: { properties: { widgetId: { type: 'string' } } },
-        response: { properties: { widgetId: { type: 'string' } } },
+        response: { properties: { widgetId: { type: 'string' } } }
       },
       subgroupWidget: {
         request: { properties: { widgetId: { type: 'string' } } },
-        response: { properties: { widgetId: { type: 'string' } } },
-      },
+        response: { properties: { widgetId: { type: 'string' } } }
+      }
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -1055,8 +1055,8 @@ describe('expandToResources#treeOf', () => {
       },
       regionGroup: {
         request: { properties: { groupId: { type: 'string' } } },
-        response: { properties: { groupId: { type: 'string' } } },
-      },
+        response: { properties: { groupId: { type: 'string' } } }
+      }
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -1217,8 +1217,8 @@ describe('expandToResources#users', () => {
       },
       userCourse: {
         request: { properties: { courseId: { type: 'string' } } },
-        response: { properties: { courseId: { type: 'string' } } },
-      },
+        response: { properties: { courseId: { type: 'string' } } }
+      }
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -1310,11 +1310,11 @@ describe('expandToResources#users', () => {
       },
       userContributor: {
         request: { properties: { contributorId: { type: 'string' } } },
-        response: { properties: { contributorId: { type: 'string' } } },
+        response: { properties: { contributorId: { type: 'string' } } }
       },
       userLearner: {
         request: { properties: { learnerId: { type: 'string' } } },
-        response: { properties: { learnerId: { type: 'string' } } },
+        response: { properties: { learnerId: { type: 'string' } } }
       }
     })
 

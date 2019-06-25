@@ -54,7 +54,7 @@ const expandModels = (models, resources) => {
         ...expandedModels,
         [singularize(relationName)]: {
           request: { properties: { [idName]: model } },
-          response: { properties: { [idName]: model } },
+          response: { properties: { [idName]: model } }
         }
       }
     })

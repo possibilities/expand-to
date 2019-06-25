@@ -230,6 +230,8 @@ const expandToOpenApi = ({ operations, models }, options = {}) => {
 
 module.exports = (spec, config = {}) => {
   const { operations, models } = expandToOperations(spec, config)
+  // console.log(expandToOpenApi({ operations, models }, config).components.schemas)
+  // console.log(expandToOpenApi({ operations, models }, config).paths['/people/{personId}/pets'].post.responses[201].content['application/json'].schema)
   return expandToOpenApi({ operations, models }, config)
 }
 

@@ -23,77 +23,6 @@ const pathMethodResponsesView = spec =>
 const pathMethodRequestBodiesView = spec =>
   mapValues(spec.paths, path => mapValues(path, method => method.requestBody))
 
-const paginationParameters = [
-  {
-    in: 'query',
-    name: 'perPage',
-    required: false,
-    description: 'Per page',
-    schema: { type: 'string' }
-  },
-  {
-    in: 'query',
-    name: 'page',
-    required: false,
-    description: 'Page number',
-    schema: { type: 'string' }
-  },
-  {
-    in: 'query',
-    name: 'orderBy',
-    required: false,
-    description: 'Order by',
-    schema: { type: 'string' }
-  }
-]
-
-const collectionErrors = {
-  400: {
-    description: 'Bad request',
-    content: {
-      'application/json': {
-        schema: {
-          '$ref': '#/components/schemas/ErrorResponse'
-        }
-      }
-    }
-  },
-  401: {
-    description: 'Unauthorized',
-    content: {
-      'application/json': {
-        schema: {
-          '$ref': '#/components/schemas/ErrorResponse'
-        }
-      }
-    }
-  },
-  403: {
-    description: 'Forbidden',
-    content: {
-      'application/json': {
-        schema: {
-          '$ref': '#/components/schemas/ErrorResponse'
-        }
-      }
-    }
-  }
-}
-
-const entityErrors = {
-  ...collectionErrors,
-  404: {
-    description: 'Not found',
-    content: {
-      'application/json': {
-        schema: {
-          '$ref': '#/components/schemas/ErrorResponse'
-        }
-      }
-    }
-  }
-}
-
 const spec = {
   paths: [
     {
@@ -218,6 +147,80 @@ const spec = {
         }
       },
       response: 'pet'
+    }
+  }
+}
+
+// Lots of boilerplate used for assertions. Probably a smell but gets the
+// job done ATM and unsure what the better solution looks like TODO
+
+const paginationParameters = [
+  {
+    in: 'query',
+    name: 'perPage',
+    required: false,
+    description: 'Per page',
+    schema: { type: 'string' }
+  },
+  {
+    in: 'query',
+    name: 'page',
+    required: false,
+    description: 'Page number',
+    schema: { type: 'string' }
+  },
+  {
+    in: 'query',
+    name: 'orderBy',
+    required: false,
+    description: 'Order by',
+    schema: { type: 'string' }
+  }
+]
+
+const collectionErrors = {
+  400: {
+    description: 'Bad request',
+    content: {
+      'application/json': {
+        schema: {
+          '$ref': '#/components/schemas/ErrorResponse'
+        }
+      }
+    }
+  },
+  401: {
+    description: 'Unauthorized',
+    content: {
+      'application/json': {
+        schema: {
+          '$ref': '#/components/schemas/ErrorResponse'
+        }
+      }
+    }
+  },
+  403: {
+    description: 'Forbidden',
+    content: {
+      'application/json': {
+        schema: {
+          '$ref': '#/components/schemas/ErrorResponse'
+        }
+      }
+    }
+  }
+}
+
+const entityErrors = {
+  ...collectionErrors,
+  404: {
+    description: 'Not found',
+    content: {
+      'application/json': {
+        schema: {
+          '$ref': '#/components/schemas/ErrorResponse'
+        }
+      }
     }
   }
 }

@@ -111,7 +111,7 @@ describe('expandToOperations', () => {
         'manager',
         // User centric
         'pet',
-        'pet',
+        'pet'
       ])
     })
 
@@ -142,7 +142,7 @@ describe('expandToOperations', () => {
         'deleteStoreManager',
         // User centric
         'listPetsAsUser',
-        'createPetAsUser',
+        'createPetAsUser'
       ])
     })
 
@@ -173,7 +173,7 @@ describe('expandToOperations', () => {
         'Delete store manager',
         // User centric routes
         'List user pets',
-        'Create user pet',
+        'Create user pet'
       ])
     })
 
@@ -204,7 +204,7 @@ describe('expandToOperations', () => {
         '/stores/{storeId}/managers/{managerId}',
         // User centric routes
         '/users/pets',
-        '/users/pets',
+        '/users/pets'
       ])
     })
 
@@ -238,7 +238,7 @@ describe('expandToOperations', () => {
 
         // User centric routes
         'get',
-        'post',
+        'post'
       ])
     })
 
@@ -272,7 +272,7 @@ describe('expandToOperations', () => {
 
         // User centric routes
         'list',
-        'post',
+        'post'
       ])
     })
 
@@ -303,7 +303,7 @@ describe('expandToOperations', () => {
         ['stores', 'managers'],
         // User centric routes
         ['users', 'pets'],
-        ['users', 'pets'],
+        ['users', 'pets']
       ])
     })
 
@@ -443,7 +443,7 @@ describe('expandToOperations', () => {
         ],
         // User centric routes
         [],
-        [],
+        []
       ])
     })
 
@@ -494,7 +494,7 @@ describe('expandToOperations', () => {
           { name: 'page', description: 'Page number', schema: { type: 'string' } },
           { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
         ],
-        [],
+        []
       ])
     })
 
@@ -527,7 +527,7 @@ describe('expandToOperations', () => {
         { description: `Delete succeeded`, code: 204 },
         // User centric routes
         { description: `List succeeded`, code: 200 },
-        { description: `Create succeeded`, code: 201 },
+        { description: `Create succeeded`, code: 201 }
       ])
     })
 
@@ -560,7 +560,7 @@ describe('expandToOperations', () => {
         [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
         // User centric routes
         [errors.badRequest, errors.unauthorized, errors.forbidden],
-        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden]
       ])
     })
   })

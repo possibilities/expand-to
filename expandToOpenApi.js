@@ -170,19 +170,7 @@ const getResponses = (operation, models) => {
     ? createEmptyResponse(operation, modelName)
     : createModelResponse(operation, modelName)
 
-  const errorResponses = ['list', 'post'].includes(operation.action)
-    ? getErrorResponses(
-      errors.badRequest,
-      errors.unauthorized,
-      errors.forbidden
-    )
-    : getErrorResponses(
-      errors.badRequest,
-      errors.unauthorized,
-      errors.forbidden,
-      errors.notFound
-    )
-
+  const errorResponses = getErrorResponses(...operation.errorResponses)
   return { ...response, ...errorResponses }
 }
 

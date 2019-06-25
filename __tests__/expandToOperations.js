@@ -475,9 +475,9 @@ describe('expandToOperations', () => {
       ])
     })
 
-    test('errorStatuses', () => {
+    test('errorResponses', () => {
       expect(
-        expandToOperations(spec).operations.map(path => path.errorStatuses)
+        expandToOperations(spec).operations.map(path => path.errorResponses)
       ).toEqual([
         [errors.badRequest, errors.unauthorized, errors.forbidden],
         [errors.badRequest, errors.unauthorized, errors.forbidden],

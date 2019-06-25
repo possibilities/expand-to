@@ -163,7 +163,7 @@ const expandToOperations = ({ paths, models }) => {
         parameters: getParameters(path),
         query: getQuery(action, path),
         successStatus: successStatuses[action],
-        errorStatuses: collectionActions[action]
+        errorResponses: collectionActions[action]
           ? [
             errors.badRequest,
             errors.unauthorized,

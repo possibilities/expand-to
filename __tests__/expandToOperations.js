@@ -9,7 +9,16 @@ const {
 } = require('../common')
 
 const spec = {
-  models: {},
+  models: {
+    manager: {
+      response: {
+        id: {
+          type: 'string',
+          format: 'uuid'
+        }
+      }
+    }
+  },
   paths: [
     {
       model: 'pet',
@@ -267,7 +276,9 @@ describe('expandToOperations', () => {
     })
 
     test('parameters', () => {
-      expect(expandToOperations(spec).operations.map(path => path.parameters)).toEqual([
+      expect(
+        expandToOperations(spec).operations.map(path => path.parameters)
+      ).toEqual([
         [],
         [],
         [],
@@ -347,7 +358,7 @@ describe('expandToOperations', () => {
           {
             name: 'managerId',
             description: 'Manager id',
-            schema: { type: 'string' }
+            schema: { type: 'string', format: 'uuid' }
           }
         ],
         [
@@ -359,7 +370,7 @@ describe('expandToOperations', () => {
           {
             name: 'managerId',
             description: 'Manager id',
-            schema: { type: 'string' }
+            schema: { type: 'string', format: 'uuid' }
           }
         ],
         [
@@ -371,7 +382,7 @@ describe('expandToOperations', () => {
           {
             name: 'managerId',
             description: 'Manager id',
-            schema: { type: 'string' }
+            schema: { type: 'string', format: 'uuid' }
           }
         ],
         [
@@ -383,7 +394,7 @@ describe('expandToOperations', () => {
           {
             name: 'managerId',
             description: 'Manager id',
-            schema: { type: 'string' }
+            schema: { type: 'string', format: 'uuid' }
           }
         ],
         [
@@ -395,7 +406,7 @@ describe('expandToOperations', () => {
           {
             name: 'managerId',
             description: 'Manager id',
-            schema: { type: 'string' }
+            schema: { type: 'string', format: 'uuid' }
           }
         ]
       ])
@@ -510,7 +521,8 @@ describe('expandToOperations', () => {
     expect(expandToOperations(spec).models).toEqual({
       empty: { response: emptyResponse },
       error: { response: errorResponse },
-      pagination: { response: paginationResponse }
+      pagination: { response: paginationResponse },
+      manager: { response: { id: { format: 'uuid', type: 'string' } } }
     })
   })
 })

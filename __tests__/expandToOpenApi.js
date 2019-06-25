@@ -122,7 +122,7 @@ const spec = {
       response: {
         properties: {
           name: { type: 'string' },
-          id: { type: 'string', readOnly: true }
+          id: { type: 'string', format: 'uuid', readOnly: true }
         }
       }
     },
@@ -389,7 +389,7 @@ describe('expandToOpenApi#paths', () => {
         name: 'petId',
         required: true,
         description: 'Pet id',
-        schema: { format: 'uuid', type: 'string' }
+        schema: { type: 'string' }
       }
     ]
     const storeParams = [
@@ -1069,7 +1069,7 @@ test('expandToOpenApi#components', () => {
     ManagerResponse: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', readOnly: true }
+        id: { type: 'string', format: 'uuid', readOnly: true }
       }
     },
     ManagerRequest: { properties: { name: { type: 'string' } } },

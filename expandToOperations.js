@@ -1,4 +1,6 @@
 const expandToResources = require('./expandToResources')
+const omit = require('lodash/omit')
+const get = require('lodash/get')
 const initial = require('lodash/initial')
 const pick = require('lodash/pick')
 const last = require('lodash/last')
@@ -78,13 +80,17 @@ const getSummary = (action, path) => {
   ].filter(Boolean).join(' ')
 }
 
-const getParameters = path => {
+const getParameters = (path, models) => {
   let parameters = []
   path.pathParts.filter(p => p.startsWith('{')).forEach(pathPart => {
+    const type = pathPart.slice(1, -3)
+    const schema = get(models[type], 'response.id')
+      ? omit(models[path.model].response.id, 'readOnly')
+      : { type: 'string' }
     parameters.push({
-      schema: { type: 'string' },
+      schema,
       name: pathPart.slice(1, -1),
-      description: upperFirst(pathPart.slice(1, -3)) + ' id'
+      description: upperFirst(type) + ' id'
     })
   })
   return parameters
@@ -160,7 +166,7 @@ const expandToOperations = ({ paths, models }) => {
           : `/${path.pathParts.join('/')}`,
         verb: action === 'list' ? 'get' : action,
         namespace: getNamespace(path),
-        parameters: getParameters(path),
+        parameters: getParameters(path, models),
         query: getQuery(action, path),
         successResponse: successResponses[action],
         errorResponses: collectionActions[action]

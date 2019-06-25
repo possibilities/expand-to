@@ -71,6 +71,13 @@ const spec = {
       resourceName: 'manager',
       pathParts: ['stores', '{storeId}', 'managers', '{managerId}'],
       operations: allEntityVerbs
+    },
+    {
+      model: 'pet',
+      resourceName: 'pet',
+      pathParts: ['users', 'pets'],
+      operations: allCollectionVerbs,
+      isUserCentricResource: true
     }
   ]
 }
@@ -101,7 +108,10 @@ describe('expandToOperations', () => {
         'manager',
         'manager',
         'manager',
-        'manager'
+        'manager',
+        // User centric
+        'pet',
+        'pet',
       ])
     })
 
@@ -129,7 +139,10 @@ describe('expandToOperations', () => {
         'getStoreManager',
         'replaceStoreManager',
         'updateStoreManager',
-        'deleteStoreManager'
+        'deleteStoreManager',
+        // User centric
+        'listPetsAsUser',
+        'createPetAsUser',
       ])
     })
 
@@ -157,7 +170,10 @@ describe('expandToOperations', () => {
         'Get store manager',
         'Replace store manager',
         'Update store manager',
-        'Delete store manager'
+        'Delete store manager',
+        // User centric routes
+        'List user pets',
+        'Create user pet',
       ])
     })
 
@@ -185,7 +201,10 @@ describe('expandToOperations', () => {
         '/stores/{storeId}/managers/{managerId}',
         '/stores/{storeId}/managers/{managerId}',
         '/stores/{storeId}/managers/{managerId}',
-        '/stores/{storeId}/managers/{managerId}'
+        '/stores/{storeId}/managers/{managerId}',
+        // User centric routes
+        '/users/pets',
+        '/users/pets',
       ])
     })
 
@@ -215,7 +234,11 @@ describe('expandToOperations', () => {
         'get',
         'put',
         'patch',
-        'delete'
+        'delete',
+
+        // User centric routes
+        'get',
+        'post',
       ])
     })
 
@@ -245,7 +268,11 @@ describe('expandToOperations', () => {
         'get',
         'put',
         'patch',
-        'delete'
+        'delete',
+
+        // User centric routes
+        'list',
+        'post',
       ])
     })
 
@@ -273,7 +300,10 @@ describe('expandToOperations', () => {
         ['stores', 'managers'],
         ['stores', 'managers'],
         ['stores', 'managers'],
-        ['stores', 'managers']
+        ['stores', 'managers'],
+        // User centric routes
+        ['users', 'pets'],
+        ['users', 'pets'],
       ])
     })
 
@@ -410,7 +440,10 @@ describe('expandToOperations', () => {
             description: 'Manager id',
             schema: { type: 'string', format: 'uuid' }
           }
-        ]
+        ],
+        // User centric routes
+        [],
+        [],
       ])
     })
 
@@ -454,7 +487,14 @@ describe('expandToOperations', () => {
         [],
         [],
         [],
-        []
+        [],
+        // User centric routes
+        [
+          { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
+          { name: 'page', description: 'Page number', schema: { type: 'string' } },
+          { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
+        ],
+        [],
       ])
     })
 
@@ -484,7 +524,10 @@ describe('expandToOperations', () => {
         { description: `Get succeeded`, code: 200 },
         { description: `Replace succeeded`, code: 200 },
         { description: `Update succeeded`, code: 200 },
-        { description: `Delete succeeded`, code: 204 }
+        { description: `Delete succeeded`, code: 204 },
+        // User centric routes
+        { description: `List succeeded`, code: 200 },
+        { description: `Create succeeded`, code: 201 },
       ])
     })
 
@@ -514,7 +557,10 @@ describe('expandToOperations', () => {
         [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
         [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
         [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
-        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound]
+        [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
+        // User centric routes
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
       ])
     })
   })

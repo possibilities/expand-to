@@ -104,34 +104,34 @@ const spec = {
     },
     {
       model: 'pet',
-      name: 'customFunction',
+      name: 'customFn',
       resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.customFunction'],
+      pathParts: ['pets', 'invoke.customFn'],
       operations: ['get']
     },
     {
-      model: 'customFunctionModelWithStringyResponse',
-      name: 'customFunctionModelWithStringyResponse',
+      model: 'customFnWithStringyResponse',
+      name: 'customFnWithStringyResponse',
       resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.customFunctionModelWithStringyResponse'],
+      pathParts: ['pets', 'invoke.customFnWithStringyResponse'],
       operations: ['get']
     },
     {
-      model: 'customFunctionModelWithStringyRequestAndResponse',
-      name: 'customFunctionModelWithStringyRequestAndResponse',
+      model: 'customFnWithStringyRequestAndResponse',
+      name: 'customFnWithStringyRequestAndResponse',
       resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.customFunctionModelWithStringyRequestAndResponse'],
+      pathParts: ['pets', 'invoke.customFnWithStringyRequestAndResponse'],
       operations: ['post']
     },
     {
-      model: 'customFunctionModelWithRequestAndStringyResponse',
-      name: 'customFunctionModelWithRequestAndStringyResponse',
+      model: 'customFnWithRequestAndStringyResponse',
+      name: 'customFnWithRequestAndStringyResponse',
       resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.customFunctionModelWithRequestAndStringyResponse'],
+      pathParts: ['pets', 'invoke.customFnWithRequestAndStringyResponse'],
       operations: ['post']
     },
     {
@@ -197,24 +197,24 @@ const spec = {
         }
       }
     },
-    customFunctionModelWithStringyResponse: {
+    customFnWithStringyResponse: {
       request: undefined,
       response: 'pet'
     },
-    customFunctionModelWithStringyRequestAndResponse: {
+    customFnWithStringyRequestAndResponse: {
       request: 'pet',
       response: 'pet'
     },
-    customFunctionModelWithRequestAndStringyResponse: {
+    customFnWithRequestAndStringyResponse: {
       request: {
         properties: {
-          customFunctionModelWithRequestAndStringyResponseFieldObject: {
+          customFnWithRequestAndStringyResponseFieldObject: {
             type: 'string'
           },
           // Expands to object ref
-          customFunctionModelWithRequestAndStringyResponseFieldString: 'pet',
+          customFnWithRequestAndStringyResponseFieldString: 'pet',
           // Expands to array ref
-          customFunctionModelWithRequestAndStringyResponseFieldArray: ['pet']
+          customFnWithRequestAndStringyResponseFieldArray: ['pet']
         }
       },
       response: 'pet'
@@ -231,16 +231,16 @@ describe('expandToOpenApi#paths', () => {
         get: ['pets'],
         post: ['pets']
       },
-      '/pets/invoke.custom_function': {
+      '/pets/invoke.custom_fn': {
         get: ['pets']
       },
-      '/pets/invoke.custom_function_model_with_stringy_response': {
+      '/pets/invoke.custom_fn_with_stringy_response': {
         get: ['pets']
       },
-      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
+      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
         post: ['pets']
       },
-      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
+      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
         post: ['pets']
       },
       '/pets/{petId}': {
@@ -290,17 +290,17 @@ describe('expandToOpenApi#paths', () => {
         patch: 'updatePet',
         put: 'replacePet'
       },
-      '/pets/invoke.custom_function': {
-        get: 'invokeCustomFunctionForPet'
+      '/pets/invoke.custom_fn': {
+        get: 'invokeCustomFnForPet'
       },
-      '/pets/invoke.custom_function_model_with_stringy_response': {
-        get: 'invokeCustomFunctionModelWithStringyResponseForPet'
+      '/pets/invoke.custom_fn_with_stringy_response': {
+        get: 'invokeCustomFnWithStringyResponseForPet'
       },
-      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
-        post: 'invokeCustomFunctionModelWithStringyRequestAndResponseForPet'
+      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
+        post: 'invokeCustomFnWithStringyRequestAndResponseForPet'
       },
-      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
-        post: 'invokeCustomFunctionModelWithRequestAndStringyResponseForPet'
+      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
+        post: 'invokeCustomFnWithRequestAndStringyResponseForPet'
       },
       '/stores': {
         get: 'listStores',
@@ -342,17 +342,17 @@ describe('expandToOpenApi#paths', () => {
         patch: 'Update pet',
         put: 'Replace pet'
       },
-      '/pets/invoke.custom_function': {
-        get: 'Invoke `customFunction` for pet'
+      '/pets/invoke.custom_fn': {
+        get: 'Invoke `customFn` for pet'
       },
-      '/pets/invoke.custom_function_model_with_stringy_response': {
-        get: 'Invoke `customFunctionModelWithStringyResponse` for pet'
+      '/pets/invoke.custom_fn_with_stringy_response': {
+        get: 'Invoke `customFnWithStringyResponse` for pet'
       },
-      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
-        post: 'Invoke `customFunctionModelWithStringyRequestAndResponse` for pet'
+      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
+        post: 'Invoke `customFnWithStringyRequestAndResponse` for pet'
       },
-      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
-        post: 'Invoke `customFunctionModelWithRequestAndStringyResponse` for pet'
+      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
+        post: 'Invoke `customFnWithRequestAndStringyResponse` for pet'
       },
       '/stores': {
         get: 'List stores',
@@ -421,10 +421,10 @@ describe('expandToOpenApi#paths', () => {
         patch: petsParams,
         put: petsParams
       },
-      '/pets/invoke.custom_function': { get: [] },
-      '/pets/invoke.custom_function_model_with_stringy_response': { get: [] },
-      '/pets/invoke.custom_function_model_with_stringy_request_and_response': { post: [] },
-      '/pets/invoke.custom_function_model_with_request_and_stringy_response': { post: [] },
+      '/pets/invoke.custom_fn': { get: [] },
+      '/pets/invoke.custom_fn_with_stringy_response': { get: [] },
+      '/pets/invoke.custom_fn_with_stringy_request_and_response': { post: [] },
+      '/pets/invoke.custom_fn_with_request_and_stringy_response': { post: [] },
       '/stores': { get: paginationParameters, post: [] },
       '/stores/{storeId}': {
         delete: storeParams,
@@ -483,13 +483,13 @@ describe('expandToOpenApi#paths', () => {
           required: true
         }
       },
-      '/pets/invoke.custom_function': {
+      '/pets/invoke.custom_fn': {
         get: undefined
       },
-      '/pets/invoke.custom_function_model_with_stringy_response': {
+      '/pets/invoke.custom_fn_with_stringy_response': {
         get: undefined
       },
-      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
+      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
         post: {
           content: {
             'application/json': {
@@ -499,11 +499,11 @@ describe('expandToOpenApi#paths', () => {
           required: true
         }
       },
-      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
+      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/CustomFunctionModelWithRequestAndStringyResponseRequest` }
+              schema: { '$ref': `#/components/schemas/CustomFnWithRequestAndStringyResponseRequest` }
             }
           },
           required: true
@@ -706,7 +706,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.custom_function': {
+      '/pets/invoke.custom_fn': {
         get: {
           '200': {
             content: {
@@ -726,7 +726,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.custom_function_model_with_stringy_response': {
+      '/pets/invoke.custom_fn_with_stringy_response': {
         get: {
           '200': {
             content: {
@@ -746,7 +746,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.custom_function_model_with_stringy_request_and_response': {
+      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
         post: {
           '201': {
             content: {
@@ -766,7 +766,7 @@ describe('expandToOpenApi#paths', () => {
           ...collectionErrors
         }
       },
-      '/pets/invoke.custom_function_model_with_request_and_stringy_response': {
+      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
         post: {
           '201': {
             content: {
@@ -1070,15 +1070,15 @@ test('expandToOpenApi#components', () => {
       }
     },
     ManagerRequest: { properties: { name: { type: 'string' } } },
-    CustomFunctionModelWithRequestAndStringyResponseRequest: {
+    CustomFnWithRequestAndStringyResponseRequest: {
       properties: {
-        customFunctionModelWithRequestAndStringyResponseFieldObject: {
+        customFnWithRequestAndStringyResponseFieldObject: {
           type: 'string'
         },
-        customFunctionModelWithRequestAndStringyResponseFieldString: {
+        customFnWithRequestAndStringyResponseFieldString: {
           '$ref': '#/components/schemas/PetResponse'
         },
-        customFunctionModelWithRequestAndStringyResponseFieldArray: {
+        customFnWithRequestAndStringyResponseFieldArray: {
           type: 'array',
           items: {
             '$ref': '#/components/schemas/PetResponse'

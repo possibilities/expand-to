@@ -199,59 +199,59 @@ describe('expandToResources#fns', () => {
         fns: [
           {
             method: 'get',
-            name: 'customFunctionWithGetAction'
+            name: 'customFnWithGetAction'
           },
           {
             method: 'list',
-            name: 'customFunctionWithListAction'
+            name: 'customFnWithListAction'
           },
           {
             method: 'get',
-            name: 'customFunctionWithModel',
+            name: 'customFnWithModel',
             model: {
               properties: {
-                customFunctionModelField: { type: 'string' }
+                customFnField: { type: 'string' }
               }
             }
           },
           {
             method: 'post',
-            name: 'customFunctionWithSeparateModels',
+            name: 'customFnWithSeparateModels',
             model: {
               request: {
                 properties: {
-                  customFunctionRequestModelField: { type: 'string' }
+                  customFnRequestModelField: { type: 'string' }
                 }
               },
               response: {
                 properties: {
-                  customFunctionResponseModelField: { type: 'string' }
+                  customFnResponseModelField: { type: 'string' }
                 }
               }
             }
           },
           {
             method: 'post',
-            name: 'customFunctionWithStringyModel',
+            name: 'customFnWithStringyModel',
             model: 'pet'
           },
           {
             method: 'post',
-            name: 'customFunctionWithStringyResponseModel',
+            name: 'customFnWithStringyResponseModel',
             model: { response: 'pet' }
           },
           {
             method: 'post',
-            name: 'customFunctionWithStringySeparateModels',
+            name: 'customFnWithStringySeparateModels',
             model: { request: 'pet', response: 'pet' }
           },
           {
             method: 'post',
-            name: 'customFunctionModelWithRequestAndStringyResponse',
+            name: 'customFnWithRequestAndStringyResponse',
             model: {
               request: {
                 properties: {
-                  customFunctionModelWithRequestAndStringyResponseField: { type: 'string' }
+                  customFnWithRequestAndStringyResponseField: { type: 'string' }
                 }
               },
               response: 'pet'
@@ -268,43 +268,43 @@ describe('expandToResources#fns', () => {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
       },
-      customFunctionWithModel: {
+      customFnWithModel: {
         request: {
           properties: {
-            customFunctionModelField: { type: 'string' }
+            customFnField: { type: 'string' }
           }
         },
         response: {
           properties: {
-            customFunctionModelField: { type: 'string' }
+            customFnField: { type: 'string' }
           }
         }
       },
-      customFunctionWithSeparateModels: {
+      customFnWithSeparateModels: {
         request: {
           properties: {
-            customFunctionRequestModelField: { type: 'string' }
+            customFnRequestModelField: { type: 'string' }
           }
         },
         response: {
           properties: {
-            customFunctionResponseModelField: { type: 'string' }
+            customFnResponseModelField: { type: 'string' }
           }
         }
       },
-      customFunctionWithStringyModel: { request: 'pet', response: 'pet' },
-      customFunctionWithStringyResponseModel: {
+      customFnWithStringyModel: { request: 'pet', response: 'pet' },
+      customFnWithStringyResponseModel: {
         request: undefined,
         response: 'pet'
       },
-      customFunctionWithStringySeparateModels: {
+      customFnWithStringySeparateModels: {
         request: 'pet',
         response: 'pet'
       },
-      customFunctionModelWithRequestAndStringyResponse: {
+      customFnWithRequestAndStringyResponse: {
         request: {
           properties: {
-            customFunctionModelWithRequestAndStringyResponseField: { type: 'string' }
+            customFnWithRequestAndStringyResponseField: { type: 'string' }
           }
         },
         response: 'pet'
@@ -320,50 +320,50 @@ describe('expandToResources#fns', () => {
         operations: allCollectionVerbs
       },
       {
-        name: 'customFunctionModelWithRequestAndStringyResponse',
-        model: 'customFunctionModelWithRequestAndStringyResponse',
-        resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFunctionModelWithRequestAndStringyResponse'],
-        isCustomFunctionResource: true,
-        operations: ['post']
-      },
-      {
-        name: 'customFunctionWithListAction',
+        name: 'customFnWithListAction',
         model: 'pet',
         resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFunctionWithListAction'],
+        pathParts: ['pets', 'invoke.customFnWithListAction'],
         isCustomFunctionResource: true,
         operations: ['list']
       },
       {
-        name: 'customFunctionWithSeparateModels',
-        model: 'customFunctionWithSeparateModels',
+        name: 'customFnWithRequestAndStringyResponse',
+        model: 'customFnWithRequestAndStringyResponse',
         resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFunctionWithSeparateModels'],
+        pathParts: ['pets', 'invoke.customFnWithRequestAndStringyResponse'],
         isCustomFunctionResource: true,
         operations: ['post']
       },
       {
-        name: 'customFunctionWithStringyModel',
-        model: 'customFunctionWithStringyModel',
-        pathParts: ['pets', 'invoke.customFunctionWithStringyModel'],
+        name: 'customFnWithSeparateModels',
+        model: 'customFnWithSeparateModels',
+        resourceName: 'pet',
+        pathParts: ['pets', 'invoke.customFnWithSeparateModels'],
+        isCustomFunctionResource: true,
+        operations: ['post']
+      },
+      {
+        name: 'customFnWithStringyModel',
+        model: 'customFnWithStringyModel',
+        pathParts: ['pets', 'invoke.customFnWithStringyModel'],
         resourceName: 'pet',
         isCustomFunctionResource: true,
         operations: ['post']
       },
       {
-        name: 'customFunctionWithStringyResponseModel',
-        model: 'customFunctionWithStringyResponseModel',
+        name: 'customFnWithStringyResponseModel',
+        model: 'customFnWithStringyResponseModel',
         resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFunctionWithStringyResponseModel'],
+        pathParts: ['pets', 'invoke.customFnWithStringyResponseModel'],
         isCustomFunctionResource: true,
         operations: ['post']
       },
       {
-        name: 'customFunctionWithStringySeparateModels',
-        model: 'customFunctionWithStringySeparateModels',
+        name: 'customFnWithStringySeparateModels',
+        model: 'customFnWithStringySeparateModels',
         resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFunctionWithStringySeparateModels'],
+        pathParts: ['pets', 'invoke.customFnWithStringySeparateModels'],
         isCustomFunctionResource: true,
         operations: ['post']
       },
@@ -375,18 +375,18 @@ describe('expandToResources#fns', () => {
         operations: allEntityVerbs
       },
       {
-        name: 'customFunctionWithGetAction',
+        name: 'customFnWithGetAction',
         model: 'pet',
         resourceName: 'pet',
-        pathParts: ['pets', '{petId}', 'invoke.customFunctionWithGetAction'],
+        pathParts: ['pets', '{petId}', 'invoke.customFnWithGetAction'],
         isCustomFunctionResource: true,
         operations: ['get']
       },
       {
-        name: 'customFunctionWithModel',
-        model: 'customFunctionWithModel',
+        name: 'customFnWithModel',
+        model: 'customFnWithModel',
         resourceName: 'pet',
-        pathParts: ['pets', '{petId}', 'invoke.customFunctionWithModel'],
+        pathParts: ['pets', '{petId}', 'invoke.customFnWithModel'],
         isCustomFunctionResource: true,
         operations: ['get']
       }

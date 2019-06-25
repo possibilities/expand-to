@@ -103,7 +103,7 @@ const getQuery = (action, path) => {
 
 const collectionActions = { list: true, post: true }
 
-const successStatuses = {
+const successResponses = {
   list: {
     code: 200,
     description: 'List succeeded'
@@ -162,7 +162,7 @@ const expandToOperations = ({ paths, models }) => {
         namespace: getNamespace(path),
         parameters: getParameters(path),
         query: getQuery(action, path),
-        successStatus: successStatuses[action],
+        successResponse: successResponses[action],
         errorResponses: collectionActions[action]
           ? [
             errors.badRequest,

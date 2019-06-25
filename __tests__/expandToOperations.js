@@ -445,9 +445,9 @@ describe('expandToOperations', () => {
       ])
     })
 
-    test('successStatus', () => {
+    test('successResponse', () => {
       expect(
-        expandToOperations(spec).operations.map(path => path.successStatus)
+        expandToOperations(spec).operations.map(path => path.successResponse)
       ).toEqual([
         { description: `List succeeded`, code: 200 },
         { description: `Create succeeded`, code: 201 },

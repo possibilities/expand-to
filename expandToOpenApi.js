@@ -31,8 +31,8 @@ const emptyRequestActions = {
 }
 
 const createEmptyResponse = operation => ({
-  [operation.successStatus.code]: {
-    description: operation.successStatus.description,
+  [operation.successResponse.code]: {
+    description: operation.successResponse.description,
     content: {
       'application/json': {
         schema: {
@@ -66,8 +66,8 @@ const createModelResponse = (operation, modelName) => {
     }
 
   return {
-    [operation.successStatus.code]: {
-      description: operation.successStatus.description,
+    [operation.successResponse.code]: {
+      description: operation.successResponse.description,
       content: { 'application/json': { schema } }
     }
   }

@@ -808,7 +808,7 @@ describe('expandToResources#hasMany', () => {
       petUser: {
         request: { properties: { userId: { type: 'string' } } },
         response: { properties: { userId: { type: 'string' } } }
-      },
+      }
     })
 
     // console.log(expandedView(expandToResources(schema)))
@@ -870,7 +870,7 @@ describe('expandToResources#hasMany', () => {
         model: 'user',
         resourceName: 'user',
         operations: allEntityVerbs
-      },
+      }
     ])
   })
 
@@ -998,7 +998,7 @@ describe('expandToResources#hasMany', () => {
         model: 'user',
         resourceName: 'user',
         operations: allEntityVerbs
-      },
+      }
     ])
   })
 })

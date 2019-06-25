@@ -208,13 +208,13 @@ const spec = {
     customFunctionModelWithRequestAndStringyResponse: {
       request: {
         properties: {
-          customFunctionModelWithRequestAndStringyResponseField: {
+          customFunctionModelWithRequestAndStringyResponseFieldObject: {
             type: 'string'
           },
           // Expands to object ref
-          customFunctionModelWithRequestAndStringyResponseField: 'pet',
+          customFunctionModelWithRequestAndStringyResponseFieldString: 'pet',
           // Expands to array ref
-          customFunctionModelWithRequestAndStringyResponseField: ['pet']
+          customFunctionModelWithRequestAndStringyResponseFieldArray: ['pet']
         }
       },
       response: 'pet'
@@ -1072,13 +1072,13 @@ test('expandToOpenApi#components', () => {
     ManagerRequest: { properties: { name: { type: 'string' } } },
     CustomFunctionModelWithRequestAndStringyResponseRequest: {
       properties: {
-        customFunctionModelWithRequestAndStringyResponseField: {
+        customFunctionModelWithRequestAndStringyResponseFieldObject: {
           type: 'string'
         },
-        customFunctionModelWithRequestAndStringyResponseField: {
+        customFunctionModelWithRequestAndStringyResponseFieldString: {
           '$ref': '#/components/schemas/PetResponse'
         },
-        customFunctionModelWithRequestAndStringyResponseField: {
+        customFunctionModelWithRequestAndStringyResponseFieldArray: {
           type: 'array',
           items: {
             '$ref': '#/components/schemas/PetResponse'

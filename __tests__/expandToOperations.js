@@ -445,39 +445,39 @@ describe('expandToOperations', () => {
       ])
     })
 
-    test('successStatus', () => {
+    test('successResponse', () => {
       expect(
-        expandToOperations(spec).operations.map(path => path.successStatus)
+        expandToOperations(spec).operations.map(path => path.successResponse)
       ).toEqual([
-        200,
-        201,
-        200,
-        200,
-        200,
-        200,
-        200,
-        200,
-        204,
-        200,
-        201,
-        200,
-        200,
-        200,
-        200,
-        204,
-        200,
-        201,
-        200,
-        200,
-        200,
-        200,
-        204
+        { description: `List succeeded`, code: 200 },
+        { description: `Create succeeded`, code: 201 },
+        { description: `Get succeeded`, code: 200 },
+        { description: `List succeeded`, code: 200 },
+        { description: `Check succeeded`, code: 200 },
+        { description: `Get succeeded`, code: 200 },
+        { description: `Replace succeeded`, code: 200 },
+        { description: `Update succeeded`, code: 200 },
+        { description: `Delete succeeded`, code: 204 },
+        { description: `List succeeded`, code: 200 },
+        { description: `Create succeeded`, code: 201 },
+        { description: `Check succeeded`, code: 200 },
+        { description: `Get succeeded`, code: 200 },
+        { description: `Replace succeeded`, code: 200 },
+        { description: `Update succeeded`, code: 200 },
+        { description: `Delete succeeded`, code: 204 },
+        { description: `List succeeded`, code: 200 },
+        { description: `Create succeeded`, code: 201 },
+        { description: `Check succeeded`, code: 200 },
+        { description: `Get succeeded`, code: 200 },
+        { description: `Replace succeeded`, code: 200 },
+        { description: `Update succeeded`, code: 200 },
+        { description: `Delete succeeded`, code: 204 }
       ])
     })
 
-    test('errorStatuses', () => {
+    test('errorResponses', () => {
       expect(
-        expandToOperations(spec).operations.map(path => path.errorStatuses)
+        expandToOperations(spec).operations.map(path => path.errorResponses)
       ).toEqual([
         [errors.badRequest, errors.unauthorized, errors.forbidden],
         [errors.badRequest, errors.unauthorized, errors.forbidden],

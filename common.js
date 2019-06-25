@@ -43,8 +43,20 @@ module.exports.paginationResponse = {
 }
 
 module.exports.errors = {
-  badRequest: 400,
-  unauthorized: 401,
-  forbidden: 403,
-  notFound: 404
+  badRequest: {
+    code: 400,
+    description: 'Bad request'
+  },
+  unauthorized: {
+    code: 401,
+    description: 'Unauthorized'
+  },
+  forbidden: {
+    code: 403,
+    description: 'Forbidden'
+  },
+  notFound: {
+    code: 404,
+    description: 'Not found'
+  }
 }

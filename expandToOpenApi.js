@@ -9,39 +9,37 @@ const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
 const inflection = require('inflection')
-const { errors } = require('./common')
 
 // Make map safe
 const pluralize = str => inflection.pluralize(str)
 
-const actionToLabel = {
-  post: 'create',
-  head: 'check',
-  put: 'replace',
-  patch: 'update'
+const emptyResponseActions = { head: true, delete: true }
+
+const emptyRequestActions = {
+  list: true,
+  delete: true,
+  head: true,
+  get: true
 }
 
-const responselessActions = ['head', 'delete']
-const bodylessActions = ['list', 'delete', 'head', 'get']
-
-const createResponse = (status, action, modelName) => ({
-  [status]: {
-    description: `${upperFirst(actionToLabel[action] || action)} succeeded`,
+const createEmptyResponse = operation => ({
+  [operation.successResponse.code]: {
+    description: operation.successResponse.description,
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${upperFirst(modelName)}Response`
+          '$ref': `#/components/schemas/EmptyResponse`
         }
       }
     }
   }
 })
 
-const createModelResponse = (status, action, modelName) => {
+const createModelResponse = (operation, modelName) => {
   const responseName = lowerFirst(modelName)
   const schemaName = `${upperFirst(modelName)}Response`
 
-  const schema = action === 'list'
+  const schema = operation.action === 'list'
     ? {
       type: 'object',
       properties: {
@@ -60,28 +58,20 @@ const createModelResponse = (status, action, modelName) => {
     }
 
   return {
-    [status]: {
-      description: `${upperFirst(actionToLabel[action] || action)} succeeded`,
-      content: { 'application/json': { schema }
-      }
+    [operation.successResponse.code]: {
+      description: operation.successResponse.description,
+      content: { 'application/json': { schema } }
     }
   }
 }
 
-const errorMessage = {
-  400: 'Bad request',
-  401: 'Unauthorized',
-  403: 'Forbidden',
-  404: 'Not found'
-}
-
-const getErrorResponses = (...codes) => {
-  let errors = {}
-  forEach(codes, code => {
-    errors = {
-      ...errors,
-      [code]: {
-        description: errorMessage[code],
+const getErrorResponses = (...errors) => {
+  let responses = {}
+  forEach(errors, error => {
+    responses = {
+      ...responses,
+      [error.code]: {
+        description: error.description,
         content: {
           'application/json': {
             schema: { '$ref': '#/components/schemas/ErrorResponse' }
@@ -90,7 +80,7 @@ const getErrorResponses = (...codes) => {
       }
     }
   })
-  return errors
+  return responses
 }
 
 const getParameters = (operation, models) => {
@@ -118,7 +108,7 @@ const getParameters = (operation, models) => {
 }
 
 const getRequestBody = (operation, models) => {
-  if (bodylessActions.includes(operation.action)) return
+  if (emptyRequestActions[operation.action]) return
 
   let modelName = operation.resourceName
   if (isObject(get(models[operation.name], 'request'))) {
@@ -164,42 +154,15 @@ const getRequestBody = (operation, models) => {
 }
 
 const getResponses = (operation, models) => {
-  let response
   const modelName = isObject(get(models[operation.name], 'response'))
     ? operation.resourceName
     : get(models[operation.name], 'response', operation.model)
-  if (['put', 'patch', 'get'].includes(operation.action)) {
-    response = createModelResponse(200, operation.action, modelName)
-  } else {
-    switch (operation.action) {
-      case 'post':
-        response = createModelResponse(201, 'create', modelName)
-        break
-      case 'list':
-        response = createModelResponse(200, 'list', modelName)
-        break
-      case 'delete':
-        response = createResponse(204, 'delete', 'Empty', modelName)
-        break
-      case 'head':
-        response = createResponse(200, 'check', 'Empty', modelName)
-        break
-    }
-  }
 
-  const errorResponses = ['list', 'post'].includes(operation.action)
-    ? getErrorResponses(
-      errors.badRequest,
-      errors.unauthorized,
-      errors.forbidden
-    )
-    : getErrorResponses(
-      errors.badRequest,
-      errors.unauthorized,
-      errors.forbidden,
-      errors.notFound
-    )
+  const response = emptyResponseActions[operation.action]
+    ? createEmptyResponse(operation, modelName)
+    : createModelResponse(operation, modelName)
 
+  const errorResponses = getErrorResponses(...operation.errorResponses)
   return { ...response, ...errorResponses }
 }
 
@@ -245,7 +208,7 @@ const getSchemas = (operations, models = {}) => {
   operations.forEach(operation => {
     const name = upperFirst(operation.model)
     if (
-      !bodylessActions.includes(operation.action) &&
+      !emptyRequestActions[operation.action] &&
       !isString(models[operation.model].request) &&
       models[operation.model].request
     ) {
@@ -255,7 +218,7 @@ const getSchemas = (operations, models = {}) => {
       }
     }
     if (
-      !responselessActions.includes(operation.action) &&
+      !emptyResponseActions[operation.action] &&
       !isString(models[operation.model].response)
     ) {
       schemas = {

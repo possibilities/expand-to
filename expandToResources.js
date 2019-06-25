@@ -233,6 +233,30 @@ const expandPaths = mountedResources => {
           mountPath: ['users']
         })
       }
+
+      if (relatedResource.name === 'user') {
+        paths.push({
+          ...resource,
+          isUserCentricResource: true,
+          methods: allCollectionVerbs,
+          pathParts: compact([
+            relation.as && (relation.label || pluralize(resourceName)),
+            pluralize(resource.name)
+          ]),
+          mountPath: ['users']
+        })
+        paths.push({
+          ...resource,
+          isUserCentricResource: true,
+          methods: allEntityVerbs,
+          pathParts: compact([
+            relation.as && (relation.label || pluralize(resourceName)),
+            pluralize(resource.name),
+            `{${resource.name}Id}`
+          ]),
+          mountPath: ['users']
+        })
+      }
     })
   })
 

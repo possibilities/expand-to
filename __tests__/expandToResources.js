@@ -782,6 +782,225 @@ describe('expandToResources#hasMany', () => {
       }
     ])
   })
+
+  test('with `users`', () => {
+    const schema = dump([
+      {
+        name: 'user',
+        model: { properties: { name: { type: 'string' } } }
+      },
+      {
+        name: 'pet',
+        hasMany: [{ name: 'users' }],
+        model: { properties: { name: { type: 'string' } } }
+      }
+    ], 'hasMany polymorphism with users')
+
+    expect(expandToResources(schema).models).toEqual({
+      pet: {
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
+      },
+      user: {
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
+      },
+      petUser: {
+        request: { properties: { userId: { type: 'string' } } },
+        response: { properties: { userId: { type: 'string' } } }
+      },
+    })
+
+    // console.log(expandedView(expandToResources(schema)))
+    expect(expandedView(expandToResources(schema))).toEqual([
+      {
+        pathParts: ['pets'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['pets', '{petId}'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['pets', '{petId}', 'users'],
+        name: 'user',
+        model: 'petUser',
+        resourceName: 'user',
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['pets', '{petId}', 'users', '{userId}'],
+        name: 'user',
+        model: 'petUser',
+        resourceName: 'user',
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['users'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['users', 'pets'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['users', 'pets', '{petId}'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['users', '{userId}'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: allEntityVerbs
+      },
+    ])
+  })
+
+  test('polymorphism with `users`', () => {
+    const schema = dump([
+      {
+        name: 'user',
+        model: { properties: { name: { type: 'string' } } }
+      },
+      {
+        name: 'pet',
+        hasMany: [
+          { name: 'users', as: 'owners' },
+          { name: 'users', as: 'doctors', label: 'caring' }
+        ],
+        model: { properties: { name: { type: 'string' } } }
+      }
+    ], 'hasMany polymorphism with users')
+
+    expect(expandToResources(schema).models).toEqual({
+      pet: {
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
+      },
+      user: {
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
+      },
+      petOwner: {
+        request: { properties: { ownerId: { type: 'string' } } },
+        response: { properties: { ownerId: { type: 'string' } } }
+      },
+      petDoctor: {
+        request: { properties: { doctorId: { type: 'string' } } },
+        response: { properties: { doctorId: { type: 'string' } } }
+      }
+    })
+
+    // console.log(expandedView(expandToResources(schema)))
+    expect(expandedView(expandToResources(schema))).toEqual([
+      {
+        pathParts: ['pets'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['pets', '{petId}'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['pets', '{petId}', 'doctors'],
+        name: 'user',
+        model: 'petDoctor',
+        resourceName: 'user',
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['pets', '{petId}', 'doctors', '{doctorId}'],
+        name: 'user',
+        model: 'petDoctor',
+        resourceName: 'user',
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['pets', '{petId}', 'owners'],
+        name: 'user',
+        model: 'petOwner',
+        resourceName: 'user',
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['pets', '{petId}', 'owners', '{ownerId}'],
+        name: 'user',
+        model: 'petOwner',
+        resourceName: 'user',
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['users'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['users', 'caring', 'pets'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['users', 'caring', 'pets', '{petId}'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['users', 'owners', 'pets'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['users', 'owners', 'pets', '{petId}'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['users', '{userId}'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: allEntityVerbs
+      },
+    ])
+  })
 })
 
 describe('expandToResources#treeOf', () => {

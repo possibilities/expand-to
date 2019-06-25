@@ -80,8 +80,8 @@ const getErrorResponses = (...codes) => {
   forEach(codes, code => {
     errors = {
       ...errors,
-      [code]: {
-        description: errorMessage[code],
+      [code.code]: {
+        description: code.description,
         content: {
           'application/json': {
             schema: { '$ref': '#/components/schemas/ErrorResponse' }

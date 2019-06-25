@@ -1,6 +1,7 @@
 const isObject = require('lodash/isObject')
 const isString = require('lodash/isString')
 const mapValues = require('lodash/mapValues')
+const first = require('lodash/first')
 const get = require('lodash/get')
 const groupBy = require('lodash/groupBy')
 const expandToOperations = require('./expandToOperations')
@@ -163,7 +164,7 @@ const getResponses = (operation, models) => {
 const getMethod = (operation, models) => {
   return {
     operationId: operation.id,
-    tags: operation.namespace,
+    tags: [upperFirst(first(operation.namespace))],
     summary: operation.summary,
     parameters: getParameters(operation, models),
     requestBody: getRequestBody(operation, models),

@@ -227,49 +227,49 @@ describe('expandToOpenApi#paths', () => {
     const expanded = expandToOpenApi({ models, operations })
     expect(pathMethodTagsView(expanded)).toEqual({
       '/pets': {
-        get: ['pets'],
-        post: ['pets']
+        get: ['Pets'],
+        post: ['Pets']
       },
       '/pets/invoke.custom_fn': {
-        get: ['pets']
+        get: ['Pets']
       },
       '/pets/invoke.custom_fn_with_stringy_response': {
-        get: ['pets']
+        get: ['Pets']
       },
       '/pets/invoke.custom_fn_with_stringy_request_and_response': {
-        post: ['pets']
+        post: ['Pets']
       },
       '/pets/invoke.custom_fn_with_request_and_stringy_response': {
-        post: ['pets']
+        post: ['Pets']
       },
       '/pets/{petId}': {
-        delete: ['pets'],
-        get: ['pets'],
-        head: ['pets'],
-        patch: ['pets'],
-        put: ['pets']
+        delete: ['Pets'],
+        get: ['Pets'],
+        head: ['Pets'],
+        patch: ['Pets'],
+        put: ['Pets']
       },
       '/stores': {
-        get: ['stores'],
-        post: ['stores']
+        get: ['Stores'],
+        post: ['Stores']
       },
       '/stores/{storeId}': {
-        delete: ['stores'],
-        get: ['stores'],
-        head: ['stores'],
-        patch: ['stores'],
-        put: ['stores']
+        delete: ['Stores'],
+        get: ['Stores'],
+        head: ['Stores'],
+        patch: ['Stores'],
+        put: ['Stores']
       },
       '/stores/{storeId}/managers': {
-        get: ['stores', 'managers'],
-        post: ['stores', 'managers']
+        get: ['Stores'],
+        post: ['Stores']
       },
       '/stores/{storeId}/managers/{managerId}': {
-        delete: ['stores', 'managers'],
-        get: ['stores', 'managers'],
-        head: ['stores', 'managers'],
-        patch: ['stores', 'managers'],
-        put: ['stores', 'managers']
+        delete: ['Stores'],
+        get: ['Stores'],
+        head: ['Stores'],
+        patch: ['Stores'],
+        put: ['Stores']
       }
     })
   })

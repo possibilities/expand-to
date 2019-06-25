@@ -43,27 +43,18 @@ const expandModels = (models, resources) => {
 
   resources.forEach(resource => {
     forEach(resource.hasMany, relatedResource => {
-      const relationName = relatedResource.as || singularize(relatedResource.name)
-      const key = `${resource.name}${upperFirst(relationName)}`
+      const relatedName = relatedResource.as || singularize(relatedResource.name)
+      const relationName = `${resource.name}${upperFirst(relatedName)}`
+      const idName = `${singularize(relatedName)}Id`
+      const model = (
+        modelsByName[singularize(relatedResource.name)].model.properties.id ||
+        { type: 'string' }
+      )
       expandedModels = {
         ...expandedModels,
-        [key]: {
-          request: {
-            properties: {
-              [`${relationName}Id`]: (
-                modelsByName[singularize(relatedResource.name)].model.properties.id ||
-                { type: 'string' }
-              )
-            }
-          },
-          response: {
-            properties: {
-              [`${relationName}Id`]: (
-                modelsByName[singularize(relatedResource.name)].model.properties.id ||
-                { type: 'string' }
-              )
-            }
-          },
+        [singularize(relationName)]: {
+          request: { properties: { [idName]: model } },
+          response: { properties: { [idName]: model } },
         }
       }
     })
@@ -205,7 +196,7 @@ const expandPaths = mountedResources => {
       const relatedResource =
         mountedEntityResourcesByName[singularize(relation.name)]
       const resourceMountPath = [...resource.mountPath, ...resource.pathParts]
-      const resourceName = relation.as ? relation.as : relatedResource.name
+      const resourceName = singularize(relation.as ? relation.as : relatedResource.name)
 
       paths.push({
         ...relatedResource,

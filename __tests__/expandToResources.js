@@ -697,8 +697,8 @@ describe('expandToResources#hasMany', () => {
       {
         name: 'pet',
         hasMany: [
-          { name: 'people', as: 'owner' },
-          { name: 'people', as: 'doctor' }
+          { name: 'people', as: 'owners' },
+          { name: 'people', as: 'doctors' }
         ],
         model: { properties: { name: { type: 'string' } } }
       }
@@ -1292,8 +1292,8 @@ describe('expandToResources#users', () => {
       {
         name: 'user',
         hasMany: [
-          { name: 'courses', as: 'contributor' },
-          { name: 'courses', as: 'learner' }
+          { name: 'courses', as: 'contributors' },
+          { name: 'courses', as: 'learners' }
         ],
         model: { properties: { name: { type: 'string' } } }
       }

@@ -513,7 +513,15 @@ describe('expandToResources#belongsTo', () => {
       commit: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
-      }
+      },
+      commitCommitter: {
+        request: { properties: { committerId: { type: 'string' } } },
+        response: { properties: { committerId: { type: 'string' } } },
+      },
+      repoOwner: {
+        request: { properties: { ownerId: { type: 'string' } } },
+        response: { properties: { ownerId: { type: 'string' } } },
+      },
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -576,28 +584,28 @@ describe('expandToResources#belongsTo', () => {
       {
         pathParts: ['repos', '{repoId}', 'commits', '{commitId}', 'committers'],
         name: 'committer',
-        model: 'committer',
+        model: 'commitCommitter',
         resourceName: 'committer',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'commits', '{commitId}', 'committers', '{committerId}'],
         name: 'committer',
-        model: 'committer',
+        model: 'commitCommitter',
         resourceName: 'committer',
         operations: allEntityVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'owners'],
         name: 'owner',
-        model: 'owner',
+        model: 'repoOwner',
         resourceName: 'owner',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['repos', '{repoId}', 'owners', '{ownerId}'],
         name: 'owner',
-        model: 'owner',
+        model: 'repoOwner',
         resourceName: 'owner',
         operations: allEntityVerbs
       }
@@ -627,6 +635,10 @@ describe('expandToResources#hasMany', () => {
       person: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
+      },
+      personPet: {
+        request: { properties: { petId: { type: 'string' } } },
+        response: { properties: { petId: { type: 'string' } } },
       }
     })
 
@@ -648,14 +660,14 @@ describe('expandToResources#hasMany', () => {
       {
         pathParts: ['people', '{personId}', 'pets'],
         name: 'pet',
-        model: 'pet',
+        model: 'personPet',
         resourceName: 'pet',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['people', '{personId}', 'pets', '{petId}'],
         name: 'pet',
-        model: 'pet',
+        model: 'personPet',
         resourceName: 'pet',
         operations: allEntityVerbs
       },
@@ -700,6 +712,14 @@ describe('expandToResources#hasMany', () => {
       person: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
+      },
+      petOwner: {
+        request: { properties: { ownerId: { type: 'string' } } },
+        response: { properties: { ownerId: { type: 'string' } } },
+      },
+      petDoctor: {
+        request: { properties: { doctorId: { type: 'string' } } },
+        response: { properties: { doctorId: { type: 'string' } } },
       }
     })
 
@@ -735,28 +755,28 @@ describe('expandToResources#hasMany', () => {
       {
         pathParts: ['pets', '{petId}', 'doctors'],
         name: 'person',
-        model: 'person',
+        model: 'petDoctor',
         resourceName: 'person',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['pets', '{petId}', 'doctors', '{doctorId}'],
         name: 'person',
-        model: 'person',
+        model: 'petDoctor',
         resourceName: 'person',
         operations: allEntityVerbs
       },
       {
         pathParts: ['pets', '{petId}', 'owners'],
         name: 'person',
-        model: 'person',
+        model: 'petOwner',
         resourceName: 'person',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['pets', '{petId}', 'owners', '{ownerId}'],
         name: 'person',
-        model: 'person',
+        model: 'petOwner',
         resourceName: 'person',
         operations: allEntityVerbs
       }
@@ -921,7 +941,15 @@ describe('expandToResources#treeOf', () => {
       subgroup: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
-      }
+      },
+      groupWidget: {
+        request: { properties: { widgetId: { type: 'string' } } },
+        response: { properties: { widgetId: { type: 'string' } } },
+      },
+      subgroupWidget: {
+        request: { properties: { widgetId: { type: 'string' } } },
+        response: { properties: { widgetId: { type: 'string' } } },
+      },
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -956,28 +984,28 @@ describe('expandToResources#treeOf', () => {
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}', 'widgets'],
         name: 'widget',
-        model: 'widget',
+        model: 'subgroupWidget',
         resourceName: 'widget',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'subgroups', '{subgroupId}', 'widgets', '{widgetId}'],
         name: 'widget',
-        model: 'widget',
+        model: 'subgroupWidget',
         resourceName: 'widget',
         operations: allEntityVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'widgets'],
         name: 'widget',
-        model: 'widget',
+        model: 'groupWidget',
         resourceName: 'widget',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['groups', '{groupId}', 'widgets', '{widgetId}'],
         name: 'widget',
-        model: 'widget',
+        model: 'groupWidget',
         resourceName: 'widget',
         operations: allEntityVerbs
       },
@@ -1024,7 +1052,11 @@ describe('expandToResources#treeOf', () => {
       subgroup: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
-      }
+      },
+      regionGroup: {
+        request: { properties: { groupId: { type: 'string' } } },
+        response: { properties: { groupId: { type: 'string' } } },
+      },
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -1073,14 +1105,14 @@ describe('expandToResources#treeOf', () => {
       {
         pathParts: ['regions', '{regionId}', 'groups'],
         name: 'group',
-        model: 'group',
+        model: 'regionGroup',
         resourceName: 'group',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['regions', '{regionId}', 'groups', '{groupId}'],
         name: 'group',
-        model: 'group',
+        model: 'regionGroup',
         resourceName: 'group',
         operations: allEntityVerbs
       }
@@ -1182,7 +1214,11 @@ describe('expandToResources#users', () => {
       course: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
-      }
+      },
+      userCourse: {
+        request: { properties: { courseId: { type: 'string' } } },
+        response: { properties: { courseId: { type: 'string' } } },
+      },
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -1233,14 +1269,14 @@ describe('expandToResources#users', () => {
       {
         pathParts: ['users', '{userId}', 'courses'],
         name: 'course',
-        model: 'course',
+        model: 'userCourse',
         resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}', 'courses', '{courseId}'],
         name: 'course',
-        model: 'course',
+        model: 'userCourse',
         resourceName: 'course',
         operations: allEntityVerbs
       }
@@ -1271,6 +1307,14 @@ describe('expandToResources#users', () => {
       course: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
+      },
+      userContributor: {
+        request: { properties: { contributorId: { type: 'string' } } },
+        response: { properties: { contributorId: { type: 'string' } } },
+      },
+      userLearner: {
+        request: { properties: { learnerId: { type: 'string' } } },
+        response: { properties: { learnerId: { type: 'string' } } },
       }
     })
 
@@ -1338,28 +1382,28 @@ describe('expandToResources#users', () => {
       {
         pathParts: ['users', '{userId}', 'contributors'],
         name: 'course',
-        model: 'course',
+        model: 'userContributor',
         resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}', 'contributors', '{contributorId}'],
         name: 'course',
-        model: 'course',
+        model: 'userContributor',
         resourceName: 'course',
         operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}', 'learners'],
         name: 'course',
-        model: 'course',
+        model: 'userLearner',
         resourceName: 'course',
         operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}', 'learners', '{learnerId}'],
         name: 'course',
-        model: 'course',
+        model: 'userLearner',
         resourceName: 'course',
         operations: allEntityVerbs
       }

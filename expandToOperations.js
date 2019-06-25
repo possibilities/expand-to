@@ -84,8 +84,8 @@ const getParameters = (path, models) => {
   let parameters = []
   path.pathParts.filter(p => p.startsWith('{')).forEach(pathPart => {
     const type = pathPart.slice(1, -3)
-    const schema = get(models[type], 'response.id')
-      ? omit(models[path.model].response.id, 'readOnly')
+    const schema = get(models[type], 'response.properties.id')
+      ? omit(models[type].response.properties.id, 'readOnly')
       : { type: 'string' }
     parameters.push({
       schema,

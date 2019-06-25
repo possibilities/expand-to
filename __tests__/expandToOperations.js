@@ -12,9 +12,11 @@ const spec = {
   models: {
     manager: {
       response: {
-        id: {
-          type: 'string',
-          format: 'uuid'
+        properties: {
+          id: {
+            type: 'string',
+            format: 'uuid'
+          }
         }
       }
     }
@@ -522,7 +524,7 @@ describe('expandToOperations', () => {
       empty: { response: emptyResponse },
       error: { response: errorResponse },
       pagination: { response: paginationResponse },
-      manager: { response: { id: { format: 'uuid', type: 'string' } } }
+      manager: { response: { properties: { id: { format: 'uuid', type: 'string' } } } }
     })
   })
 })

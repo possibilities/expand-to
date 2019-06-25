@@ -100,11 +100,7 @@ const spec = {
       response: {
         properties: {
           name: { type: 'string' },
-          id: {
-            type: 'string',
-            format: 'uuid',
-            readOnly: true
-          }
+          id: { type: 'string', readOnly: true }
         }
       }
     },
@@ -407,7 +403,7 @@ describe('expandToOpenApi#paths', () => {
         name: 'managerId',
         required: true,
         description: 'Manager id',
-        schema: { type: 'string' }
+        schema: { type: 'string', format: 'uuid' }
       }
     ]
 
@@ -1056,7 +1052,7 @@ test('expandToOpenApi#components', () => {
     PetResponse: {
       properties: {
         name: { type: 'string' },
-        id: { type: 'string', format: 'uuid', readOnly: true }
+        id: { type: 'string', readOnly: true }
       }
     },
     StoreResponse: {

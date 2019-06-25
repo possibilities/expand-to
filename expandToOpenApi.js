@@ -75,13 +75,13 @@ const errorMessage = {
   404: 'Not found'
 }
 
-const getErrorResponses = (...codes) => {
-  let errors = {}
-  forEach(codes, code => {
-    errors = {
-      ...errors,
-      [code.code]: {
-        description: code.description,
+const getErrorResponses = (...errors) => {
+  let responses = {}
+  forEach(errors, error => {
+    responses = {
+      ...responses,
+      [error.code]: {
+        description: error.description,
         content: {
           'application/json': {
             schema: { '$ref': '#/components/schemas/ErrorResponse' }
@@ -90,7 +90,7 @@ const getErrorResponses = (...codes) => {
       }
     }
   })
-  return errors
+  return responses
 }
 
 const getParameters = (operation, models) => {

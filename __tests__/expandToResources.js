@@ -1,7 +1,7 @@
 const sortBy = require('lodash/sortBy')
 const expandToResources = require('../expandToResources')
 const expandToOpenApi = require('../expandToOpenApi')
-const { writeFileSync, mkdirsSync } = require('fs-extra')
+const { existsSync, writeFileSync, mkdirsSync } = require('fs-extra')
 const OpenAPISchemaValidator = require('openapi-schema-validator').default
 
 const validator = new OpenAPISchemaValidator({ version: 3 })
@@ -17,10 +17,14 @@ const { allEntityVerbs, allCollectionVerbs } = require('../common')
 // for usage outside of tests
 const tempDir = `/tmp/${Date.now()}`
 mkdirsSync(tempDir)
-const dump = (spec, title) => {
+const validateAndDumpFixture = (spec, title) => {
   const openApiSpec = expandToOpenApi(spec, { info: { title: `Example: ${title}` } })
+  const fixturePath = `${tempDir}/${title.toLowerCase().replace(/ /g, '-')}.json`
+  if (existsSync(fixturePath)) {
+    throw new Error(`Fixture already exists: ${title}`)
+  }
   writeFileSync(
-    `${tempDir}/${title.toLowerCase().replace(/ /g, '-')}.json`,
+    fixturePath,
     JSON.stringify(openApiSpec, null, 2)
   )
 
@@ -28,8 +32,8 @@ const dump = (spec, title) => {
   const { errors } = validator.validate(openApiSpec)
   if (errors.length) {
     console.error(errors)
-    console.error(errors.length + ' validation errors')
-    throw new Error('OpenAPI validation failed: ' + title)
+    console.error(`${errors.length} validation errors`)
+    throw new Error(`OpenAPI validation failed: ${title}`)
   }
 
   return spec
@@ -41,7 +45,7 @@ afterAll(() => {
 
 describe('expandToResources', () => {
   test('basic', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'pet',
         model: { properties: { name: { type: 'string' } } }
@@ -50,7 +54,7 @@ describe('expandToResources', () => {
         name: 'store',
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'basic')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
@@ -93,16 +97,15 @@ describe('expandToResources', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'basic')
   })
 
   test('with inflections', () => {
-    const schema = dump(
-      [{
-        name: 'person',
-        model: { properties: { name: { type: 'string' } } }
-      }],
-      'basic with inflections'
-    )
+    const schema = [{
+      name: 'person',
+      model: { properties: { name: { type: 'string' } } }
+    }]
 
     expect(expandToResources(schema).models).toEqual({
       person: {
@@ -127,17 +130,15 @@ describe('expandToResources', () => {
         operations: allEntityVerbs
       }
     ])
+    validateAndDumpFixture(schema, 'basic with inflections')
   })
 
   test('with immutability', () => {
-    const schema = dump(
-      [{
-        name: 'pet',
-        immutable: true,
-        model: { properties: { name: { type: 'string' } } }
-      }],
-      'basic with immutability'
-    )
+    const schema = [{
+      name: 'pet',
+      immutable: true,
+      model: { properties: { name: { type: 'string' } } }
+    }]
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
@@ -162,10 +163,11 @@ describe('expandToResources', () => {
         operations: ['head', 'get', 'delete']
       }
     ])
+    validateAndDumpFixture(schema, 'basic with immutability')
   })
 
   test('with `readOnly` properties', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'pet',
         model: {
@@ -175,7 +177,7 @@ describe('expandToResources', () => {
           }
         }
       }
-    ], 'basic with readOnly properties ')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
@@ -188,12 +190,14 @@ describe('expandToResources', () => {
         }
       }
     })
+
+    validateAndDumpFixture(schema, 'basic with readOnly properties ')
   })
 })
 
 describe('expandToResources#fns', () => {
   test('basic', () => {
-    const schema = dump(
+    const schema = validateAndDumpFixture(
       [{
         name: 'pet',
         fns: [
@@ -396,7 +400,7 @@ describe('expandToResources#fns', () => {
 
 describe('expandToResources#belongsTo', () => {
   test('basic', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'org',
         model: { properties: { name: { type: 'string' } } }
@@ -411,7 +415,7 @@ describe('expandToResources#belongsTo', () => {
         belongsTo: 'repo',
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'belongsTo')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       org: {
@@ -472,10 +476,12 @@ describe('expandToResources#belongsTo', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'belongsTo')
   })
 
   test('with `hasMany`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'owner',
         model: { properties: { name: { type: 'string' } } }
@@ -495,7 +501,7 @@ describe('expandToResources#belongsTo', () => {
         hasMany: [{ name: 'committers' }],
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'belongsTo with hasMany')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       owner: {
@@ -610,12 +616,14 @@ describe('expandToResources#belongsTo', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'belongsTo with hasMany')
   })
 })
 
 describe('expandToResources#hasMany', () => {
   test('basic', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'pet',
         model: { properties: { name: { type: 'string' } } }
@@ -625,7 +633,7 @@ describe('expandToResources#hasMany', () => {
         hasMany: [{ name: 'pets' }],
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'hasMany')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
@@ -686,10 +694,12 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'hasMany')
   })
 
   test('polymorphism', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'person',
         model: { properties: { name: { type: 'string' } } }
@@ -702,7 +712,7 @@ describe('expandToResources#hasMany', () => {
         ],
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'hasMany polymorphism')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
@@ -781,10 +791,12 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'hasMany polymorphism')
   })
 
   test('with `users`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'user',
         model: { properties: { name: { type: 'string' } } }
@@ -794,7 +806,7 @@ describe('expandToResources#hasMany', () => {
         hasMany: [{ name: 'users' }],
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'hasMany polymorphism with users')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
@@ -872,10 +884,12 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'with users')
   })
 
   test('polymorphism with `users`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'user',
         model: { properties: { name: { type: 'string' } } }
@@ -888,7 +902,7 @@ describe('expandToResources#hasMany', () => {
         ],
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'hasMany polymorphism with users')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
@@ -909,7 +923,6 @@ describe('expandToResources#hasMany', () => {
       }
     })
 
-    // console.log(expandedView(expandToResources(schema)))
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['pets'],
@@ -1000,12 +1013,14 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'hasMany polymorphism with users')
   })
 })
 
 describe('expandToResources#treeOf', () => {
   test('basic', () => {
-    const schema = dump(
+    const schema = validateAndDumpFixture(
       [{
         name: 'group',
         treeOf: 'subgroups',
@@ -1058,7 +1073,7 @@ describe('expandToResources#treeOf', () => {
   })
 
   test('with `belongsTo`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'region',
         model: {
@@ -1071,7 +1086,7 @@ describe('expandToResources#treeOf', () => {
         belongsTo: 'region',
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'treeOf with belongsTo')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       region: {
@@ -1132,10 +1147,12 @@ describe('expandToResources#treeOf', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'treeOf with belongsTo')
   })
 
   test('with `hasMany`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'group',
         treeOf: 'subgroups',
@@ -1146,7 +1163,7 @@ describe('expandToResources#treeOf', () => {
         name: 'widget',
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'treeOf with hasMany')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       widget: {
@@ -1243,10 +1260,12 @@ describe('expandToResources#treeOf', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'treeOf with hasMany')
   })
 
   test('target of `hasMany`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'group',
         treeOf: 'subgroups',
@@ -1257,7 +1276,7 @@ describe('expandToResources#treeOf', () => {
         hasMany: [{ name: 'groups' }],
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'treeOf target of hasMany')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       region: {
@@ -1336,12 +1355,14 @@ describe('expandToResources#treeOf', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'treeOf target of hasMany')
   })
 })
 
 describe('expandToResources#users', () => {
   test('with `belongsTo`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'user',
         model: { properties: { name: { type: 'string' } } }
@@ -1351,7 +1372,7 @@ describe('expandToResources#users', () => {
         belongsTo: 'user',
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'users with belongsTo')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       user: {
@@ -1410,10 +1431,12 @@ describe('expandToResources#users', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'users with belongsTo')
   })
 
   test('with `hasMany`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'course',
         model: { properties: { name: { type: 'string' } } }
@@ -1423,7 +1446,7 @@ describe('expandToResources#users', () => {
         hasMany: [{ name: 'courses' }],
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'users with hasMany')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       user: {
@@ -1500,10 +1523,12 @@ describe('expandToResources#users', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'users with hasMany')
   })
 
   test('with polymorphic `hasMany`', () => {
-    const schema = dump([
+    const schema = [
       {
         name: 'course',
         model: { properties: { name: { type: 'string' } } }
@@ -1516,7 +1541,7 @@ describe('expandToResources#users', () => {
         ],
         model: { properties: { name: { type: 'string' } } }
       }
-    ], 'users with polymorphic hasMany')
+    ]
 
     expect(expandToResources(schema).models).toEqual({
       user: {
@@ -1627,5 +1652,7 @@ describe('expandToResources#users', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'users with polymorphic hasMany')
   })
 })

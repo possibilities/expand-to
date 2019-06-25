@@ -9,17 +9,9 @@ const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
 const inflection = require('inflection')
-const { errors } = require('./common')
 
 // Make map safe
 const pluralize = str => inflection.pluralize(str)
-
-const actionToLabel = {
-  post: 'create',
-  head: 'check',
-  put: 'replace',
-  patch: 'update'
-}
 
 const emptyResponseActions = { head: true, delete: true }
 

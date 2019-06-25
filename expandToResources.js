@@ -2,6 +2,7 @@ const fromPairs = require('lodash/fromPairs')
 const compact = require('lodash/compact')
 const toPairs = require('lodash/toPairs')
 const pickFp = require('lodash/fp/pick')
+const upperFirst = require('lodash/upperFirst')
 const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
 const without = require('lodash/without')
@@ -22,7 +23,8 @@ const stripReadOnlyProperties = model => ({
 })
 
 const expandModels = (models, resources) => {
-  let expandedModels = mapValues(keyBy(models, 'name'), model => ({
+  const modelsByName = keyBy(models, 'name')
+  let expandedModels = mapValues(modelsByName, model => ({
     request: stripReadOnlyProperties(model.model),
     response: model.model
   }))
@@ -40,6 +42,23 @@ const expandModels = (models, resources) => {
   })
 
   resources.forEach(resource => {
+    forEach(resource.hasMany, relatedResource => {
+      const relatedName = relatedResource.as || singularize(relatedResource.name)
+      const relationName = `${resource.name}${upperFirst(relatedName)}`
+      const idName = `${singularize(relatedName)}Id`
+      const model = (
+        modelsByName[singularize(relatedResource.name)].model.properties.id ||
+        { type: 'string' }
+      )
+      expandedModels = {
+        ...expandedModels,
+        [singularize(relationName)]: {
+          request: { properties: { [idName]: model } },
+          response: { properties: { [idName]: model } }
+        }
+      }
+    })
+
     forEach(resource.fns, fn => {
       if (!fn.model) return
       const model = fn.model.request || fn.model.response
@@ -177,13 +196,13 @@ const expandPaths = mountedResources => {
       const relatedResource =
         mountedEntityResourcesByName[singularize(relation.name)]
       const resourceMountPath = [...resource.mountPath, ...resource.pathParts]
-      const resourceName = relation.as ? relation.as : relatedResource.name
+      const resourceName = singularize(relation.as ? relation.as : relatedResource.name)
 
       paths.push({
         ...relatedResource,
         methods: allCollectionVerbs,
         pathParts: [pluralize(resourceName)],
-        modelName: relatedResource.name,
+        modelName: `${resource.name}${upperFirst(resourceName)}`,
         mountPath: resourceMountPath
       })
 
@@ -191,7 +210,7 @@ const expandPaths = mountedResources => {
         ...relatedResource,
         methods: allEntityVerbs,
         pathParts: [pluralize(resourceName), `{${resourceName}Id}`],
-        modelName: relatedResource.name,
+        modelName: `${resource.name}${upperFirst(resourceName)}`,
         mountPath: resourceMountPath
       })
 

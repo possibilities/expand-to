@@ -12,6 +12,7 @@ const inflection = require('inflection')
 
 // Make map safe
 const pluralize = str => inflection.pluralize(str)
+const singularize = str => inflection.singularize(str)
 
 const emptyResponseActions = { head: true, delete: true }
 
@@ -53,7 +54,7 @@ const createModelResponse = (operation, modelName) => {
     : {
       type: 'object',
       properties: {
-        [responseName]: { '$ref': `#/components/schemas/${schemaName}` }
+        [singularize(responseName)]: { '$ref': `#/components/schemas/${schemaName}` }
       }
     }
 
@@ -105,43 +106,22 @@ const getParameters = (operation, models) => ([
 const getRequestBody = (operation, models) => {
   if (emptyRequestActions[operation.action]) return
 
-  let modelName = operation.resourceName
-  if (isObject(get(models[operation.name], 'request'))) {
-    modelName = get(models[operation.name], 'request')
-  }
+  const modelName = isObject(get(models[operation.name], 'request'))
+    ? get(models[operation.name], 'request')
+    : operation.resourceName
 
-  if (models[modelName] && models[modelName].request) {
-    return {
-      required: true,
-      content: {
-        'application/json': {
-          schema: {
-            '$ref': `#/components/schemas/${upperFirst(modelName)}Request`
-          }
-        }
-      }
-    }
-  }
-
-  if (isObject(modelName)) {
-    return {
-      required: true,
-      content: {
-        'application/json': {
-          schema: {
-            '$ref': `#/components/schemas/${upperFirst(operation.model)}Request`
-          }
-        }
-      }
-    }
-  }
+  const model = models[modelName] && models[modelName].request
+    ? modelName
+    : isObject(modelName)
+      ? operation.model
+      : operation.resourceName
 
   return {
     required: true,
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${upperFirst(operation.resourceName)}Request`
+          '$ref': `#/components/schemas/${upperFirst(model)}Request`
         }
       }
     }
@@ -149,15 +129,20 @@ const getRequestBody = (operation, models) => {
 }
 
 const getResponses = (operation, models) => {
-  const modelName = isObject(get(models[operation.name], 'response'))
-    ? operation.resourceName
-    : get(models[operation.name], 'response', operation.model)
-
-  const response = emptyResponseActions[operation.action]
-    ? createEmptyResponse(operation, modelName)
-    : createModelResponse(operation, modelName)
-
   const errorResponses = getErrorResponses(...operation.errorResponses)
+
+  const modelName = isObject(get(models[operation.name], 'response'))
+    ? get(models[operation.name], 'response')
+    : operation.resourceName
+
+  const response = models[modelName] && models[modelName].request
+    ? emptyResponseActions[operation.action]
+      ? createEmptyResponse(operation, modelName)
+      : createModelResponse(operation, modelName)
+    : isObject(modelName)
+      ? createModelResponse(operation, operation.model)
+      : createModelResponse(operation, operation.resourceName)
+
   return { ...response, ...errorResponses }
 }
 
@@ -245,6 +230,8 @@ const expandToOpenApi = ({ operations, models }, options = {}) => {
 
 module.exports = (spec, config = {}) => {
   const { operations, models } = expandToOperations(spec, config)
+  // console.log(expandToOpenApi({ operations, models }, config).components.schemas)
+  // console.log(expandToOpenApi({ operations, models }, config).paths['/people/{personId}/pets'].post.responses[201].content['application/json'].schema)
   return expandToOpenApi({ operations, models }, config)
 }
 

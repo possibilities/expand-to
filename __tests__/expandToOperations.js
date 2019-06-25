@@ -471,7 +471,7 @@ describe('expandToOperations', () => {
         { description: `Get succeeded`, code: 200 },
         { description: `Replace succeeded`, code: 200 },
         { description: `Update succeeded`, code: 200 },
-        { description: `Delete succeeded`, code: 204 },
+        { description: `Delete succeeded`, code: 204 }
       ])
     })
 

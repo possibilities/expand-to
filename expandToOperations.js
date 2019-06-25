@@ -131,7 +131,7 @@ const successStatuses = {
   patch: {
     code: 200,
     description: 'Update succeeded'
-  },
+  }
 }
 
 const expandModels = models => ({

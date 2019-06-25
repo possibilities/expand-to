@@ -57,6 +57,6 @@ module.exports.errors = {
   },
   notFound: {
     code: 404,
-    description: 'Not found',
-  },
+    description: 'Not found'
+  }
 }

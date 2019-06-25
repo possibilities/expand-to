@@ -68,13 +68,6 @@ const createModelResponse = (status, action, modelName) => {
   }
 }
 
-const errorMessage = {
-  400: 'Bad request',
-  401: 'Unauthorized',
-  403: 'Forbidden',
-  404: 'Not found'
-}
-
 const getErrorResponses = (...errors) => {
   let responses = {}
   forEach(errors, error => {

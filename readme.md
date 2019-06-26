@@ -35,11 +35,11 @@ The most common use case is to use the following functions that take a spec and 
 * `expandToOperations(spec, config = {})` → `{ paths, models, operations }`
 * `expandToOpenApi(spec, config = {})` → `openApiSpec`
 * `expandToValidations(spec, config = {})` → `{ paths, models, operations, validations }`
-* `expandToTestData(spec, config = {})` → `(operationName)` → `{ request, response }`
+* `expandToTestData(spec, config = {})` → `(operationName)` → `testData`
 
 Alternatively each core API function exposes a lower level function that can be used to compose your own custom tranformations.
 
 * `expandToOpenApi({ operations, models }, config = {})` → `{ models, operations, spec }`
 * `expandToOperations({ paths, models }, config = {})` → `{ paths, models, operations }`
 * `expandToValidations({ operations, models }, config = {})` → `{ paths, models, operations, validations }`
-* `expandToTestData({ operations, models }, config = {})` → `{ paths, models, operations, request, response }`
+* `expandToTestData({ operations, models }, config = {})` → `{ paths, models, operations, testData }`

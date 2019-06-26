@@ -466,25 +466,15 @@ describe('expandToOperations', () => {
     test('query', () => {
       expect(expandToOperations(spec).operations.map(op => op.query)).toEqual([
         [
-          { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
-          { name: 'page', description: 'Page number', schema: { type: 'string' } },
+          { name: 'perPage', description: 'Per page', schema: { type: 'string', default: '20' } },
+          { name: 'page', description: 'Page number', schema: { type: 'string', default: '1' } },
           { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
         ],
         [],
         [],
         [
-          { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
-          { name: 'page', description: 'Page number', schema: { type: 'string' } },
-          { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [
-          { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
-          { name: 'page', description: 'Page number', schema: { type: 'string' } },
+          { name: 'perPage', description: 'Per page', schema: { type: 'string', default: '20' } },
+          { name: 'page', description: 'Page number', schema: { type: 'string', default: '1' } },
           { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
         ],
         [],
@@ -492,10 +482,20 @@ describe('expandToOperations', () => {
         [],
         [],
         [],
+        [
+          { name: 'perPage', description: 'Per page', schema: { type: 'string', default: '20' } },
+          { name: 'page', description: 'Page number', schema: { type: 'string', default: '1' } },
+          { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
         [],
         [
-          { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
-          { name: 'page', description: 'Page number', schema: { type: 'string' } },
+          { name: 'perPage', description: 'Per page', schema: { type: 'string', default: '20' } },
+          { name: 'page', description: 'Page number', schema: { type: 'string', default: '1' } },
           { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
         ],
         [],
@@ -506,8 +506,8 @@ describe('expandToOperations', () => {
         [],
         // User centric routes
         [
-          { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
-          { name: 'page', description: 'Page number', schema: { type: 'string' } },
+          { name: 'perPage', description: 'Per page', schema: { type: 'string', default: '20' } },
+          { name: 'page', description: 'Page number', schema: { type: 'string', default: '1' } },
           { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
         ],
         [],

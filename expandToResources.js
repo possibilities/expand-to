@@ -177,7 +177,7 @@ const expandPaths = mountedResources => {
         mountPath: [],
         isUserCentricResource: true,
         methods: allCollectionVerbs,
-        pathParts: ['users', pluralize(resource.name)],
+        pathParts: ['user', pluralize(resource.name)],
         modelName: resource.name
       })
 
@@ -189,7 +189,7 @@ const expandPaths = mountedResources => {
           ? immutableEntityVerbs
           : allEntityVerbs,
         pathParts: [
-          'users',
+          'user',
           pluralize(resource.name),
           `{${resource.name}Id}`
         ],
@@ -231,7 +231,7 @@ const expandPaths = mountedResources => {
           ...relatedResource,
           isUserCentricResource: true,
           methods: allCollectionVerbs,
-          pathParts: ['users', pluralize(resourceName)],
+          pathParts: ['user', pluralize(resourceName)],
           modelName: relatedResource.name
         })
 
@@ -240,7 +240,7 @@ const expandPaths = mountedResources => {
           isUserCentricResource: true,
           methods: allEntityVerbs,
           pathParts: [
-            'users',
+            'user',
             pluralize(resourceName),
             `{${resourceName}Id}`
           ],
@@ -254,7 +254,7 @@ const expandPaths = mountedResources => {
           isUserCentricResource: true,
           methods: allCollectionVerbs,
           pathParts: compact([
-            'users',
+            'user',
             relation.as && (relation.label || pluralize(resourceName)),
             pluralize(resource.name)
           ])
@@ -264,7 +264,7 @@ const expandPaths = mountedResources => {
           isUserCentricResource: true,
           methods: allEntityVerbs,
           pathParts: compact([
-            'users',
+            'user',
             relation.as && (relation.label || pluralize(resourceName)),
             pluralize(resource.name),
             `{${resource.name}Id}`

@@ -899,6 +899,22 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       },
       {
+        pathParts: ['user', 'pets'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['user', 'pets', '{petId}'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allEntityVerbs
+      },
+      {
         pathParts: ['users'],
         name: 'user',
         model: 'user',
@@ -906,28 +922,12 @@ describe('expandToResources#hasMany', () => {
         operations: allCollectionVerbs
       },
       {
-        pathParts: ['users', 'pets'],
-        name: 'pet',
-        model: 'pet',
-        resourceName: 'pet',
-        isUserCentricResource: true,
-        operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'pets', '{petId}'],
-        name: 'pet',
-        model: 'pet',
-        resourceName: 'pet',
-        isUserCentricResource: true,
-        operations: allEntityVerbs
-      },
-      {
         pathParts: ['users', '{userId}'],
         name: 'user',
         model: 'user',
         resourceName: 'user',
         operations: allEntityVerbs
-      }
+      },
     ])
 
     validateAndDumpFixture(schema, 'with users')
@@ -1012,43 +1012,43 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       },
       {
+        pathParts: ['user', 'caring', 'pets'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['user', 'caring', 'pets', '{petId}'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['user', 'owners', 'pets'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['user', 'owners', 'pets', '{petId}'],
+        name: 'pet',
+        model: 'pet',
+        resourceName: 'pet',
+        isUserCentricResource: true,
+        operations: allEntityVerbs
+      },
+      {
         pathParts: ['users'],
         name: 'user',
         model: 'user',
         resourceName: 'user',
         operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'caring', 'pets'],
-        name: 'pet',
-        model: 'pet',
-        resourceName: 'pet',
-        isUserCentricResource: true,
-        operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'caring', 'pets', '{petId}'],
-        name: 'pet',
-        model: 'pet',
-        resourceName: 'pet',
-        isUserCentricResource: true,
-        operations: allEntityVerbs
-      },
-      {
-        pathParts: ['users', 'owners', 'pets'],
-        name: 'pet',
-        model: 'pet',
-        resourceName: 'pet',
-        isUserCentricResource: true,
-        operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'owners', 'pets', '{petId}'],
-        name: 'pet',
-        model: 'pet',
-        resourceName: 'pet',
-        isUserCentricResource: true,
-        operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}'],
@@ -1431,14 +1431,7 @@ describe('expandToResources#users', () => {
 
     expect(expandedView(expandToResources(schema))).toEqual([
       {
-        pathParts: ['users'],
-        name: 'user',
-        model: 'user',
-        resourceName: 'user',
-        operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'courses'],
+        pathParts: ['user', 'courses'],
         name: 'course',
         model: 'course',
         resourceName: 'course',
@@ -1446,12 +1439,19 @@ describe('expandToResources#users', () => {
         operations: allCollectionVerbs
       },
       {
-        pathParts: ['users', 'courses', '{courseId}'],
+        pathParts: ['user', 'courses', '{courseId}'],
         isUserCentricResource: true,
         name: 'course',
         model: 'course',
         resourceName: 'course',
         operations: allEntityVerbs
+      },
+      {
+        pathParts: ['users'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}'],
@@ -1523,14 +1523,7 @@ describe('expandToResources#users', () => {
         operations: allEntityVerbs
       },
       {
-        pathParts: ['users'],
-        name: 'user',
-        model: 'user',
-        resourceName: 'user',
-        operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'courses'],
+        pathParts: ['user', 'courses'],
         name: 'course',
         model: 'course',
         resourceName: 'course',
@@ -1538,12 +1531,19 @@ describe('expandToResources#users', () => {
         operations: allCollectionVerbs
       },
       {
-        pathParts: ['users', 'courses', '{courseId}'],
+        pathParts: ['user', 'courses', '{courseId}'],
         isUserCentricResource: true,
         name: 'course',
         model: 'course',
         resourceName: 'course',
         operations: allEntityVerbs
+      },
+      {
+        pathParts: ['users'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: allCollectionVerbs
       },
       {
         pathParts: ['users', '{userId}'],
@@ -1622,43 +1622,43 @@ describe('expandToResources#users', () => {
         operations: allEntityVerbs
       },
       {
+        pathParts: ['user', 'contributors'],
+        name: 'course',
+        model: 'course',
+        resourceName: 'course',
+        isUserCentricResource: true,
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['user', 'contributors', '{contributorId}'],
+        name: 'course',
+        model: 'course',
+        resourceName: 'course',
+        isUserCentricResource: true,
+        operations: allEntityVerbs
+      },
+      {
+        pathParts: ['user', 'learners'],
+        name: 'course',
+        model: 'course',
+        resourceName: 'course',
+        isUserCentricResource: true,
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['user', 'learners', '{learnerId}'],
+        name: 'course',
+        model: 'course',
+        resourceName: 'course',
+        isUserCentricResource: true,
+        operations: allEntityVerbs
+      },
+      {
         pathParts: ['users'],
         name: 'user',
         model: 'user',
         resourceName: 'user',
         operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'contributors'],
-        name: 'course',
-        model: 'course',
-        resourceName: 'course',
-        isUserCentricResource: true,
-        operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'contributors', '{contributorId}'],
-        name: 'course',
-        model: 'course',
-        resourceName: 'course',
-        isUserCentricResource: true,
-        operations: allEntityVerbs
-      },
-      {
-        pathParts: ['users', 'learners'],
-        name: 'course',
-        model: 'course',
-        resourceName: 'course',
-        isUserCentricResource: true,
-        operations: allCollectionVerbs
-      },
-      {
-        pathParts: ['users', 'learners', '{learnerId}'],
-        name: 'course',
-        model: 'course',
-        resourceName: 'course',
-        isUserCentricResource: true,
-        operations: allEntityVerbs
       },
       {
         pathParts: ['users', '{userId}'],

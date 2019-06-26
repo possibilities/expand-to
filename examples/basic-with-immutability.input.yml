@@ -1,0 +1,6 @@
+- name: pet
+  immutable: true
+  model:
+    properties:
+      name:
+        type: string

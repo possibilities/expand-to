@@ -1,0 +1,12 @@
+- name: pet
+  model:
+    properties:
+      name:
+        type: string
+- name: person
+  hasMany:
+    - name: pets
+  model:
+    properties:
+      name:
+        type: string

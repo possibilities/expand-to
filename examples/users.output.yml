@@ -1,0 +1,422 @@
+openapi: 3.0.0
+info:
+  version: 0.0.0
+  title: 'Example: users'
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      tags:
+        - Users
+      summary: List users
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createUser
+      tags:
+        - Users
+      summary: Create user
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/users/{userId}':
+    head:
+      operationId: checkUser
+      tags:
+        - Users
+      summary: Check user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getUser
+      tags:
+        - Users
+      summary: Get user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceUser
+      tags:
+        - Users
+      summary: Replace user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateUser
+      tags:
+        - Users
+      summary: Update user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteUser
+      tags:
+        - Users
+      summary: Delete user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user:
+    get:
+      operationId: getUserAsUser
+      tags:
+        - User
+      summary: Get user for user
+      parameters: []
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EmptyResponse:
+      type: object
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: number
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        details:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+        - statusCode
+        - message
+    PaginationResponse:
+      type: object
+      properties:
+        firstPage:
+          type: number
+        lastPage:
+          type: number
+        nextPage:
+          type: number
+        prevPage:
+          type: number
+      required:
+        - firstPage
+        - lastPage
+        - nextPage
+        - prevPage
+    UserResponse:
+      properties:
+        name:
+          type: string
+    UserRequest:
+      properties:
+        name:
+          type: string

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "user",
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "course",
+    "belongsTo": "user",
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,13 @@
+- name: group
+  treeOf: subgroups
+  hasMany:
+    - name: widgets
+  model:
+    properties:
+      name:
+        type: string
+- name: widget
+  model:
+    properties:
+      name:
+        type: string

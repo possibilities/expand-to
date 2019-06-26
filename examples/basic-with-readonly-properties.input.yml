@@ -1,0 +1,8 @@
+- name: pet
+  model:
+    properties:
+      name:
+        type: string
+      fieldThatIsReadOnly:
+        type: string
+        readOnly: true

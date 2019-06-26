@@ -1,0 +1,5 @@
+- name: person
+  model:
+    properties:
+      name:
+        type: string

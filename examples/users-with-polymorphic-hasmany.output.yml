@@ -1,0 +1,2200 @@
+openapi: 3.0.0
+info:
+  version: 0.0.0
+  title: 'Example: users with polymorphic hasMany'
+paths:
+  /courses:
+    get:
+      operationId: listCourses
+      tags:
+        - Courses
+      summary: List courses
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  courses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CourseResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createCourse
+      tags:
+        - Courses
+      summary: Create course
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/courses/{courseId}':
+    head:
+      operationId: checkCourse
+      tags:
+        - Courses
+      summary: Check course
+      parameters:
+        - in: path
+          required: true
+          name: courseId
+          schema:
+            type: string
+          description: Course id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getCourse
+      tags:
+        - Courses
+      summary: Get course
+      parameters:
+        - in: path
+          required: true
+          name: courseId
+          schema:
+            type: string
+          description: Course id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceCourse
+      tags:
+        - Courses
+      summary: Replace course
+      parameters:
+        - in: path
+          required: true
+          name: courseId
+          schema:
+            type: string
+          description: Course id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateCourse
+      tags:
+        - Courses
+      summary: Update course
+      parameters:
+        - in: path
+          required: true
+          name: courseId
+          schema:
+            type: string
+          description: Course id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteCourse
+      tags:
+        - Courses
+      summary: Delete course
+      parameters:
+        - in: path
+          required: true
+          name: courseId
+          schema:
+            type: string
+          description: Course id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users:
+    get:
+      operationId: listUsers
+      tags:
+        - Users
+      summary: List users
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createUser
+      tags:
+        - Users
+      summary: Create user
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/users/{userId}':
+    head:
+      operationId: checkUser
+      tags:
+        - Users
+      summary: Check user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getUser
+      tags:
+        - Users
+      summary: Get user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceUser
+      tags:
+        - Users
+      summary: Replace user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateUser
+      tags:
+        - Users
+      summary: Update user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteUser
+      tags:
+        - Users
+      summary: Delete user
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user:
+    get:
+      operationId: getUserAsUser
+      tags:
+        - User
+      summary: Get user for user
+      parameters: []
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/users/{userId}/contributors':
+    get:
+      operationId: listUserContributors
+      tags:
+        - Users
+      summary: List user contributors
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userContributors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserContributorResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createUserContributor
+      tags:
+        - Users
+      summary: Create user contributor
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserContributorRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userContributor:
+                    $ref: '#/components/schemas/UserContributorResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/users/{userId}/contributors/{contributorId}':
+    head:
+      operationId: checkUserContributor
+      tags:
+        - Users
+      summary: Check user contributor
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getUserContributor
+      tags:
+        - Users
+      summary: Get user contributor
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userContributor:
+                    $ref: '#/components/schemas/UserContributorResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceUserContributor
+      tags:
+        - Users
+      summary: Replace user contributor
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserContributorRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userContributor:
+                    $ref: '#/components/schemas/UserContributorResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateUserContributor
+      tags:
+        - Users
+      summary: Update user contributor
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserContributorRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userContributor:
+                    $ref: '#/components/schemas/UserContributorResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteUserContributor
+      tags:
+        - Users
+      summary: Delete user contributor
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user/contributors:
+    get:
+      operationId: listContributorsAsUser
+      tags:
+        - User
+      summary: List contributors for user
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  courses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CourseResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createContributorAsUser
+      tags:
+        - User
+      summary: Create contributor for user
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/user/contributors/{contributorId}':
+    head:
+      operationId: checkContributorAsUser
+      tags:
+        - User
+      summary: Check contributor for user
+      parameters:
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getContributorAsUser
+      tags:
+        - User
+      summary: Get contributor for user
+      parameters:
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceContributorAsUser
+      tags:
+        - User
+      summary: Replace contributor for user
+      parameters:
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateContributorAsUser
+      tags:
+        - User
+      summary: Update contributor for user
+      parameters:
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteContributorAsUser
+      tags:
+        - User
+      summary: Delete contributor for user
+      parameters:
+        - in: path
+          required: true
+          name: contributorId
+          schema:
+            type: string
+          description: Contributor id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/users/{userId}/learners':
+    get:
+      operationId: listUserLearners
+      tags:
+        - Users
+      summary: List user learners
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userLearners:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserLearnerResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createUserLearner
+      tags:
+        - Users
+      summary: Create user learner
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLearnerRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userLearner:
+                    $ref: '#/components/schemas/UserLearnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/users/{userId}/learners/{learnerId}':
+    head:
+      operationId: checkUserLearner
+      tags:
+        - Users
+      summary: Check user learner
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getUserLearner
+      tags:
+        - Users
+      summary: Get user learner
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userLearner:
+                    $ref: '#/components/schemas/UserLearnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceUserLearner
+      tags:
+        - Users
+      summary: Replace user learner
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLearnerRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userLearner:
+                    $ref: '#/components/schemas/UserLearnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateUserLearner
+      tags:
+        - Users
+      summary: Update user learner
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLearnerRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userLearner:
+                    $ref: '#/components/schemas/UserLearnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteUserLearner
+      tags:
+        - Users
+      summary: Delete user learner
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+          description: User id
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user/learners:
+    get:
+      operationId: listLearnersAsUser
+      tags:
+        - User
+      summary: List learners for user
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  courses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CourseResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createLearnerAsUser
+      tags:
+        - User
+      summary: Create learner for user
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/user/learners/{learnerId}':
+    head:
+      operationId: checkLearnerAsUser
+      tags:
+        - User
+      summary: Check learner for user
+      parameters:
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getLearnerAsUser
+      tags:
+        - User
+      summary: Get learner for user
+      parameters:
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceLearnerAsUser
+      tags:
+        - User
+      summary: Replace learner for user
+      parameters:
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateLearnerAsUser
+      tags:
+        - User
+      summary: Update learner for user
+      parameters:
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  course:
+                    $ref: '#/components/schemas/CourseResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteLearnerAsUser
+      tags:
+        - User
+      summary: Delete learner for user
+      parameters:
+        - in: path
+          required: true
+          name: learnerId
+          schema:
+            type: string
+          description: Learner id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EmptyResponse:
+      type: object
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: number
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        details:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+        - statusCode
+        - message
+    PaginationResponse:
+      type: object
+      properties:
+        firstPage:
+          type: number
+        lastPage:
+          type: number
+        nextPage:
+          type: number
+        prevPage:
+          type: number
+      required:
+        - firstPage
+        - lastPage
+        - nextPage
+        - prevPage
+    CourseResponse:
+      properties:
+        name:
+          type: string
+    CourseRequest:
+      properties:
+        name:
+          type: string
+    UserResponse:
+      properties:
+        name:
+          type: string
+    UserRequest:
+      properties:
+        name:
+          type: string
+    UserContributorResponse:
+      properties:
+        contributorId:
+          type: string
+    UserContributorRequest:
+      properties:
+        contributorId:
+          type: string
+    UserLearnerResponse:
+      properties:
+        learnerId:
+          type: string
+    UserLearnerRequest:
+      properties:
+        learnerId:
+          type: string

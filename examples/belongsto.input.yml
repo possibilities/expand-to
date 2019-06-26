@@ -1,0 +1,17 @@
+- name: org
+  model:
+    properties:
+      name:
+        type: string
+- name: repo
+  belongsTo: org
+  model:
+    properties:
+      name:
+        type: string
+- name: commit
+  belongsTo: repo
+  model:
+    properties:
+      name:
+        type: string

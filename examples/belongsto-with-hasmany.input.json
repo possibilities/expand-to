@@ -1,0 +1,53 @@
+[
+  {
+    "name": "owner",
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "committer",
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "repo",
+    "hasMany": [
+      {
+        "name": "owners"
+      }
+    ],
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "commit",
+    "belongsTo": "repo",
+    "hasMany": [
+      {
+        "name": "committers"
+      }
+    ],
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "name": "group",
+    "treeOf": "subgroups",
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "region",
+    "hasMany": [
+      {
+        "name": "groups"
+      }
+    ],
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+]

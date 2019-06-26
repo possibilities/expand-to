@@ -1,0 +1,1489 @@
+openapi: 3.0.0
+info:
+  version: 0.0.0
+  title: 'Example: treeOf target of hasMany'
+paths:
+  /groups:
+    get:
+      operationId: listGroups
+      tags:
+        - Groups
+      summary: List groups
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GroupResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createGroup
+      tags:
+        - Groups
+      summary: Create group
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group:
+                    $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/groups/{groupId}':
+    head:
+      operationId: checkGroup
+      tags:
+        - Groups
+      summary: Check group
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getGroup
+      tags:
+        - Groups
+      summary: Get group
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group:
+                    $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceGroup
+      tags:
+        - Groups
+      summary: Replace group
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group:
+                    $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateGroup
+      tags:
+        - Groups
+      summary: Update group
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group:
+                    $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteGroup
+      tags:
+        - Groups
+      summary: Delete group
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /regions:
+    get:
+      operationId: listRegions
+      tags:
+        - Regions
+      summary: List regions
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RegionResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createRegion
+      tags:
+        - Regions
+      summary: Create region
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegionRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  region:
+                    $ref: '#/components/schemas/RegionResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/regions/{regionId}':
+    head:
+      operationId: checkRegion
+      tags:
+        - Regions
+      summary: Check region
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getRegion
+      tags:
+        - Regions
+      summary: Get region
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  region:
+                    $ref: '#/components/schemas/RegionResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceRegion
+      tags:
+        - Regions
+      summary: Replace region
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegionRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  region:
+                    $ref: '#/components/schemas/RegionResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateRegion
+      tags:
+        - Regions
+      summary: Update region
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegionRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  region:
+                    $ref: '#/components/schemas/RegionResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteRegion
+      tags:
+        - Regions
+      summary: Delete region
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/groups/{groupId}/subgroups':
+    get:
+      operationId: listGroupSubgroups
+      tags:
+        - Groups
+      summary: List group subgroups
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GroupResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createGroupSubgroup
+      tags:
+        - Groups
+      summary: Create group subgroup
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group:
+                    $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/groups/{groupId}/subgroups/{subgroupId}':
+    head:
+      operationId: checkGroupSubgroup
+      tags:
+        - Groups
+      summary: Check group subgroup
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+        - in: path
+          required: true
+          name: subgroupId
+          schema:
+            type: string
+          description: Subgroup id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getGroupSubgroup
+      tags:
+        - Groups
+      summary: Get group subgroup
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+        - in: path
+          required: true
+          name: subgroupId
+          schema:
+            type: string
+          description: Subgroup id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group:
+                    $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceGroupSubgroup
+      tags:
+        - Groups
+      summary: Replace group subgroup
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+        - in: path
+          required: true
+          name: subgroupId
+          schema:
+            type: string
+          description: Subgroup id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group:
+                    $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateGroupSubgroup
+      tags:
+        - Groups
+      summary: Update group subgroup
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+        - in: path
+          required: true
+          name: subgroupId
+          schema:
+            type: string
+          description: Subgroup id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group:
+                    $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteGroupSubgroup
+      tags:
+        - Groups
+      summary: Delete group subgroup
+      parameters:
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+        - in: path
+          required: true
+          name: subgroupId
+          schema:
+            type: string
+          description: Subgroup id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/regions/{regionId}/groups':
+    get:
+      operationId: listRegionGroups
+      tags:
+        - Regions
+      summary: List region groups
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regionGroups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RegionGroupResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createRegionGroup
+      tags:
+        - Regions
+      summary: Create region group
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegionGroupRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regionGroup:
+                    $ref: '#/components/schemas/RegionGroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/regions/{regionId}/groups/{groupId}':
+    head:
+      operationId: checkRegionGroup
+      tags:
+        - Regions
+      summary: Check region group
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getRegionGroup
+      tags:
+        - Regions
+      summary: Get region group
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regionGroup:
+                    $ref: '#/components/schemas/RegionGroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceRegionGroup
+      tags:
+        - Regions
+      summary: Replace region group
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegionGroupRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regionGroup:
+                    $ref: '#/components/schemas/RegionGroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateRegionGroup
+      tags:
+        - Regions
+      summary: Update region group
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegionGroupRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regionGroup:
+                    $ref: '#/components/schemas/RegionGroupResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteRegionGroup
+      tags:
+        - Regions
+      summary: Delete region group
+      parameters:
+        - in: path
+          required: true
+          name: regionId
+          schema:
+            type: string
+          description: Region id
+        - in: path
+          required: true
+          name: groupId
+          schema:
+            type: string
+          description: Group id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EmptyResponse:
+      type: object
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: number
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        details:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+        - statusCode
+        - message
+    PaginationResponse:
+      type: object
+      properties:
+        firstPage:
+          type: number
+        lastPage:
+          type: number
+        nextPage:
+          type: number
+        prevPage:
+          type: number
+      required:
+        - firstPage
+        - lastPage
+        - nextPage
+        - prevPage
+    GroupResponse:
+      properties:
+        name:
+          type: string
+    GroupRequest:
+      properties:
+        name:
+          type: string
+    RegionResponse:
+      properties:
+        name:
+          type: string
+    RegionRequest:
+      properties:
+        name:
+          type: string
+    RegionGroupResponse:
+      properties:
+        groupId:
+          type: string
+    RegionGroupRequest:
+      properties:
+        groupId:
+          type: string

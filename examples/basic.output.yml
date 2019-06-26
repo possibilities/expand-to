@@ -1,0 +1,729 @@
+openapi: 3.0.0
+info:
+  version: 0.0.0
+  title: 'Example: basic'
+paths:
+  /pets:
+    get:
+      operationId: listPets
+      tags:
+        - Pets
+      summary: List pets
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PetResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createPet
+      tags:
+        - Pets
+      summary: Create pet
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pet:
+                    $ref: '#/components/schemas/PetResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/pets/{petId}':
+    head:
+      operationId: checkPet
+      tags:
+        - Pets
+      summary: Check pet
+      parameters:
+        - in: path
+          required: true
+          name: petId
+          schema:
+            type: string
+          description: Pet id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getPet
+      tags:
+        - Pets
+      summary: Get pet
+      parameters:
+        - in: path
+          required: true
+          name: petId
+          schema:
+            type: string
+          description: Pet id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pet:
+                    $ref: '#/components/schemas/PetResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replacePet
+      tags:
+        - Pets
+      summary: Replace pet
+      parameters:
+        - in: path
+          required: true
+          name: petId
+          schema:
+            type: string
+          description: Pet id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pet:
+                    $ref: '#/components/schemas/PetResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updatePet
+      tags:
+        - Pets
+      summary: Update pet
+      parameters:
+        - in: path
+          required: true
+          name: petId
+          schema:
+            type: string
+          description: Pet id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pet:
+                    $ref: '#/components/schemas/PetResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deletePet
+      tags:
+        - Pets
+      summary: Delete pet
+      parameters:
+        - in: path
+          required: true
+          name: petId
+          schema:
+            type: string
+          description: Pet id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /stores:
+    get:
+      operationId: listStores
+      tags:
+        - Stores
+      summary: List stores
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stores:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StoreResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createStore
+      tags:
+        - Stores
+      summary: Create store
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  store:
+                    $ref: '#/components/schemas/StoreResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/stores/{storeId}':
+    head:
+      operationId: checkStore
+      tags:
+        - Stores
+      summary: Check store
+      parameters:
+        - in: path
+          required: true
+          name: storeId
+          schema:
+            type: string
+          description: Store id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getStore
+      tags:
+        - Stores
+      summary: Get store
+      parameters:
+        - in: path
+          required: true
+          name: storeId
+          schema:
+            type: string
+          description: Store id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  store:
+                    $ref: '#/components/schemas/StoreResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceStore
+      tags:
+        - Stores
+      summary: Replace store
+      parameters:
+        - in: path
+          required: true
+          name: storeId
+          schema:
+            type: string
+          description: Store id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  store:
+                    $ref: '#/components/schemas/StoreResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateStore
+      tags:
+        - Stores
+      summary: Update store
+      parameters:
+        - in: path
+          required: true
+          name: storeId
+          schema:
+            type: string
+          description: Store id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  store:
+                    $ref: '#/components/schemas/StoreResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteStore
+      tags:
+        - Stores
+      summary: Delete store
+      parameters:
+        - in: path
+          required: true
+          name: storeId
+          schema:
+            type: string
+          description: Store id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EmptyResponse:
+      type: object
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: number
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        details:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+        - statusCode
+        - message
+    PaginationResponse:
+      type: object
+      properties:
+        firstPage:
+          type: number
+        lastPage:
+          type: number
+        nextPage:
+          type: number
+        prevPage:
+          type: number
+      required:
+        - firstPage
+        - lastPage
+        - nextPage
+        - prevPage
+    PetResponse:
+      properties:
+        name:
+          type: string
+    PetRequest:
+      properties:
+        name:
+          type: string
+    StoreResponse:
+      properties:
+        name:
+          type: string
+    StoreRequest:
+      properties:
+        name:
+          type: string

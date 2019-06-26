@@ -1,0 +1,1929 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "0.0.0",
+    "title": "Example: belongsTo"
+  },
+  "paths": {
+    "/orgs": {
+      "get": {
+        "operationId": "listOrgs",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "List orgs",
+        "parameters": [
+          {
+            "name": "perPage",
+            "description": "Per page",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "page",
+            "description": "Page number",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "orderBy",
+            "description": "Order by",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "orgs": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/OrgResponse"
+                      }
+                    },
+                    "pages": {
+                      "$ref": "#/components/schemas/PaginationResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createOrg",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Create org",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "org": {
+                      "$ref": "#/components/schemas/OrgResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orgs/{orgId}": {
+      "head": {
+        "operationId": "checkOrg",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Check org",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Check succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getOrg",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Get org",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "org": {
+                      "$ref": "#/components/schemas/OrgResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "replaceOrg",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Replace org",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Replace succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "org": {
+                      "$ref": "#/components/schemas/OrgResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateOrg",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Update org",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "org": {
+                      "$ref": "#/components/schemas/OrgResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteOrg",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Delete org",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orgs/{orgId}/repos": {
+      "get": {
+        "operationId": "listOrgRepos",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "List org repos",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "name": "perPage",
+            "description": "Per page",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "page",
+            "description": "Page number",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "orderBy",
+            "description": "Order by",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "repos": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/RepoResponse"
+                      }
+                    },
+                    "pages": {
+                      "$ref": "#/components/schemas/PaginationResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createOrgRepo",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Create org repo",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "repo": {
+                      "$ref": "#/components/schemas/RepoResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orgs/{orgId}/repos/{repoId}": {
+      "head": {
+        "operationId": "checkOrgRepo",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Check org repo",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Check succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getOrgRepo",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Get org repo",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "repo": {
+                      "$ref": "#/components/schemas/RepoResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "replaceOrgRepo",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Replace org repo",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Replace succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "repo": {
+                      "$ref": "#/components/schemas/RepoResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateOrgRepo",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Update org repo",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "repo": {
+                      "$ref": "#/components/schemas/RepoResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteOrgRepo",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Delete org repo",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orgs/{orgId}/repos/{repoId}/commits": {
+      "get": {
+        "operationId": "listOrgRepoCommits",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "List org repo commits",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          },
+          {
+            "name": "perPage",
+            "description": "Per page",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "page",
+            "description": "Page number",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "orderBy",
+            "description": "Order by",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "commits": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CommitResponse"
+                      }
+                    },
+                    "pages": {
+                      "$ref": "#/components/schemas/PaginationResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createOrgRepoCommit",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Create org repo commit",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommitRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "commit": {
+                      "$ref": "#/components/schemas/CommitResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orgs/{orgId}/repos/{repoId}/commits/{commitId}": {
+      "head": {
+        "operationId": "checkOrgRepoCommit",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Check org repo commit",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "commitId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Commit id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Check succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getOrgRepoCommit",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Get org repo commit",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "commitId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Commit id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "commit": {
+                      "$ref": "#/components/schemas/CommitResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "replaceOrgRepoCommit",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Replace org repo commit",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "commitId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Commit id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommitRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Replace succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "commit": {
+                      "$ref": "#/components/schemas/CommitResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateOrgRepoCommit",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Update org repo commit",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "commitId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Commit id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommitRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "commit": {
+                      "$ref": "#/components/schemas/CommitResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteOrgRepoCommit",
+        "tags": [
+          "Orgs"
+        ],
+        "summary": "Delete org repo commit",
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "orgId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Org id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "repoId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Repo id"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "commitId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Commit id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EmptyResponse": {
+        "type": "object"
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "readOnly": true
+          },
+          "message": {
+            "type": "string",
+            "readOnly": true
+          },
+          "status": {
+            "type": "string",
+            "readOnly": true
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "readOnly": true
+          }
+        },
+        "required": [
+          "statusCode",
+          "message"
+        ]
+      },
+      "PaginationResponse": {
+        "type": "object",
+        "properties": {
+          "firstPage": {
+            "type": "number"
+          },
+          "lastPage": {
+            "type": "number"
+          },
+          "nextPage": {
+            "type": "number"
+          },
+          "prevPage": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "firstPage",
+          "lastPage",
+          "nextPage",
+          "prevPage"
+        ]
+      },
+      "OrgResponse": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "OrgRequest": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "RepoResponse": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "RepoRequest": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "CommitResponse": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "CommitRequest": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

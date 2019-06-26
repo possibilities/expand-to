@@ -1,0 +1,12 @@
+- name: region
+  model:
+    properties:
+      name:
+        type: string
+- name: group
+  treeOf: subgroups
+  belongsTo: region
+  model:
+    properties:
+      name:
+        type: string

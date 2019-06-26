@@ -1,0 +1,32 @@
+[
+  {
+    "name": "person",
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "pet",
+    "hasMany": [
+      {
+        "name": "people",
+        "as": "owners"
+      },
+      {
+        "name": "people",
+        "as": "doctors"
+      }
+    ],
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+]

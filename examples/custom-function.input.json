@@ -1,0 +1,87 @@
+[
+  {
+    "name": "pet",
+    "fns": [
+      {
+        "method": "get",
+        "name": "customFnWithGetAction"
+      },
+      {
+        "method": "list",
+        "name": "customFnWithListAction"
+      },
+      {
+        "method": "get",
+        "name": "customFnWithModel",
+        "model": {
+          "properties": {
+            "customFnField": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "method": "post",
+        "name": "customFnWithSeparateModels",
+        "model": {
+          "request": {
+            "properties": {
+              "customFnRequestModelField": {
+                "type": "string"
+              }
+            }
+          },
+          "response": {
+            "properties": {
+              "customFnResponseModelField": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "method": "post",
+        "name": "customFnWithStringyModel",
+        "model": "pet"
+      },
+      {
+        "method": "post",
+        "name": "customFnWithStringyResponseModel",
+        "model": {
+          "response": "pet"
+        }
+      },
+      {
+        "method": "post",
+        "name": "customFnWithStringySeparateModels",
+        "model": {
+          "request": "pet",
+          "response": "pet"
+        }
+      },
+      {
+        "method": "post",
+        "name": "customFnWithRequestAndStringyResponse",
+        "model": {
+          "request": {
+            "properties": {
+              "customFnWithRequestAndStringyResponseField": {
+                "type": "string"
+              }
+            }
+          },
+          "response": "pet"
+        }
+      }
+    ],
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+]

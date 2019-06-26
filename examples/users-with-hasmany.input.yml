@@ -1,0 +1,12 @@
+- name: course
+  model:
+    properties:
+      name:
+        type: string
+- name: user
+  hasMany:
+    - name: courses
+  model:
+    properties:
+      name:
+        type: string

@@ -1,0 +1,6 @@
+- name: group
+  treeOf: subgroups
+  model:
+    properties:
+      name:
+        type: string

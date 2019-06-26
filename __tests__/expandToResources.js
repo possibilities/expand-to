@@ -1,10 +1,12 @@
+const { join } = require('path')
 const traverse = require('traverse')
 const uniq = require('lodash/uniq')
 const sortBy = require('lodash/sortBy')
 const expandToResources = require('../expandToResources')
 const expandToOpenApi = require('../expandToOpenApi')
-const { existsSync, writeFileSync, mkdirsSync } = require('fs-extra')
+const { existsSync, removeSync, writeFileSync, mkdirsSync } = require('fs-extra')
 const OpenAPISchemaValidator = require('openapi-schema-validator').default
+const { safeDump: dumpYaml } = require('js-yaml')
 
 const validator = new OpenAPISchemaValidator({ version: 3 })
 
@@ -47,8 +49,9 @@ const assertUniqueOperationIds = (spec, title) => {
   }
 }
 
-const tempDir = `/tmp/${Date.now()}`
-mkdirsSync(tempDir)
+const exampleDir = join(__dirname, '..', 'examples')
+removeSync(exampleDir)
+mkdirsSync(exampleDir)
 
 // Examples here are emblamatic so we validate and dump io of each test run
 // for usage outside of tests
@@ -58,17 +61,24 @@ const validateAndDumpFixture = (spec, title) => {
     { info: { title: `Example: ${title}` } }
   )
 
-  const fixturePath =
-    `${tempDir}/${title.toLowerCase().replace(/ /g, '-')}.json`
+  const fixtureInputPathJson =
+    `${exampleDir}/${title.toLowerCase().replace(/ /g, '-')}.input.json`
+  const fixtureInputPathYaml =
+    `${exampleDir}/${title.toLowerCase().replace(/ /g, '-')}.input.yml`
+  const fixtureOutputPathJson =
+    `${exampleDir}/${title.toLowerCase().replace(/ /g, '-')}.output.json`
+  const fixtureOutputPathYaml =
+    `${exampleDir}/${title.toLowerCase().replace(/ /g, '-')}.output.yml`
 
-  if (existsSync(fixturePath)) {
+  if (existsSync(fixtureOutputPathJson)) {
     throw new Error(`Fixture already exists: ${title}`)
   }
 
-  writeFileSync(
-    fixturePath,
-    JSON.stringify(openApiSpec, null, 2)
-  )
+  writeFileSync(fixtureInputPathJson, JSON.stringify(spec, null, 2))
+  writeFileSync(fixtureOutputPathJson, JSON.stringify(openApiSpec, null, 2))
+  const yamlOptions = { skipInvalid: true, noRefs: true }
+  writeFileSync(fixtureInputPathYaml, dumpYaml(spec, yamlOptions))
+  writeFileSync(fixtureOutputPathYaml, dumpYaml(openApiSpec, yamlOptions))
 
   // Trap and show validation errors
   const { errors } = validator.validate(openApiSpec)
@@ -85,7 +95,7 @@ const validateAndDumpFixture = (spec, title) => {
 }
 
 afterAll(() => {
-  console.info(`All results dumped to ${tempDir}`)
+  console.info(`All results dumped to ${exampleDir}`)
 })
 
 describe('expandToResources', () => {
@@ -238,7 +248,7 @@ describe('expandToResources', () => {
       }
     })
 
-    validateAndDumpFixture(schema, 'basic with readOnly properties ')
+    validateAndDumpFixture(schema, 'basic with readOnly properties')
   })
 })
 

@@ -1,0 +1,10 @@
+- name: pet
+  model:
+    properties:
+      name:
+        type: string
+- name: store
+  model:
+    properties:
+      name:
+        type: string

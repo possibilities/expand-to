@@ -1,0 +1,2265 @@
+openapi: 3.0.0
+info:
+  version: 0.0.0
+  title: 'Example: belongsTo with hasMany'
+paths:
+  /owners:
+    get:
+      operationId: listOwners
+      tags:
+        - Owners
+      summary: List owners
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  owners:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OwnerResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createOwner
+      tags:
+        - Owners
+      summary: Create owner
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OwnerRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  owner:
+                    $ref: '#/components/schemas/OwnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/owners/{ownerId}':
+    head:
+      operationId: checkOwner
+      tags:
+        - Owners
+      summary: Check owner
+      parameters:
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getOwner
+      tags:
+        - Owners
+      summary: Get owner
+      parameters:
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  owner:
+                    $ref: '#/components/schemas/OwnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceOwner
+      tags:
+        - Owners
+      summary: Replace owner
+      parameters:
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OwnerRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  owner:
+                    $ref: '#/components/schemas/OwnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateOwner
+      tags:
+        - Owners
+      summary: Update owner
+      parameters:
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OwnerRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  owner:
+                    $ref: '#/components/schemas/OwnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteOwner
+      tags:
+        - Owners
+      summary: Delete owner
+      parameters:
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /committers:
+    get:
+      operationId: listCommitters
+      tags:
+        - Committers
+      summary: List committers
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  committers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CommitterResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createCommitter
+      tags:
+        - Committers
+      summary: Create committer
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitterRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  committer:
+                    $ref: '#/components/schemas/CommitterResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/committers/{committerId}':
+    head:
+      operationId: checkCommitter
+      tags:
+        - Committers
+      summary: Check committer
+      parameters:
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getCommitter
+      tags:
+        - Committers
+      summary: Get committer
+      parameters:
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  committer:
+                    $ref: '#/components/schemas/CommitterResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceCommitter
+      tags:
+        - Committers
+      summary: Replace committer
+      parameters:
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitterRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  committer:
+                    $ref: '#/components/schemas/CommitterResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateCommitter
+      tags:
+        - Committers
+      summary: Update committer
+      parameters:
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitterRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  committer:
+                    $ref: '#/components/schemas/CommitterResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteCommitter
+      tags:
+        - Committers
+      summary: Delete committer
+      parameters:
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /repos:
+    get:
+      operationId: listRepos
+      tags:
+        - Repos
+      summary: List repos
+      parameters:
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repos:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RepoResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createRepo
+      tags:
+        - Repos
+      summary: Create repo
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepoRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repo:
+                    $ref: '#/components/schemas/RepoResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/repos/{repoId}':
+    head:
+      operationId: checkRepo
+      tags:
+        - Repos
+      summary: Check repo
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getRepo
+      tags:
+        - Repos
+      summary: Get repo
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repo:
+                    $ref: '#/components/schemas/RepoResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceRepo
+      tags:
+        - Repos
+      summary: Replace repo
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepoRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repo:
+                    $ref: '#/components/schemas/RepoResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateRepo
+      tags:
+        - Repos
+      summary: Update repo
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepoRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repo:
+                    $ref: '#/components/schemas/RepoResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteRepo
+      tags:
+        - Repos
+      summary: Delete repo
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/repos/{repoId}/commits':
+    get:
+      operationId: listRepoCommits
+      tags:
+        - Repos
+      summary: List repo commits
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commits:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CommitResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createRepoCommit
+      tags:
+        - Repos
+      summary: Create repo commit
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    $ref: '#/components/schemas/CommitResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/repos/{repoId}/commits/{commitId}':
+    head:
+      operationId: checkRepoCommit
+      tags:
+        - Repos
+      summary: Check repo commit
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getRepoCommit
+      tags:
+        - Repos
+      summary: Get repo commit
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    $ref: '#/components/schemas/CommitResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceRepoCommit
+      tags:
+        - Repos
+      summary: Replace repo commit
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    $ref: '#/components/schemas/CommitResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateRepoCommit
+      tags:
+        - Repos
+      summary: Update repo commit
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    $ref: '#/components/schemas/CommitResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteRepoCommit
+      tags:
+        - Repos
+      summary: Delete repo commit
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/repos/{repoId}/owners':
+    get:
+      operationId: listRepoOwners
+      tags:
+        - Repos
+      summary: List repo owners
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repoOwners:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RepoOwnerResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createRepoOwner
+      tags:
+        - Repos
+      summary: Create repo owner
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepoOwnerRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repoOwner:
+                    $ref: '#/components/schemas/RepoOwnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/repos/{repoId}/owners/{ownerId}':
+    head:
+      operationId: checkRepoOwner
+      tags:
+        - Repos
+      summary: Check repo owner
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getRepoOwner
+      tags:
+        - Repos
+      summary: Get repo owner
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repoOwner:
+                    $ref: '#/components/schemas/RepoOwnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceRepoOwner
+      tags:
+        - Repos
+      summary: Replace repo owner
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepoOwnerRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repoOwner:
+                    $ref: '#/components/schemas/RepoOwnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateRepoOwner
+      tags:
+        - Repos
+      summary: Update repo owner
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepoOwnerRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repoOwner:
+                    $ref: '#/components/schemas/RepoOwnerResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteRepoOwner
+      tags:
+        - Repos
+      summary: Delete repo owner
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: ownerId
+          schema:
+            type: string
+          description: Owner id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/repos/{repoId}/commits/{commitId}/committers':
+    get:
+      operationId: listRepoCommitCommitters
+      tags:
+        - Repos
+      summary: List repo commit committers
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+        - name: perPage
+          description: Per page
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: page
+          description: Page number
+          schema:
+            type: string
+          in: query
+          required: false
+        - name: orderBy
+          description: Order by
+          schema:
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: List succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commitCommitters:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CommitCommitterResponse'
+                  pages:
+                    $ref: '#/components/schemas/PaginationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: createRepoCommitCommitter
+      tags:
+        - Repos
+      summary: Create repo commit committer
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitCommitterRequest'
+      responses:
+        '201':
+          description: Create succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commitCommitter:
+                    $ref: '#/components/schemas/CommitCommitterResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/repos/{repoId}/commits/{commitId}/committers/{committerId}':
+    head:
+      operationId: checkRepoCommitCommitter
+      tags:
+        - Repos
+      summary: Check repo commit committer
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      responses:
+        '200':
+          description: Check succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: getRepoCommitCommitter
+      tags:
+        - Repos
+      summary: Get repo commit committer
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      responses:
+        '200':
+          description: Get succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commitCommitter:
+                    $ref: '#/components/schemas/CommitCommitterResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: replaceRepoCommitCommitter
+      tags:
+        - Repos
+      summary: Replace repo commit committer
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitCommitterRequest'
+      responses:
+        '200':
+          description: Replace succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commitCommitter:
+                    $ref: '#/components/schemas/CommitCommitterResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: updateRepoCommitCommitter
+      tags:
+        - Repos
+      summary: Update repo commit committer
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitCommitterRequest'
+      responses:
+        '200':
+          description: Update succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commitCommitter:
+                    $ref: '#/components/schemas/CommitCommitterResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteRepoCommitCommitter
+      tags:
+        - Repos
+      summary: Delete repo commit committer
+      parameters:
+        - in: path
+          required: true
+          name: repoId
+          schema:
+            type: string
+          description: Repo id
+        - in: path
+          required: true
+          name: commitId
+          schema:
+            type: string
+          description: Commit id
+        - in: path
+          required: true
+          name: committerId
+          schema:
+            type: string
+          description: Committer id
+      responses:
+        '204':
+          description: Delete succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EmptyResponse:
+      type: object
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: number
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        details:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+        - statusCode
+        - message
+    PaginationResponse:
+      type: object
+      properties:
+        firstPage:
+          type: number
+        lastPage:
+          type: number
+        nextPage:
+          type: number
+        prevPage:
+          type: number
+      required:
+        - firstPage
+        - lastPage
+        - nextPage
+        - prevPage
+    OwnerResponse:
+      properties:
+        name:
+          type: string
+    OwnerRequest:
+      properties:
+        name:
+          type: string
+    CommitterResponse:
+      properties:
+        name:
+          type: string
+    CommitterRequest:
+      properties:
+        name:
+          type: string
+    RepoResponse:
+      properties:
+        name:
+          type: string
+    RepoRequest:
+      properties:
+        name:
+          type: string
+    CommitResponse:
+      properties:
+        name:
+          type: string
+    CommitRequest:
+      properties:
+        name:
+          type: string
+    RepoOwnerResponse:
+      properties:
+        ownerId:
+          type: string
+    RepoOwnerRequest:
+      properties:
+        ownerId:
+          type: string
+    CommitCommitterResponse:
+      properties:
+        committerId:
+          type: string
+    CommitCommitterRequest:
+      properties:
+        committerId:
+          type: string

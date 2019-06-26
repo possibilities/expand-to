@@ -1,0 +1,32 @@
+[
+  {
+    "name": "course",
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "user",
+    "hasMany": [
+      {
+        "name": "courses",
+        "as": "contributors"
+      },
+      {
+        "name": "courses",
+        "as": "learners"
+      }
+    ],
+    "model": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+]

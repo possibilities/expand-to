@@ -33,11 +33,13 @@ A single low level function is provided to tranform a spec into a raw descriptio
 The most common use case is to use the following functions that take a spec and an optional config and return an object that is useful to your application.
 
 * `expandToOperations(spec, config = {})` → `{ paths, models, operations }`
-* `expandToValidations(spec, config = {})` → `{ paths, models, operations, validations }`
 * `expandToOpenApi(spec, config = {})` → `openApiSpec`
+* `expandToValidations(spec, config = {})` → `{ paths, models, operations, validations }`
+* `expandToTestData(spec, config = {})` → `(operationName)` → `{ request, response }`
 
 Alternatively each core API function exposes a lower level function that can be used to compose your own custom tranformations.
 
+* `expandToOpenApi({ operations, models }, config = {})` → `{ models, operations, spec }`
 * `expandToOperations({ paths, models }, config = {})` → `{ paths, models, operations }`
 * `expandToValidations({ operations, models }, config = {})` → `{ paths, models, operations, validations }`
-* `expandToOpenApi({ operations, models }, config = {})` → `{ models, operations, spec }`
+* `expandToTestData({ operations, models }, config = {})` → `{ paths, models, operations, request, response }`

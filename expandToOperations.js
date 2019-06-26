@@ -185,11 +185,12 @@ const getRequest = (action, path, models) => {
   return schema
 }
 
-const expandToOperations = ({ paths, models }) => {
+const expandToOperations = ({ paths, models }, options = {}) => {
   const expandedModels = expandModels(models)
   let operations = []
   paths.forEach(path => {
     path.operations.forEach(action => {
+      if (get(options, 'ignoreActions', []).includes(action)) return
       operations.push({
         action,
         id: getId(action, path),
@@ -233,9 +234,9 @@ const expandToOperations = ({ paths, models }) => {
   }
 }
 
-module.exports = spec => {
-  const { paths, models } = expandToResources(spec)
-  return expandToOperations({ paths, models })
+module.exports = (spec, options = {}) => {
+  const { paths, models } = expandToResources(spec, options = {})
+  return expandToOperations({ paths, models }, options = {})
 }
 
 module.exports.expandToOperations = expandToOperations

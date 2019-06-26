@@ -10,6 +10,8 @@ const {
   allCollectionVerbs
 } = require('../common')
 
+const pathMethodsView = spec =>
+  mapValues(spec.paths, path => Object.keys(path))
 const pathMethodOperationIdsView = spec =>
   mapValues(spec.paths, path => mapValues(path, method => method.operationId))
 const pathMethodSummariesView = spec =>

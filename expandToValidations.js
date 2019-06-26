@@ -1,3 +1,4 @@
+const expandToOperations = require('./expandToOperations')
 const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
 
@@ -53,8 +54,9 @@ const expandToValidations = ({ operations, models }, options = {}) => {
 }
 
 module.exports = (spec, config = {}) => {
-  const { validations, operations, models } = expandToValidations(spec, config)
-  return expandToValidations({ validations, operations, models }, config)
+  const { operations, models } = expandToOperations(spec, config)
+  const { validations } = expandToValidations({ operations, models }, config)
+  return validations
 }
 
 module.exports.expandToValidations = expandToValidations

@@ -1,3 +1,5 @@
+const traverse = require('traverse')
+const uniq = require('lodash/uniq')
 const sortBy = require('lodash/sortBy')
 const expandToResources = require('../expandToResources')
 const expandToOpenApi = require('../expandToOpenApi')
@@ -13,10 +15,34 @@ const expandedView = schema => sortBy(
 
 const { allEntityVerbs, allCollectionVerbs } = require('../common')
 
-// Examples here are emblamatic so we dump io of each test run
-// for usage outside of tests
+const assertNoOrphanedModels = spec => {
+  let foundModels = []
+  traverse(spec).forEach(s => {
+    if (s && s.startsWith && s.startsWith('#/components/schemas/')) {
+      foundModels.push(s.split('/').pop())
+    }
+  })
+
+  expect(uniq(foundModels).sort()).toEqual(
+    Object.keys(spec.components.schemas).sort()
+  )
+}
+
+const assertUniqueOperationIds = spec => {
+  let ids = []
+  traverse(spec.paths).forEach(function (s) {
+    if (this.key === 'operationId') {
+      return ids.push(s)
+    }
+  })
+  expect(ids.length).toEqual(uniq(ids).length)
+}
+
 const tempDir = `/tmp/${Date.now()}`
 mkdirsSync(tempDir)
+
+// Examples here are emblamatic so we validate and dump io of each test run
+// for usage outside of tests
 const validateAndDumpFixture = (spec, title) => {
   const openApiSpec = expandToOpenApi(spec, { info: { title: `Example: ${title}` } })
   const fixturePath = `${tempDir}/${title.toLowerCase().replace(/ /g, '-')}.json`
@@ -35,6 +61,10 @@ const validateAndDumpFixture = (spec, title) => {
     console.error(`${errors.length} validation errors`)
     throw new Error(`OpenAPI validation failed: ${title}`)
   }
+
+  // TODO uncomment
+  // assertNoOrphanedModels((openApiSpec))
+  assertUniqueOperationIds(openApiSpec)
 
   return spec
 }

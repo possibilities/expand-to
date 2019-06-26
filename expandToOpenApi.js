@@ -137,7 +137,7 @@ const getResponses = (operation, models) => {
 
   const response = models[modelName] && models[modelName].request
     ? emptyResponseActions[operation.action]
-      ? createEmptyResponse(operation, modelName)
+      ? createEmptyResponse(operation)
       : createModelResponse(operation, modelName)
     : isObject(modelName)
       ? createModelResponse(operation, operation.model)

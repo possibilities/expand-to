@@ -1433,7 +1433,7 @@ describe('expandToResources#users', () => {
       user: {
         request: { properties: { name: { type: 'string' } } },
         response: { properties: { name: { type: 'string' } } }
-      },
+      }
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
@@ -1458,7 +1458,7 @@ describe('expandToResources#users', () => {
         model: 'user',
         resourceName: 'user',
         operations: allEntityVerbs
-      },
+      }
     ])
 
     validateAndDumpFixture(schema, 'users')

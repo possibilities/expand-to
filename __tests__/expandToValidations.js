@@ -51,9 +51,18 @@ test('expandToValidations', () => {
                 perPage: { type: 'string' }
               }
             },
-            params: { type: 'object', properties: {} }
+            params: { type: 'object', properties: {} },
+            identity: {
+              type: 'object',
+              properties: {
+                id: { type: 'string', format: 'uuid' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' }
+              },
+              required: ['id', 'firstName', 'lastName']
+            }
           },
-          required: ['body', 'query', 'params']
+          required: ['body', 'query', 'params', 'identity']
         }
       },
       getPet: {
@@ -65,9 +74,18 @@ test('expandToValidations', () => {
             params: {
               type: 'object',
               properties: { petId: { type: 'string' } }
+            },
+            identity: {
+              type: 'object',
+              properties: {
+                id: { type: 'string', format: 'uuid' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' }
+              },
+              required: ['id', 'firstName', 'lastName']
             }
           },
-          required: ['body', 'query', 'params']
+          required: ['body', 'query', 'params', 'identity']
         }
       },
       deletePet: {
@@ -79,9 +97,18 @@ test('expandToValidations', () => {
             params: {
               type: 'object',
               properties: { petId: { type: 'string' } }
+            },
+            identity: {
+              type: 'object',
+              properties: {
+                id: { type: 'string', format: 'uuid' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' }
+              },
+              required: ['id', 'firstName', 'lastName']
             }
           },
-          required: ['body', 'query', 'params']
+          required: ['body', 'query', 'params', 'identity']
         }
       },
       checkPet: {
@@ -93,9 +120,18 @@ test('expandToValidations', () => {
             params: {
               type: 'object',
               properties: { petId: { type: 'string' } }
+            },
+            identity: {
+              type: 'object',
+              properties: {
+                id: { type: 'string', format: 'uuid' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' }
+              },
+              required: ['id', 'firstName', 'lastName']
             }
           },
-          required: ['body', 'query', 'params']
+          required: ['body', 'query', 'params', 'identity']
         }
       },
       createPet: {
@@ -108,9 +144,18 @@ test('expandToValidations', () => {
               required: ['name']
             },
             query: { type: 'object', properties: {} },
-            params: { type: 'object', properties: {} }
+            params: { type: 'object', properties: {} },
+            identity: {
+              type: 'object',
+              properties: {
+                id: { type: 'string', format: 'uuid' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' }
+              },
+              required: ['id', 'firstName', 'lastName']
+            }
           },
-          required: ['body', 'query', 'params']
+          required: ['body', 'query', 'params', 'identity']
         }
       },
       replacePet: {
@@ -126,9 +171,18 @@ test('expandToValidations', () => {
             params: {
               type: 'object',
               properties: { petId: { type: 'string' } }
+            },
+            identity: {
+              type: 'object',
+              properties: {
+                id: { type: 'string', format: 'uuid' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' }
+              },
+              required: ['id', 'firstName', 'lastName']
             }
           },
-          required: ['body', 'query', 'params']
+          required: ['body', 'query', 'params', 'identity']
         }
       },
       updatePet: {
@@ -146,9 +200,18 @@ test('expandToValidations', () => {
               properties: {
                 petId: { type: 'string' }
               }
+            },
+            identity: {
+              type: 'object',
+              properties: {
+                id: { type: 'string', format: 'uuid' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' }
+              },
+              required: ['id', 'firstName', 'lastName']
             }
           },
-          required: ['body', 'query', 'params']
+          required: ['body', 'query', 'params', 'identity']
         }
       }
     }

@@ -33,9 +33,18 @@ const expandToValidations = ({ operations, models }, options = {}) => {
               properties: emptyRequestActions[operation.action]
                 ? {}
                 : models[operation.model].request.properties
+            },
+            identity: {
+              type: 'object',
+              properties: {
+                id: { type: 'string', format: 'uuid' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' }
+              },
+              required: ['id', 'firstName', 'lastName']
             }
           },
-          required: ['body', 'query', 'params']
+          required: ['body', 'query', 'params', 'identity']
         }
       }
     }

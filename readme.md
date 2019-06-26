@@ -1,6 +1,4 @@
-### Expand-to
-
-[![CircleCI](https://circleci.com/gh/possibilities/expand-to.svg?style=svg)](https://circleci.com/gh/possibilities/expand-to)
+### Expand-to [![CircleCI](https://circleci.com/gh/possibilities/expand-to.svg?style=svg)](https://circleci.com/gh/possibilities/expand-to)
 
 Tools for transforming JSON-schema models into dev/build/test/run-time application tools
 

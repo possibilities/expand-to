@@ -75,7 +75,7 @@ const spec = {
     {
       model: 'pet',
       resourceName: 'pet',
-      pathParts: ['users', 'pets'],
+      pathParts: ['user', 'pets'],
       operations: allCollectionVerbs,
       isUserCentricResource: true
     }
@@ -146,7 +146,7 @@ describe('expandToOperations', () => {
       ])
     })
 
-    test('summary', () => {
+    test.only('summary', () => {
       expect(expandToOperations(spec).operations.map(path => path.summary)).toEqual([
         'List pets',
         'Create pet',
@@ -172,8 +172,8 @@ describe('expandToOperations', () => {
         'Update store manager',
         'Delete store manager',
         // User centric routes
-        'List user pets',
-        'Create user pet'
+        'List pets for user',
+        'Create pet for user'
       ])
     })
 
@@ -203,8 +203,8 @@ describe('expandToOperations', () => {
         '/stores/{storeId}/managers/{managerId}',
         '/stores/{storeId}/managers/{managerId}',
         // User centric routes
-        '/users/pets',
-        '/users/pets'
+        '/user/pets',
+        '/user/pets'
       ])
     })
 
@@ -302,8 +302,8 @@ describe('expandToOperations', () => {
         ['stores', 'managers'],
         ['stores', 'managers'],
         // User centric routes
-        ['users', 'pets'],
-        ['users', 'pets']
+        ['user', 'pets'],
+        ['user', 'pets']
       ])
     })
 

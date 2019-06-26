@@ -255,8 +255,8 @@ const expandPaths = mountedResources => {
           methods: allCollectionVerbs,
           pathParts: compact([
             'user',
-            relation.as && (relation.label || pluralize(resourceName)),
-            pluralize(resource.name)
+            pluralize(resource.name),
+            relation.as && (relation.label || pluralize(resourceName))
           ])
         })
         paths.push({
@@ -265,8 +265,8 @@ const expandPaths = mountedResources => {
           methods: allEntityVerbs,
           pathParts: compact([
             'user',
-            relation.as && (relation.label || pluralize(resourceName)),
             pluralize(resource.name),
+            relation.as && (relation.label || pluralize(resourceName)),
             `{${resource.name}Id}`
           ])
         })

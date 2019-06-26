@@ -63,6 +63,17 @@ const getId = (action, path) => {
 }
 
 const getSummary = (action, path) => {
+  const namespace = getNamespace(path)
+  const noun = last(namespace)
+  const space = initial(namespace)
+  if (path.isUserCentricResource) {
+    return [
+      upperFirst(actionToLabel[action] || action),
+      ...space.slice(1).map(singularize),
+      action === 'list' ? noun : singularize(noun),
+      'for user'
+    ].filter(Boolean).join(' ')
+  }
   if (path.isCustomFunctionResource) {
     const fnName = last(path.pathParts).split('.').slice(1).join('.')
     const resourceName = action === 'list'
@@ -70,9 +81,6 @@ const getSummary = (action, path) => {
       : path.resourceName
     return `Invoke \`${fnName}\` for ${resourceName}`
   }
-  const namespace = getNamespace(path)
-  const noun = last(namespace)
-  const space = initial(namespace)
   return [
     upperFirst(actionToLabel[action] || action),
     ...space.map(singularize),

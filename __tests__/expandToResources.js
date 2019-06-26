@@ -927,7 +927,7 @@ describe('expandToResources#hasMany', () => {
         model: 'user',
         resourceName: 'user',
         operations: allEntityVerbs
-      },
+      }
     ])
 
     validateAndDumpFixture(schema, 'with users')
@@ -1012,7 +1012,7 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       },
       {
-        pathParts: ['user', 'caring', 'pets'],
+        pathParts: ['user', 'pets', 'caring'],
         name: 'pet',
         model: 'pet',
         resourceName: 'pet',
@@ -1020,7 +1020,7 @@ describe('expandToResources#hasMany', () => {
         operations: allCollectionVerbs
       },
       {
-        pathParts: ['user', 'caring', 'pets', '{petId}'],
+        pathParts: ['user', 'pets', 'caring', '{petId}'],
         name: 'pet',
         model: 'pet',
         resourceName: 'pet',
@@ -1028,7 +1028,7 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       },
       {
-        pathParts: ['user', 'owners', 'pets'],
+        pathParts: ['user', 'pets', 'owners'],
         name: 'pet',
         model: 'pet',
         resourceName: 'pet',
@@ -1036,7 +1036,7 @@ describe('expandToResources#hasMany', () => {
         operations: allCollectionVerbs
       },
       {
-        pathParts: ['user', 'owners', 'pets', '{petId}'],
+        pathParts: ['user', 'pets', 'owners', '{petId}'],
         name: 'pet',
         model: 'pet',
         resourceName: 'pet',

@@ -146,7 +146,7 @@ describe('expandToOperations', () => {
       ])
     })
 
-    test.only('summary', () => {
+    test('summary', () => {
       expect(expandToOperations(spec).operations.map(path => path.summary)).toEqual([
         'List pets',
         'Create pet',

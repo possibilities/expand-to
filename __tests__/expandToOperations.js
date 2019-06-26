@@ -78,6 +78,13 @@ const spec = {
       pathParts: ['user', 'pets'],
       operations: allCollectionVerbs,
       isUserCentricResource: true
+    },
+    {
+      model: 'user',
+      resourceName: 'user',
+      pathParts: ['user'],
+      operations: ['get'],
+      isUserCentricResource: true
     }
   ]
 }
@@ -111,7 +118,8 @@ describe('expandToOperations', () => {
         'manager',
         // User centric
         'pet',
-        'pet'
+        'pet',
+        'user'
       ])
     })
 
@@ -142,7 +150,8 @@ describe('expandToOperations', () => {
         'deleteStoreManager',
         // User centric
         'listPetsAsUser',
-        'createPetAsUser'
+        'createPetAsUser',
+        'getUserAsUser'
       ])
     })
 
@@ -173,7 +182,8 @@ describe('expandToOperations', () => {
         'Delete store manager',
         // User centric routes
         'List pets for user',
-        'Create pet for user'
+        'Create pet for user',
+        'Get user for user'
       ])
     })
 
@@ -204,7 +214,8 @@ describe('expandToOperations', () => {
         '/stores/{storeId}/managers/{managerId}',
         // User centric routes
         '/user/pets',
-        '/user/pets'
+        '/user/pets',
+        '/user'
       ])
     })
 
@@ -238,7 +249,8 @@ describe('expandToOperations', () => {
 
         // User centric routes
         'get',
-        'post'
+        'post',
+        'get'
       ])
     })
 
@@ -272,7 +284,8 @@ describe('expandToOperations', () => {
 
         // User centric routes
         'list',
-        'post'
+        'post',
+        'get'
       ])
     })
 
@@ -303,7 +316,8 @@ describe('expandToOperations', () => {
         ['stores', 'managers'],
         // User centric routes
         ['user', 'pets'],
-        ['user', 'pets']
+        ['user', 'pets'],
+        ['user']
       ])
     })
 
@@ -443,6 +457,7 @@ describe('expandToOperations', () => {
         ],
         // User centric routes
         [],
+        [],
         []
       ])
     })
@@ -494,6 +509,7 @@ describe('expandToOperations', () => {
           { name: 'page', description: 'Page number', schema: { type: 'string' } },
           { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
         ],
+        [],
         []
       ])
     })
@@ -527,7 +543,8 @@ describe('expandToOperations', () => {
         { description: `Delete succeeded`, code: 204 },
         // User centric routes
         { description: `List succeeded`, code: 200 },
-        { description: `Create succeeded`, code: 201 }
+        { description: `Create succeeded`, code: 201 },
+        { description: `Get succeeded`, code: 200 }
       ])
     })
 
@@ -559,6 +576,7 @@ describe('expandToOperations', () => {
         [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
         [errors.badRequest, errors.unauthorized, errors.forbidden, errors.notFound],
         // User centric routes
+        [errors.badRequest, errors.unauthorized, errors.forbidden],
         [errors.badRequest, errors.unauthorized, errors.forbidden],
         [errors.badRequest, errors.unauthorized, errors.forbidden]
       ])

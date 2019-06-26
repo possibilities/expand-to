@@ -1,4 +1,5 @@
 const expandToResources = require('./expandToResources')
+const compact = require('lodash/compact')
 const omit = require('lodash/omit')
 const get = require('lodash/get')
 const initial = require('lodash/initial')
@@ -183,12 +184,13 @@ const expandToOperations = ({ paths, models }) => {
             errors.unauthorized,
             errors.forbidden
           ]
-          : [
+          : compact([
             errors.badRequest,
             errors.unauthorized,
             errors.forbidden,
-            errors.notFound
-          ]
+            // Handle the special case of user-as-user route
+            (!path.isUserCentricResource || path.pathParts.length !== 1) && errors.notFound
+          ])
       })
     })
   })

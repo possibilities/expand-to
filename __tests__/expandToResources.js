@@ -899,6 +899,14 @@ describe('expandToResources#hasMany', () => {
         operations: allEntityVerbs
       },
       {
+        pathParts: ['user'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: ['get'],
+        isUserCentricResource: true
+      },
+      {
         pathParts: ['user', 'pets'],
         name: 'pet',
         model: 'pet',
@@ -1010,6 +1018,14 @@ describe('expandToResources#hasMany', () => {
         model: 'petOwner',
         resourceName: 'user',
         operations: allEntityVerbs
+      },
+      {
+        pathParts: ['user'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: ['get'],
+        isUserCentricResource: true
       },
       {
         pathParts: ['user', 'pets', 'caring'],
@@ -1405,6 +1421,49 @@ describe('expandToResources#treeOf', () => {
 })
 
 describe('expandToResources#users', () => {
+  test('basic', () => {
+    const schema = [
+      {
+        name: 'user',
+        model: { properties: { name: { type: 'string' } } }
+      }
+    ]
+
+    expect(expandToResources(schema).models).toEqual({
+      user: {
+        request: { properties: { name: { type: 'string' } } },
+        response: { properties: { name: { type: 'string' } } }
+      },
+    })
+
+    expect(expandedView(expandToResources(schema))).toEqual([
+      {
+        pathParts: ['user'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: ['get'],
+        isUserCentricResource: true
+      },
+      {
+        pathParts: ['users'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: allCollectionVerbs
+      },
+      {
+        pathParts: ['users', '{userId}'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: allEntityVerbs
+      },
+    ])
+
+    validateAndDumpFixture(schema, 'users')
+  })
+
   test('with `belongsTo`', () => {
     const schema = [
       {
@@ -1430,6 +1489,14 @@ describe('expandToResources#users', () => {
     })
 
     expect(expandedView(expandToResources(schema))).toEqual([
+      {
+        pathParts: ['user'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: ['get'],
+        isUserCentricResource: true
+      },
       {
         pathParts: ['user', 'courses'],
         name: 'course',
@@ -1521,6 +1588,14 @@ describe('expandToResources#users', () => {
         model: 'course',
         resourceName: 'course',
         operations: allEntityVerbs
+      },
+      {
+        pathParts: ['user'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: ['get'],
+        isUserCentricResource: true
       },
       {
         pathParts: ['user', 'courses'],
@@ -1620,6 +1695,14 @@ describe('expandToResources#users', () => {
         model: 'course',
         resourceName: 'course',
         operations: allEntityVerbs
+      },
+      {
+        pathParts: ['user'],
+        name: 'user',
+        model: 'user',
+        resourceName: 'user',
+        operations: ['get'],
+        isUserCentricResource: true
       },
       {
         pathParts: ['user', 'contributors'],

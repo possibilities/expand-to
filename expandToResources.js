@@ -171,6 +171,17 @@ const expandPaths = mountedResources => {
       })
     })
 
+    if (resource.name === 'user') {
+      paths.push({
+        ...resource,
+        mountPath: [],
+        isUserCentricResource: true,
+        methods: ['get'],
+        pathParts: ['user'],
+        modelName: 'user'
+      })
+    }
+
     if (resource.belongsTo === 'user') {
       paths.push({
         ...resource,

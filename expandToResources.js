@@ -161,57 +161,69 @@ const expandPaths = mountedResources => {
         isCustomFunctionResource: true,
         resourceName: resource.name,
         modelName: fn.model ? fn.name : resource.name,
+        mountPath: [],
         pathParts: compact([
+          ...resource.mountPath,
           pluralize(resource.name),
           allEntityVerbs.includes(fn.method) && `{${resource.name}Id}`,
           `invoke.${fn.name}`
-        ]),
-        mountPath: resource.mountPath
+        ])
       })
     })
 
     if (resource.belongsTo === 'user') {
       paths.push({
         ...resource,
+        mountPath: [],
         isUserCentricResource: true,
         methods: allCollectionVerbs,
-        pathParts: [pluralize(resource.name)],
-        modelName: resource.name,
-        mountPath: ['users']
+        pathParts: ['users', pluralize(resource.name)],
+        modelName: resource.name
       })
 
       paths.push({
         ...resource,
+        mountPath: [],
         isUserCentricResource: true,
         methods: resource.immutable
           ? immutableEntityVerbs
           : allEntityVerbs,
-        pathParts: [pluralize(resource.name), `{${resource.name}Id}`],
-        modelName: resource.name,
-        mountPath: ['users']
+        pathParts: [
+          'users',
+          pluralize(resource.name),
+          `{${resource.name}Id}`
+        ],
+        modelName: resource.name
       })
     }
 
     forEach(resource.hasMany, relation => {
       const relatedResource =
         mountedEntityResourcesByName[singularize(relation.name)]
-      const resourceMountPath = [...resource.mountPath, ...resource.pathParts]
-      const resourceName = singularize(relation.as ? relation.as : relatedResource.name)
+      const resourceMountPath = [
+        ...resource.mountPath,
+        ...resource.pathParts
+      ]
+      const resourceName = singularize(
+        relation.as ? relation.as : relatedResource.name
+      )
 
       paths.push({
         ...relatedResource,
         methods: allCollectionVerbs,
-        pathParts: [pluralize(resourceName)],
-        modelName: `${resource.name}${upperFirst(resourceName)}`,
-        mountPath: resourceMountPath
+        pathParts: [...resourceMountPath, pluralize(resourceName)],
+        modelName: `${resource.name}${upperFirst(resourceName)}`
       })
 
       paths.push({
         ...relatedResource,
         methods: allEntityVerbs,
-        pathParts: [pluralize(resourceName), `{${resourceName}Id}`],
-        modelName: `${resource.name}${upperFirst(resourceName)}`,
-        mountPath: resourceMountPath
+        pathParts: [
+          ...resourceMountPath,
+          pluralize(resourceName),
+          `{${resourceName}Id}`
+        ],
+        modelName: `${resource.name}${upperFirst(resourceName)}`
       })
 
       if (resource.name === 'user') {
@@ -219,18 +231,20 @@ const expandPaths = mountedResources => {
           ...relatedResource,
           isUserCentricResource: true,
           methods: allCollectionVerbs,
-          pathParts: [pluralize(resourceName)],
-          modelName: relatedResource.name,
-          mountPath: ['users']
+          pathParts: ['users', pluralize(resourceName)],
+          modelName: relatedResource.name
         })
 
         paths.push({
           ...relatedResource,
           isUserCentricResource: true,
           methods: allEntityVerbs,
-          pathParts: [pluralize(resourceName), `{${resourceName}Id}`],
-          modelName: relatedResource.name,
-          mountPath: ['users']
+          pathParts: [
+            'users',
+            pluralize(resourceName),
+            `{${resourceName}Id}`
+          ],
+          modelName: relatedResource.name
         })
       }
 
@@ -240,21 +254,21 @@ const expandPaths = mountedResources => {
           isUserCentricResource: true,
           methods: allCollectionVerbs,
           pathParts: compact([
+            'users',
             relation.as && (relation.label || pluralize(resourceName)),
             pluralize(resource.name)
-          ]),
-          mountPath: ['users']
+          ])
         })
         paths.push({
           ...resource,
           isUserCentricResource: true,
           methods: allEntityVerbs,
           pathParts: compact([
+            'users',
             relation.as && (relation.label || pluralize(resourceName)),
             pluralize(resource.name),
             `{${resource.name}Id}`
-          ]),
-          mountPath: ['users']
+          ])
         })
       }
     })

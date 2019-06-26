@@ -135,13 +135,13 @@ const getResponses = (operation, models) => {
     ? get(models[operation.name], 'response')
     : operation.resourceName
 
-  const response = models[modelName] && models[modelName].request
-    ? emptyResponseActions[operation.action]
-      ? createEmptyResponse(operation, modelName)
-      : createModelResponse(operation, modelName)
-    : isObject(modelName)
-      ? createModelResponse(operation, operation.model)
-      : createModelResponse(operation, operation.resourceName)
+  const response = emptyResponseActions[operation.action]
+    ? createEmptyResponse(operation)
+    : get(models[modelName], 'request')
+      ? createModelResponse(operation, modelName)
+      : isObject(modelName)
+        ? createModelResponse(operation, operation.model)
+        : createModelResponse(operation, operation.resourceName)
 
   return { ...response, ...errorResponses }
 }

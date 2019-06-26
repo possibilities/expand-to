@@ -15,27 +15,36 @@ const expandedView = schema => sortBy(
 
 const { allEntityVerbs, allCollectionVerbs } = require('../common')
 
-const assertNoOrphanedModels = spec => {
+const assertNoOrphanedModels = (spec, title) => {
   let foundModels = []
-  traverse(spec).forEach(s => {
-    if (s && s.startsWith && s.startsWith('#/components/schemas/')) {
-      foundModels.push(s.split('/').pop())
+  traverse(spec).forEach(node => {
+    if (
+      node &&
+      node.startsWith &&
+      node.startsWith('#/components/schemas/')
+    ) {
+      foundModels.push(node.split('/').pop())
     }
   })
 
-  expect(uniq(foundModels).sort()).toEqual(
-    Object.keys(spec.components.schemas).sort()
-  )
+  if (
+    JSON.stringify(uniq(foundModels).sort()) !==
+    JSON.stringify(Object.keys(spec.components.schemas).sort())
+  ) {
+    throw new Error(`OpenAPI has orphaned models: ${title}`)
+  }
 }
 
-const assertUniqueOperationIds = spec => {
+const assertUniqueOperationIds = (spec, title) => {
   let ids = []
   traverse(spec.paths).forEach(function (s) {
     if (this.key === 'operationId') {
       return ids.push(s)
     }
   })
-  expect(ids.length).toEqual(uniq(ids).length)
+  if (ids.length !== uniq(ids).length) {
+    throw new Error(`OpenAPI has duplicate operation ids: ${title}`)
+  }
 }
 
 const tempDir = `/tmp/${Date.now()}`
@@ -44,11 +53,18 @@ mkdirsSync(tempDir)
 // Examples here are emblamatic so we validate and dump io of each test run
 // for usage outside of tests
 const validateAndDumpFixture = (spec, title) => {
-  const openApiSpec = expandToOpenApi(spec, { info: { title: `Example: ${title}` } })
-  const fixturePath = `${tempDir}/${title.toLowerCase().replace(/ /g, '-')}.json`
+  const openApiSpec = expandToOpenApi(
+    spec,
+    { info: { title: `Example: ${title}` } }
+  )
+
+  const fixturePath =
+    `${tempDir}/${title.toLowerCase().replace(/ /g, '-')}.json`
+
   if (existsSync(fixturePath)) {
     throw new Error(`Fixture already exists: ${title}`)
   }
+
   writeFileSync(
     fixturePath,
     JSON.stringify(openApiSpec, null, 2)
@@ -62,9 +78,8 @@ const validateAndDumpFixture = (spec, title) => {
     throw new Error(`OpenAPI validation failed: ${title}`)
   }
 
-  // TODO uncomment
-  // assertNoOrphanedModels((openApiSpec))
-  assertUniqueOperationIds(openApiSpec)
+  assertNoOrphanedModels(openApiSpec, title)
+  assertUniqueOperationIds(openApiSpec, title)
 
   return spec
 }
@@ -160,6 +175,7 @@ describe('expandToResources', () => {
         operations: allEntityVerbs
       }
     ])
+
     validateAndDumpFixture(schema, 'basic with inflections')
   })
 
@@ -193,6 +209,7 @@ describe('expandToResources', () => {
         operations: ['head', 'get', 'delete']
       }
     ])
+
     validateAndDumpFixture(schema, 'basic with immutability')
   })
 
@@ -227,75 +244,72 @@ describe('expandToResources', () => {
 
 describe('expandToResources#fns', () => {
   test('basic', () => {
-    const schema = validateAndDumpFixture(
-      [{
-        name: 'pet',
-        fns: [
-          {
-            method: 'get',
-            name: 'customFnWithGetAction'
-          },
-          {
-            method: 'list',
-            name: 'customFnWithListAction'
-          },
-          {
-            method: 'get',
-            name: 'customFnWithModel',
-            model: {
-              properties: {
-                customFnField: { type: 'string' }
-              }
-            }
-          },
-          {
-            method: 'post',
-            name: 'customFnWithSeparateModels',
-            model: {
-              request: {
-                properties: {
-                  customFnRequestModelField: { type: 'string' }
-                }
-              },
-              response: {
-                properties: {
-                  customFnResponseModelField: { type: 'string' }
-                }
-              }
-            }
-          },
-          {
-            method: 'post',
-            name: 'customFnWithStringyModel',
-            model: 'pet'
-          },
-          {
-            method: 'post',
-            name: 'customFnWithStringyResponseModel',
-            model: { response: 'pet' }
-          },
-          {
-            method: 'post',
-            name: 'customFnWithStringySeparateModels',
-            model: { request: 'pet', response: 'pet' }
-          },
-          {
-            method: 'post',
-            name: 'customFnWithRequestAndStringyResponse',
-            model: {
-              request: {
-                properties: {
-                  customFnWithRequestAndStringyResponseField: { type: 'string' }
-                }
-              },
-              response: 'pet'
+    const schema = [{
+      name: 'pet',
+      fns: [
+        {
+          method: 'get',
+          name: 'customFnWithGetAction'
+        },
+        {
+          method: 'list',
+          name: 'customFnWithListAction'
+        },
+        {
+          method: 'get',
+          name: 'customFnWithModel',
+          model: {
+            properties: {
+              customFnField: { type: 'string' }
             }
           }
-        ],
-        model: { properties: { name: { type: 'string' } } }
-      }],
-      'custom function'
-    )
+        },
+        {
+          method: 'post',
+          name: 'customFnWithSeparateModels',
+          model: {
+            request: {
+              properties: {
+                customFnRequestModelField: { type: 'string' }
+              }
+            },
+            response: {
+              properties: {
+                customFnResponseModelField: { type: 'string' }
+              }
+            }
+          }
+        },
+        {
+          method: 'post',
+          name: 'customFnWithStringyModel',
+          model: 'pet'
+        },
+        {
+          method: 'post',
+          name: 'customFnWithStringyResponseModel',
+          model: { response: 'pet' }
+        },
+        {
+          method: 'post',
+          name: 'customFnWithStringySeparateModels',
+          model: { request: 'pet', response: 'pet' }
+        },
+        {
+          method: 'post',
+          name: 'customFnWithRequestAndStringyResponse',
+          model: {
+            request: {
+              properties: {
+                customFnWithRequestAndStringyResponseField: { type: 'string' }
+              }
+            },
+            response: 'pet'
+          }
+        }
+      ],
+      model: { properties: { name: { type: 'string' } } }
+    }]
 
     expect(expandToResources(schema).models).toEqual({
       pet: {
@@ -425,6 +439,8 @@ describe('expandToResources#fns', () => {
         operations: ['get']
       }
     ])
+
+    validateAndDumpFixture(schema, 'custom function')
   })
 })
 
@@ -853,7 +869,6 @@ describe('expandToResources#hasMany', () => {
       }
     })
 
-    // console.log(expandedView(expandToResources(schema)))
     expect(expandedView(expandToResources(schema))).toEqual([
       {
         pathParts: ['pets'],
@@ -1050,14 +1065,11 @@ describe('expandToResources#hasMany', () => {
 
 describe('expandToResources#treeOf', () => {
   test('basic', () => {
-    const schema = validateAndDumpFixture(
-      [{
-        name: 'group',
-        treeOf: 'subgroups',
-        model: { properties: { name: { type: 'string' } } }
-      }],
-      'treeOf'
-    )
+    const schema = [{
+      name: 'group',
+      treeOf: 'subgroups',
+      model: { properties: { name: { type: 'string' } } }
+    }]
 
     expect(expandToResources(schema).models).toEqual({
       group: {
@@ -1100,6 +1112,8 @@ describe('expandToResources#treeOf', () => {
         operations: allEntityVerbs
       }
     ])
+
+    validateAndDumpFixture(schema, 'treeOf')
   })
 
   test('with `belongsTo`', () => {

@@ -1,11 +1,8 @@
-const isObject = require('lodash/isObject')
 const isString = require('lodash/isString')
 const mapValues = require('lodash/mapValues')
 const first = require('lodash/first')
-const get = require('lodash/get')
 const groupBy = require('lodash/groupBy')
 const expandToOperations = require('./expandToOperations')
-const lowerFirst = require('lodash/lowerFirst')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
 const inflection = require('inflection')
@@ -21,49 +18,6 @@ const emptyRequestActions = {
   delete: true,
   head: true,
   get: true
-}
-
-const createEmptyResponse = operation => ({
-  [operation.successResponse.code]: {
-    description: operation.successResponse.description,
-    content: {
-      'application/json': {
-        schema: {
-          '$ref': `#/components/schemas/EmptyResponse`
-        }
-      }
-    }
-  }
-})
-
-const createModelResponse = (operation, modelName) => {
-  const responseName = lowerFirst(modelName)
-  const schemaName = `${upperFirst(modelName)}Response`
-
-  const schema = operation.action === 'list'
-    ? {
-      type: 'object',
-      properties: {
-        [pluralize(responseName)]: {
-          type: 'array',
-          items: { '$ref': `#/components/schemas/${schemaName}` }
-        },
-        pages: { '$ref': '#/components/schemas/PaginationResponse' }
-      }
-    }
-    : {
-      type: 'object',
-      properties: {
-        [singularize(responseName)]: { '$ref': `#/components/schemas/${schemaName}` }
-      }
-    }
-
-  return {
-    [operation.successResponse.code]: {
-      description: operation.successResponse.description,
-      content: { 'application/json': { schema } }
-    }
-  }
 }
 
 const getErrorResponses = (...errors) => {
@@ -104,24 +58,13 @@ const getParameters = (operation, models) => ([
 ])
 
 const getRequestBody = (operation, models) => {
-  if (emptyRequestActions[operation.action]) return
-
-  const modelName = isObject(get(models[operation.name], 'request'))
-    ? get(models[operation.name], 'request')
-    : operation.resourceName
-
-  const model = models[modelName] && models[modelName].request
-    ? modelName
-    : isObject(modelName)
-      ? operation.model
-      : operation.resourceName
-
+  if (!operation.request) return
   return {
     required: true,
     content: {
       'application/json': {
         schema: {
-          '$ref': `#/components/schemas/${upperFirst(model)}Request`
+          '$ref': `#/components/schemas/${upperFirst(operation.request)}Request`
         }
       }
     }
@@ -130,20 +73,51 @@ const getRequestBody = (operation, models) => {
 
 const getResponses = (operation, models) => {
   const errorResponses = getErrorResponses(...operation.errorResponses)
+  if (operation.response.schema === 'empty') {
+    return {
+      ...errorResponses,
+      [operation.response.code]: {
+        description: operation.response.description,
+        content: {
+          'application/json': {
+            schema: {
+              '$ref': `#/components/schemas/EmptyResponse`
+            }
+          }
+        }
+      }
+    }
+  }
 
-  const modelName = isObject(get(models[operation.name], 'response'))
-    ? get(models[operation.name], 'response')
-    : operation.resourceName
+  const schema = operation.action === 'list'
+    ? {
+      type: 'object',
+      properties: {
+        [pluralize(operation.response.key)]: {
+          type: 'array',
+          items: {
+            '$ref': `#/components/schemas/${upperFirst(operation.response.schema)}Response`
+          }
+        },
+        pages: { '$ref': '#/components/schemas/PaginationResponse' }
+      }
+    }
+    : {
+      type: 'object',
+      properties: {
+        [singularize(operation.response.key)]: {
+          '$ref': `#/components/schemas/${upperFirst(operation.response.schema)}Response`
+        }
+      }
+    }
 
-  const response = emptyResponseActions[operation.action]
-    ? createEmptyResponse(operation)
-    : get(models[modelName], 'request')
-      ? createModelResponse(operation, modelName)
-      : isObject(modelName)
-        ? createModelResponse(operation, operation.model)
-        : createModelResponse(operation, operation.resourceName)
-
-  return { ...response, ...errorResponses }
+  return {
+    ...errorResponses,
+    [operation.response.code]: {
+      description: operation.response.description,
+      content: { 'application/json': { schema } }
+    }
+  }
 }
 
 const getMethod = (operation, models) => {

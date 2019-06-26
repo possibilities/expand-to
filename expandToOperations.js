@@ -1,4 +1,6 @@
 const expandToResources = require('./expandToResources')
+const lowerFirst = require('lodash/lowerFirst')
+const isObject = require('lodash/isObject')
 const compact = require('lodash/compact')
 const omit = require('lodash/omit')
 const get = require('lodash/get')
@@ -119,34 +121,13 @@ const getQuery = (action, path) => {
 const collectionActions = { list: true, post: true }
 
 const successResponses = {
-  list: {
-    code: 200,
-    description: 'List succeeded'
-  },
-  post: {
-    code: 201,
-    description: 'Create succeeded'
-  },
-  delete: {
-    code: 204,
-    description: 'Delete succeeded'
-  },
-  get: {
-    code: 200,
-    description: 'Get succeeded'
-  },
-  head: {
-    code: 200,
-    description: 'Check succeeded'
-  },
-  put: {
-    code: 200,
-    description: 'Replace succeeded'
-  },
-  patch: {
-    code: 200,
-    description: 'Update succeeded'
-  }
+  list: { code: 200, description: 'List succeeded' },
+  post: { code: 201, description: 'Create succeeded' },
+  delete: { code: 204, description: 'Delete succeeded' },
+  get: { code: 200, description: 'Get succeeded' },
+  head: { code: 200, description: 'Check succeeded' },
+  put: { code: 200, description: 'Replace succeeded' },
+  patch: { code: 200, description: 'Update succeeded' }
 }
 
 const expandModels = models => ({
@@ -155,6 +136,54 @@ const expandModels = models => ({
   error: { response: errorResponse },
   pagination: { response: paginationResponse }
 })
+
+const createModelResponse = (action, code, description, schema) => {
+  const key = lowerFirst(schema)
+  return { key, code, schema, description }
+}
+
+const getResponse = (action, path, models) => {
+  const { code, description } = successResponses[action]
+  const modelName = isObject(get(models[path.name], 'response'))
+    ? get(models[path.name], 'response')
+    : path.resourceName
+
+  return emptyResponseActions[action]
+    ? { schema: 'empty', code, description }
+    : get(models[modelName], 'request')
+      ? createModelResponse(action, code, description, modelName)
+      : isObject(modelName)
+        ? createModelResponse(action, code, description, path.model)
+        : createModelResponse(action, code, description, path.resourceName)
+}
+
+const emptyResponseActions = {
+  head: true,
+  delete: true
+}
+
+const emptyRequestActions = {
+  list: true,
+  delete: true,
+  head: true,
+  get: true
+}
+
+const getRequest = (action, path, models) => {
+  if (emptyRequestActions[action]) return
+
+  const modelName = isObject(get(models[path.name], 'request'))
+    ? get(models[path.name], 'request')
+    : path.resourceName
+
+  const schema = models[modelName] && models[modelName].request
+    ? modelName
+    : isObject(modelName)
+      ? path.model
+      : path.resourceName
+
+  return schema
+}
 
 const expandToOperations = ({ paths, models }) => {
   const expandedModels = expandModels(models)
@@ -177,6 +206,8 @@ const expandToOperations = ({ paths, models }) => {
         namespace: getNamespace(path),
         parameters: getParameters(path, models),
         query: getQuery(action, path),
+        response: getResponse(action, path, models),
+        request: getRequest(action, path, models),
         successResponse: successResponses[action],
         errorResponses: collectionActions[action]
           ? [

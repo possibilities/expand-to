@@ -67,6 +67,7 @@ const spec = {
       operations: allCollectionVerbs
     },
     {
+      name: 'manager',
       model: 'manager',
       resourceName: 'manager',
       pathParts: ['stores', '{storeId}', 'managers', '{managerId}'],
@@ -92,7 +93,7 @@ const spec = {
 describe('expandToOperations', () => {
   describe('operations', () => {
     test('model', () => {
-      expect(expandToOperations(spec).operations.map(path => path.model)).toEqual([
+      expect(expandToOperations(spec).operations.map(op => op.model)).toEqual([
         'pet',
         'pet',
         'pet',
@@ -124,7 +125,7 @@ describe('expandToOperations', () => {
     })
 
     test('id', () => {
-      expect(expandToOperations(spec).operations.map(path => path.id)).toEqual([
+      expect(expandToOperations(spec).operations.map(op => op.id)).toEqual([
         'listPets',
         'createPet',
         'invokeRequestMedicalRecordsForPet',
@@ -156,7 +157,7 @@ describe('expandToOperations', () => {
     })
 
     test('summary', () => {
-      expect(expandToOperations(spec).operations.map(path => path.summary)).toEqual([
+      expect(expandToOperations(spec).operations.map(op => op.summary)).toEqual([
         'List pets',
         'Create pet',
         'Invoke `requestMedicalRecords` for pet',
@@ -188,7 +189,7 @@ describe('expandToOperations', () => {
     })
 
     test('path', () => {
-      expect(expandToOperations(spec).operations.map(path => path.path)).toEqual([
+      expect(expandToOperations(spec).operations.map(op => op.path)).toEqual([
         '/pets',
         '/pets',
         '/pets/invoke.request_medical_records',
@@ -220,7 +221,7 @@ describe('expandToOperations', () => {
     })
 
     test('verb', () => {
-      expect(expandToOperations(spec).operations.map(path => path.verb)).toEqual([
+      expect(expandToOperations(spec).operations.map(op => op.verb)).toEqual([
         'get',
         'post',
         'get',
@@ -255,7 +256,7 @@ describe('expandToOperations', () => {
     })
 
     test('action', () => {
-      expect(expandToOperations(spec).operations.map(path => path.action)).toEqual([
+      expect(expandToOperations(spec).operations.map(op => op.action)).toEqual([
         'list',
         'post',
         'get',
@@ -290,7 +291,7 @@ describe('expandToOperations', () => {
     })
 
     test('namespace', () => {
-      expect(expandToOperations(spec).operations.map(path => path.namespace)).toEqual([
+      expect(expandToOperations(spec).operations.map(op => op.namespace)).toEqual([
         ['pets'],
         ['pets'],
         ['pets'],
@@ -323,7 +324,7 @@ describe('expandToOperations', () => {
 
     test('parameters', () => {
       expect(
-        expandToOperations(spec).operations.map(path => path.parameters)
+        expandToOperations(spec).operations.map(op => op.parameters)
       ).toEqual([
         [],
         [],
@@ -463,7 +464,7 @@ describe('expandToOperations', () => {
     })
 
     test('query', () => {
-      expect(expandToOperations(spec).operations.map(path => path.query)).toEqual([
+      expect(expandToOperations(spec).operations.map(op => op.query)).toEqual([
         [
           { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
           { name: 'page', description: 'Page number', schema: { type: 'string' } },
@@ -516,7 +517,7 @@ describe('expandToOperations', () => {
 
     test('successResponse', () => {
       expect(
-        expandToOperations(spec).operations.map(path => path.successResponse)
+        expandToOperations(spec).operations.map(op => op.successResponse)
       ).toEqual([
         { description: `List succeeded`, code: 200 },
         { description: `Create succeeded`, code: 201 },
@@ -550,7 +551,7 @@ describe('expandToOperations', () => {
 
     test('errorResponses', () => {
       expect(
-        expandToOperations(spec).operations.map(path => path.errorResponses)
+        expandToOperations(spec).operations.map(op => op.errorResponses)
       ).toEqual([
         [errors.badRequest, errors.unauthorized, errors.forbidden],
         [errors.badRequest, errors.unauthorized, errors.forbidden],
@@ -581,6 +582,72 @@ describe('expandToOperations', () => {
         [errors.badRequest, errors.unauthorized, errors.forbidden]
       ])
     })
+  })
+
+  test('request', () => {
+    expect(
+      expandToOperations(spec).operations.map(op => op.request)
+    ).toEqual([
+      undefined,
+      'pet',
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      'pet',
+      'pet',
+      undefined,
+      undefined,
+      'store',
+      undefined,
+      undefined,
+      'store',
+      'store',
+      undefined,
+      undefined,
+      'manager',
+      undefined,
+      undefined,
+      'manager',
+      'manager',
+      undefined,
+      undefined,
+      'pet',
+      undefined
+    ])
+  })
+
+  test('response', () => {
+    expect(
+      expandToOperations(spec).operations.map(op => op.response)
+    ).toEqual([
+      { code: 200, description: 'List succeeded', key: 'pet', schema: 'pet' },
+      { code: 201, description: 'Create succeeded', key: 'pet', schema: 'pet' },
+      { code: 200, description: 'Get succeeded', key: 'pet', schema: 'pet' },
+      { code: 200, description: 'List succeeded', key: 'pet', schema: 'pet' },
+      { code: 200, description: 'Check succeeded', schema: 'empty' },
+      { code: 200, description: 'Get succeeded', key: 'pet', schema: 'pet' },
+      { code: 200, description: 'Replace succeeded', key: 'pet', schema: 'pet' },
+      { code: 200, description: 'Update succeeded', key: 'pet', schema: 'pet' },
+      { code: 204, description: 'Delete succeeded', schema: 'empty' },
+      { code: 200, description: 'List succeeded', key: 'store', schema: 'store' },
+      { code: 201, description: 'Create succeeded', key: 'store', schema: 'store' },
+      { code: 200, description: 'Check succeeded', schema: 'empty' },
+      { code: 200, description: 'Get succeeded', key: 'store', schema: 'store' },
+      { code: 200, description: 'Replace succeeded', key: 'store', schema: 'store' },
+      { code: 200, description: 'Update succeeded', key: 'store', schema: 'store' },
+      { code: 204, description: 'Delete succeeded', schema: 'empty' },
+      { code: 200, description: 'List succeeded', key: 'manager', schema: 'manager' },
+      { code: 201, description: 'Create succeeded', key: 'manager', schema: 'manager' },
+      { code: 200, description: 'Check succeeded', schema: 'empty' },
+      { code: 200, description: 'Get succeeded', key: 'manager', schema: 'manager' },
+      { code: 200, description: 'Replace succeeded', key: 'manager', schema: 'manager' },
+      { code: 200, description: 'Update succeeded', key: 'manager', schema: 'manager' },
+      { code: 204, description: 'Delete succeeded', schema: 'empty' },
+      { code: 200, description: 'List succeeded', key: 'pet', schema: 'pet' },
+      { code: 201, description: 'Create succeeded', key: 'pet', schema: 'pet' },
+      { code: 200, description: 'Get succeeded', key: 'user', schema: 'user' }
+    ])
   })
 
   test('models', () => {

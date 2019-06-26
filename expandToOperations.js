@@ -236,7 +236,7 @@ const expandToOperations = ({ paths, models }, options = {}) => {
 
 module.exports = (spec, options = {}) => {
   const { paths, models } = expandToResources(spec, options = {})
-  return expandToOperations({ paths, models }, options = {})
+  return expandToOperations({ paths, models }, options)
 }
 
 module.exports.expandToOperations = expandToOperations

@@ -1,5 +1,13 @@
+const expandToOperations = require('./expandToOperations')
 const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
+const inflection = require('inflection')
+const { paginationResponse } = require('./common')
+
+// Make map safe
+const pluralize = str => inflection.pluralize(str)
+
+const emptyResponseActions = { head: true, delete: true }
 
 const emptyRequestActions = {
   list: true,
@@ -14,6 +22,35 @@ const expandToValidations = ({ operations, models }, options = {}) => {
     validations = {
       ...validations,
       [operation.id]: {
+        response: operation.action === 'list'
+          ? {
+            type: 'object',
+            properties: {
+              pagination: paginationResponse,
+              [pluralize(operation.response.key)]: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: { name: { type: 'string' } },
+                  required: ['name']
+                }
+              }
+            },
+            required: [pluralize(operation.response.key)]
+          }
+          : emptyResponseActions[operation.action]
+            ? { type: 'object', properties: {} }
+            : {
+              type: 'object',
+              properties: {
+                [operation.response.key]: {
+                  type: 'object',
+                  properties: { name: { type: 'string' } },
+                  required: ['name']
+                }
+              },
+              required: [operation.response.key]
+            },
         request: {
           type: 'object',
           properties: {
@@ -53,8 +90,9 @@ const expandToValidations = ({ operations, models }, options = {}) => {
 }
 
 module.exports = (spec, config = {}) => {
-  const { validations, operations, models } = expandToValidations(spec, config)
-  return expandToValidations({ validations, operations, models }, config)
+  const { operations, models } = expandToOperations(spec, config)
+  const { validations } = expandToValidations({ operations, models }, config)
+  return validations
 }
 
 module.exports.expandToValidations = expandToValidations

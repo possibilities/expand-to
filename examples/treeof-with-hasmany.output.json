@@ -17,7 +17,8 @@
             "name": "perPage",
             "description": "Per page",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "20"
             },
             "in": "query",
             "required": false
@@ -26,7 +27,8 @@
             "name": "page",
             "description": "Page number",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             },
             "in": "query",
             "required": false
@@ -560,7 +562,8 @@
             "name": "perPage",
             "description": "Per page",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "20"
             },
             "in": "query",
             "required": false
@@ -569,7 +572,8 @@
             "name": "page",
             "description": "Page number",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             },
             "in": "query",
             "required": false
@@ -1112,7 +1116,8 @@
             "name": "perPage",
             "description": "Per page",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "20"
             },
             "in": "query",
             "required": false
@@ -1121,7 +1126,8 @@
             "name": "page",
             "description": "Page number",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             },
             "in": "query",
             "required": false
@@ -1719,7 +1725,8 @@
             "name": "perPage",
             "description": "Per page",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "20"
             },
             "in": "query",
             "required": false
@@ -1728,7 +1735,8 @@
             "name": "page",
             "description": "Page number",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             },
             "in": "query",
             "required": false
@@ -2335,7 +2343,8 @@
             "name": "perPage",
             "description": "Per page",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "20"
             },
             "in": "query",
             "required": false
@@ -2344,7 +2353,8 @@
             "name": "page",
             "description": "Page number",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             },
             "in": "query",
             "required": false

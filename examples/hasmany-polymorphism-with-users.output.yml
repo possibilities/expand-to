@@ -14,12 +14,14 @@ paths:
           description: Per page
           schema:
             type: string
+            default: '20'
           in: query
           required: false
         - name: page
           description: Page number
           schema:
             type: string
+            default: '1'
           in: query
           required: false
         - name: orderBy
@@ -348,12 +350,14 @@ paths:
           description: Per page
           schema:
             type: string
+            default: '20'
           in: query
           required: false
         - name: page
           description: Page number
           schema:
             type: string
+            default: '1'
           in: query
           required: false
         - name: orderBy
@@ -723,12 +727,14 @@ paths:
           description: Per page
           schema:
             type: string
+            default: '20'
           in: query
           required: false
         - name: page
           description: Page number
           schema:
             type: string
+            default: '1'
           in: query
           required: false
         - name: orderBy
@@ -1093,12 +1099,14 @@ paths:
           description: Per page
           schema:
             type: string
+            default: '20'
           in: query
           required: false
         - name: page
           description: Page number
           schema:
             type: string
+            default: '1'
           in: query
           required: false
         - name: orderBy
@@ -1433,12 +1441,14 @@ paths:
           description: Per page
           schema:
             type: string
+            default: '20'
           in: query
           required: false
         - name: page
           description: Page number
           schema:
             type: string
+            default: '1'
           in: query
           required: false
         - name: orderBy
@@ -1803,12 +1813,14 @@ paths:
           description: Per page
           schema:
             type: string
+            default: '20'
           in: query
           required: false
         - name: page
           description: Page number
           schema:
             type: string
+            default: '1'
           in: query
           required: false
         - name: orderBy

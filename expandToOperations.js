@@ -1,4 +1,3 @@
-const expandToResources = require('./expandToResources')
 const lowerFirst = require('lodash/lowerFirst')
 const isObject = require('lodash/isObject')
 const compact = require('lodash/compact')
@@ -110,8 +109,8 @@ const getParameters = (path, models) => {
 const getQuery = (action, path) => {
   if (action === 'list') {
     return [
-      { name: 'perPage', description: 'Per page', schema: { type: 'string' } },
-      { name: 'page', description: 'Page number', schema: { type: 'string' } },
+      { name: 'perPage', description: 'Per page', schema: { type: 'string', default: '20' } },
+      { name: 'page', description: 'Page number', schema: { type: 'string', default: '1' } },
       { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
     ]
   }
@@ -185,11 +184,12 @@ const getRequest = (action, path, models) => {
   return schema
 }
 
-const expandToOperations = ({ paths, models }) => {
+const expandToOperations = ({ paths, models }, options = {}) => {
   const expandedModels = expandModels(models)
   let operations = []
   paths.forEach(path => {
     path.operations.forEach(action => {
+      if (get(options, 'ignoreActions', []).includes(action)) return
       operations.push({
         action,
         id: getId(action, path),
@@ -226,6 +226,14 @@ const expandToOperations = ({ paths, models }) => {
     })
   })
 
+  // Amend each operation with a function that creates test data
+  const { expandToTestData } = require('./expandToTestData')
+  const { testData } = expandToTestData({ operations, paths, models }, options)
+  operations = operations.map(operation => ({
+    ...operation,
+    getTestData: testData[operation.id]
+  }))
+
   return {
     paths,
     operations,
@@ -233,9 +241,10 @@ const expandToOperations = ({ paths, models }) => {
   }
 }
 
-module.exports = spec => {
-  const { paths, models } = expandToResources(spec)
-  return expandToOperations({ paths, models })
+module.exports = (spec, options = {}) => {
+  const expandToResources = require('./expandToResources')
+  const { paths, models } = expandToResources(spec, options)
+  return expandToOperations({ paths, models }, options)
 }
 
 module.exports.expandToOperations = expandToOperations

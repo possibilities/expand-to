@@ -2,6 +2,7 @@ const expandToOperations = require('./expandToOperations')
 const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
 const inflection = require('inflection')
+const { paginationResponse } = require('./common')
 
 // Make map safe
 const pluralize = str => inflection.pluralize(str)
@@ -25,6 +26,7 @@ const expandToValidations = ({ operations, models }, options = {}) => {
           ? {
             type: 'object',
             properties: {
+              pagination: paginationResponse,
               [pluralize(operation.response.key)]: {
                 type: 'array',
                 items: {

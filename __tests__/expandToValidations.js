@@ -1,6 +1,10 @@
 const { expandToOperations } = require('../expandToOperations')
 const { expandToValidations } = require('../expandToValidations')
-const { allEntityVerbs, allCollectionVerbs } = require('../common')
+const {
+  allEntityVerbs,
+  allCollectionVerbs,
+  paginationResponse
+} = require('../common')
 
 const spec = {
   paths: [
@@ -57,7 +61,10 @@ test('expandToValidations', () => {
       listPets: {
         response: {
           type: 'object',
-          properties: { pets: { type: 'array', items: petSchema } },
+          properties: {
+            pets: { type: 'array', items: petSchema },
+            pagination: paginationResponse
+          },
           required: ['pets']
         },
         request: {

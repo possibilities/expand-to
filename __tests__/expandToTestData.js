@@ -22,7 +22,13 @@ const spec = {
   models: {
     pet: {
       request: {
-        properties: { anything: { type: 'string' } }
+        properties: {
+          hackerPhrase: { type: 'string' },
+          anything: { type: 'string' },
+          email: { type: 'string', format: 'email' },
+          datetime: { type: 'string', format: 'datetime' },
+          patterned: { type: 'string', pattern: '^[a-z0-9]{6}$' }
+        }
       },
       response: {
         properties: {
@@ -72,7 +78,15 @@ describe('expandToTestData', () => {
     }
   )
 
-  const fakePet = {
+  const fakePetRequest = {
+    email: 'random-email',
+    datetime: 'random-datetime',
+    anything: 'random-word',
+    patterned: 'reversed-pattern',
+    hackerPhrase: 'random-phrase'
+  }
+
+  const fakePetResponse = {
     id: 'random-uuid',
     email: 'random-email',
     datetime: 'random-datetime',
@@ -83,25 +97,75 @@ describe('expandToTestData', () => {
 
   test('basic', () => {
     expect(mapValues(helpers, helper => helper())).toEqual({
-      listPets: { pets: range(20).map(() => fakePet) },
-      getPet: { pet: fakePet },
-      createPet: { pet: fakePet },
-      replacePet: { pet: fakePet },
-      updatePet: { pet: fakePet },
-      checkPet: {},
-      deletePet: {}
+      listPets: {
+        request: {
+          query: { perPage: '20', page: '1' },
+          params: {}
+        },
+        response: {
+          pets: range(20).map(() => fakePetResponse),
+          pagination: {
+            firstPage: '1',
+            lastPage: '10',
+            nextPage: '2',
+            prevPage: '1'
+          }
+        }
+      },
+      getPet: {
+        request: {
+          query: {},
+          params: { petId: 'random-uuid' }
+        },
+        response: { pet: fakePetResponse }
+      },
+      createPet: {
+        request: {
+          body: fakePetRequest,
+          query: {},
+          params: {}
+        },
+        response: { pet: fakePetResponse }
+      },
+      updatePet: {
+        request: {
+          body: fakePetRequest,
+          query: {},
+          params: { petId: 'random-uuid' }
+        },
+        response: { pet: fakePetResponse }
+      },
+      replacePet: {
+        request: {
+          body: fakePetRequest,
+          query: {},
+          params: { petId: 'random-uuid' }
+        },
+        response: { pet: fakePetResponse }
+      },
+      checkPet: {
+        request: {
+          query: {},
+          params: { petId: 'random-uuid' }
+        },
+        response: {}
+      },
+      deletePet: {
+        request: {
+          query: {},
+          params: { petId: 'random-uuid' }
+        },
+        response: {}
+      }
     })
   })
 
   test('query', () => {
-    expect(mapValues(helpers, helper => helper({ query: { perPage: '2' } }))).toEqual({
-      listPets: { pets: range(2).map(() => fakePet) },
-      getPet: { pet: fakePet },
-      createPet: { pet: fakePet },
-      replacePet: { pet: fakePet },
-      updatePet: { pet: fakePet },
-      checkPet: {},
-      deletePet: {}
-    })
+    expect((mapValues(helpers, helper => helper({
+      query: { perPage: '2' }
+    }).response).listPets.pets)).toEqual([
+      fakePetResponse,
+      fakePetResponse
+    ])
   })
 })

@@ -5,6 +5,7 @@ const range = require('lodash/range')
 const inflection = require('inflection')
 const fake = require('faker')
 const RandExp = require('randexp')
+const { emptyRequestActions, emptyResponseActions } = require('./common')
 
 const randomRegexp = pattern => new RandExp(pattern).gen()
 
@@ -30,15 +31,6 @@ const getFakeValue = (name, schema, options) => {
     if (fakePathByName) return get(faker, fakePathByName)()
   }
   return faker.lorem.word()
-}
-
-const emptyResponseActions = { head: true, delete: true }
-
-const emptyRequestActions = {
-  list: true,
-  delete: true,
-  head: true,
-  get: true
 }
 
 const expandToTestData = ({ operations, models }, options = {}) => {

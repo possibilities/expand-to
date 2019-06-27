@@ -2,19 +2,14 @@ const expandToOperations = require('./expandToOperations')
 const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
 const inflection = require('inflection')
-const { paginationResponse } = require('./common')
+const {
+  paginationResponse,
+  emptyRequestActions,
+  emptyResponseActions
+} = require('./common')
 
 // Make map safe
 const pluralize = str => inflection.pluralize(str)
-
-const emptyResponseActions = { head: true, delete: true }
-
-const emptyRequestActions = {
-  list: true,
-  delete: true,
-  head: true,
-  get: true
-}
 
 const expandToValidations = ({ operations, models }, options = {}) => {
   let validations = {}

@@ -60,3 +60,12 @@ module.exports.errors = {
     description: 'Not found'
   }
 }
+
+module.exports.emptyResponseActions = { head: true, delete: true }
+
+module.exports.emptyRequestActions = {
+  list: true,
+  delete: true,
+  head: true,
+  get: true
+}

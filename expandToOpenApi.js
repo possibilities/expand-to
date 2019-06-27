@@ -6,19 +6,11 @@ const expandToOperations = require('./expandToOperations')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
 const inflection = require('inflection')
+const { emptyRequestActions, emptyResponseActions } = require('./common')
 
 // Make map safe
 const pluralize = str => inflection.pluralize(str)
 const singularize = str => inflection.singularize(str)
-
-const emptyResponseActions = { head: true, delete: true }
-
-const emptyRequestActions = {
-  list: true,
-  delete: true,
-  head: true,
-  get: true
-}
 
 const getErrorResponses = (...errors) => {
   let responses = {}

@@ -13,7 +13,9 @@ const {
   errors,
   emptyResponse,
   errorResponse,
-  paginationResponse
+  paginationResponse,
+  emptyRequestActions,
+  emptyResponseActions
 } = require('./common')
 
 // Make map safe
@@ -154,18 +156,6 @@ const getResponse = (action, path, models) => {
       : isObject(modelName)
         ? createModelResponse(action, code, description, path.model)
         : createModelResponse(action, code, description, path.resourceName)
-}
-
-const emptyResponseActions = {
-  head: true,
-  delete: true
-}
-
-const emptyRequestActions = {
-  list: true,
-  delete: true,
-  head: true,
-  get: true
 }
 
 const getRequest = (action, path, models) => {

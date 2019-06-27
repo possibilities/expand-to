@@ -178,7 +178,8 @@ const getSchemas = (operations, models = {}) => {
 }
 
 const expandToOpenApi = ({ operations, models }, options = {}) => {
-  const { version = '0.0.0', title = 'API spec' } = (options.info || {})
+  const { info: infoOverride, ...otherOptions } = options
+  const { version = '0.0.0', title = 'API spec' } = (infoOverride || {})
   const info = { version, title }
   const paths = mapValues(
     groupBy(operations, 'path'),
@@ -191,7 +192,13 @@ const expandToOpenApi = ({ operations, models }, options = {}) => {
   )
 
   const components = { schemas: getSchemas(operations, models) }
-  return { openapi: '3.0.0', info, paths, components }
+  return {
+    openapi: '3.0.0',
+    info,
+    paths,
+    components,
+    ...otherOptions
+  }
 }
 
 module.exports = (spec, options = {}) => {

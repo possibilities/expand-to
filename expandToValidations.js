@@ -1,5 +1,6 @@
 const expandToOperations = require('./expandToOperations')
 const mapValues = require('lodash/mapValues')
+const get = require('lodash/get')
 const keyBy = require('lodash/keyBy')
 const inflection = require('inflection')
 const {
@@ -24,11 +25,7 @@ const expandToValidations = ({ operations, models }, options = {}) => {
               pagination: paginationResponse,
               [pluralize(operation.response.key)]: {
                 type: 'array',
-                items: {
-                  type: 'object',
-                  properties: { name: { type: 'string' } },
-                  required: ['name']
-                }
+                items: get(models[operation.model], 'response', {})
               }
             },
             required: [pluralize(operation.response.key)]
@@ -38,11 +35,7 @@ const expandToValidations = ({ operations, models }, options = {}) => {
             : {
               type: 'object',
               properties: {
-                [operation.response.key]: {
-                  type: 'object',
-                  properties: { name: { type: 'string' } },
-                  required: ['name']
-                }
+                [operation.response.key]: get(models[operation.model], 'response', {})
               },
               required: [operation.response.key]
             },
@@ -64,10 +57,10 @@ const expandToValidations = ({ operations, models }, options = {}) => {
                   type: 'object',
                   ...emptyRequestActions[operation.action]
                     ? {}
-                    : models[operation.model].request,
+                    : get(models[operation.model], 'request', {}),
                   properties: emptyRequestActions[operation.action]
                     ? {}
-                    : models[operation.model].request.properties
+                    : get(models[operation.model], 'request.properties', {})
                 }
               },
               required: ['query', 'params', 'body']

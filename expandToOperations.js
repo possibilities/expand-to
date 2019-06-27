@@ -216,12 +216,15 @@ const expandToOperations = ({ paths, models }, options = {}) => {
     })
   })
 
-  // Amend each operation with a function that creates test data
+  // Amend each operation with a function that creates test data and a validator
   const { expandToTestData } = require('./expandToTestData')
+  const { expandToValidations } = require('./expandToValidations')
   const { testData } = expandToTestData({ operations, paths, models }, options)
+  const { validations } = expandToValidations({ operations, models: expandedModels }, options)
   operations = operations.map(operation => ({
     ...operation,
-    getTestData: testData[operation.id]
+    getTestData: testData[operation.id],
+    validation: validations[operation.id]
   }))
 
   return { paths, operations, models: expandedModels }

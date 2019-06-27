@@ -24,14 +24,17 @@ const spec = {
   models: {
     pet: {
       request: {
+        type: 'object',
         properties: { name: { type: 'string' } },
         required: ['name']
       },
       response: {
+        type: 'object',
         properties: {
           name: { type: 'string' },
           id: { type: 'string', readOnly: true }
-        }
+        },
+        required: ['name']
       }
     }
   }
@@ -47,9 +50,20 @@ const identitySchema = {
   required: ['id', 'firstName', 'lastName']
 }
 
-const petSchema = {
+const petSchemaRequest = {
   type: 'object',
-  properties: { name: { type: 'string' } },
+  properties: {
+    name: { type: 'string' }
+  },
+  required: ['name']
+}
+
+const petSchemaResponse = {
+  type: 'object',
+  properties: {
+    id: { type: 'string', readOnly: true },
+    name: { type: 'string' }
+  },
   required: ['name']
 }
 
@@ -61,7 +75,7 @@ test('expandToValidations', () => {
       response: {
         type: 'object',
         properties: {
-          pets: { type: 'array', items: petSchema },
+          pets: { type: 'array', items: petSchemaResponse },
           pagination: paginationResponse
         },
         required: ['pets']
@@ -93,7 +107,7 @@ test('expandToValidations', () => {
     getPet: {
       response: {
         type: 'object',
-        properties: { pet: petSchema },
+        properties: { pet: petSchemaResponse },
         required: ['pet']
       },
       request: {
@@ -169,7 +183,7 @@ test('expandToValidations', () => {
     createPet: {
       response: {
         type: 'object',
-        properties: { pet: petSchema },
+        properties: { pet: petSchemaResponse },
         required: ['pet']
       },
       request: {
@@ -178,7 +192,7 @@ test('expandToValidations', () => {
           input: {
             type: 'object',
             properties: {
-              body: petSchema,
+              body: petSchemaRequest,
               query: { type: 'object', properties: {} },
               params: { type: 'object', properties: {} }
             },
@@ -192,7 +206,7 @@ test('expandToValidations', () => {
     replacePet: {
       response: {
         type: 'object',
-        properties: { pet: petSchema },
+        properties: { pet: petSchemaResponse },
         required: ['pet']
       },
       request: {
@@ -201,7 +215,7 @@ test('expandToValidations', () => {
           input: {
             type: 'object',
             properties: {
-              body: petSchema,
+              body: petSchemaRequest,
               query: { type: 'object', properties: {} },
               params: {
                 type: 'object',
@@ -218,7 +232,7 @@ test('expandToValidations', () => {
     updatePet: {
       response: {
         type: 'object',
-        properties: { pet: petSchema },
+        properties: { pet: petSchemaResponse },
         required: ['pet']
       },
       request: {
@@ -227,7 +241,7 @@ test('expandToValidations', () => {
           input: {
             type: 'object',
             properties: {
-              body: petSchema,
+              body: petSchemaRequest,
               query: { type: 'object', properties: {} },
               params: {
                 type: 'object',

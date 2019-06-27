@@ -1,6 +1,12 @@
 const expandToOperations = require('./expandToOperations')
 const mapValues = require('lodash/mapValues')
 const keyBy = require('lodash/keyBy')
+const inflection = require('inflection')
+
+// Make map safe
+const pluralize = str => inflection.pluralize(str)
+
+const emptyResponseActions = { head: true, delete: true }
 
 const emptyRequestActions = {
   list: true,
@@ -15,6 +21,34 @@ const expandToValidations = ({ operations, models }, options = {}) => {
     validations = {
       ...validations,
       [operation.id]: {
+        response: operation.action === 'list'
+          ? {
+            type: 'object',
+            properties: {
+              [pluralize(operation.response.key)]: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: { name: { type: 'string' } },
+                  required: ['name']
+                }
+              }
+            },
+            required: [pluralize(operation.response.key)]
+          }
+          : emptyResponseActions[operation.action]
+            ? { type: 'object', properties: {} }
+            : {
+              type: 'object',
+              properties: {
+                [operation.response.key]: {
+                  type: 'object',
+                  properties: { name: { type: 'string' } },
+                  required: ['name']
+                }
+              },
+              required: [operation.response.key]
+            },
         request: {
           type: 'object',
           properties: {

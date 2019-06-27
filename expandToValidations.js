@@ -49,22 +49,28 @@ const expandToValidations = ({ operations, models }, options = {}) => {
         request: {
           type: 'object',
           properties: {
-            query: {
+            input: {
               type: 'object',
-              properties: mapValues(keyBy(operation.query, 'name'), 'schema')
-            },
-            params: {
-              type: 'object',
-              properties: mapValues(keyBy(operation.parameters, 'name'), 'schema')
-            },
-            body: {
-              type: 'object',
-              ...emptyRequestActions[operation.action]
-                ? {}
-                : models[operation.model].request,
-              properties: emptyRequestActions[operation.action]
-                ? {}
-                : models[operation.model].request.properties
+              properties: {
+                query: {
+                  type: 'object',
+                  properties: mapValues(keyBy(operation.query, 'name'), 'schema')
+                },
+                params: {
+                  type: 'object',
+                  properties: mapValues(keyBy(operation.parameters, 'name'), 'schema')
+                },
+                body: {
+                  type: 'object',
+                  ...emptyRequestActions[operation.action]
+                    ? {}
+                    : models[operation.model].request,
+                  properties: emptyRequestActions[operation.action]
+                    ? {}
+                    : models[operation.model].request.properties
+                }
+              },
+              required: ['query', 'params', 'body']
             },
             identity: {
               type: 'object',
@@ -76,7 +82,7 @@ const expandToValidations = ({ operations, models }, options = {}) => {
               required: ['id', 'firstName', 'lastName']
             }
           },
-          required: ['body', 'query', 'params', 'identity']
+          required: ['input', 'identity']
         }
       }
     }

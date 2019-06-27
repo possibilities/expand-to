@@ -69,19 +69,25 @@ test('expandToValidations', () => {
       request: {
         type: 'object',
         properties: {
-          body: { type: 'object', properties: {} },
-          query: {
+          input: {
             type: 'object',
             properties: {
-              orderBy: { type: 'string' },
-              page: { type: 'string', default: '1' },
-              perPage: { type: 'string', default: '20' }
-            }
+              body: { type: 'object', properties: {} },
+              query: {
+                type: 'object',
+                properties: {
+                  orderBy: { type: 'string' },
+                  page: { type: 'string', default: '1' },
+                  perPage: { type: 'string', default: '20' }
+                }
+              },
+              params: { type: 'object', properties: {} }
+            },
+            required: ['query', 'params', 'body']
           },
-          params: { type: 'object', properties: {} },
           identity: identitySchema
         },
-        required: ['body', 'query', 'params', 'identity']
+        required: ['input', 'identity']
       }
     },
     getPet: {
@@ -93,15 +99,21 @@ test('expandToValidations', () => {
       request: {
         type: 'object',
         properties: {
-          body: { type: 'object', properties: {} },
-          query: { type: 'object', properties: {} },
-          params: {
+          input: {
             type: 'object',
-            properties: { petId: { type: 'string' } }
+            properties: {
+              body: { type: 'object', properties: {} },
+              query: { type: 'object', properties: {} },
+              params: {
+                type: 'object',
+                properties: { petId: { type: 'string' } }
+              }
+            },
+            required: ['query', 'params', 'body']
           },
           identity: identitySchema
         },
-        required: ['body', 'query', 'params', 'identity']
+        required: ['input', 'identity']
       }
     },
     deletePet: {
@@ -112,15 +124,21 @@ test('expandToValidations', () => {
       request: {
         type: 'object',
         properties: {
-          body: { type: 'object', properties: {} },
-          query: { type: 'object', properties: {} },
-          params: {
+          input: {
             type: 'object',
-            properties: { petId: { type: 'string' } }
+            properties: {
+              body: { type: 'object', properties: {} },
+              query: { type: 'object', properties: {} },
+              params: {
+                type: 'object',
+                properties: { petId: { type: 'string' } }
+              }
+            },
+            required: ['query', 'params', 'body']
           },
           identity: identitySchema
         },
-        required: ['body', 'query', 'params', 'identity']
+        required: ['input', 'identity']
       }
     },
     checkPet: {
@@ -131,15 +149,21 @@ test('expandToValidations', () => {
       request: {
         type: 'object',
         properties: {
-          body: { type: 'object', properties: {} },
-          query: { type: 'object', properties: {} },
-          params: {
+          input: {
             type: 'object',
-            properties: { petId: { type: 'string' } }
+            properties: {
+              body: { type: 'object', properties: {} },
+              query: { type: 'object', properties: {} },
+              params: {
+                type: 'object',
+                properties: { petId: { type: 'string' } }
+              }
+            },
+            required: ['query', 'params', 'body']
           },
           identity: identitySchema
         },
-        required: ['body', 'query', 'params', 'identity']
+        required: ['input', 'identity']
       }
     },
     createPet: {
@@ -151,12 +175,18 @@ test('expandToValidations', () => {
       request: {
         type: 'object',
         properties: {
-          body: petSchema,
-          query: { type: 'object', properties: {} },
-          params: { type: 'object', properties: {} },
+          input: {
+            type: 'object',
+            properties: {
+              body: petSchema,
+              query: { type: 'object', properties: {} },
+              params: { type: 'object', properties: {} }
+            },
+            required: ['query', 'params', 'body']
+          },
           identity: identitySchema
         },
-        required: ['body', 'query', 'params', 'identity']
+        required: ['input', 'identity']
       }
     },
     replacePet: {
@@ -168,15 +198,21 @@ test('expandToValidations', () => {
       request: {
         type: 'object',
         properties: {
-          body: petSchema,
-          query: { type: 'object', properties: {} },
-          params: {
+          input: {
             type: 'object',
-            properties: { petId: { type: 'string' } }
+            properties: {
+              body: petSchema,
+              query: { type: 'object', properties: {} },
+              params: {
+                type: 'object',
+                properties: { petId: { type: 'string' } }
+              }
+            },
+            required: ['query', 'params', 'body']
           },
           identity: identitySchema
         },
-        required: ['body', 'query', 'params', 'identity']
+        required: ['input', 'identity']
       }
     },
     updatePet: {
@@ -188,15 +224,21 @@ test('expandToValidations', () => {
       request: {
         type: 'object',
         properties: {
-          body: petSchema,
-          query: { type: 'object', properties: {} },
-          params: {
+          input: {
             type: 'object',
-            properties: { petId: { type: 'string' } }
+            properties: {
+              body: petSchema,
+              query: { type: 'object', properties: {} },
+              params: {
+                type: 'object',
+                properties: { petId: { type: 'string' } }
+              }
+            },
+            required: ['query', 'params', 'body']
           },
           identity: identitySchema
         },
-        required: ['body', 'query', 'params', 'identity']
+        required: ['input', 'identity']
       }
     }
   })

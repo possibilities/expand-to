@@ -202,9 +202,9 @@ const expandToOpenApi = ({ operations, models }, options = {}) => {
   return { openapi: '3.0.0', info, paths, components }
 }
 
-module.exports = (spec, config = {}) => {
-  const { operations, models } = expandToOperations(spec, config)
-  return expandToOpenApi({ operations, models }, config)
+module.exports = (spec, options = {}) => {
+  const { operations, models } = expandToOperations(spec, options)
+  return expandToOpenApi({ operations, models }, options)
 }
 
 module.exports.expandToOpenApi = expandToOpenApi

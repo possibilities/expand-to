@@ -86,7 +86,8 @@ const expandToValidations = ({ operations, models }, options = {}) => {
       }
     }
   })
-  return { validations }
+
+  return { validations, operations, models }
 }
 
 module.exports = (spec, config = {}) => {

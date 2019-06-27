@@ -55,150 +55,148 @@ const petSchema = {
 
 test('expandToValidations', () => {
   const { models, operations } = expandToOperations(spec)
-  const expanded = expandToValidations({ models, operations })
-  expect(expanded).toEqual({
-    validations: {
-      listPets: {
-        response: {
-          type: 'object',
-          properties: {
-            pets: { type: 'array', items: petSchema },
-            pagination: paginationResponse
-          },
-          required: ['pets']
+  const { validations } = expandToValidations({ models, operations })
+  expect(validations).toEqual({
+    listPets: {
+      response: {
+        type: 'object',
+        properties: {
+          pets: { type: 'array', items: petSchema },
+          pagination: paginationResponse
         },
-        request: {
-          type: 'object',
-          properties: {
-            body: { type: 'object', properties: {} },
-            query: {
-              type: 'object',
-              properties: {
-                orderBy: { type: 'string' },
-                page: { type: 'string', default: '1' },
-                perPage: { type: 'string', default: '20' }
-              }
-            },
-            params: { type: 'object', properties: {} },
-            identity: identitySchema
-          },
-          required: ['body', 'query', 'params', 'identity']
-        }
+        required: ['pets']
       },
-      getPet: {
-        response: {
-          type: 'object',
-          properties: { pet: petSchema },
-          required: ['pet']
-        },
-        request: {
-          type: 'object',
-          properties: {
-            body: { type: 'object', properties: {} },
-            query: { type: 'object', properties: {} },
-            params: {
-              type: 'object',
-              properties: { petId: { type: 'string' } }
-            },
-            identity: identitySchema
+      request: {
+        type: 'object',
+        properties: {
+          body: { type: 'object', properties: {} },
+          query: {
+            type: 'object',
+            properties: {
+              orderBy: { type: 'string' },
+              page: { type: 'string', default: '1' },
+              perPage: { type: 'string', default: '20' }
+            }
           },
-          required: ['body', 'query', 'params', 'identity']
-        }
+          params: { type: 'object', properties: {} },
+          identity: identitySchema
+        },
+        required: ['body', 'query', 'params', 'identity']
+      }
+    },
+    getPet: {
+      response: {
+        type: 'object',
+        properties: { pet: petSchema },
+        required: ['pet']
       },
-      deletePet: {
-        response: {
-          type: 'object',
-          properties: {}
-        },
-        request: {
-          type: 'object',
-          properties: {
-            body: { type: 'object', properties: {} },
-            query: { type: 'object', properties: {} },
-            params: {
-              type: 'object',
-              properties: { petId: { type: 'string' } }
-            },
-            identity: identitySchema
+      request: {
+        type: 'object',
+        properties: {
+          body: { type: 'object', properties: {} },
+          query: { type: 'object', properties: {} },
+          params: {
+            type: 'object',
+            properties: { petId: { type: 'string' } }
           },
-          required: ['body', 'query', 'params', 'identity']
-        }
+          identity: identitySchema
+        },
+        required: ['body', 'query', 'params', 'identity']
+      }
+    },
+    deletePet: {
+      response: {
+        type: 'object',
+        properties: {}
       },
-      checkPet: {
-        response: {
-          type: 'object',
-          properties: {}
-        },
-        request: {
-          type: 'object',
-          properties: {
-            body: { type: 'object', properties: {} },
-            query: { type: 'object', properties: {} },
-            params: {
-              type: 'object',
-              properties: { petId: { type: 'string' } }
-            },
-            identity: identitySchema
+      request: {
+        type: 'object',
+        properties: {
+          body: { type: 'object', properties: {} },
+          query: { type: 'object', properties: {} },
+          params: {
+            type: 'object',
+            properties: { petId: { type: 'string' } }
           },
-          required: ['body', 'query', 'params', 'identity']
-        }
+          identity: identitySchema
+        },
+        required: ['body', 'query', 'params', 'identity']
+      }
+    },
+    checkPet: {
+      response: {
+        type: 'object',
+        properties: {}
       },
-      createPet: {
-        response: {
-          type: 'object',
-          properties: { pet: petSchema },
-          required: ['pet']
-        },
-        request: {
-          type: 'object',
-          properties: {
-            body: petSchema,
-            query: { type: 'object', properties: {} },
-            params: { type: 'object', properties: {} },
-            identity: identitySchema
+      request: {
+        type: 'object',
+        properties: {
+          body: { type: 'object', properties: {} },
+          query: { type: 'object', properties: {} },
+          params: {
+            type: 'object',
+            properties: { petId: { type: 'string' } }
           },
-          required: ['body', 'query', 'params', 'identity']
-        }
+          identity: identitySchema
+        },
+        required: ['body', 'query', 'params', 'identity']
+      }
+    },
+    createPet: {
+      response: {
+        type: 'object',
+        properties: { pet: petSchema },
+        required: ['pet']
       },
-      replacePet: {
-        response: {
-          type: 'object',
-          properties: { pet: petSchema },
-          required: ['pet']
+      request: {
+        type: 'object',
+        properties: {
+          body: petSchema,
+          query: { type: 'object', properties: {} },
+          params: { type: 'object', properties: {} },
+          identity: identitySchema
         },
-        request: {
-          type: 'object',
-          properties: {
-            body: petSchema,
-            query: { type: 'object', properties: {} },
-            params: {
-              type: 'object',
-              properties: { petId: { type: 'string' } }
-            },
-            identity: identitySchema
-          },
-          required: ['body', 'query', 'params', 'identity']
-        }
+        required: ['body', 'query', 'params', 'identity']
+      }
+    },
+    replacePet: {
+      response: {
+        type: 'object',
+        properties: { pet: petSchema },
+        required: ['pet']
       },
-      updatePet: {
-        response: {
-          type: 'object',
-          properties: { pet: petSchema },
-          required: ['pet']
-        },
-        request: {
-          type: 'object',
-          properties: {
-            body: petSchema,
-            query: { type: 'object', properties: {} },
-            params: {
-              type: 'object',
-              properties: { petId: { type: 'string' } }
-            },
-            identity: identitySchema
+      request: {
+        type: 'object',
+        properties: {
+          body: petSchema,
+          query: { type: 'object', properties: {} },
+          params: {
+            type: 'object',
+            properties: { petId: { type: 'string' } }
           },
-          required: ['body', 'query', 'params', 'identity']
-        }
+          identity: identitySchema
+        },
+        required: ['body', 'query', 'params', 'identity']
+      }
+    },
+    updatePet: {
+      response: {
+        type: 'object',
+        properties: { pet: petSchema },
+        required: ['pet']
+      },
+      request: {
+        type: 'object',
+        properties: {
+          body: petSchema,
+          query: { type: 'object', properties: {} },
+          params: {
+            type: 'object',
+            properties: { petId: { type: 'string' } }
+          },
+          identity: identitySchema
+        },
+        required: ['body', 'query', 'params', 'identity']
       }
     }
   })

@@ -234,11 +234,7 @@ const expandToOperations = ({ paths, models }, options = {}) => {
     getTestData: testData[operation.id]
   }))
 
-  return {
-    paths,
-    operations,
-    models: expandedModels
-  }
+  return { paths, operations, models: expandedModels }
 }
 
 module.exports = (spec, options = {}) => {

@@ -100,7 +100,7 @@ const expandToTestData = ({ operations, models }, options = {}) => {
       }
     }
   })
-  return { testData }
+  return { testData, operations, models }
 }
 
 module.exports = (spec, options = {}) => {

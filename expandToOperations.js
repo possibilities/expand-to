@@ -1,4 +1,3 @@
-const expandToResources = require('./expandToResources')
 const lowerFirst = require('lodash/lowerFirst')
 const isObject = require('lodash/isObject')
 const compact = require('lodash/compact')
@@ -227,6 +226,14 @@ const expandToOperations = ({ paths, models }, options = {}) => {
     })
   })
 
+  // Amend each operation with a function that creates test data
+  const { expandToTestData } = require('./expandToTestData')
+  const { testData } = expandToTestData({ operations, paths, models }, options)
+  operations = operations.map(operation => ({
+    ...operation,
+    getTestData: testData[operation.id]
+  }))
+
   return {
     paths,
     operations,
@@ -235,7 +242,8 @@ const expandToOperations = ({ paths, models }, options = {}) => {
 }
 
 module.exports = (spec, options = {}) => {
-  const { paths, models } = expandToResources(spec, options = {})
+  const expandToResources = require('./expandToResources')
+  const { paths, models } = expandToResources(spec, options)
   return expandToOperations({ paths, models }, options)
 }
 

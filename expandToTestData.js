@@ -1,4 +1,3 @@
-const expandToOperations = require('./expandToOperations')
 const get = require('lodash/get')
 const fromPairs = require('lodash/fromPairs')
 const mapValues = require('lodash/mapValues')
@@ -104,9 +103,10 @@ const expandToTestData = ({ operations, models }, options = {}) => {
   return { testData }
 }
 
-module.exports = (spec, config = {}) => {
-  const { operations, models } = expandToOperations(spec, config)
-  const { testData } = expandToTestData({ operations, models }, config)
+module.exports = (spec, options = {}) => {
+  const expandToOperations = require('./expandToOperations')
+  const { operations, models } = expandToOperations(spec, options)
+  const { testData } = expandToTestData({ operations, models }, options)
   return testData
 }
 

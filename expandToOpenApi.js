@@ -73,7 +73,7 @@ const getRequestBody = (operation, models) => {
         schema: {
           '$ref': `#/components/schemas/${upperFirst(operation.request)}Request`
         },
-        examples: getExamples('request', operation),
+        examples: getExamples('request', operation)
       }
     }
   }

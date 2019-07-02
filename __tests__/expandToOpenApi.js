@@ -79,7 +79,7 @@ const managersListResponseExamples = {
   manager2: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
   manager3: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
   manager4: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
-  manager5: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
+  manager5: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } }
 }
 
 const storesListResponseExamples = {
@@ -87,7 +87,7 @@ const storesListResponseExamples = {
   store2: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
   store3: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
   store4: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  store5: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  store5: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } }
 }
 
 const petsListResponseExamples = {
@@ -95,7 +95,7 @@ const petsListResponseExamples = {
   pet2: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
   pet3: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
   pet4: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  pet5: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  pet5: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } }
 }
 
 const spec = {
@@ -222,27 +222,16 @@ const spec = {
   }
 }
 
-const reverseRegexp = () => 'reversed-pattern'
-
 const faker = {
   name: {
     firstName: () => 'random-firstname'
   },
-  // internet: {
-  //   email: () => 'random-email'
-  // },
-  // date: {
-  //   recent: () => 'random-datetime'
-  // },
   random: {
     uuid: () => 'random-uuid'
   },
   lorem: {
     word: () => 'random-word'
-  },
-  // hacker: {
-  //   phrase: () => 'random-phrase'
-  // }
+  }
 }
 
 const fake = {
@@ -622,37 +611,37 @@ describe('expandToOpenApi#paths', () => {
                   value: {
                     customFnWithRequestAndStringyResponseFieldArray: 'random-word',
                     customFnWithRequestAndStringyResponseFieldObject: 'random-word',
-                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word'
                   }
                 },
                 customFnWithRequestAndStringyResponse2: {
                   value: {
                     customFnWithRequestAndStringyResponseFieldArray: 'random-word',
                     customFnWithRequestAndStringyResponseFieldObject: 'random-word',
-                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word'
                   }
                 },
                 customFnWithRequestAndStringyResponse3: {
                   value: {
                     customFnWithRequestAndStringyResponseFieldArray: 'random-word',
                     customFnWithRequestAndStringyResponseFieldObject: 'random-word',
-                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word'
                   }
                 },
                 customFnWithRequestAndStringyResponse4: {
                   value: {
                     customFnWithRequestAndStringyResponseFieldArray: 'random-word',
                     customFnWithRequestAndStringyResponseFieldObject: 'random-word',
-                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word'
                   }
                 },
                 customFnWithRequestAndStringyResponse5: {
                   value: {
                     customFnWithRequestAndStringyResponseFieldArray: 'random-word',
                     customFnWithRequestAndStringyResponseFieldObject: 'random-word',
-                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word'
                   }
-                },
+                }
               }
             }
           },
@@ -666,7 +655,7 @@ describe('expandToOpenApi#paths', () => {
             'application/json': {
               schema: { '$ref': `#/components/schemas/StoreRequest` },
               examples: storesRequestExamples
-            },
+            }
           },
           required: true
         }
@@ -703,7 +692,7 @@ describe('expandToOpenApi#paths', () => {
               examples: managersRequestExamples
             }
           },
-          required: true,
+          required: true
         }
       },
       '/stores/{storeId}/managers/{managerId}': {
@@ -726,7 +715,7 @@ describe('expandToOpenApi#paths', () => {
               examples: managersRequestExamples
             }
           },
-          required: true,
+          required: true
         }
       }
     })
@@ -789,7 +778,7 @@ describe('expandToOpenApi#paths', () => {
                   },
                   pet5: {
                     value: { pet: { id: 'random-word', name: 'random-firstname' } }
-                  },
+                  }
                 }
               }
             },
@@ -957,15 +946,7 @@ describe('expandToOpenApi#paths', () => {
                         name: 'random-firstname'
                       }
                     }
-                  },
-                  customFnWithStringyResponse1: {
-                    value: {
-                      pet: {
-                        id: 'random-word',
-                        name: 'random-firstname'
-                      }
-                    }
-                  },
+                  }
                 }
               }
             },
@@ -1002,7 +983,7 @@ describe('expandToOpenApi#paths', () => {
                   },
                   customFnWithStringyRequestAndResponse5: {
                     value: { pet: { id: 'random-word', name: 'random-firstname' } }
-                  },
+                  }
                 }
               }
             },
@@ -1039,7 +1020,7 @@ describe('expandToOpenApi#paths', () => {
                   },
                   customFnWithRequestAndStringyResponse5: {
                     value: { pet: { id: 'random-word', name: 'random-firstname' } }
-                  },
+                  }
                 }
               }
             },

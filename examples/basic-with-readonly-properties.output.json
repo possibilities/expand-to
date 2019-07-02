@@ -61,6 +61,468 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "ullam",
+                          "fieldThatIsReadOnly": "corrupti"
+                        },
+                        {
+                          "name": "debitis",
+                          "fieldThatIsReadOnly": "neque"
+                        },
+                        {
+                          "name": "explicabo",
+                          "fieldThatIsReadOnly": "porro"
+                        },
+                        {
+                          "name": "ea",
+                          "fieldThatIsReadOnly": "deserunt"
+                        },
+                        {
+                          "name": "et",
+                          "fieldThatIsReadOnly": "eius"
+                        },
+                        {
+                          "name": "aliquam",
+                          "fieldThatIsReadOnly": "nesciunt"
+                        },
+                        {
+                          "name": "praesentium",
+                          "fieldThatIsReadOnly": "sequi"
+                        },
+                        {
+                          "name": "nam",
+                          "fieldThatIsReadOnly": "ipsa"
+                        },
+                        {
+                          "name": "praesentium",
+                          "fieldThatIsReadOnly": "aut"
+                        },
+                        {
+                          "name": "officiis",
+                          "fieldThatIsReadOnly": "in"
+                        },
+                        {
+                          "name": "dolores",
+                          "fieldThatIsReadOnly": "enim"
+                        },
+                        {
+                          "name": "aliquid",
+                          "fieldThatIsReadOnly": "labore"
+                        },
+                        {
+                          "name": "est",
+                          "fieldThatIsReadOnly": "et"
+                        },
+                        {
+                          "name": "nobis",
+                          "fieldThatIsReadOnly": "officiis"
+                        },
+                        {
+                          "name": "et",
+                          "fieldThatIsReadOnly": "aliquid"
+                        },
+                        {
+                          "name": "deleniti",
+                          "fieldThatIsReadOnly": "voluptatem"
+                        },
+                        {
+                          "name": "et",
+                          "fieldThatIsReadOnly": "corrupti"
+                        },
+                        {
+                          "name": "tempore",
+                          "fieldThatIsReadOnly": "rerum"
+                        },
+                        {
+                          "name": "ad",
+                          "fieldThatIsReadOnly": "aliquam"
+                        },
+                        {
+                          "name": "laborum",
+                          "fieldThatIsReadOnly": "deserunt"
+                        }
+                      ]
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "esse",
+                          "fieldThatIsReadOnly": "labore"
+                        },
+                        {
+                          "name": "et",
+                          "fieldThatIsReadOnly": "dolorem"
+                        },
+                        {
+                          "name": "quia",
+                          "fieldThatIsReadOnly": "error"
+                        },
+                        {
+                          "name": "praesentium",
+                          "fieldThatIsReadOnly": "sed"
+                        },
+                        {
+                          "name": "voluptatem",
+                          "fieldThatIsReadOnly": "ratione"
+                        },
+                        {
+                          "name": "sapiente",
+                          "fieldThatIsReadOnly": "in"
+                        },
+                        {
+                          "name": "fugit",
+                          "fieldThatIsReadOnly": "consectetur"
+                        },
+                        {
+                          "name": "quaerat",
+                          "fieldThatIsReadOnly": "iste"
+                        },
+                        {
+                          "name": "id",
+                          "fieldThatIsReadOnly": "consequatur"
+                        },
+                        {
+                          "name": "iste",
+                          "fieldThatIsReadOnly": "beatae"
+                        },
+                        {
+                          "name": "facere",
+                          "fieldThatIsReadOnly": "voluptatum"
+                        },
+                        {
+                          "name": "porro",
+                          "fieldThatIsReadOnly": "dolorem"
+                        },
+                        {
+                          "name": "occaecati",
+                          "fieldThatIsReadOnly": "consequatur"
+                        },
+                        {
+                          "name": "et",
+                          "fieldThatIsReadOnly": "sunt"
+                        },
+                        {
+                          "name": "blanditiis",
+                          "fieldThatIsReadOnly": "voluptatem"
+                        },
+                        {
+                          "name": "excepturi",
+                          "fieldThatIsReadOnly": "voluptas"
+                        },
+                        {
+                          "name": "dolores",
+                          "fieldThatIsReadOnly": "et"
+                        },
+                        {
+                          "name": "magnam",
+                          "fieldThatIsReadOnly": "neque"
+                        },
+                        {
+                          "name": "est",
+                          "fieldThatIsReadOnly": "eum"
+                        },
+                        {
+                          "name": "dolorum",
+                          "fieldThatIsReadOnly": "repellendus"
+                        }
+                      ]
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "a",
+                          "fieldThatIsReadOnly": "voluptate"
+                        },
+                        {
+                          "name": "dolore",
+                          "fieldThatIsReadOnly": "architecto"
+                        },
+                        {
+                          "name": "suscipit",
+                          "fieldThatIsReadOnly": "animi"
+                        },
+                        {
+                          "name": "doloremque",
+                          "fieldThatIsReadOnly": "ea"
+                        },
+                        {
+                          "name": "exercitationem",
+                          "fieldThatIsReadOnly": "dicta"
+                        },
+                        {
+                          "name": "tenetur",
+                          "fieldThatIsReadOnly": "earum"
+                        },
+                        {
+                          "name": "exercitationem",
+                          "fieldThatIsReadOnly": "eveniet"
+                        },
+                        {
+                          "name": "enim",
+                          "fieldThatIsReadOnly": "quia"
+                        },
+                        {
+                          "name": "illo",
+                          "fieldThatIsReadOnly": "et"
+                        },
+                        {
+                          "name": "quis",
+                          "fieldThatIsReadOnly": "eveniet"
+                        },
+                        {
+                          "name": "aut",
+                          "fieldThatIsReadOnly": "consequuntur"
+                        },
+                        {
+                          "name": "repellendus",
+                          "fieldThatIsReadOnly": "eum"
+                        },
+                        {
+                          "name": "quo",
+                          "fieldThatIsReadOnly": "nisi"
+                        },
+                        {
+                          "name": "eveniet",
+                          "fieldThatIsReadOnly": "blanditiis"
+                        },
+                        {
+                          "name": "atque",
+                          "fieldThatIsReadOnly": "quia"
+                        },
+                        {
+                          "name": "iure",
+                          "fieldThatIsReadOnly": "est"
+                        },
+                        {
+                          "name": "hic",
+                          "fieldThatIsReadOnly": "inventore"
+                        },
+                        {
+                          "name": "aut",
+                          "fieldThatIsReadOnly": "officia"
+                        },
+                        {
+                          "name": "magnam",
+                          "fieldThatIsReadOnly": "in"
+                        },
+                        {
+                          "name": "beatae",
+                          "fieldThatIsReadOnly": "qui"
+                        }
+                      ]
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "cum",
+                          "fieldThatIsReadOnly": "sit"
+                        },
+                        {
+                          "name": "accusamus",
+                          "fieldThatIsReadOnly": "quibusdam"
+                        },
+                        {
+                          "name": "eius",
+                          "fieldThatIsReadOnly": "quibusdam"
+                        },
+                        {
+                          "name": "quaerat",
+                          "fieldThatIsReadOnly": "dolore"
+                        },
+                        {
+                          "name": "ipsa",
+                          "fieldThatIsReadOnly": "quia"
+                        },
+                        {
+                          "name": "accusamus",
+                          "fieldThatIsReadOnly": "similique"
+                        },
+                        {
+                          "name": "voluptas",
+                          "fieldThatIsReadOnly": "expedita"
+                        },
+                        {
+                          "name": "quod",
+                          "fieldThatIsReadOnly": "sunt"
+                        },
+                        {
+                          "name": "quia",
+                          "fieldThatIsReadOnly": "sit"
+                        },
+                        {
+                          "name": "et",
+                          "fieldThatIsReadOnly": "repellendus"
+                        },
+                        {
+                          "name": "dignissimos",
+                          "fieldThatIsReadOnly": "repudiandae"
+                        },
+                        {
+                          "name": "sed",
+                          "fieldThatIsReadOnly": "ducimus"
+                        },
+                        {
+                          "name": "sed",
+                          "fieldThatIsReadOnly": "quod"
+                        },
+                        {
+                          "name": "occaecati",
+                          "fieldThatIsReadOnly": "in"
+                        },
+                        {
+                          "name": "eum",
+                          "fieldThatIsReadOnly": "rem"
+                        },
+                        {
+                          "name": "at",
+                          "fieldThatIsReadOnly": "eius"
+                        },
+                        {
+                          "name": "qui",
+                          "fieldThatIsReadOnly": "dolorem"
+                        },
+                        {
+                          "name": "impedit",
+                          "fieldThatIsReadOnly": "laborum"
+                        },
+                        {
+                          "name": "quisquam",
+                          "fieldThatIsReadOnly": "sed"
+                        },
+                        {
+                          "name": "deserunt",
+                          "fieldThatIsReadOnly": "sint"
+                        }
+                      ]
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "eos",
+                          "fieldThatIsReadOnly": "rem"
+                        },
+                        {
+                          "name": "sunt",
+                          "fieldThatIsReadOnly": "tenetur"
+                        },
+                        {
+                          "name": "ipsam",
+                          "fieldThatIsReadOnly": "quam"
+                        },
+                        {
+                          "name": "et",
+                          "fieldThatIsReadOnly": "sunt"
+                        },
+                        {
+                          "name": "commodi",
+                          "fieldThatIsReadOnly": "repellat"
+                        },
+                        {
+                          "name": "tempora",
+                          "fieldThatIsReadOnly": "blanditiis"
+                        },
+                        {
+                          "name": "dignissimos",
+                          "fieldThatIsReadOnly": "aut"
+                        },
+                        {
+                          "name": "sit",
+                          "fieldThatIsReadOnly": "ipsa"
+                        },
+                        {
+                          "name": "id",
+                          "fieldThatIsReadOnly": "beatae"
+                        },
+                        {
+                          "name": "rerum",
+                          "fieldThatIsReadOnly": "quaerat"
+                        },
+                        {
+                          "name": "non",
+                          "fieldThatIsReadOnly": "odit"
+                        },
+                        {
+                          "name": "laudantium",
+                          "fieldThatIsReadOnly": "eligendi"
+                        },
+                        {
+                          "name": "neque",
+                          "fieldThatIsReadOnly": "maiores"
+                        },
+                        {
+                          "name": "eligendi",
+                          "fieldThatIsReadOnly": "sed"
+                        },
+                        {
+                          "name": "praesentium",
+                          "fieldThatIsReadOnly": "totam"
+                        },
+                        {
+                          "name": "doloremque",
+                          "fieldThatIsReadOnly": "ut"
+                        },
+                        {
+                          "name": "non",
+                          "fieldThatIsReadOnly": "rerum"
+                        },
+                        {
+                          "name": "fugit",
+                          "fieldThatIsReadOnly": "est"
+                        },
+                        {
+                          "name": "fugit",
+                          "fieldThatIsReadOnly": "dignissimos"
+                        },
+                        {
+                          "name": "ex",
+                          "fieldThatIsReadOnly": "commodi"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -110,6 +572,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetRequest"
+              },
+              "examples": {
+                "pet1": {
+                  "value": {
+                    "name": "est"
+                  }
+                },
+                "pet2": {
+                  "value": {
+                    "name": "magnam"
+                  }
+                },
+                "pet3": {
+                  "value": {
+                    "name": "voluptas"
+                  }
+                },
+                "pet4": {
+                  "value": {
+                    "name": "nemo"
+                  }
+                },
+                "pet5": {
+                  "value": {
+                    "name": "magni"
+                  }
+                }
               }
             }
           }
@@ -124,6 +613,48 @@
                   "properties": {
                     "pet": {
                       "$ref": "#/components/schemas/PetResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pet": {
+                        "name": "totam",
+                        "fieldThatIsReadOnly": "omnis"
+                      }
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pet": {
+                        "name": "doloremque",
+                        "fieldThatIsReadOnly": "saepe"
+                      }
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pet": {
+                        "name": "placeat",
+                        "fieldThatIsReadOnly": "asperiores"
+                      }
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pet": {
+                        "name": "quo",
+                        "fieldThatIsReadOnly": "dolorum"
+                      }
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pet": {
+                        "name": "sed",
+                        "fieldThatIsReadOnly": "officia"
+                      }
                     }
                   }
                 }
@@ -263,6 +794,48 @@
                       "$ref": "#/components/schemas/PetResponse"
                     }
                   }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pet": {
+                        "name": "distinctio",
+                        "fieldThatIsReadOnly": "error"
+                      }
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pet": {
+                        "name": "deleniti",
+                        "fieldThatIsReadOnly": "quaerat"
+                      }
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pet": {
+                        "name": "distinctio",
+                        "fieldThatIsReadOnly": "sapiente"
+                      }
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pet": {
+                        "name": "voluptatibus",
+                        "fieldThatIsReadOnly": "nisi"
+                      }
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pet": {
+                        "name": "provident",
+                        "fieldThatIsReadOnly": "facere"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -332,6 +905,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetRequest"
+              },
+              "examples": {
+                "pet1": {
+                  "value": {
+                    "name": "iure"
+                  }
+                },
+                "pet2": {
+                  "value": {
+                    "name": "iusto"
+                  }
+                },
+                "pet3": {
+                  "value": {
+                    "name": "ea"
+                  }
+                },
+                "pet4": {
+                  "value": {
+                    "name": "quos"
+                  }
+                },
+                "pet5": {
+                  "value": {
+                    "name": "consectetur"
+                  }
+                }
               }
             }
           }
@@ -346,6 +946,48 @@
                   "properties": {
                     "pet": {
                       "$ref": "#/components/schemas/PetResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pet": {
+                        "name": "fugit",
+                        "fieldThatIsReadOnly": "in"
+                      }
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pet": {
+                        "name": "est",
+                        "fieldThatIsReadOnly": "deserunt"
+                      }
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pet": {
+                        "name": "hic",
+                        "fieldThatIsReadOnly": "reiciendis"
+                      }
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pet": {
+                        "name": "praesentium",
+                        "fieldThatIsReadOnly": "distinctio"
+                      }
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pet": {
+                        "name": "quo",
+                        "fieldThatIsReadOnly": "beatae"
+                      }
                     }
                   }
                 }
@@ -417,6 +1059,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetRequest"
+              },
+              "examples": {
+                "pet1": {
+                  "value": {
+                    "name": "maxime"
+                  }
+                },
+                "pet2": {
+                  "value": {
+                    "name": "vero"
+                  }
+                },
+                "pet3": {
+                  "value": {
+                    "name": "consequatur"
+                  }
+                },
+                "pet4": {
+                  "value": {
+                    "name": "non"
+                  }
+                },
+                "pet5": {
+                  "value": {
+                    "name": "voluptas"
+                  }
+                }
               }
             }
           }
@@ -431,6 +1100,48 @@
                   "properties": {
                     "pet": {
                       "$ref": "#/components/schemas/PetResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pet": {
+                        "name": "omnis",
+                        "fieldThatIsReadOnly": "voluptas"
+                      }
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pet": {
+                        "name": "architecto",
+                        "fieldThatIsReadOnly": "nesciunt"
+                      }
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pet": {
+                        "name": "modi",
+                        "fieldThatIsReadOnly": "inventore"
+                      }
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pet": {
+                        "name": "laboriosam",
+                        "fieldThatIsReadOnly": "molestiae"
+                      }
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pet": {
+                        "name": "odio",
+                        "fieldThatIsReadOnly": "ut"
+                      }
                     }
                   }
                 }

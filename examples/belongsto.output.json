@@ -61,6 +61,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "org1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "orgs": [
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "doloribus"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "ullam"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "aliquid"
+                        },
+                        {
+                          "name": "fugiat"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "sapiente"
+                        },
+                        {
+                          "name": "accusamus"
+                        },
+                        {
+                          "name": "doloribus"
+                        },
+                        {
+                          "name": "eligendi"
+                        },
+                        {
+                          "name": "necessitatibus"
+                        },
+                        {
+                          "name": "molestias"
+                        },
+                        {
+                          "name": "deserunt"
+                        },
+                        {
+                          "name": "eius"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "atque"
+                        },
+                        {
+                          "name": "a"
+                        },
+                        {
+                          "name": "repellat"
+                        }
+                      ]
+                    }
+                  },
+                  "org2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "orgs": [
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "enim"
+                        },
+                        {
+                          "name": "voluptates"
+                        },
+                        {
+                          "name": "dolor"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "ex"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "expedita"
+                        },
+                        {
+                          "name": "necessitatibus"
+                        },
+                        {
+                          "name": "voluptas"
+                        },
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "distinctio"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "asperiores"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "consectetur"
+                        },
+                        {
+                          "name": "ex"
+                        }
+                      ]
+                    }
+                  },
+                  "org3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "orgs": [
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "nihil"
+                        },
+                        {
+                          "name": "nulla"
+                        },
+                        {
+                          "name": "esse"
+                        },
+                        {
+                          "name": "quidem"
+                        },
+                        {
+                          "name": "debitis"
+                        },
+                        {
+                          "name": "officiis"
+                        },
+                        {
+                          "name": "soluta"
+                        },
+                        {
+                          "name": "beatae"
+                        },
+                        {
+                          "name": "libero"
+                        },
+                        {
+                          "name": "soluta"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "quos"
+                        },
+                        {
+                          "name": "recusandae"
+                        },
+                        {
+                          "name": "fugiat"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "quae"
+                        }
+                      ]
+                    }
+                  },
+                  "org4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "orgs": [
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "eum"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "repudiandae"
+                        },
+                        {
+                          "name": "dignissimos"
+                        },
+                        {
+                          "name": "corporis"
+                        },
+                        {
+                          "name": "perspiciatis"
+                        },
+                        {
+                          "name": "inventore"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "explicabo"
+                        },
+                        {
+                          "name": "doloremque"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "earum"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "fugit"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "maxime"
+                        },
+                        {
+                          "name": "commodi"
+                        },
+                        {
+                          "name": "et"
+                        }
+                      ]
+                    }
+                  },
+                  "org5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "orgs": [
+                        {
+                          "name": "sit"
+                        },
+                        {
+                          "name": "ex"
+                        },
+                        {
+                          "name": "ex"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "hic"
+                        },
+                        {
+                          "name": "reprehenderit"
+                        },
+                        {
+                          "name": "illum"
+                        },
+                        {
+                          "name": "cum"
+                        },
+                        {
+                          "name": "deserunt"
+                        },
+                        {
+                          "name": "iste"
+                        },
+                        {
+                          "name": "repudiandae"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "excepturi"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "omnis"
+                        },
+                        {
+                          "name": "nesciunt"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "quaerat"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "pariatur"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -110,6 +472,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OrgRequest"
+              },
+              "examples": {
+                "org1": {
+                  "value": {
+                    "name": "quibusdam"
+                  }
+                },
+                "org2": {
+                  "value": {
+                    "name": "repudiandae"
+                  }
+                },
+                "org3": {
+                  "value": {
+                    "name": "voluptas"
+                  }
+                },
+                "org4": {
+                  "value": {
+                    "name": "omnis"
+                  }
+                },
+                "org5": {
+                  "value": {
+                    "name": "placeat"
+                  }
+                }
               }
             }
           }
@@ -124,6 +513,43 @@
                   "properties": {
                     "org": {
                       "$ref": "#/components/schemas/OrgResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "org1": {
+                    "value": {
+                      "org": {
+                        "name": "laborum"
+                      }
+                    }
+                  },
+                  "org2": {
+                    "value": {
+                      "org": {
+                        "name": "placeat"
+                      }
+                    }
+                  },
+                  "org3": {
+                    "value": {
+                      "org": {
+                        "name": "aliquid"
+                      }
+                    }
+                  },
+                  "org4": {
+                    "value": {
+                      "org": {
+                        "name": "excepturi"
+                      }
+                    }
+                  },
+                  "org5": {
+                    "value": {
+                      "org": {
+                        "name": "pariatur"
+                      }
                     }
                   }
                 }
@@ -263,6 +689,43 @@
                       "$ref": "#/components/schemas/OrgResponse"
                     }
                   }
+                },
+                "examples": {
+                  "org1": {
+                    "value": {
+                      "org": {
+                        "name": "laborum"
+                      }
+                    }
+                  },
+                  "org2": {
+                    "value": {
+                      "org": {
+                        "name": "ex"
+                      }
+                    }
+                  },
+                  "org3": {
+                    "value": {
+                      "org": {
+                        "name": "iure"
+                      }
+                    }
+                  },
+                  "org4": {
+                    "value": {
+                      "org": {
+                        "name": "perspiciatis"
+                      }
+                    }
+                  },
+                  "org5": {
+                    "value": {
+                      "org": {
+                        "name": "sequi"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -332,6 +795,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OrgRequest"
+              },
+              "examples": {
+                "org1": {
+                  "value": {
+                    "name": "harum"
+                  }
+                },
+                "org2": {
+                  "value": {
+                    "name": "minima"
+                  }
+                },
+                "org3": {
+                  "value": {
+                    "name": "autem"
+                  }
+                },
+                "org4": {
+                  "value": {
+                    "name": "error"
+                  }
+                },
+                "org5": {
+                  "value": {
+                    "name": "nisi"
+                  }
+                }
               }
             }
           }
@@ -346,6 +836,43 @@
                   "properties": {
                     "org": {
                       "$ref": "#/components/schemas/OrgResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "org1": {
+                    "value": {
+                      "org": {
+                        "name": "perspiciatis"
+                      }
+                    }
+                  },
+                  "org2": {
+                    "value": {
+                      "org": {
+                        "name": "hic"
+                      }
+                    }
+                  },
+                  "org3": {
+                    "value": {
+                      "org": {
+                        "name": "officiis"
+                      }
+                    }
+                  },
+                  "org4": {
+                    "value": {
+                      "org": {
+                        "name": "commodi"
+                      }
+                    }
+                  },
+                  "org5": {
+                    "value": {
+                      "org": {
+                        "name": "molestiae"
+                      }
                     }
                   }
                 }
@@ -417,6 +944,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OrgRequest"
+              },
+              "examples": {
+                "org1": {
+                  "value": {
+                    "name": "assumenda"
+                  }
+                },
+                "org2": {
+                  "value": {
+                    "name": "rem"
+                  }
+                },
+                "org3": {
+                  "value": {
+                    "name": "earum"
+                  }
+                },
+                "org4": {
+                  "value": {
+                    "name": "aut"
+                  }
+                },
+                "org5": {
+                  "value": {
+                    "name": "omnis"
+                  }
+                }
               }
             }
           }
@@ -431,6 +985,43 @@
                   "properties": {
                     "org": {
                       "$ref": "#/components/schemas/OrgResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "org1": {
+                    "value": {
+                      "org": {
+                        "name": "minus"
+                      }
+                    }
+                  },
+                  "org2": {
+                    "value": {
+                      "org": {
+                        "name": "non"
+                      }
+                    }
+                  },
+                  "org3": {
+                    "value": {
+                      "org": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "org4": {
+                    "value": {
+                      "org": {
+                        "name": "qui"
+                      }
+                    }
+                  },
+                  "org5": {
+                    "value": {
+                      "org": {
+                        "name": "beatae"
+                      }
                     }
                   }
                 }
@@ -615,6 +1206,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "repo1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "repos": [
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "blanditiis"
+                        },
+                        {
+                          "name": "quaerat"
+                        },
+                        {
+                          "name": "nulla"
+                        },
+                        {
+                          "name": "numquam"
+                        },
+                        {
+                          "name": "pariatur"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "minima"
+                        },
+                        {
+                          "name": "magni"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "doloremque"
+                        },
+                        {
+                          "name": "provident"
+                        },
+                        {
+                          "name": "reiciendis"
+                        },
+                        {
+                          "name": "nostrum"
+                        },
+                        {
+                          "name": "omnis"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "earum"
+                        },
+                        {
+                          "name": "odit"
+                        }
+                      ]
+                    }
+                  },
+                  "repo2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "repos": [
+                        {
+                          "name": "repellat"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "eaque"
+                        },
+                        {
+                          "name": "dicta"
+                        },
+                        {
+                          "name": "error"
+                        },
+                        {
+                          "name": "omnis"
+                        },
+                        {
+                          "name": "voluptas"
+                        },
+                        {
+                          "name": "quibusdam"
+                        },
+                        {
+                          "name": "omnis"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "laudantium"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "praesentium"
+                        },
+                        {
+                          "name": "quia"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "consectetur"
+                        },
+                        {
+                          "name": "totam"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "magnam"
+                        },
+                        {
+                          "name": "in"
+                        }
+                      ]
+                    }
+                  },
+                  "repo3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "repos": [
+                        {
+                          "name": "quaerat"
+                        },
+                        {
+                          "name": "quod"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "autem"
+                        },
+                        {
+                          "name": "odit"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "doloremque"
+                        },
+                        {
+                          "name": "repellendus"
+                        },
+                        {
+                          "name": "nihil"
+                        },
+                        {
+                          "name": "quo"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "voluptas"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "error"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "alias"
+                        },
+                        {
+                          "name": "nemo"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "perspiciatis"
+                        },
+                        {
+                          "name": "ad"
+                        }
+                      ]
+                    }
+                  },
+                  "repo4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "repos": [
+                        {
+                          "name": "in"
+                        },
+                        {
+                          "name": "temporibus"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "dolor"
+                        },
+                        {
+                          "name": "ad"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "quia"
+                        },
+                        {
+                          "name": "nihil"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "rem"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "pariatur"
+                        },
+                        {
+                          "name": "porro"
+                        },
+                        {
+                          "name": "incidunt"
+                        },
+                        {
+                          "name": "praesentium"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "similique"
+                        },
+                        {
+                          "name": "tempore"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "nisi"
+                        }
+                      ]
+                    }
+                  },
+                  "repo5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "repos": [
+                        {
+                          "name": "eum"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "amet"
+                        },
+                        {
+                          "name": "autem"
+                        },
+                        {
+                          "name": "optio"
+                        },
+                        {
+                          "name": "ad"
+                        },
+                        {
+                          "name": "quam"
+                        },
+                        {
+                          "name": "veritatis"
+                        },
+                        {
+                          "name": "porro"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "aliquam"
+                        },
+                        {
+                          "name": "incidunt"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "veniam"
+                        },
+                        {
+                          "name": "eaque"
+                        },
+                        {
+                          "name": "consequatur"
+                        },
+                        {
+                          "name": "quia"
+                        },
+                        {
+                          "name": "ullam"
+                        },
+                        {
+                          "name": "omnis"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -674,6 +1627,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RepoRequest"
+              },
+              "examples": {
+                "repo1": {
+                  "value": {
+                    "name": "facere"
+                  }
+                },
+                "repo2": {
+                  "value": {
+                    "name": "hic"
+                  }
+                },
+                "repo3": {
+                  "value": {
+                    "name": "occaecati"
+                  }
+                },
+                "repo4": {
+                  "value": {
+                    "name": "sint"
+                  }
+                },
+                "repo5": {
+                  "value": {
+                    "name": "laudantium"
+                  }
+                }
               }
             }
           }
@@ -688,6 +1668,43 @@
                   "properties": {
                     "repo": {
                       "$ref": "#/components/schemas/RepoResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "repo1": {
+                    "value": {
+                      "repo": {
+                        "name": "perferendis"
+                      }
+                    }
+                  },
+                  "repo2": {
+                    "value": {
+                      "repo": {
+                        "name": "accusantium"
+                      }
+                    }
+                  },
+                  "repo3": {
+                    "value": {
+                      "repo": {
+                        "name": "pariatur"
+                      }
+                    }
+                  },
+                  "repo4": {
+                    "value": {
+                      "repo": {
+                        "name": "architecto"
+                      }
+                    }
+                  },
+                  "repo5": {
+                    "value": {
+                      "repo": {
+                        "name": "labore"
+                      }
                     }
                   }
                 }
@@ -845,6 +1862,43 @@
                       "$ref": "#/components/schemas/RepoResponse"
                     }
                   }
+                },
+                "examples": {
+                  "repo1": {
+                    "value": {
+                      "repo": {
+                        "name": "architecto"
+                      }
+                    }
+                  },
+                  "repo2": {
+                    "value": {
+                      "repo": {
+                        "name": "natus"
+                      }
+                    }
+                  },
+                  "repo3": {
+                    "value": {
+                      "repo": {
+                        "name": "aliquid"
+                      }
+                    }
+                  },
+                  "repo4": {
+                    "value": {
+                      "repo": {
+                        "name": "ut"
+                      }
+                    }
+                  },
+                  "repo5": {
+                    "value": {
+                      "repo": {
+                        "name": "eum"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -923,6 +1977,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RepoRequest"
+              },
+              "examples": {
+                "repo1": {
+                  "value": {
+                    "name": "vitae"
+                  }
+                },
+                "repo2": {
+                  "value": {
+                    "name": "eum"
+                  }
+                },
+                "repo3": {
+                  "value": {
+                    "name": "odio"
+                  }
+                },
+                "repo4": {
+                  "value": {
+                    "name": "voluptatibus"
+                  }
+                },
+                "repo5": {
+                  "value": {
+                    "name": "rerum"
+                  }
+                }
               }
             }
           }
@@ -937,6 +2018,43 @@
                   "properties": {
                     "repo": {
                       "$ref": "#/components/schemas/RepoResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "repo1": {
+                    "value": {
+                      "repo": {
+                        "name": "non"
+                      }
+                    }
+                  },
+                  "repo2": {
+                    "value": {
+                      "repo": {
+                        "name": "est"
+                      }
+                    }
+                  },
+                  "repo3": {
+                    "value": {
+                      "repo": {
+                        "name": "fugiat"
+                      }
+                    }
+                  },
+                  "repo4": {
+                    "value": {
+                      "repo": {
+                        "name": "maiores"
+                      }
+                    }
+                  },
+                  "repo5": {
+                    "value": {
+                      "repo": {
+                        "name": "fugit"
+                      }
                     }
                   }
                 }
@@ -1017,6 +2135,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RepoRequest"
+              },
+              "examples": {
+                "repo1": {
+                  "value": {
+                    "name": "voluptatem"
+                  }
+                },
+                "repo2": {
+                  "value": {
+                    "name": "perferendis"
+                  }
+                },
+                "repo3": {
+                  "value": {
+                    "name": "aut"
+                  }
+                },
+                "repo4": {
+                  "value": {
+                    "name": "sint"
+                  }
+                },
+                "repo5": {
+                  "value": {
+                    "name": "est"
+                  }
+                }
               }
             }
           }
@@ -1031,6 +2176,43 @@
                   "properties": {
                     "repo": {
                       "$ref": "#/components/schemas/RepoResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "repo1": {
+                    "value": {
+                      "repo": {
+                        "name": "consequatur"
+                      }
+                    }
+                  },
+                  "repo2": {
+                    "value": {
+                      "repo": {
+                        "name": "placeat"
+                      }
+                    }
+                  },
+                  "repo3": {
+                    "value": {
+                      "repo": {
+                        "name": "delectus"
+                      }
+                    }
+                  },
+                  "repo4": {
+                    "value": {
+                      "repo": {
+                        "name": "voluptatem"
+                      }
+                    }
+                  },
+                  "repo5": {
+                    "value": {
+                      "repo": {
+                        "name": "non"
+                      }
                     }
                   }
                 }
@@ -1233,6 +2415,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "commit1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "commits": [
+                        {
+                          "name": "beatae"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "aperiam"
+                        },
+                        {
+                          "name": "laborum"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "laboriosam"
+                        },
+                        {
+                          "name": "dolore"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "quasi"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "at"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "consequatur"
+                        },
+                        {
+                          "name": "mollitia"
+                        },
+                        {
+                          "name": "deserunt"
+                        },
+                        {
+                          "name": "excepturi"
+                        },
+                        {
+                          "name": "in"
+                        },
+                        {
+                          "name": "tempora"
+                        },
+                        {
+                          "name": "laboriosam"
+                        }
+                      ]
+                    }
+                  },
+                  "commit2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "commits": [
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "commodi"
+                        },
+                        {
+                          "name": "repellendus"
+                        },
+                        {
+                          "name": "suscipit"
+                        },
+                        {
+                          "name": "nemo"
+                        },
+                        {
+                          "name": "tenetur"
+                        },
+                        {
+                          "name": "doloremque"
+                        },
+                        {
+                          "name": "quos"
+                        },
+                        {
+                          "name": "placeat"
+                        },
+                        {
+                          "name": "tenetur"
+                        },
+                        {
+                          "name": "laudantium"
+                        },
+                        {
+                          "name": "voluptate"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "dignissimos"
+                        },
+                        {
+                          "name": "animi"
+                        },
+                        {
+                          "name": "quibusdam"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "quia"
+                        },
+                        {
+                          "name": "ut"
+                        }
+                      ]
+                    }
+                  },
+                  "commit3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "commits": [
+                        {
+                          "name": "beatae"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "doloribus"
+                        },
+                        {
+                          "name": "quia"
+                        },
+                        {
+                          "name": "doloremque"
+                        },
+                        {
+                          "name": "pariatur"
+                        },
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "distinctio"
+                        },
+                        {
+                          "name": "aspernatur"
+                        },
+                        {
+                          "name": "cupiditate"
+                        },
+                        {
+                          "name": "maiores"
+                        },
+                        {
+                          "name": "totam"
+                        },
+                        {
+                          "name": "laboriosam"
+                        },
+                        {
+                          "name": "consequuntur"
+                        },
+                        {
+                          "name": "ipsa"
+                        },
+                        {
+                          "name": "optio"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "voluptatibus"
+                        }
+                      ]
+                    }
+                  },
+                  "commit4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "commits": [
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "saepe"
+                        },
+                        {
+                          "name": "impedit"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "magni"
+                        },
+                        {
+                          "name": "excepturi"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "atque"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "temporibus"
+                        },
+                        {
+                          "name": "debitis"
+                        },
+                        {
+                          "name": "harum"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "voluptatibus"
+                        },
+                        {
+                          "name": "exercitationem"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "cumque"
+                        },
+                        {
+                          "name": "neque"
+                        }
+                      ]
+                    }
+                  },
+                  "commit5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "commits": [
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "consequuntur"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "ipsam"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "hic"
+                        },
+                        {
+                          "name": "omnis"
+                        },
+                        {
+                          "name": "quod"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "inventore"
+                        },
+                        {
+                          "name": "delectus"
+                        },
+                        {
+                          "name": "neque"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "rem"
+                        },
+                        {
+                          "name": "suscipit"
+                        },
+                        {
+                          "name": "delectus"
+                        },
+                        {
+                          "name": "architecto"
+                        },
+                        {
+                          "name": "doloremque"
+                        },
+                        {
+                          "name": "omnis"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -1301,6 +2845,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CommitRequest"
+              },
+              "examples": {
+                "commit1": {
+                  "value": {
+                    "name": "facilis"
+                  }
+                },
+                "commit2": {
+                  "value": {
+                    "name": "fugiat"
+                  }
+                },
+                "commit3": {
+                  "value": {
+                    "name": "fugiat"
+                  }
+                },
+                "commit4": {
+                  "value": {
+                    "name": "et"
+                  }
+                },
+                "commit5": {
+                  "value": {
+                    "name": "repellat"
+                  }
+                }
               }
             }
           }
@@ -1315,6 +2886,43 @@
                   "properties": {
                     "commit": {
                       "$ref": "#/components/schemas/CommitResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "commit1": {
+                    "value": {
+                      "commit": {
+                        "name": "omnis"
+                      }
+                    }
+                  },
+                  "commit2": {
+                    "value": {
+                      "commit": {
+                        "name": "ex"
+                      }
+                    }
+                  },
+                  "commit3": {
+                    "value": {
+                      "commit": {
+                        "name": "iure"
+                      }
+                    }
+                  },
+                  "commit4": {
+                    "value": {
+                      "commit": {
+                        "name": "voluptatem"
+                      }
+                    }
+                  },
+                  "commit5": {
+                    "value": {
+                      "commit": {
+                        "name": "totam"
+                      }
                     }
                   }
                 }
@@ -1490,6 +3098,43 @@
                       "$ref": "#/components/schemas/CommitResponse"
                     }
                   }
+                },
+                "examples": {
+                  "commit1": {
+                    "value": {
+                      "commit": {
+                        "name": "quia"
+                      }
+                    }
+                  },
+                  "commit2": {
+                    "value": {
+                      "commit": {
+                        "name": "ratione"
+                      }
+                    }
+                  },
+                  "commit3": {
+                    "value": {
+                      "commit": {
+                        "name": "cumque"
+                      }
+                    }
+                  },
+                  "commit4": {
+                    "value": {
+                      "commit": {
+                        "name": "necessitatibus"
+                      }
+                    }
+                  },
+                  "commit5": {
+                    "value": {
+                      "commit": {
+                        "name": "ullam"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -1577,6 +3222,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CommitRequest"
+              },
+              "examples": {
+                "commit1": {
+                  "value": {
+                    "name": "recusandae"
+                  }
+                },
+                "commit2": {
+                  "value": {
+                    "name": "nostrum"
+                  }
+                },
+                "commit3": {
+                  "value": {
+                    "name": "asperiores"
+                  }
+                },
+                "commit4": {
+                  "value": {
+                    "name": "sit"
+                  }
+                },
+                "commit5": {
+                  "value": {
+                    "name": "ut"
+                  }
+                }
               }
             }
           }
@@ -1591,6 +3263,43 @@
                   "properties": {
                     "commit": {
                       "$ref": "#/components/schemas/CommitResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "commit1": {
+                    "value": {
+                      "commit": {
+                        "name": "magni"
+                      }
+                    }
+                  },
+                  "commit2": {
+                    "value": {
+                      "commit": {
+                        "name": "architecto"
+                      }
+                    }
+                  },
+                  "commit3": {
+                    "value": {
+                      "commit": {
+                        "name": "enim"
+                      }
+                    }
+                  },
+                  "commit4": {
+                    "value": {
+                      "commit": {
+                        "name": "cum"
+                      }
+                    }
+                  },
+                  "commit5": {
+                    "value": {
+                      "commit": {
+                        "name": "sit"
+                      }
                     }
                   }
                 }
@@ -1680,6 +3389,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CommitRequest"
+              },
+              "examples": {
+                "commit1": {
+                  "value": {
+                    "name": "eveniet"
+                  }
+                },
+                "commit2": {
+                  "value": {
+                    "name": "voluptas"
+                  }
+                },
+                "commit3": {
+                  "value": {
+                    "name": "ullam"
+                  }
+                },
+                "commit4": {
+                  "value": {
+                    "name": "dolorem"
+                  }
+                },
+                "commit5": {
+                  "value": {
+                    "name": "vero"
+                  }
+                }
               }
             }
           }
@@ -1694,6 +3430,43 @@
                   "properties": {
                     "commit": {
                       "$ref": "#/components/schemas/CommitResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "commit1": {
+                    "value": {
+                      "commit": {
+                        "name": "saepe"
+                      }
+                    }
+                  },
+                  "commit2": {
+                    "value": {
+                      "commit": {
+                        "name": "harum"
+                      }
+                    }
+                  },
+                  "commit3": {
+                    "value": {
+                      "commit": {
+                        "name": "iste"
+                      }
+                    }
+                  },
+                  "commit4": {
+                    "value": {
+                      "commit": {
+                        "name": "voluptate"
+                      }
+                    }
+                  },
+                  "commit5": {
+                    "value": {
+                      "commit": {
+                        "name": "rerum"
+                      }
                     }
                   }
                 }

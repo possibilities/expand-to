@@ -44,6 +44,147 @@ paths:
                       $ref: '#/components/schemas/GroupResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                group1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: autem
+                      - name: laudantium
+                      - name: qui
+                      - name: ullam
+                      - name: eum
+                      - name: aperiam
+                      - name: voluptatem
+                      - name: praesentium
+                      - name: non
+                      - name: et
+                      - name: quas
+                      - name: sit
+                      - name: consequatur
+                      - name: delectus
+                      - name: a
+                      - name: excepturi
+                      - name: illum
+                      - name: quaerat
+                      - name: et
+                      - name: voluptatem
+                group2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: quod
+                      - name: similique
+                      - name: cum
+                      - name: adipisci
+                      - name: molestiae
+                      - name: aperiam
+                      - name: molestiae
+                      - name: doloremque
+                      - name: eligendi
+                      - name: eum
+                      - name: labore
+                      - name: est
+                      - name: ut
+                      - name: dolore
+                      - name: laboriosam
+                      - name: voluptatem
+                      - name: molestiae
+                      - name: sed
+                      - name: tempora
+                      - name: voluptatum
+                group3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: ut
+                      - name: est
+                      - name: voluptate
+                      - name: dolorum
+                      - name: voluptatem
+                      - name: ullam
+                      - name: beatae
+                      - name: modi
+                      - name: odio
+                      - name: dolorum
+                      - name: in
+                      - name: dolorem
+                      - name: cupiditate
+                      - name: officia
+                      - name: at
+                      - name: dignissimos
+                      - name: et
+                      - name: suscipit
+                      - name: pariatur
+                      - name: rerum
+                group4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: amet
+                      - name: ad
+                      - name: enim
+                      - name: odio
+                      - name: et
+                      - name: commodi
+                      - name: impedit
+                      - name: deserunt
+                      - name: necessitatibus
+                      - name: rerum
+                      - name: aut
+                      - name: repudiandae
+                      - name: voluptate
+                      - name: vitae
+                      - name: dolorem
+                      - name: perspiciatis
+                      - name: harum
+                      - name: et
+                      - name: quo
+                      - name: at
+                group5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: pariatur
+                      - name: et
+                      - name: maiores
+                      - name: necessitatibus
+                      - name: ut
+                      - name: itaque
+                      - name: illum
+                      - name: aut
+                      - name: debitis
+                      - name: repellendus
+                      - name: consequatur
+                      - name: sit
+                      - name: aut
+                      - name: assumenda
+                      - name: sed
+                      - name: saepe
+                      - name: sit
+                      - name: eum
+                      - name: et
+                      - name: iure
         '400':
           description: Bad request
           content:
@@ -74,6 +215,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: dicta
+              group2:
+                value:
+                  name: ad
+              group3:
+                value:
+                  name: et
+              group4:
+                value:
+                  name: ut
+              group5:
+                value:
+                  name: quia
       responses:
         '201':
           description: Create succeeded
@@ -84,6 +241,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: laudantium
+                group2:
+                  value:
+                    group:
+                      name: quia
+                group3:
+                  value:
+                    group:
+                      name: enim
+                group4:
+                  value:
+                    group:
+                      name: corporis
+                group5:
+                  value:
+                    group:
+                      name: explicabo
         '400':
           description: Bad request
           content:
@@ -168,6 +346,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: enim
+                group2:
+                  value:
+                    group:
+                      name: dolorum
+                group3:
+                  value:
+                    group:
+                      name: et
+                group4:
+                  value:
+                    group:
+                      name: velit
+                group5:
+                  value:
+                    group:
+                      name: delectus
         '400':
           description: Bad request
           content:
@@ -210,6 +409,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: omnis
+              group2:
+                value:
+                  name: fugit
+              group3:
+                value:
+                  name: ducimus
+              group4:
+                value:
+                  name: harum
+              group5:
+                value:
+                  name: ea
       responses:
         '200':
           description: Replace succeeded
@@ -220,6 +435,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: aliquam
+                group2:
+                  value:
+                    group:
+                      name: sit
+                group3:
+                  value:
+                    group:
+                      name: voluptates
+                group4:
+                  value:
+                    group:
+                      name: similique
+                group5:
+                  value:
+                    group:
+                      name: tempore
         '400':
           description: Bad request
           content:
@@ -262,6 +498,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: sit
+              group2:
+                value:
+                  name: qui
+              group3:
+                value:
+                  name: saepe
+              group4:
+                value:
+                  name: nemo
+              group5:
+                value:
+                  name: veritatis
       responses:
         '200':
           description: Update succeeded
@@ -272,6 +524,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: dolorem
+                group2:
+                  value:
+                    group:
+                      name: rerum
+                group3:
+                  value:
+                    group:
+                      name: fugiat
+                group4:
+                  value:
+                    group:
+                      name: voluptas
+                group5:
+                  value:
+                    group:
+                      name: occaecati
         '400':
           description: Bad request
           content:
@@ -386,6 +659,147 @@ paths:
                       $ref: '#/components/schemas/GroupResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                group1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: placeat
+                      - name: in
+                      - name: recusandae
+                      - name: quos
+                      - name: veniam
+                      - name: exercitationem
+                      - name: facilis
+                      - name: temporibus
+                      - name: consequatur
+                      - name: iste
+                      - name: voluptas
+                      - name: pariatur
+                      - name: qui
+                      - name: ipsam
+                      - name: tenetur
+                      - name: laudantium
+                      - name: nulla
+                      - name: reiciendis
+                      - name: maiores
+                      - name: eum
+                group2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: modi
+                      - name: quis
+                      - name: nulla
+                      - name: necessitatibus
+                      - name: est
+                      - name: aut
+                      - name: provident
+                      - name: ea
+                      - name: ratione
+                      - name: id
+                      - name: reiciendis
+                      - name: sint
+                      - name: et
+                      - name: aliquam
+                      - name: aut
+                      - name: perspiciatis
+                      - name: est
+                      - name: ullam
+                      - name: consequatur
+                      - name: modi
+                group3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: temporibus
+                      - name: maiores
+                      - name: voluptas
+                      - name: nemo
+                      - name: reprehenderit
+                      - name: libero
+                      - name: aut
+                      - name: nobis
+                      - name: ea
+                      - name: id
+                      - name: voluptatibus
+                      - name: placeat
+                      - name: repellat
+                      - name: quasi
+                      - name: et
+                      - name: expedita
+                      - name: voluptatem
+                      - name: aut
+                      - name: nobis
+                      - name: tenetur
+                group4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: omnis
+                      - name: aut
+                      - name: labore
+                      - name: rerum
+                      - name: et
+                      - name: aut
+                      - name: tempore
+                      - name: totam
+                      - name: sed
+                      - name: repellendus
+                      - name: est
+                      - name: velit
+                      - name: modi
+                      - name: aspernatur
+                      - name: quibusdam
+                      - name: ratione
+                      - name: occaecati
+                      - name: debitis
+                      - name: voluptatibus
+                      - name: iure
+                group5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: maiores
+                      - name: minima
+                      - name: ducimus
+                      - name: consequatur
+                      - name: praesentium
+                      - name: asperiores
+                      - name: unde
+                      - name: sit
+                      - name: doloribus
+                      - name: eos
+                      - name: reprehenderit
+                      - name: id
+                      - name: dolorem
+                      - name: tempore
+                      - name: modi
+                      - name: corrupti
+                      - name: earum
+                      - name: sunt
+                      - name: voluptates
+                      - name: laboriosam
         '400':
           description: Bad request
           content:
@@ -422,6 +836,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: quis
+              group2:
+                value:
+                  name: dolores
+              group3:
+                value:
+                  name: eos
+              group4:
+                value:
+                  name: ratione
+              group5:
+                value:
+                  name: dolore
       responses:
         '201':
           description: Create succeeded
@@ -432,6 +862,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: officiis
+                group2:
+                  value:
+                    group:
+                      name: dignissimos
+                group3:
+                  value:
+                    group:
+                      name: ad
+                group4:
+                  value:
+                    group:
+                      name: molestias
+                group5:
+                  value:
+                    group:
+                      name: fugiat
         '400':
           description: Bad request
           content:
@@ -528,6 +979,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: magni
+                group2:
+                  value:
+                    group:
+                      name: recusandae
+                group3:
+                  value:
+                    group:
+                      name: delectus
+                group4:
+                  value:
+                    group:
+                      name: aut
+                group5:
+                  value:
+                    group:
+                      name: fuga
         '400':
           description: Bad request
           content:
@@ -576,6 +1048,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: quasi
+              group2:
+                value:
+                  name: est
+              group3:
+                value:
+                  name: hic
+              group4:
+                value:
+                  name: dolor
+              group5:
+                value:
+                  name: ex
       responses:
         '200':
           description: Replace succeeded
@@ -586,6 +1074,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: quis
+                group2:
+                  value:
+                    group:
+                      name: quisquam
+                group3:
+                  value:
+                    group:
+                      name: provident
+                group4:
+                  value:
+                    group:
+                      name: aperiam
+                group5:
+                  value:
+                    group:
+                      name: amet
         '400':
           description: Bad request
           content:
@@ -634,6 +1143,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: harum
+              group2:
+                value:
+                  name: consequuntur
+              group3:
+                value:
+                  name: est
+              group4:
+                value:
+                  name: et
+              group5:
+                value:
+                  name: optio
       responses:
         '200':
           description: Update succeeded
@@ -644,6 +1169,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: nam
+                group2:
+                  value:
+                    group:
+                      name: occaecati
+                group3:
+                  value:
+                    group:
+                      name: occaecati
+                group4:
+                  value:
+                    group:
+                      name: explicabo
+                group5:
+                  value:
+                    group:
+                      name: fugiat
         '400':
           description: Bad request
           content:

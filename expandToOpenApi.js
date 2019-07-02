@@ -1,4 +1,6 @@
+const range = require('lodash/range')
 const isString = require('lodash/isString')
+const fromPairs = require('lodash/fromPairs')
 const mapValues = require('lodash/mapValues')
 const first = require('lodash/first')
 const groupBy = require('lodash/groupBy')
@@ -49,6 +51,19 @@ const getParameters = (operation, models) => ([
   })
 ])
 
+const getExamples = (type, operation) => {
+  return fromPairs(range(5).map(n => {
+    return [
+      `${operation.model}${n + 1}`,
+      {
+        value: type === 'request'
+          ? operation.getTestData().request.body
+          : operation.getTestData().response
+      }
+    ]
+  }))
+}
+
 const getRequestBody = (operation, models) => {
   if (!operation.request) return
   return {
@@ -57,7 +72,8 @@ const getRequestBody = (operation, models) => {
       'application/json': {
         schema: {
           '$ref': `#/components/schemas/${upperFirst(operation.request)}Request`
-        }
+        },
+        examples: getExamples('request', operation),
       }
     }
   }
@@ -103,11 +119,17 @@ const getResponses = (operation, models) => {
       }
     }
 
+  let examples
+
+  if (!emptyResponseActions[operation.action]) {
+    examples = getExamples('response', operation)
+  }
+
   return {
     ...errorResponses,
     [operation.response.code]: {
       description: operation.response.description,
-      content: { 'application/json': { schema } }
+      content: { 'application/json': { schema, examples } }
     }
   }
 }
@@ -125,9 +147,8 @@ const getMethod = (operation, models) => {
 
 const expandProperties = (type, operation, models) => {
   const model = models[operation.model][type]
-  return {
+  return ({
     ...model,
-    // example: ,
     properties: mapValues(model.properties, prop => {
       if (isString(prop)) {
         return {
@@ -143,7 +164,7 @@ const expandProperties = (type, operation, models) => {
       }
       return prop
     })
-  }
+  })
 }
 
 const getSchemas = (operations, models = {}) => {

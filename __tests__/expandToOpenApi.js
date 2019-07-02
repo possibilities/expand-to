@@ -1,6 +1,7 @@
 const { expandToOperations } = require('../expandToOperations')
 const { expandToOpenApi } = require('../expandToOpenApi')
 const mapValues = require('lodash/mapValues')
+const range = require('lodash/range')
 
 const {
   emptyResponse,
@@ -22,6 +23,80 @@ const pathMethodResponsesView = spec =>
   mapValues(spec.paths, path => mapValues(path, method => method.responses))
 const pathMethodRequestBodiesView = spec =>
   mapValues(spec.paths, path => mapValues(path, method => method.requestBody))
+
+const petsRequestExamples = {
+  pet1: { value: { name: 'random-firstname' } },
+  pet2: { value: { name: 'random-firstname' } },
+  pet3: { value: { name: 'random-firstname' } },
+  pet4: { value: { name: 'random-firstname' } },
+  pet5: { value: { name: 'random-firstname' } }
+}
+
+const managersRequestExamples = {
+  manager1: { value: { name: 'random-firstname' } },
+  manager2: { value: { name: 'random-firstname' } },
+  manager3: { value: { name: 'random-firstname' } },
+  manager4: { value: { name: 'random-firstname' } },
+  manager5: { value: { name: 'random-firstname' } }
+}
+
+const managersResponseExamples = {
+  manager1: { value: { manager: { name: 'random-firstname', id: 'random-uuid' } } },
+  manager2: { value: { manager: { name: 'random-firstname', id: 'random-uuid' } } },
+  manager3: { value: { manager: { name: 'random-firstname', id: 'random-uuid' } } },
+  manager4: { value: { manager: { name: 'random-firstname', id: 'random-uuid' } } },
+  manager5: { value: { manager: { name: 'random-firstname', id: 'random-uuid' } } }
+}
+
+const storesRequestExamples = {
+  store1: { value: { name: 'random-firstname' } },
+  store2: { value: { name: 'random-firstname' } },
+  store3: { value: { name: 'random-firstname' } },
+  store4: { value: { name: 'random-firstname' } },
+  store5: { value: { name: 'random-firstname' } }
+}
+
+const storesResponseExamples = {
+  store1: { value: { store: { id: 'random-word', name: 'random-firstname' } } },
+  store2: { value: { store: { id: 'random-word', name: 'random-firstname' } } },
+  store3: { value: { store: { id: 'random-word', name: 'random-firstname' } } },
+  store4: { value: { store: { id: 'random-word', name: 'random-firstname' } } },
+  store5: { value: { store: { id: 'random-word', name: 'random-firstname' } } }
+}
+
+const petsResponseExamples = {
+  pet1: { value: { pet: { id: 'random-word', name: 'random-firstname' } } },
+  pet2: { value: { pet: { id: 'random-word', name: 'random-firstname' } } },
+  pet3: { value: { pet: { id: 'random-word', name: 'random-firstname' } } },
+  pet4: { value: { pet: { id: 'random-word', name: 'random-firstname' } } },
+  pet5: { value: { pet: { id: 'random-word', name: 'random-firstname' } } }
+}
+
+const pagination = { firstPage: '1', lastPage: '10', nextPage: '2', prevPage: '1' }
+
+const managersListResponseExamples = {
+  manager1: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
+  manager2: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
+  manager3: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
+  manager4: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
+  manager5: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
+}
+
+const storesListResponseExamples = {
+  store1: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  store2: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  store3: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  store4: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  store5: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+}
+
+const petsListResponseExamples = {
+  pet1: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  pet2: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  pet3: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  pet4: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+  pet5: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
+}
 
 const spec = {
   paths: [
@@ -145,6 +220,35 @@ const spec = {
       response: 'pet'
     }
   }
+}
+
+const reverseRegexp = () => 'reversed-pattern'
+
+const faker = {
+  name: {
+    firstName: () => 'random-firstname'
+  },
+  // internet: {
+  //   email: () => 'random-email'
+  // },
+  // date: {
+  //   recent: () => 'random-datetime'
+  // },
+  random: {
+    uuid: () => 'random-uuid'
+  },
+  lorem: {
+    word: () => 'random-word'
+  },
+  // hacker: {
+  //   phrase: () => 'random-phrase'
+  // }
+}
+
+const fake = {
+  // reverseRegexp,
+  generator: faker,
+  names: { name: 'name.firstName' }
 }
 
 // Lots of boilerplate used for assertions. Probably a smell but gets the
@@ -447,7 +551,7 @@ describe('expandToOpenApi#paths', () => {
   })
 
   test('requestBodies', () => {
-    const { models, operations } = expandToOperations(spec)
+    const { models, operations } = expandToOperations(spec, { fake })
     const expanded = expandToOpenApi({ models, operations })
     expect(pathMethodRequestBodiesView(expanded)).toEqual({
       '/pets': {
@@ -455,7 +559,8 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/PetRequest` }
+              schema: { '$ref': `#/components/schemas/PetRequest` },
+              examples: petsRequestExamples
             }
           },
           required: true
@@ -468,7 +573,8 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/PetRequest` }
+              schema: { '$ref': `#/components/schemas/PetRequest` },
+              examples: petsRequestExamples
             }
           },
           required: true
@@ -476,7 +582,8 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/PetRequest` }
+              schema: { '$ref': `#/components/schemas/PetRequest` },
+              examples: petsRequestExamples
             }
           },
           required: true
@@ -492,7 +599,14 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/PetRequest` }
+              schema: { '$ref': `#/components/schemas/PetRequest` },
+              examples: {
+                customFnWithStringyRequestAndResponse1: { value: { name: 'random-firstname' } },
+                customFnWithStringyRequestAndResponse2: { value: { name: 'random-firstname' } },
+                customFnWithStringyRequestAndResponse3: { value: { name: 'random-firstname' } },
+                customFnWithStringyRequestAndResponse4: { value: { name: 'random-firstname' } },
+                customFnWithStringyRequestAndResponse5: { value: { name: 'random-firstname' } }
+              }
             }
           },
           required: true
@@ -502,7 +616,44 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/CustomFnWithRequestAndStringyResponseRequest` }
+              schema: { '$ref': `#/components/schemas/CustomFnWithRequestAndStringyResponseRequest` },
+              examples: {
+                customFnWithRequestAndStringyResponse1: {
+                  value: {
+                    customFnWithRequestAndStringyResponseFieldArray: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldObject: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                  }
+                },
+                customFnWithRequestAndStringyResponse2: {
+                  value: {
+                    customFnWithRequestAndStringyResponseFieldArray: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldObject: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                  }
+                },
+                customFnWithRequestAndStringyResponse3: {
+                  value: {
+                    customFnWithRequestAndStringyResponseFieldArray: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldObject: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                  }
+                },
+                customFnWithRequestAndStringyResponse4: {
+                  value: {
+                    customFnWithRequestAndStringyResponseFieldArray: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldObject: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                  }
+                },
+                customFnWithRequestAndStringyResponse5: {
+                  value: {
+                    customFnWithRequestAndStringyResponseFieldArray: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldObject: 'random-word',
+                    customFnWithRequestAndStringyResponseFieldString: 'random-word',
+                  }
+                },
+              }
             }
           },
           required: true
@@ -513,8 +664,9 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/StoreRequest` }
-            }
+              schema: { '$ref': `#/components/schemas/StoreRequest` },
+              examples: storesRequestExamples
+            },
           },
           required: true
         }
@@ -526,7 +678,8 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/StoreRequest` }
+              schema: { '$ref': `#/components/schemas/StoreRequest` },
+              examples: storesRequestExamples
             }
           },
           required: true
@@ -534,7 +687,8 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/StoreRequest` }
+              schema: { '$ref': `#/components/schemas/StoreRequest` },
+              examples: storesRequestExamples
             }
           },
           required: true
@@ -545,10 +699,11 @@ describe('expandToOpenApi#paths', () => {
         post: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ManagerRequest` }
+              schema: { '$ref': `#/components/schemas/ManagerRequest` },
+              examples: managersRequestExamples
             }
           },
-          required: true
+          required: true,
         }
       },
       '/stores/{storeId}/managers/{managerId}': {
@@ -558,7 +713,8 @@ describe('expandToOpenApi#paths', () => {
         patch: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ManagerRequest` }
+              schema: { '$ref': `#/components/schemas/ManagerRequest` },
+              examples: managersRequestExamples
             }
           },
           required: true
@@ -566,17 +722,18 @@ describe('expandToOpenApi#paths', () => {
         put: {
           content: {
             'application/json': {
-              schema: { '$ref': `#/components/schemas/ManagerRequest` }
+              schema: { '$ref': `#/components/schemas/ManagerRequest` },
+              examples: managersRequestExamples
             }
           },
-          required: true
+          required: true,
         }
       }
     })
   })
 
   test('responses', () => {
-    const { models, operations } = expandToOperations(spec)
+    const { models, operations } = expandToOperations(spec, { fake })
     const expanded = expandToOpenApi({ models, operations })
     expect(pathMethodResponsesView(expanded)).toEqual({
       '/pets': {
@@ -597,7 +754,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PaginationResponse`
                     }
                   }
-                }
+                },
+                examples: petsListResponseExamples
               }
             },
             description: 'List succeeded'
@@ -615,6 +773,23 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
+                },
+                examples: {
+                  pet1: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  pet2: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  pet3: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  pet4: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  pet5: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
                 }
               }
             },
@@ -648,7 +823,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
-                }
+                },
+                examples: petsResponseExamples
               }
             },
             description: 'Get succeeded'
@@ -679,7 +855,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
-                }
+                },
+                examples: petsResponseExamples
               }
             },
             description: 'Update succeeded'
@@ -697,7 +874,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
-                }
+                },
+                examples: petsResponseExamples
               }
             },
             description: 'Replace succeeded'
@@ -717,7 +895,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
-                }
+                },
+                examples: petsResponseExamples
               }
             },
             description: 'Get succeeded'
@@ -737,6 +916,56 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
+                },
+                examples: {
+                  customFnWithStringyResponse1: {
+                    value: {
+                      pet: {
+                        id: 'random-word',
+                        name: 'random-firstname'
+                      }
+                    }
+                  },
+                  customFnWithStringyResponse2: {
+                    value: {
+                      pet: {
+                        id: 'random-word',
+                        name: 'random-firstname'
+                      }
+                    }
+                  },
+                  customFnWithStringyResponse3: {
+                    value: {
+                      pet: {
+                        id: 'random-word',
+                        name: 'random-firstname'
+                      }
+                    }
+                  },
+                  customFnWithStringyResponse4: {
+                    value: {
+                      pet: {
+                        id: 'random-word',
+                        name: 'random-firstname'
+                      }
+                    }
+                  },
+                  customFnWithStringyResponse5: {
+                    value: {
+                      pet: {
+                        id: 'random-word',
+                        name: 'random-firstname'
+                      }
+                    }
+                  },
+                  customFnWithStringyResponse1: {
+                    value: {
+                      pet: {
+                        id: 'random-word',
+                        name: 'random-firstname'
+                      }
+                    }
+                  },
                 }
               }
             },
@@ -757,6 +986,23 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
+                },
+                examples: {
+                  customFnWithStringyRequestAndResponse1: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  customFnWithStringyRequestAndResponse2: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  customFnWithStringyRequestAndResponse3: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  customFnWithStringyRequestAndResponse4: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  customFnWithStringyRequestAndResponse5: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
                 }
               }
             },
@@ -777,6 +1023,23 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PetResponse`
                     }
                   }
+                },
+                examples: {
+                  customFnWithRequestAndStringyResponse1: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  customFnWithRequestAndStringyResponse2: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  customFnWithRequestAndStringyResponse3: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  customFnWithRequestAndStringyResponse4: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
+                  customFnWithRequestAndStringyResponse5: {
+                    value: { pet: { id: 'random-word', name: 'random-firstname' } }
+                  },
                 }
               }
             },
@@ -803,7 +1066,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PaginationResponse`
                     }
                   }
-                }
+                },
+                examples: storesListResponseExamples
               }
             },
             description: 'List succeeded'
@@ -821,7 +1085,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
-                }
+                },
+                examples: storesResponseExamples
               }
             },
             description: 'Create succeeded'
@@ -854,7 +1119,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
-                }
+                },
+                examples: storesResponseExamples
               }
             },
             description: 'Get succeeded'
@@ -885,7 +1151,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
-                }
+                },
+                examples: storesResponseExamples
               }
             },
             description: 'Update succeeded'
@@ -903,7 +1170,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/StoreResponse`
                     }
                   }
-                }
+                },
+                examples: storesResponseExamples
               }
             },
             description: 'Replace succeeded'
@@ -929,7 +1197,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/PaginationResponse`
                     }
                   }
-                }
+                },
+                examples: managersListResponseExamples
               }
             },
             description: 'List succeeded'
@@ -947,7 +1216,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
-                }
+                },
+                examples: managersResponseExamples
               }
             },
             description: 'Create succeeded'
@@ -980,7 +1250,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
-                }
+                },
+                examples: managersResponseExamples
               }
             },
             description: 'Get succeeded'
@@ -1011,7 +1282,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
-                }
+                },
+                examples: managersResponseExamples
               }
             },
             description: 'Update succeeded'
@@ -1029,7 +1301,8 @@ describe('expandToOpenApi#paths', () => {
                       '$ref': `#/components/schemas/ManagerResponse`
                     }
                   }
-                }
+                },
+                examples: managersResponseExamples
               }
             },
             description: 'Replace succeeded'

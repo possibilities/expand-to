@@ -67,12 +67,8 @@ const expandToValidations = ({ operations, models }, options = {}) => {
             },
             identity: {
               type: 'object',
-              properties: {
-                id: { type: 'string', format: 'uuid' },
-                firstName: { type: 'string' },
-                lastName: { type: 'string' }
-              },
-              required: ['id', 'firstName', 'lastName']
+              properties: { id: { type: 'string', format: 'uuid' } },
+              required: ['id']
             }
           },
           required: ['input', 'identity']

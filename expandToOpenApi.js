@@ -123,9 +123,11 @@ const getMethod = (operation, models) => {
   }
 }
 
-const expandProperties = model => {
+const expandProperties = (type, operation, models) => {
+  const model = models[operation.model][type]
   return {
     ...model,
+    // example: ,
     properties: mapValues(model.properties, prop => {
       if (isString(prop)) {
         return {
@@ -160,7 +162,7 @@ const getSchemas = (operations, models = {}) => {
     ) {
       schemas = {
         ...schemas,
-        [`${name}Request`]: expandProperties(models[operation.model].request)
+        [`${name}Request`]: expandProperties('request', operation, models)
       }
     }
     if (
@@ -169,7 +171,7 @@ const getSchemas = (operations, models = {}) => {
     ) {
       schemas = {
         ...schemas,
-        [`${name}Response`]: expandProperties(models[operation.model].response)
+        [`${name}Response`]: expandProperties('response', operation, models)
       }
     }
   })

@@ -45,10 +45,15 @@ const expandToTestData = ({ operations, models }, options = {}) => {
           return {
             request: {
               params: {},
-              query: { perPage: '20', page: '1' }
+              query: { perPage: 20, page: 1 }
             },
             response: {
-              pagination: { firstPage: '1', lastPage: '10', nextPage: '2', prevPage: '1' },
+              pagination: {
+                firstPage: 1,
+                lastPage: 10,
+                nextPage: 2,
+                prevPage: 1
+              },
               [pluralize(operation.response.key)]:
                 range(parseInt(get(req, 'query.perPage') || perPage, 10))
                   .map(n => mapValues(

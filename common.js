@@ -34,10 +34,10 @@ module.exports.errorResponse = {
 module.exports.paginationResponse = {
   type: 'object',
   properties: {
-    firstPage: { type: 'number' },
-    lastPage: { type: 'number' },
-    nextPage: { type: 'number' },
-    prevPage: { type: 'number' }
+    firstPage: { type: 'integer', format: 'int32' },
+    lastPage: { type: 'integer', format: 'int32' },
+    nextPage: { type: 'integer', format: 'int32' },
+    prevPage: { type: 'integer', format: 'int32' }
   },
   required: ['firstPage', 'lastPage', 'nextPage', 'prevPage']
 }

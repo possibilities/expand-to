@@ -111,8 +111,9 @@ const getParameters = (path, models) => {
 const getQuery = (action, path) => {
   if (action === 'list') {
     return [
-      { name: 'perPage', description: 'Per page', schema: { type: 'string', default: '20' } },
-      { name: 'page', description: 'Page number', schema: { type: 'string', default: '1' } },
+
+      { name: 'perPage', description: 'Per page', schema: { type: 'integer', format: 'int32', default: 20 } },
+      { name: 'page', description: 'Page number', schema: { type: 'integer', format: 'int32', default: 1 } },
       { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
     ]
   }

@@ -63,6 +63,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "person1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "people": [
+                        {
+                          "name": "corporis"
+                        },
+                        {
+                          "name": "cupiditate"
+                        },
+                        {
+                          "name": "blanditiis"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "cum"
+                        },
+                        {
+                          "name": "voluptate"
+                        },
+                        {
+                          "name": "quas"
+                        },
+                        {
+                          "name": "nihil"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "molestias"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "culpa"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "quidem"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "pariatur"
+                        },
+                        {
+                          "name": "veniam"
+                        }
+                      ]
+                    }
+                  },
+                  "person2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "people": [
+                        {
+                          "name": "sit"
+                        },
+                        {
+                          "name": "a"
+                        },
+                        {
+                          "name": "sit"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "necessitatibus"
+                        },
+                        {
+                          "name": "necessitatibus"
+                        },
+                        {
+                          "name": "itaque"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "magni"
+                        },
+                        {
+                          "name": "consequatur"
+                        },
+                        {
+                          "name": "tenetur"
+                        },
+                        {
+                          "name": "repellat"
+                        },
+                        {
+                          "name": "provident"
+                        },
+                        {
+                          "name": "labore"
+                        },
+                        {
+                          "name": "temporibus"
+                        },
+                        {
+                          "name": "maiores"
+                        },
+                        {
+                          "name": "cum"
+                        },
+                        {
+                          "name": "nobis"
+                        },
+                        {
+                          "name": "voluptates"
+                        },
+                        {
+                          "name": "iure"
+                        }
+                      ]
+                    }
+                  },
+                  "person3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "people": [
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "sit"
+                        },
+                        {
+                          "name": "dolorum"
+                        },
+                        {
+                          "name": "magni"
+                        },
+                        {
+                          "name": "accusamus"
+                        },
+                        {
+                          "name": "totam"
+                        },
+                        {
+                          "name": "alias"
+                        },
+                        {
+                          "name": "maiores"
+                        },
+                        {
+                          "name": "nobis"
+                        },
+                        {
+                          "name": "esse"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "architecto"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "voluptas"
+                        },
+                        {
+                          "name": "quae"
+                        },
+                        {
+                          "name": "ad"
+                        },
+                        {
+                          "name": "quaerat"
+                        },
+                        {
+                          "name": "quo"
+                        },
+                        {
+                          "name": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "person4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "people": [
+                        {
+                          "name": "laboriosam"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "enim"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "officiis"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "eius"
+                        },
+                        {
+                          "name": "nam"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "recusandae"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "veritatis"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "nobis"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "maxime"
+                        }
+                      ]
+                    }
+                  },
+                  "person5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "people": [
+                        {
+                          "name": "natus"
+                        },
+                        {
+                          "name": "consequuntur"
+                        },
+                        {
+                          "name": "sit"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "vitae"
+                        },
+                        {
+                          "name": "tenetur"
+                        },
+                        {
+                          "name": "corrupti"
+                        },
+                        {
+                          "name": "amet"
+                        },
+                        {
+                          "name": "cum"
+                        },
+                        {
+                          "name": "libero"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "nesciunt"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "reiciendis"
+                        },
+                        {
+                          "name": "eveniet"
+                        },
+                        {
+                          "name": "consequatur"
+                        },
+                        {
+                          "name": "error"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "veniam"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -112,6 +474,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PersonRequest"
+              },
+              "examples": {
+                "person1": {
+                  "value": {
+                    "name": "repellendus"
+                  }
+                },
+                "person2": {
+                  "value": {
+                    "name": "adipisci"
+                  }
+                },
+                "person3": {
+                  "value": {
+                    "name": "in"
+                  }
+                },
+                "person4": {
+                  "value": {
+                    "name": "ea"
+                  }
+                },
+                "person5": {
+                  "value": {
+                    "name": "a"
+                  }
+                }
               }
             }
           }
@@ -126,6 +515,43 @@
                   "properties": {
                     "person": {
                       "$ref": "#/components/schemas/PersonResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "person1": {
+                    "value": {
+                      "person": {
+                        "name": "ducimus"
+                      }
+                    }
+                  },
+                  "person2": {
+                    "value": {
+                      "person": {
+                        "name": "facere"
+                      }
+                    }
+                  },
+                  "person3": {
+                    "value": {
+                      "person": {
+                        "name": "numquam"
+                      }
+                    }
+                  },
+                  "person4": {
+                    "value": {
+                      "person": {
+                        "name": "quae"
+                      }
+                    }
+                  },
+                  "person5": {
+                    "value": {
+                      "person": {
+                        "name": "ipsum"
+                      }
                     }
                   }
                 }
@@ -265,6 +691,43 @@
                       "$ref": "#/components/schemas/PersonResponse"
                     }
                   }
+                },
+                "examples": {
+                  "person1": {
+                    "value": {
+                      "person": {
+                        "name": "sed"
+                      }
+                    }
+                  },
+                  "person2": {
+                    "value": {
+                      "person": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "person3": {
+                    "value": {
+                      "person": {
+                        "name": "saepe"
+                      }
+                    }
+                  },
+                  "person4": {
+                    "value": {
+                      "person": {
+                        "name": "occaecati"
+                      }
+                    }
+                  },
+                  "person5": {
+                    "value": {
+                      "person": {
+                        "name": "mollitia"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -334,6 +797,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PersonRequest"
+              },
+              "examples": {
+                "person1": {
+                  "value": {
+                    "name": "modi"
+                  }
+                },
+                "person2": {
+                  "value": {
+                    "name": "beatae"
+                  }
+                },
+                "person3": {
+                  "value": {
+                    "name": "nam"
+                  }
+                },
+                "person4": {
+                  "value": {
+                    "name": "exercitationem"
+                  }
+                },
+                "person5": {
+                  "value": {
+                    "name": "dolorem"
+                  }
+                }
               }
             }
           }
@@ -348,6 +838,43 @@
                   "properties": {
                     "person": {
                       "$ref": "#/components/schemas/PersonResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "person1": {
+                    "value": {
+                      "person": {
+                        "name": "occaecati"
+                      }
+                    }
+                  },
+                  "person2": {
+                    "value": {
+                      "person": {
+                        "name": "ratione"
+                      }
+                    }
+                  },
+                  "person3": {
+                    "value": {
+                      "person": {
+                        "name": "quos"
+                      }
+                    }
+                  },
+                  "person4": {
+                    "value": {
+                      "person": {
+                        "name": "laborum"
+                      }
+                    }
+                  },
+                  "person5": {
+                    "value": {
+                      "person": {
+                        "name": "omnis"
+                      }
                     }
                   }
                 }
@@ -419,6 +946,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PersonRequest"
+              },
+              "examples": {
+                "person1": {
+                  "value": {
+                    "name": "qui"
+                  }
+                },
+                "person2": {
+                  "value": {
+                    "name": "natus"
+                  }
+                },
+                "person3": {
+                  "value": {
+                    "name": "vel"
+                  }
+                },
+                "person4": {
+                  "value": {
+                    "name": "fugiat"
+                  }
+                },
+                "person5": {
+                  "value": {
+                    "name": "et"
+                  }
+                }
               }
             }
           }
@@ -433,6 +987,43 @@
                   "properties": {
                     "person": {
                       "$ref": "#/components/schemas/PersonResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "person1": {
+                    "value": {
+                      "person": {
+                        "name": "dolores"
+                      }
+                    }
+                  },
+                  "person2": {
+                    "value": {
+                      "person": {
+                        "name": "est"
+                      }
+                    }
+                  },
+                  "person3": {
+                    "value": {
+                      "person": {
+                        "name": "est"
+                      }
+                    }
+                  },
+                  "person4": {
+                    "value": {
+                      "person": {
+                        "name": "ut"
+                      }
+                    }
+                  },
+                  "person5": {
+                    "value": {
+                      "person": {
+                        "name": "laboriosam"
+                      }
                     }
                   }
                 }
@@ -610,6 +1201,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "doloribus"
+                        },
+                        {
+                          "name": "exercitationem"
+                        },
+                        {
+                          "name": "maiores"
+                        },
+                        {
+                          "name": "illo"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "quasi"
+                        },
+                        {
+                          "name": "nulla"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "exercitationem"
+                        },
+                        {
+                          "name": "harum"
+                        },
+                        {
+                          "name": "voluptas"
+                        },
+                        {
+                          "name": "voluptatibus"
+                        },
+                        {
+                          "name": "autem"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "praesentium"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "nam"
+                        },
+                        {
+                          "name": "dolor"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "facilis"
+                        }
+                      ]
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "eum"
+                        },
+                        {
+                          "name": "enim"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "tenetur"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "iste"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "provident"
+                        },
+                        {
+                          "name": "adipisci"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "perferendis"
+                        },
+                        {
+                          "name": "molestias"
+                        },
+                        {
+                          "name": "iure"
+                        },
+                        {
+                          "name": "amet"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "expedita"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "excepturi"
+                        }
+                      ]
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "quas"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "aliquam"
+                        },
+                        {
+                          "name": "dignissimos"
+                        },
+                        {
+                          "name": "maxime"
+                        },
+                        {
+                          "name": "deleniti"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "assumenda"
+                        },
+                        {
+                          "name": "nobis"
+                        },
+                        {
+                          "name": "dicta"
+                        },
+                        {
+                          "name": "optio"
+                        },
+                        {
+                          "name": "animi"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "provident"
+                        },
+                        {
+                          "name": "dolorem"
+                        }
+                      ]
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "veniam"
+                        },
+                        {
+                          "name": "soluta"
+                        },
+                        {
+                          "name": "ullam"
+                        },
+                        {
+                          "name": "aperiam"
+                        },
+                        {
+                          "name": "doloremque"
+                        },
+                        {
+                          "name": "at"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "sequi"
+                        },
+                        {
+                          "name": "voluptatum"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "odio"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "commodi"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "esse"
+                        },
+                        {
+                          "name": "accusantium"
+                        },
+                        {
+                          "name": "sit"
+                        }
+                      ]
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "pets": [
+                        {
+                          "name": "cumque"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "laudantium"
+                        },
+                        {
+                          "name": "quam"
+                        },
+                        {
+                          "name": "itaque"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "impedit"
+                        },
+                        {
+                          "name": "deleniti"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "ipsum"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "nemo"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "a"
+                        },
+                        {
+                          "name": "quam"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "ipsa"
+                        },
+                        {
+                          "name": "reprehenderit"
+                        },
+                        {
+                          "name": "aut"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -659,6 +1612,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetRequest"
+              },
+              "examples": {
+                "pet1": {
+                  "value": {
+                    "name": "explicabo"
+                  }
+                },
+                "pet2": {
+                  "value": {
+                    "name": "consequatur"
+                  }
+                },
+                "pet3": {
+                  "value": {
+                    "name": "sed"
+                  }
+                },
+                "pet4": {
+                  "value": {
+                    "name": "mollitia"
+                  }
+                },
+                "pet5": {
+                  "value": {
+                    "name": "recusandae"
+                  }
+                }
               }
             }
           }
@@ -673,6 +1653,43 @@
                   "properties": {
                     "pet": {
                       "$ref": "#/components/schemas/PetResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pet": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pet": {
+                        "name": "est"
+                      }
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pet": {
+                        "name": "necessitatibus"
+                      }
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pet": {
+                        "name": "repellendus"
+                      }
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pet": {
+                        "name": "voluptatem"
+                      }
                     }
                   }
                 }
@@ -812,6 +1829,43 @@
                       "$ref": "#/components/schemas/PetResponse"
                     }
                   }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pet": {
+                        "name": "deserunt"
+                      }
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pet": {
+                        "name": "quaerat"
+                      }
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pet": {
+                        "name": "delectus"
+                      }
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pet": {
+                        "name": "unde"
+                      }
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pet": {
+                        "name": "vel"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -881,6 +1935,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetRequest"
+              },
+              "examples": {
+                "pet1": {
+                  "value": {
+                    "name": "sit"
+                  }
+                },
+                "pet2": {
+                  "value": {
+                    "name": "nihil"
+                  }
+                },
+                "pet3": {
+                  "value": {
+                    "name": "quis"
+                  }
+                },
+                "pet4": {
+                  "value": {
+                    "name": "quisquam"
+                  }
+                },
+                "pet5": {
+                  "value": {
+                    "name": "deserunt"
+                  }
+                }
               }
             }
           }
@@ -895,6 +1976,43 @@
                   "properties": {
                     "pet": {
                       "$ref": "#/components/schemas/PetResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pet": {
+                        "name": "molestiae"
+                      }
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pet": {
+                        "name": "in"
+                      }
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pet": {
+                        "name": "error"
+                      }
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pet": {
+                        "name": "tempore"
+                      }
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pet": {
+                        "name": "saepe"
+                      }
                     }
                   }
                 }
@@ -966,6 +2084,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetRequest"
+              },
+              "examples": {
+                "pet1": {
+                  "value": {
+                    "name": "perferendis"
+                  }
+                },
+                "pet2": {
+                  "value": {
+                    "name": "aut"
+                  }
+                },
+                "pet3": {
+                  "value": {
+                    "name": "eaque"
+                  }
+                },
+                "pet4": {
+                  "value": {
+                    "name": "repudiandae"
+                  }
+                },
+                "pet5": {
+                  "value": {
+                    "name": "laboriosam"
+                  }
+                }
               }
             }
           }
@@ -980,6 +2125,43 @@
                   "properties": {
                     "pet": {
                       "$ref": "#/components/schemas/PetResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "pet1": {
+                    "value": {
+                      "pet": {
+                        "name": "repellendus"
+                      }
+                    }
+                  },
+                  "pet2": {
+                    "value": {
+                      "pet": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "pet3": {
+                    "value": {
+                      "pet": {
+                        "name": "vel"
+                      }
+                    }
+                  },
+                  "pet4": {
+                    "value": {
+                      "pet": {
+                        "name": "autem"
+                      }
+                    }
+                  },
+                  "pet5": {
+                    "value": {
+                      "pet": {
+                        "name": "illum"
+                      }
                     }
                   }
                 }
@@ -1166,6 +2348,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "petOwner1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petOwners": [
+                        {
+                          "ownerId": "suscipit"
+                        },
+                        {
+                          "ownerId": "quam"
+                        },
+                        {
+                          "ownerId": "beatae"
+                        },
+                        {
+                          "ownerId": "possimus"
+                        },
+                        {
+                          "ownerId": "veritatis"
+                        },
+                        {
+                          "ownerId": "consequuntur"
+                        },
+                        {
+                          "ownerId": "odit"
+                        },
+                        {
+                          "ownerId": "rem"
+                        },
+                        {
+                          "ownerId": "delectus"
+                        },
+                        {
+                          "ownerId": "nobis"
+                        },
+                        {
+                          "ownerId": "eveniet"
+                        },
+                        {
+                          "ownerId": "illum"
+                        },
+                        {
+                          "ownerId": "beatae"
+                        },
+                        {
+                          "ownerId": "aut"
+                        },
+                        {
+                          "ownerId": "repellat"
+                        },
+                        {
+                          "ownerId": "quod"
+                        },
+                        {
+                          "ownerId": "officia"
+                        },
+                        {
+                          "ownerId": "distinctio"
+                        },
+                        {
+                          "ownerId": "deleniti"
+                        },
+                        {
+                          "ownerId": "non"
+                        }
+                      ]
+                    }
+                  },
+                  "petOwner2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petOwners": [
+                        {
+                          "ownerId": "facere"
+                        },
+                        {
+                          "ownerId": "quam"
+                        },
+                        {
+                          "ownerId": "fugit"
+                        },
+                        {
+                          "ownerId": "rem"
+                        },
+                        {
+                          "ownerId": "laborum"
+                        },
+                        {
+                          "ownerId": "voluptas"
+                        },
+                        {
+                          "ownerId": "ducimus"
+                        },
+                        {
+                          "ownerId": "quam"
+                        },
+                        {
+                          "ownerId": "accusantium"
+                        },
+                        {
+                          "ownerId": "voluptas"
+                        },
+                        {
+                          "ownerId": "omnis"
+                        },
+                        {
+                          "ownerId": "est"
+                        },
+                        {
+                          "ownerId": "et"
+                        },
+                        {
+                          "ownerId": "nostrum"
+                        },
+                        {
+                          "ownerId": "dicta"
+                        },
+                        {
+                          "ownerId": "molestias"
+                        },
+                        {
+                          "ownerId": "reiciendis"
+                        },
+                        {
+                          "ownerId": "ipsam"
+                        },
+                        {
+                          "ownerId": "qui"
+                        },
+                        {
+                          "ownerId": "illo"
+                        }
+                      ]
+                    }
+                  },
+                  "petOwner3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petOwners": [
+                        {
+                          "ownerId": "id"
+                        },
+                        {
+                          "ownerId": "rem"
+                        },
+                        {
+                          "ownerId": "cum"
+                        },
+                        {
+                          "ownerId": "est"
+                        },
+                        {
+                          "ownerId": "aut"
+                        },
+                        {
+                          "ownerId": "delectus"
+                        },
+                        {
+                          "ownerId": "voluptatem"
+                        },
+                        {
+                          "ownerId": "iusto"
+                        },
+                        {
+                          "ownerId": "ut"
+                        },
+                        {
+                          "ownerId": "architecto"
+                        },
+                        {
+                          "ownerId": "rerum"
+                        },
+                        {
+                          "ownerId": "aut"
+                        },
+                        {
+                          "ownerId": "quia"
+                        },
+                        {
+                          "ownerId": "qui"
+                        },
+                        {
+                          "ownerId": "provident"
+                        },
+                        {
+                          "ownerId": "fugiat"
+                        },
+                        {
+                          "ownerId": "laborum"
+                        },
+                        {
+                          "ownerId": "aperiam"
+                        },
+                        {
+                          "ownerId": "repellat"
+                        },
+                        {
+                          "ownerId": "distinctio"
+                        }
+                      ]
+                    }
+                  },
+                  "petOwner4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petOwners": [
+                        {
+                          "ownerId": "vel"
+                        },
+                        {
+                          "ownerId": "voluptatem"
+                        },
+                        {
+                          "ownerId": "velit"
+                        },
+                        {
+                          "ownerId": "omnis"
+                        },
+                        {
+                          "ownerId": "dignissimos"
+                        },
+                        {
+                          "ownerId": "dolorem"
+                        },
+                        {
+                          "ownerId": "et"
+                        },
+                        {
+                          "ownerId": "optio"
+                        },
+                        {
+                          "ownerId": "nihil"
+                        },
+                        {
+                          "ownerId": "eveniet"
+                        },
+                        {
+                          "ownerId": "neque"
+                        },
+                        {
+                          "ownerId": "aspernatur"
+                        },
+                        {
+                          "ownerId": "reprehenderit"
+                        },
+                        {
+                          "ownerId": "maiores"
+                        },
+                        {
+                          "ownerId": "eos"
+                        },
+                        {
+                          "ownerId": "fugit"
+                        },
+                        {
+                          "ownerId": "reprehenderit"
+                        },
+                        {
+                          "ownerId": "dolore"
+                        },
+                        {
+                          "ownerId": "voluptas"
+                        },
+                        {
+                          "ownerId": "consequatur"
+                        }
+                      ]
+                    }
+                  },
+                  "petOwner5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petOwners": [
+                        {
+                          "ownerId": "asperiores"
+                        },
+                        {
+                          "ownerId": "voluptatem"
+                        },
+                        {
+                          "ownerId": "unde"
+                        },
+                        {
+                          "ownerId": "eveniet"
+                        },
+                        {
+                          "ownerId": "a"
+                        },
+                        {
+                          "ownerId": "consequuntur"
+                        },
+                        {
+                          "ownerId": "saepe"
+                        },
+                        {
+                          "ownerId": "soluta"
+                        },
+                        {
+                          "ownerId": "temporibus"
+                        },
+                        {
+                          "ownerId": "architecto"
+                        },
+                        {
+                          "ownerId": "voluptas"
+                        },
+                        {
+                          "ownerId": "culpa"
+                        },
+                        {
+                          "ownerId": "eaque"
+                        },
+                        {
+                          "ownerId": "pariatur"
+                        },
+                        {
+                          "ownerId": "rerum"
+                        },
+                        {
+                          "ownerId": "voluptatibus"
+                        },
+                        {
+                          "ownerId": "voluptatum"
+                        },
+                        {
+                          "ownerId": "et"
+                        },
+                        {
+                          "ownerId": "delectus"
+                        },
+                        {
+                          "ownerId": "eligendi"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -1225,6 +2769,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetOwnerRequest"
+              },
+              "examples": {
+                "petOwner1": {
+                  "value": {
+                    "ownerId": "commodi"
+                  }
+                },
+                "petOwner2": {
+                  "value": {
+                    "ownerId": "dolorem"
+                  }
+                },
+                "petOwner3": {
+                  "value": {
+                    "ownerId": "sapiente"
+                  }
+                },
+                "petOwner4": {
+                  "value": {
+                    "ownerId": "ullam"
+                  }
+                },
+                "petOwner5": {
+                  "value": {
+                    "ownerId": "totam"
+                  }
+                }
               }
             }
           }
@@ -1239,6 +2810,43 @@
                   "properties": {
                     "petOwner": {
                       "$ref": "#/components/schemas/PetOwnerResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "petOwner1": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "nostrum"
+                      }
+                    }
+                  },
+                  "petOwner2": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "non"
+                      }
+                    }
+                  },
+                  "petOwner3": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "voluptatem"
+                      }
+                    }
+                  },
+                  "petOwner4": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "consectetur"
+                      }
+                    }
+                  },
+                  "petOwner5": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "voluptas"
+                      }
                     }
                   }
                 }
@@ -1396,6 +3004,43 @@
                       "$ref": "#/components/schemas/PetOwnerResponse"
                     }
                   }
+                },
+                "examples": {
+                  "petOwner1": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "ea"
+                      }
+                    }
+                  },
+                  "petOwner2": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "eum"
+                      }
+                    }
+                  },
+                  "petOwner3": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "doloremque"
+                      }
+                    }
+                  },
+                  "petOwner4": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "iure"
+                      }
+                    }
+                  },
+                  "petOwner5": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "exercitationem"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -1474,6 +3119,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetOwnerRequest"
+              },
+              "examples": {
+                "petOwner1": {
+                  "value": {
+                    "ownerId": "consequatur"
+                  }
+                },
+                "petOwner2": {
+                  "value": {
+                    "ownerId": "rem"
+                  }
+                },
+                "petOwner3": {
+                  "value": {
+                    "ownerId": "recusandae"
+                  }
+                },
+                "petOwner4": {
+                  "value": {
+                    "ownerId": "ullam"
+                  }
+                },
+                "petOwner5": {
+                  "value": {
+                    "ownerId": "optio"
+                  }
+                }
               }
             }
           }
@@ -1488,6 +3160,43 @@
                   "properties": {
                     "petOwner": {
                       "$ref": "#/components/schemas/PetOwnerResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "petOwner1": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "soluta"
+                      }
+                    }
+                  },
+                  "petOwner2": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "doloremque"
+                      }
+                    }
+                  },
+                  "petOwner3": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "et"
+                      }
+                    }
+                  },
+                  "petOwner4": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "perferendis"
+                      }
+                    }
+                  },
+                  "petOwner5": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "illum"
+                      }
                     }
                   }
                 }
@@ -1568,6 +3277,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetOwnerRequest"
+              },
+              "examples": {
+                "petOwner1": {
+                  "value": {
+                    "ownerId": "velit"
+                  }
+                },
+                "petOwner2": {
+                  "value": {
+                    "ownerId": "esse"
+                  }
+                },
+                "petOwner3": {
+                  "value": {
+                    "ownerId": "in"
+                  }
+                },
+                "petOwner4": {
+                  "value": {
+                    "ownerId": "fugiat"
+                  }
+                },
+                "petOwner5": {
+                  "value": {
+                    "ownerId": "et"
+                  }
+                }
               }
             }
           }
@@ -1582,6 +3318,43 @@
                   "properties": {
                     "petOwner": {
                       "$ref": "#/components/schemas/PetOwnerResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "petOwner1": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "doloremque"
+                      }
+                    }
+                  },
+                  "petOwner2": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "nesciunt"
+                      }
+                    }
+                  },
+                  "petOwner3": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "fugit"
+                      }
+                    }
+                  },
+                  "petOwner4": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "nesciunt"
+                      }
+                    }
+                  },
+                  "petOwner5": {
+                    "value": {
+                      "petOwner": {
+                        "ownerId": "ratione"
+                      }
                     }
                   }
                 }
@@ -1777,6 +3550,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "petDoctor1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petDoctors": [
+                        {
+                          "doctorId": "totam"
+                        },
+                        {
+                          "doctorId": "quia"
+                        },
+                        {
+                          "doctorId": "labore"
+                        },
+                        {
+                          "doctorId": "facilis"
+                        },
+                        {
+                          "doctorId": "voluptas"
+                        },
+                        {
+                          "doctorId": "saepe"
+                        },
+                        {
+                          "doctorId": "in"
+                        },
+                        {
+                          "doctorId": "suscipit"
+                        },
+                        {
+                          "doctorId": "qui"
+                        },
+                        {
+                          "doctorId": "et"
+                        },
+                        {
+                          "doctorId": "dolor"
+                        },
+                        {
+                          "doctorId": "deleniti"
+                        },
+                        {
+                          "doctorId": "ut"
+                        },
+                        {
+                          "doctorId": "facere"
+                        },
+                        {
+                          "doctorId": "non"
+                        },
+                        {
+                          "doctorId": "eum"
+                        },
+                        {
+                          "doctorId": "totam"
+                        },
+                        {
+                          "doctorId": "voluptas"
+                        },
+                        {
+                          "doctorId": "accusamus"
+                        },
+                        {
+                          "doctorId": "fuga"
+                        }
+                      ]
+                    }
+                  },
+                  "petDoctor2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petDoctors": [
+                        {
+                          "doctorId": "sit"
+                        },
+                        {
+                          "doctorId": "doloribus"
+                        },
+                        {
+                          "doctorId": "alias"
+                        },
+                        {
+                          "doctorId": "voluptatem"
+                        },
+                        {
+                          "doctorId": "sed"
+                        },
+                        {
+                          "doctorId": "natus"
+                        },
+                        {
+                          "doctorId": "provident"
+                        },
+                        {
+                          "doctorId": "quae"
+                        },
+                        {
+                          "doctorId": "aut"
+                        },
+                        {
+                          "doctorId": "sit"
+                        },
+                        {
+                          "doctorId": "nobis"
+                        },
+                        {
+                          "doctorId": "necessitatibus"
+                        },
+                        {
+                          "doctorId": "dolorem"
+                        },
+                        {
+                          "doctorId": "voluptate"
+                        },
+                        {
+                          "doctorId": "voluptatum"
+                        },
+                        {
+                          "doctorId": "soluta"
+                        },
+                        {
+                          "doctorId": "dignissimos"
+                        },
+                        {
+                          "doctorId": "reprehenderit"
+                        },
+                        {
+                          "doctorId": "odio"
+                        },
+                        {
+                          "doctorId": "itaque"
+                        }
+                      ]
+                    }
+                  },
+                  "petDoctor3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petDoctors": [
+                        {
+                          "doctorId": "rerum"
+                        },
+                        {
+                          "doctorId": "accusantium"
+                        },
+                        {
+                          "doctorId": "nam"
+                        },
+                        {
+                          "doctorId": "autem"
+                        },
+                        {
+                          "doctorId": "et"
+                        },
+                        {
+                          "doctorId": "numquam"
+                        },
+                        {
+                          "doctorId": "neque"
+                        },
+                        {
+                          "doctorId": "nemo"
+                        },
+                        {
+                          "doctorId": "fugiat"
+                        },
+                        {
+                          "doctorId": "quod"
+                        },
+                        {
+                          "doctorId": "dignissimos"
+                        },
+                        {
+                          "doctorId": "ab"
+                        },
+                        {
+                          "doctorId": "id"
+                        },
+                        {
+                          "doctorId": "ut"
+                        },
+                        {
+                          "doctorId": "ut"
+                        },
+                        {
+                          "doctorId": "quas"
+                        },
+                        {
+                          "doctorId": "harum"
+                        },
+                        {
+                          "doctorId": "dolore"
+                        },
+                        {
+                          "doctorId": "aut"
+                        },
+                        {
+                          "doctorId": "sequi"
+                        }
+                      ]
+                    }
+                  },
+                  "petDoctor4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petDoctors": [
+                        {
+                          "doctorId": "veritatis"
+                        },
+                        {
+                          "doctorId": "et"
+                        },
+                        {
+                          "doctorId": "a"
+                        },
+                        {
+                          "doctorId": "sunt"
+                        },
+                        {
+                          "doctorId": "assumenda"
+                        },
+                        {
+                          "doctorId": "adipisci"
+                        },
+                        {
+                          "doctorId": "quo"
+                        },
+                        {
+                          "doctorId": "commodi"
+                        },
+                        {
+                          "doctorId": "repudiandae"
+                        },
+                        {
+                          "doctorId": "doloribus"
+                        },
+                        {
+                          "doctorId": "placeat"
+                        },
+                        {
+                          "doctorId": "ut"
+                        },
+                        {
+                          "doctorId": "eos"
+                        },
+                        {
+                          "doctorId": "esse"
+                        },
+                        {
+                          "doctorId": "rem"
+                        },
+                        {
+                          "doctorId": "voluptate"
+                        },
+                        {
+                          "doctorId": "atque"
+                        },
+                        {
+                          "doctorId": "et"
+                        },
+                        {
+                          "doctorId": "quaerat"
+                        },
+                        {
+                          "doctorId": "sint"
+                        }
+                      ]
+                    }
+                  },
+                  "petDoctor5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "petDoctors": [
+                        {
+                          "doctorId": "ea"
+                        },
+                        {
+                          "doctorId": "necessitatibus"
+                        },
+                        {
+                          "doctorId": "et"
+                        },
+                        {
+                          "doctorId": "eos"
+                        },
+                        {
+                          "doctorId": "ratione"
+                        },
+                        {
+                          "doctorId": "incidunt"
+                        },
+                        {
+                          "doctorId": "dolores"
+                        },
+                        {
+                          "doctorId": "dolorem"
+                        },
+                        {
+                          "doctorId": "sunt"
+                        },
+                        {
+                          "doctorId": "rerum"
+                        },
+                        {
+                          "doctorId": "nemo"
+                        },
+                        {
+                          "doctorId": "culpa"
+                        },
+                        {
+                          "doctorId": "aut"
+                        },
+                        {
+                          "doctorId": "quam"
+                        },
+                        {
+                          "doctorId": "sequi"
+                        },
+                        {
+                          "doctorId": "illo"
+                        },
+                        {
+                          "doctorId": "doloremque"
+                        },
+                        {
+                          "doctorId": "praesentium"
+                        },
+                        {
+                          "doctorId": "et"
+                        },
+                        {
+                          "doctorId": "necessitatibus"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -1836,6 +3971,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetDoctorRequest"
+              },
+              "examples": {
+                "petDoctor1": {
+                  "value": {
+                    "doctorId": "quas"
+                  }
+                },
+                "petDoctor2": {
+                  "value": {
+                    "doctorId": "fugiat"
+                  }
+                },
+                "petDoctor3": {
+                  "value": {
+                    "doctorId": "et"
+                  }
+                },
+                "petDoctor4": {
+                  "value": {
+                    "doctorId": "et"
+                  }
+                },
+                "petDoctor5": {
+                  "value": {
+                    "doctorId": "ullam"
+                  }
+                }
               }
             }
           }
@@ -1850,6 +4012,43 @@
                   "properties": {
                     "petDoctor": {
                       "$ref": "#/components/schemas/PetDoctorResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "petDoctor1": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "consequatur"
+                      }
+                    }
+                  },
+                  "petDoctor2": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "minus"
+                      }
+                    }
+                  },
+                  "petDoctor3": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "aliquam"
+                      }
+                    }
+                  },
+                  "petDoctor4": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "nobis"
+                      }
+                    }
+                  },
+                  "petDoctor5": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "et"
+                      }
                     }
                   }
                 }
@@ -2007,6 +4206,43 @@
                       "$ref": "#/components/schemas/PetDoctorResponse"
                     }
                   }
+                },
+                "examples": {
+                  "petDoctor1": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "et"
+                      }
+                    }
+                  },
+                  "petDoctor2": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "odio"
+                      }
+                    }
+                  },
+                  "petDoctor3": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "illo"
+                      }
+                    }
+                  },
+                  "petDoctor4": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "aperiam"
+                      }
+                    }
+                  },
+                  "petDoctor5": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "deleniti"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -2085,6 +4321,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetDoctorRequest"
+              },
+              "examples": {
+                "petDoctor1": {
+                  "value": {
+                    "doctorId": "accusamus"
+                  }
+                },
+                "petDoctor2": {
+                  "value": {
+                    "doctorId": "explicabo"
+                  }
+                },
+                "petDoctor3": {
+                  "value": {
+                    "doctorId": "totam"
+                  }
+                },
+                "petDoctor4": {
+                  "value": {
+                    "doctorId": "est"
+                  }
+                },
+                "petDoctor5": {
+                  "value": {
+                    "doctorId": "est"
+                  }
+                }
               }
             }
           }
@@ -2099,6 +4362,43 @@
                   "properties": {
                     "petDoctor": {
                       "$ref": "#/components/schemas/PetDoctorResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "petDoctor1": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "est"
+                      }
+                    }
+                  },
+                  "petDoctor2": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "cumque"
+                      }
+                    }
+                  },
+                  "petDoctor3": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "ut"
+                      }
+                    }
+                  },
+                  "petDoctor4": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "quo"
+                      }
+                    }
+                  },
+                  "petDoctor5": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "nulla"
+                      }
                     }
                   }
                 }
@@ -2179,6 +4479,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PetDoctorRequest"
+              },
+              "examples": {
+                "petDoctor1": {
+                  "value": {
+                    "doctorId": "et"
+                  }
+                },
+                "petDoctor2": {
+                  "value": {
+                    "doctorId": "molestias"
+                  }
+                },
+                "petDoctor3": {
+                  "value": {
+                    "doctorId": "sint"
+                  }
+                },
+                "petDoctor4": {
+                  "value": {
+                    "doctorId": "nulla"
+                  }
+                },
+                "petDoctor5": {
+                  "value": {
+                    "doctorId": "numquam"
+                  }
+                }
               }
             }
           }
@@ -2193,6 +4520,43 @@
                   "properties": {
                     "petDoctor": {
                       "$ref": "#/components/schemas/PetDoctorResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "petDoctor1": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "dolores"
+                      }
+                    }
+                  },
+                  "petDoctor2": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "modi"
+                      }
+                    }
+                  },
+                  "petDoctor3": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "consequatur"
+                      }
+                    }
+                  },
+                  "petDoctor4": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "consequatur"
+                      }
+                    }
+                  },
+                  "petDoctor5": {
+                    "value": {
+                      "petDoctor": {
+                        "doctorId": "aut"
+                      }
                     }
                   }
                 }

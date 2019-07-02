@@ -46,6 +46,147 @@ paths:
                       $ref: '#/components/schemas/RegionResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                region1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    regions:
+                      - name: blanditiis
+                      - name: rerum
+                      - name: molestiae
+                      - name: nostrum
+                      - name: possimus
+                      - name: eligendi
+                      - name: id
+                      - name: eos
+                      - name: numquam
+                      - name: asperiores
+                      - name: aperiam
+                      - name: accusantium
+                      - name: autem
+                      - name: rerum
+                      - name: totam
+                      - name: facere
+                      - name: blanditiis
+                      - name: tempore
+                      - name: enim
+                      - name: voluptatem
+                region2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    regions:
+                      - name: quisquam
+                      - name: possimus
+                      - name: ex
+                      - name: eius
+                      - name: labore
+                      - name: vitae
+                      - name: nesciunt
+                      - name: quas
+                      - name: eos
+                      - name: libero
+                      - name: quisquam
+                      - name: minima
+                      - name: modi
+                      - name: consequatur
+                      - name: quaerat
+                      - name: eligendi
+                      - name: quae
+                      - name: enim
+                      - name: voluptatem
+                      - name: consequatur
+                region3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    regions:
+                      - name: aspernatur
+                      - name: itaque
+                      - name: veritatis
+                      - name: vel
+                      - name: doloremque
+                      - name: quis
+                      - name: sint
+                      - name: quia
+                      - name: architecto
+                      - name: autem
+                      - name: delectus
+                      - name: quia
+                      - name: et
+                      - name: recusandae
+                      - name: incidunt
+                      - name: aut
+                      - name: iusto
+                      - name: consequatur
+                      - name: labore
+                      - name: expedita
+                region4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    regions:
+                      - name: unde
+                      - name: et
+                      - name: sit
+                      - name: dolorum
+                      - name: quia
+                      - name: beatae
+                      - name: quisquam
+                      - name: laudantium
+                      - name: repudiandae
+                      - name: eum
+                      - name: nostrum
+                      - name: optio
+                      - name: adipisci
+                      - name: et
+                      - name: laborum
+                      - name: vero
+                      - name: autem
+                      - name: nulla
+                      - name: aspernatur
+                      - name: facilis
+                region5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    regions:
+                      - name: dicta
+                      - name: autem
+                      - name: expedita
+                      - name: ipsa
+                      - name: enim
+                      - name: modi
+                      - name: ratione
+                      - name: consectetur
+                      - name: molestias
+                      - name: laborum
+                      - name: accusamus
+                      - name: culpa
+                      - name: iusto
+                      - name: eos
+                      - name: eos
+                      - name: inventore
+                      - name: voluptas
+                      - name: consequatur
+                      - name: perspiciatis
+                      - name: beatae
         '400':
           description: Bad request
           content:
@@ -76,6 +217,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RegionRequest'
+            examples:
+              region1:
+                value:
+                  name: ducimus
+              region2:
+                value:
+                  name: animi
+              region3:
+                value:
+                  name: ad
+              region4:
+                value:
+                  name: error
+              region5:
+                value:
+                  name: eos
       responses:
         '201':
           description: Create succeeded
@@ -86,6 +243,27 @@ paths:
                 properties:
                   region:
                     $ref: '#/components/schemas/RegionResponse'
+              examples:
+                region1:
+                  value:
+                    region:
+                      name: quia
+                region2:
+                  value:
+                    region:
+                      name: dicta
+                region3:
+                  value:
+                    region:
+                      name: rerum
+                region4:
+                  value:
+                    region:
+                      name: non
+                region5:
+                  value:
+                    region:
+                      name: voluptatibus
         '400':
           description: Bad request
           content:
@@ -170,6 +348,27 @@ paths:
                 properties:
                   region:
                     $ref: '#/components/schemas/RegionResponse'
+              examples:
+                region1:
+                  value:
+                    region:
+                      name: aut
+                region2:
+                  value:
+                    region:
+                      name: cum
+                region3:
+                  value:
+                    region:
+                      name: et
+                region4:
+                  value:
+                    region:
+                      name: facere
+                region5:
+                  value:
+                    region:
+                      name: voluptates
         '400':
           description: Bad request
           content:
@@ -212,6 +411,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RegionRequest'
+            examples:
+              region1:
+                value:
+                  name: perspiciatis
+              region2:
+                value:
+                  name: debitis
+              region3:
+                value:
+                  name: quas
+              region4:
+                value:
+                  name: perferendis
+              region5:
+                value:
+                  name: enim
       responses:
         '200':
           description: Replace succeeded
@@ -222,6 +437,27 @@ paths:
                 properties:
                   region:
                     $ref: '#/components/schemas/RegionResponse'
+              examples:
+                region1:
+                  value:
+                    region:
+                      name: inventore
+                region2:
+                  value:
+                    region:
+                      name: rerum
+                region3:
+                  value:
+                    region:
+                      name: deleniti
+                region4:
+                  value:
+                    region:
+                      name: aut
+                region5:
+                  value:
+                    region:
+                      name: perferendis
         '400':
           description: Bad request
           content:
@@ -264,6 +500,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RegionRequest'
+            examples:
+              region1:
+                value:
+                  name: molestiae
+              region2:
+                value:
+                  name: rerum
+              region3:
+                value:
+                  name: et
+              region4:
+                value:
+                  name: odio
+              region5:
+                value:
+                  name: mollitia
       responses:
         '200':
           description: Update succeeded
@@ -274,6 +526,27 @@ paths:
                 properties:
                   region:
                     $ref: '#/components/schemas/RegionResponse'
+              examples:
+                region1:
+                  value:
+                    region:
+                      name: molestiae
+                region2:
+                  value:
+                    region:
+                      name: non
+                region3:
+                  value:
+                    region:
+                      name: debitis
+                region4:
+                  value:
+                    region:
+                      name: et
+                region5:
+                  value:
+                    region:
+                      name: minus
         '400':
           description: Bad request
           content:
@@ -390,6 +663,147 @@ paths:
                       $ref: '#/components/schemas/GroupResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                group1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: fugit
+                      - name: sint
+                      - name: odit
+                      - name: consequatur
+                      - name: fugit
+                      - name: totam
+                      - name: vero
+                      - name: natus
+                      - name: fugiat
+                      - name: harum
+                      - name: culpa
+                      - name: accusamus
+                      - name: perferendis
+                      - name: qui
+                      - name: nemo
+                      - name: architecto
+                      - name: ipsam
+                      - name: ut
+                      - name: cum
+                      - name: quis
+                group2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: consequatur
+                      - name: modi
+                      - name: sed
+                      - name: minus
+                      - name: magni
+                      - name: cum
+                      - name: atque
+                      - name: fugiat
+                      - name: modi
+                      - name: est
+                      - name: possimus
+                      - name: est
+                      - name: autem
+                      - name: illum
+                      - name: occaecati
+                      - name: dolorum
+                      - name: autem
+                      - name: suscipit
+                      - name: ut
+                      - name: quo
+                group3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: ea
+                      - name: dolorem
+                      - name: neque
+                      - name: dolorem
+                      - name: quia
+                      - name: saepe
+                      - name: dignissimos
+                      - name: illum
+                      - name: delectus
+                      - name: recusandae
+                      - name: in
+                      - name: accusamus
+                      - name: doloribus
+                      - name: rerum
+                      - name: ut
+                      - name: nesciunt
+                      - name: sed
+                      - name: non
+                      - name: harum
+                      - name: voluptas
+                group4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: voluptate
+                      - name: ut
+                      - name: ea
+                      - name: voluptas
+                      - name: ratione
+                      - name: eligendi
+                      - name: possimus
+                      - name: occaecati
+                      - name: vel
+                      - name: doloribus
+                      - name: omnis
+                      - name: harum
+                      - name: explicabo
+                      - name: vero
+                      - name: animi
+                      - name: nisi
+                      - name: quis
+                      - name: vel
+                      - name: consequuntur
+                      - name: tempore
+                group5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: et
+                      - name: nam
+                      - name: qui
+                      - name: incidunt
+                      - name: explicabo
+                      - name: dolore
+                      - name: in
+                      - name: et
+                      - name: tempora
+                      - name: neque
+                      - name: molestiae
+                      - name: voluptatem
+                      - name: aut
+                      - name: ducimus
+                      - name: ipsa
+                      - name: quis
+                      - name: beatae
+                      - name: officia
+                      - name: dignissimos
+                      - name: saepe
         '400':
           description: Bad request
           content:
@@ -426,6 +840,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: amet
+              group2:
+                value:
+                  name: incidunt
+              group3:
+                value:
+                  name: accusantium
+              group4:
+                value:
+                  name: maiores
+              group5:
+                value:
+                  name: voluptate
       responses:
         '201':
           description: Create succeeded
@@ -436,6 +866,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: vel
+                group2:
+                  value:
+                    group:
+                      name: sunt
+                group3:
+                  value:
+                    group:
+                      name: qui
+                group4:
+                  value:
+                    group:
+                      name: minima
+                group5:
+                  value:
+                    group:
+                      name: sed
         '400':
           description: Bad request
           content:
@@ -532,6 +983,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: deserunt
+                group2:
+                  value:
+                    group:
+                      name: nisi
+                group3:
+                  value:
+                    group:
+                      name: perferendis
+                group4:
+                  value:
+                    group:
+                      name: consequatur
+                group5:
+                  value:
+                    group:
+                      name: vel
         '400':
           description: Bad request
           content:
@@ -580,6 +1052,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: qui
+              group2:
+                value:
+                  name: doloribus
+              group3:
+                value:
+                  name: excepturi
+              group4:
+                value:
+                  name: ut
+              group5:
+                value:
+                  name: officia
       responses:
         '200':
           description: Replace succeeded
@@ -590,6 +1078,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: qui
+                group2:
+                  value:
+                    group:
+                      name: numquam
+                group3:
+                  value:
+                    group:
+                      name: a
+                group4:
+                  value:
+                    group:
+                      name: et
+                group5:
+                  value:
+                    group:
+                      name: facilis
         '400':
           description: Bad request
           content:
@@ -638,6 +1147,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: blanditiis
+              group2:
+                value:
+                  name: voluptatum
+              group3:
+                value:
+                  name: id
+              group4:
+                value:
+                  name: eum
+              group5:
+                value:
+                  name: ipsum
       responses:
         '200':
           description: Update succeeded
@@ -648,6 +1173,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: et
+                group2:
+                  value:
+                    group:
+                      name: ipsum
+                group3:
+                  value:
+                    group:
+                      name: voluptatem
+                group4:
+                  value:
+                    group:
+                      name: repellendus
+                group5:
+                  value:
+                    group:
+                      name: doloremque
         '400':
           description: Bad request
           content:
@@ -776,6 +1322,147 @@ paths:
                       $ref: '#/components/schemas/GroupResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                group1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: nesciunt
+                      - name: et
+                      - name: fuga
+                      - name: repellendus
+                      - name: cum
+                      - name: ut
+                      - name: quasi
+                      - name: ipsum
+                      - name: corporis
+                      - name: vitae
+                      - name: similique
+                      - name: exercitationem
+                      - name: dolores
+                      - name: nesciunt
+                      - name: ut
+                      - name: reiciendis
+                      - name: quaerat
+                      - name: optio
+                      - name: quod
+                      - name: cumque
+                group2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: architecto
+                      - name: et
+                      - name: aut
+                      - name: provident
+                      - name: suscipit
+                      - name: magnam
+                      - name: aliquid
+                      - name: dolores
+                      - name: minima
+                      - name: consequuntur
+                      - name: quia
+                      - name: sint
+                      - name: provident
+                      - name: quos
+                      - name: iste
+                      - name: illo
+                      - name: dolorem
+                      - name: corporis
+                      - name: quibusdam
+                      - name: adipisci
+                group3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: est
+                      - name: eligendi
+                      - name: qui
+                      - name: consequatur
+                      - name: ipsum
+                      - name: porro
+                      - name: aliquam
+                      - name: distinctio
+                      - name: consequatur
+                      - name: nihil
+                      - name: doloribus
+                      - name: voluptatum
+                      - name: ea
+                      - name: ut
+                      - name: et
+                      - name: et
+                      - name: esse
+                      - name: amet
+                      - name: at
+                      - name: facilis
+                group4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: corporis
+                      - name: dicta
+                      - name: tenetur
+                      - name: qui
+                      - name: placeat
+                      - name: temporibus
+                      - name: nisi
+                      - name: porro
+                      - name: ipsam
+                      - name: autem
+                      - name: perspiciatis
+                      - name: culpa
+                      - name: omnis
+                      - name: veniam
+                      - name: officia
+                      - name: dolor
+                      - name: assumenda
+                      - name: hic
+                      - name: ad
+                      - name: saepe
+                group5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    groups:
+                      - name: vel
+                      - name: temporibus
+                      - name: at
+                      - name: provident
+                      - name: quo
+                      - name: assumenda
+                      - name: rerum
+                      - name: labore
+                      - name: assumenda
+                      - name: omnis
+                      - name: vel
+                      - name: praesentium
+                      - name: deserunt
+                      - name: deleniti
+                      - name: in
+                      - name: possimus
+                      - name: eos
+                      - name: enim
+                      - name: rerum
+                      - name: tempore
         '400':
           description: Bad request
           content:
@@ -818,6 +1505,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: quo
+              group2:
+                value:
+                  name: dolores
+              group3:
+                value:
+                  name: cum
+              group4:
+                value:
+                  name: in
+              group5:
+                value:
+                  name: ut
       responses:
         '201':
           description: Create succeeded
@@ -828,6 +1531,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: autem
+                group2:
+                  value:
+                    group:
+                      name: aut
+                group3:
+                  value:
+                    group:
+                      name: eveniet
+                group4:
+                  value:
+                    group:
+                      name: distinctio
+                group5:
+                  value:
+                    group:
+                      name: in
         '400':
           description: Bad request
           content:
@@ -936,6 +1660,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: iure
+                group2:
+                  value:
+                    group:
+                      name: aliquam
+                group3:
+                  value:
+                    group:
+                      name: aperiam
+                group4:
+                  value:
+                    group:
+                      name: et
+                group5:
+                  value:
+                    group:
+                      name: sunt
         '400':
           description: Bad request
           content:
@@ -990,6 +1735,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: aliquam
+              group2:
+                value:
+                  name: quia
+              group3:
+                value:
+                  name: aut
+              group4:
+                value:
+                  name: ut
+              group5:
+                value:
+                  name: iste
       responses:
         '200':
           description: Replace succeeded
@@ -1000,6 +1761,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: natus
+                group2:
+                  value:
+                    group:
+                      name: deleniti
+                group3:
+                  value:
+                    group:
+                      name: ut
+                group4:
+                  value:
+                    group:
+                      name: et
+                group5:
+                  value:
+                    group:
+                      name: minus
         '400':
           description: Bad request
           content:
@@ -1054,6 +1836,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupRequest'
+            examples:
+              group1:
+                value:
+                  name: magnam
+              group2:
+                value:
+                  name: aut
+              group3:
+                value:
+                  name: molestiae
+              group4:
+                value:
+                  name: voluptatem
+              group5:
+                value:
+                  name: provident
       responses:
         '200':
           description: Update succeeded
@@ -1064,6 +1862,27 @@ paths:
                 properties:
                   group:
                     $ref: '#/components/schemas/GroupResponse'
+              examples:
+                group1:
+                  value:
+                    group:
+                      name: non
+                group2:
+                  value:
+                    group:
+                      name: adipisci
+                group3:
+                  value:
+                    group:
+                      name: aut
+                group4:
+                  value:
+                    group:
+                      name: non
+                group5:
+                  value:
+                    group:
+                      name: amet
         '400':
           description: Bad request
           content:

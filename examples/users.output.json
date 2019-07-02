@@ -63,6 +63,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "user1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "users": [
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "inventore"
+                        },
+                        {
+                          "name": "modi"
+                        },
+                        {
+                          "name": "autem"
+                        },
+                        {
+                          "name": "ad"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "iste"
+                        },
+                        {
+                          "name": "minus"
+                        },
+                        {
+                          "name": "maiores"
+                        },
+                        {
+                          "name": "facere"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "nulla"
+                        },
+                        {
+                          "name": "ipsam"
+                        },
+                        {
+                          "name": "accusamus"
+                        },
+                        {
+                          "name": "natus"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "tempore"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "alias"
+                        },
+                        {
+                          "name": "eaque"
+                        }
+                      ]
+                    }
+                  },
+                  "user2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "users": [
+                        {
+                          "name": "vero"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "corrupti"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "quo"
+                        },
+                        {
+                          "name": "animi"
+                        },
+                        {
+                          "name": "alias"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "quibusdam"
+                        },
+                        {
+                          "name": "hic"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "repellat"
+                        },
+                        {
+                          "name": "cum"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "quia"
+                        }
+                      ]
+                    }
+                  },
+                  "user3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "users": [
+                        {
+                          "name": "modi"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "odio"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "ipsum"
+                        },
+                        {
+                          "name": "ipsam"
+                        },
+                        {
+                          "name": "exercitationem"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "deleniti"
+                        },
+                        {
+                          "name": "officia"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "dolor"
+                        },
+                        {
+                          "name": "cum"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "aliquid"
+                        },
+                        {
+                          "name": "assumenda"
+                        }
+                      ]
+                    }
+                  },
+                  "user4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "users": [
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "placeat"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "unde"
+                        },
+                        {
+                          "name": "esse"
+                        },
+                        {
+                          "name": "ex"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "fugit"
+                        },
+                        {
+                          "name": "adipisci"
+                        },
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "fugit"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "omnis"
+                        },
+                        {
+                          "name": "culpa"
+                        },
+                        {
+                          "name": "nisi"
+                        },
+                        {
+                          "name": "sapiente"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "consequatur"
+                        },
+                        {
+                          "name": "explicabo"
+                        }
+                      ]
+                    }
+                  },
+                  "user5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "users": [
+                        {
+                          "name": "odio"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "maxime"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "deserunt"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "dolore"
+                        },
+                        {
+                          "name": "quidem"
+                        },
+                        {
+                          "name": "ipsam"
+                        },
+                        {
+                          "name": "dolore"
+                        },
+                        {
+                          "name": "praesentium"
+                        },
+                        {
+                          "name": "delectus"
+                        },
+                        {
+                          "name": "beatae"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "nulla"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "facere"
+                        },
+                        {
+                          "name": "illum"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -112,6 +474,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/UserRequest"
+              },
+              "examples": {
+                "user1": {
+                  "value": {
+                    "name": "optio"
+                  }
+                },
+                "user2": {
+                  "value": {
+                    "name": "dolores"
+                  }
+                },
+                "user3": {
+                  "value": {
+                    "name": "adipisci"
+                  }
+                },
+                "user4": {
+                  "value": {
+                    "name": "ut"
+                  }
+                },
+                "user5": {
+                  "value": {
+                    "name": "excepturi"
+                  }
+                }
               }
             }
           }
@@ -126,6 +515,43 @@
                   "properties": {
                     "user": {
                       "$ref": "#/components/schemas/UserResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "user1": {
+                    "value": {
+                      "user": {
+                        "name": "non"
+                      }
+                    }
+                  },
+                  "user2": {
+                    "value": {
+                      "user": {
+                        "name": "distinctio"
+                      }
+                    }
+                  },
+                  "user3": {
+                    "value": {
+                      "user": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "user4": {
+                    "value": {
+                      "user": {
+                        "name": "ducimus"
+                      }
+                    }
+                  },
+                  "user5": {
+                    "value": {
+                      "user": {
+                        "name": "adipisci"
+                      }
                     }
                   }
                 }
@@ -265,6 +691,43 @@
                       "$ref": "#/components/schemas/UserResponse"
                     }
                   }
+                },
+                "examples": {
+                  "user1": {
+                    "value": {
+                      "user": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "user2": {
+                    "value": {
+                      "user": {
+                        "name": "totam"
+                      }
+                    }
+                  },
+                  "user3": {
+                    "value": {
+                      "user": {
+                        "name": "amet"
+                      }
+                    }
+                  },
+                  "user4": {
+                    "value": {
+                      "user": {
+                        "name": "velit"
+                      }
+                    }
+                  },
+                  "user5": {
+                    "value": {
+                      "user": {
+                        "name": "harum"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -334,6 +797,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/UserRequest"
+              },
+              "examples": {
+                "user1": {
+                  "value": {
+                    "name": "blanditiis"
+                  }
+                },
+                "user2": {
+                  "value": {
+                    "name": "modi"
+                  }
+                },
+                "user3": {
+                  "value": {
+                    "name": "aliquid"
+                  }
+                },
+                "user4": {
+                  "value": {
+                    "name": "omnis"
+                  }
+                },
+                "user5": {
+                  "value": {
+                    "name": "eos"
+                  }
+                }
               }
             }
           }
@@ -348,6 +838,43 @@
                   "properties": {
                     "user": {
                       "$ref": "#/components/schemas/UserResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "user1": {
+                    "value": {
+                      "user": {
+                        "name": "nihil"
+                      }
+                    }
+                  },
+                  "user2": {
+                    "value": {
+                      "user": {
+                        "name": "pariatur"
+                      }
+                    }
+                  },
+                  "user3": {
+                    "value": {
+                      "user": {
+                        "name": "ut"
+                      }
+                    }
+                  },
+                  "user4": {
+                    "value": {
+                      "user": {
+                        "name": "sint"
+                      }
+                    }
+                  },
+                  "user5": {
+                    "value": {
+                      "user": {
+                        "name": "deleniti"
+                      }
                     }
                   }
                 }
@@ -419,6 +946,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/UserRequest"
+              },
+              "examples": {
+                "user1": {
+                  "value": {
+                    "name": "sapiente"
+                  }
+                },
+                "user2": {
+                  "value": {
+                    "name": "fuga"
+                  }
+                },
+                "user3": {
+                  "value": {
+                    "name": "at"
+                  }
+                },
+                "user4": {
+                  "value": {
+                    "name": "adipisci"
+                  }
+                },
+                "user5": {
+                  "value": {
+                    "name": "consequatur"
+                  }
+                }
               }
             }
           }
@@ -433,6 +987,43 @@
                   "properties": {
                     "user": {
                       "$ref": "#/components/schemas/UserResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "user1": {
+                    "value": {
+                      "user": {
+                        "name": "consequatur"
+                      }
+                    }
+                  },
+                  "user2": {
+                    "value": {
+                      "user": {
+                        "name": "quis"
+                      }
+                    }
+                  },
+                  "user3": {
+                    "value": {
+                      "user": {
+                        "name": "eligendi"
+                      }
+                    }
+                  },
+                  "user4": {
+                    "value": {
+                      "user": {
+                        "name": "saepe"
+                      }
+                    }
+                  },
+                  "user5": {
+                    "value": {
+                      "user": {
+                        "name": "reprehenderit"
+                      }
                     }
                   }
                 }
@@ -570,6 +1161,43 @@
                   "properties": {
                     "user": {
                       "$ref": "#/components/schemas/UserResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "user1": {
+                    "value": {
+                      "user": {
+                        "name": "ea"
+                      }
+                    }
+                  },
+                  "user2": {
+                    "value": {
+                      "user": {
+                        "name": "quis"
+                      }
+                    }
+                  },
+                  "user3": {
+                    "value": {
+                      "user": {
+                        "name": "nulla"
+                      }
+                    }
+                  },
+                  "user4": {
+                    "value": {
+                      "user": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "user5": {
+                    "value": {
+                      "user": {
+                        "name": "quos"
+                      }
                     }
                   }
                 }

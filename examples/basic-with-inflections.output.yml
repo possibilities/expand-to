@@ -46,6 +46,147 @@ paths:
                       $ref: '#/components/schemas/PersonResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                person1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    people:
+                      - name: voluptas
+                      - name: qui
+                      - name: ab
+                      - name: neque
+                      - name: laudantium
+                      - name: praesentium
+                      - name: cum
+                      - name: corporis
+                      - name: quasi
+                      - name: adipisci
+                      - name: ipsum
+                      - name: enim
+                      - name: voluptatum
+                      - name: nihil
+                      - name: repudiandae
+                      - name: in
+                      - name: itaque
+                      - name: dolorem
+                      - name: rem
+                      - name: itaque
+                person2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    people:
+                      - name: voluptatem
+                      - name: nostrum
+                      - name: et
+                      - name: sed
+                      - name: qui
+                      - name: facere
+                      - name: ut
+                      - name: dolor
+                      - name: voluptate
+                      - name: minus
+                      - name: et
+                      - name: neque
+                      - name: labore
+                      - name: porro
+                      - name: consequuntur
+                      - name: modi
+                      - name: qui
+                      - name: molestiae
+                      - name: laudantium
+                      - name: eos
+                person3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    people:
+                      - name: et
+                      - name: quidem
+                      - name: reprehenderit
+                      - name: adipisci
+                      - name: corrupti
+                      - name: delectus
+                      - name: ducimus
+                      - name: harum
+                      - name: ea
+                      - name: minus
+                      - name: ut
+                      - name: nam
+                      - name: rerum
+                      - name: est
+                      - name: rerum
+                      - name: rem
+                      - name: sapiente
+                      - name: aut
+                      - name: voluptas
+                      - name: minus
+                person4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    people:
+                      - name: ea
+                      - name: repellendus
+                      - name: enim
+                      - name: minus
+                      - name: reiciendis
+                      - name: odit
+                      - name: et
+                      - name: aut
+                      - name: nam
+                      - name: aliquid
+                      - name: doloremque
+                      - name: optio
+                      - name: nisi
+                      - name: quia
+                      - name: et
+                      - name: est
+                      - name: voluptate
+                      - name: voluptas
+                      - name: quis
+                      - name: dolor
+                person5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    people:
+                      - name: quae
+                      - name: sit
+                      - name: reprehenderit
+                      - name: dolores
+                      - name: rerum
+                      - name: quo
+                      - name: distinctio
+                      - name: magnam
+                      - name: occaecati
+                      - name: omnis
+                      - name: placeat
+                      - name: dolorem
+                      - name: omnis
+                      - name: alias
+                      - name: rerum
+                      - name: in
+                      - name: quis
+                      - name: numquam
+                      - name: aperiam
+                      - name: voluptas
         '400':
           description: Bad request
           content:
@@ -76,6 +217,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PersonRequest'
+            examples:
+              person1:
+                value:
+                  name: et
+              person2:
+                value:
+                  name: nesciunt
+              person3:
+                value:
+                  name: maiores
+              person4:
+                value:
+                  name: dolorem
+              person5:
+                value:
+                  name: alias
       responses:
         '201':
           description: Create succeeded
@@ -86,6 +243,27 @@ paths:
                 properties:
                   person:
                     $ref: '#/components/schemas/PersonResponse'
+              examples:
+                person1:
+                  value:
+                    person:
+                      name: eos
+                person2:
+                  value:
+                    person:
+                      name: qui
+                person3:
+                  value:
+                    person:
+                      name: quas
+                person4:
+                  value:
+                    person:
+                      name: dolor
+                person5:
+                  value:
+                    person:
+                      name: eius
         '400':
           description: Bad request
           content:
@@ -170,6 +348,27 @@ paths:
                 properties:
                   person:
                     $ref: '#/components/schemas/PersonResponse'
+              examples:
+                person1:
+                  value:
+                    person:
+                      name: sint
+                person2:
+                  value:
+                    person:
+                      name: neque
+                person3:
+                  value:
+                    person:
+                      name: aut
+                person4:
+                  value:
+                    person:
+                      name: molestiae
+                person5:
+                  value:
+                    person:
+                      name: sint
         '400':
           description: Bad request
           content:
@@ -212,6 +411,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PersonRequest'
+            examples:
+              person1:
+                value:
+                  name: eaque
+              person2:
+                value:
+                  name: similique
+              person3:
+                value:
+                  name: tenetur
+              person4:
+                value:
+                  name: animi
+              person5:
+                value:
+                  name: eum
       responses:
         '200':
           description: Replace succeeded
@@ -222,6 +437,27 @@ paths:
                 properties:
                   person:
                     $ref: '#/components/schemas/PersonResponse'
+              examples:
+                person1:
+                  value:
+                    person:
+                      name: aut
+                person2:
+                  value:
+                    person:
+                      name: nulla
+                person3:
+                  value:
+                    person:
+                      name: eos
+                person4:
+                  value:
+                    person:
+                      name: temporibus
+                person5:
+                  value:
+                    person:
+                      name: sed
         '400':
           description: Bad request
           content:
@@ -264,6 +500,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PersonRequest'
+            examples:
+              person1:
+                value:
+                  name: possimus
+              person2:
+                value:
+                  name: porro
+              person3:
+                value:
+                  name: ut
+              person4:
+                value:
+                  name: earum
+              person5:
+                value:
+                  name: numquam
       responses:
         '200':
           description: Update succeeded
@@ -274,6 +526,27 @@ paths:
                 properties:
                   person:
                     $ref: '#/components/schemas/PersonResponse'
+              examples:
+                person1:
+                  value:
+                    person:
+                      name: voluptatem
+                person2:
+                  value:
+                    person:
+                      name: in
+                person3:
+                  value:
+                    person:
+                      name: est
+                person4:
+                  value:
+                    person:
+                      name: dignissimos
+                person5:
+                  value:
+                    person:
+                      name: excepturi
         '400':
           description: Bad request
           content:

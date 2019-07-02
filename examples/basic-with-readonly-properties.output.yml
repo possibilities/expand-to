@@ -46,6 +46,247 @@ paths:
                       $ref: '#/components/schemas/PetResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                pet1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    pets:
+                      - name: quibusdam
+                        fieldThatIsReadOnly: molestias
+                      - name: consectetur
+                        fieldThatIsReadOnly: et
+                      - name: autem
+                        fieldThatIsReadOnly: labore
+                      - name: tempora
+                        fieldThatIsReadOnly: molestias
+                      - name: et
+                        fieldThatIsReadOnly: distinctio
+                      - name: in
+                        fieldThatIsReadOnly: magnam
+                      - name: deserunt
+                        fieldThatIsReadOnly: sint
+                      - name: neque
+                        fieldThatIsReadOnly: qui
+                      - name: aut
+                        fieldThatIsReadOnly: aut
+                      - name: explicabo
+                        fieldThatIsReadOnly: assumenda
+                      - name: enim
+                        fieldThatIsReadOnly: harum
+                      - name: velit
+                        fieldThatIsReadOnly: modi
+                      - name: est
+                        fieldThatIsReadOnly: est
+                      - name: tempore
+                        fieldThatIsReadOnly: numquam
+                      - name: pariatur
+                        fieldThatIsReadOnly: dolores
+                      - name: omnis
+                        fieldThatIsReadOnly: quas
+                      - name: aliquid
+                        fieldThatIsReadOnly: magnam
+                      - name: voluptate
+                        fieldThatIsReadOnly: et
+                      - name: totam
+                        fieldThatIsReadOnly: ut
+                      - name: non
+                        fieldThatIsReadOnly: aut
+                pet2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    pets:
+                      - name: autem
+                        fieldThatIsReadOnly: perferendis
+                      - name: aut
+                        fieldThatIsReadOnly: et
+                      - name: nulla
+                        fieldThatIsReadOnly: nisi
+                      - name: vitae
+                        fieldThatIsReadOnly: voluptate
+                      - name: occaecati
+                        fieldThatIsReadOnly: delectus
+                      - name: omnis
+                        fieldThatIsReadOnly: sit
+                      - name: dicta
+                        fieldThatIsReadOnly: natus
+                      - name: omnis
+                        fieldThatIsReadOnly: ut
+                      - name: iure
+                        fieldThatIsReadOnly: praesentium
+                      - name: rerum
+                        fieldThatIsReadOnly: velit
+                      - name: iste
+                        fieldThatIsReadOnly: maxime
+                      - name: voluptatibus
+                        fieldThatIsReadOnly: laborum
+                      - name: eum
+                        fieldThatIsReadOnly: accusamus
+                      - name: quos
+                        fieldThatIsReadOnly: dolor
+                      - name: occaecati
+                        fieldThatIsReadOnly: laborum
+                      - name: consequuntur
+                        fieldThatIsReadOnly: praesentium
+                      - name: et
+                        fieldThatIsReadOnly: aut
+                      - name: iusto
+                        fieldThatIsReadOnly: eaque
+                      - name: voluptatem
+                        fieldThatIsReadOnly: ea
+                      - name: enim
+                        fieldThatIsReadOnly: eveniet
+                pet3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    pets:
+                      - name: quasi
+                        fieldThatIsReadOnly: est
+                      - name: voluptates
+                        fieldThatIsReadOnly: aliquid
+                      - name: praesentium
+                        fieldThatIsReadOnly: ipsam
+                      - name: quia
+                        fieldThatIsReadOnly: quidem
+                      - name: nihil
+                        fieldThatIsReadOnly: modi
+                      - name: enim
+                        fieldThatIsReadOnly: magnam
+                      - name: saepe
+                        fieldThatIsReadOnly: qui
+                      - name: illum
+                        fieldThatIsReadOnly: placeat
+                      - name: nemo
+                        fieldThatIsReadOnly: enim
+                      - name: quaerat
+                        fieldThatIsReadOnly: sunt
+                      - name: sequi
+                        fieldThatIsReadOnly: praesentium
+                      - name: neque
+                        fieldThatIsReadOnly: quis
+                      - name: incidunt
+                        fieldThatIsReadOnly: porro
+                      - name: amet
+                        fieldThatIsReadOnly: quasi
+                      - name: laudantium
+                        fieldThatIsReadOnly: voluptas
+                      - name: est
+                        fieldThatIsReadOnly: quam
+                      - name: assumenda
+                        fieldThatIsReadOnly: in
+                      - name: quia
+                        fieldThatIsReadOnly: sit
+                      - name: facilis
+                        fieldThatIsReadOnly: non
+                      - name: error
+                        fieldThatIsReadOnly: non
+                pet4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    pets:
+                      - name: a
+                        fieldThatIsReadOnly: repellendus
+                      - name: earum
+                        fieldThatIsReadOnly: et
+                      - name: alias
+                        fieldThatIsReadOnly: aut
+                      - name: et
+                        fieldThatIsReadOnly: quae
+                      - name: ipsam
+                        fieldThatIsReadOnly: in
+                      - name: aut
+                        fieldThatIsReadOnly: dolor
+                      - name: maiores
+                        fieldThatIsReadOnly: ad
+                      - name: sed
+                        fieldThatIsReadOnly: voluptatem
+                      - name: quasi
+                        fieldThatIsReadOnly: delectus
+                      - name: voluptas
+                        fieldThatIsReadOnly: incidunt
+                      - name: necessitatibus
+                        fieldThatIsReadOnly: provident
+                      - name: dicta
+                        fieldThatIsReadOnly: ipsa
+                      - name: assumenda
+                        fieldThatIsReadOnly: et
+                      - name: pariatur
+                        fieldThatIsReadOnly: beatae
+                      - name: omnis
+                        fieldThatIsReadOnly: est
+                      - name: earum
+                        fieldThatIsReadOnly: est
+                      - name: aut
+                        fieldThatIsReadOnly: iste
+                      - name: asperiores
+                        fieldThatIsReadOnly: itaque
+                      - name: maiores
+                        fieldThatIsReadOnly: corporis
+                      - name: aut
+                        fieldThatIsReadOnly: nesciunt
+                pet5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    pets:
+                      - name: enim
+                        fieldThatIsReadOnly: omnis
+                      - name: molestiae
+                        fieldThatIsReadOnly: officiis
+                      - name: dolores
+                        fieldThatIsReadOnly: hic
+                      - name: tempore
+                        fieldThatIsReadOnly: dolor
+                      - name: velit
+                        fieldThatIsReadOnly: consequatur
+                      - name: consectetur
+                        fieldThatIsReadOnly: libero
+                      - name: voluptatum
+                        fieldThatIsReadOnly: tenetur
+                      - name: laboriosam
+                        fieldThatIsReadOnly: at
+                      - name: quibusdam
+                        fieldThatIsReadOnly: dolorum
+                      - name: ullam
+                        fieldThatIsReadOnly: deleniti
+                      - name: molestiae
+                        fieldThatIsReadOnly: totam
+                      - name: recusandae
+                        fieldThatIsReadOnly: est
+                      - name: asperiores
+                        fieldThatIsReadOnly: nam
+                      - name: eligendi
+                        fieldThatIsReadOnly: unde
+                      - name: mollitia
+                        fieldThatIsReadOnly: quod
+                      - name: omnis
+                        fieldThatIsReadOnly: qui
+                      - name: nisi
+                        fieldThatIsReadOnly: amet
+                      - name: voluptas
+                        fieldThatIsReadOnly: deleniti
+                      - name: totam
+                        fieldThatIsReadOnly: consequuntur
+                      - name: impedit
+                        fieldThatIsReadOnly: officia
         '400':
           description: Bad request
           content:
@@ -76,6 +317,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PetRequest'
+            examples:
+              pet1:
+                value:
+                  name: sint
+              pet2:
+                value:
+                  name: sit
+              pet3:
+                value:
+                  name: deleniti
+              pet4:
+                value:
+                  name: vel
+              pet5:
+                value:
+                  name: rerum
       responses:
         '201':
           description: Create succeeded
@@ -86,6 +343,32 @@ paths:
                 properties:
                   pet:
                     $ref: '#/components/schemas/PetResponse'
+              examples:
+                pet1:
+                  value:
+                    pet:
+                      name: quasi
+                      fieldThatIsReadOnly: vel
+                pet2:
+                  value:
+                    pet:
+                      name: sed
+                      fieldThatIsReadOnly: labore
+                pet3:
+                  value:
+                    pet:
+                      name: voluptatum
+                      fieldThatIsReadOnly: vel
+                pet4:
+                  value:
+                    pet:
+                      name: est
+                      fieldThatIsReadOnly: aut
+                pet5:
+                  value:
+                    pet:
+                      name: magni
+                      fieldThatIsReadOnly: quis
         '400':
           description: Bad request
           content:
@@ -170,6 +453,32 @@ paths:
                 properties:
                   pet:
                     $ref: '#/components/schemas/PetResponse'
+              examples:
+                pet1:
+                  value:
+                    pet:
+                      name: in
+                      fieldThatIsReadOnly: velit
+                pet2:
+                  value:
+                    pet:
+                      name: ut
+                      fieldThatIsReadOnly: mollitia
+                pet3:
+                  value:
+                    pet:
+                      name: qui
+                      fieldThatIsReadOnly: mollitia
+                pet4:
+                  value:
+                    pet:
+                      name: illo
+                      fieldThatIsReadOnly: illum
+                pet5:
+                  value:
+                    pet:
+                      name: quia
+                      fieldThatIsReadOnly: magni
         '400':
           description: Bad request
           content:
@@ -212,6 +521,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PetRequest'
+            examples:
+              pet1:
+                value:
+                  name: explicabo
+              pet2:
+                value:
+                  name: hic
+              pet3:
+                value:
+                  name: beatae
+              pet4:
+                value:
+                  name: et
+              pet5:
+                value:
+                  name: sequi
       responses:
         '200':
           description: Replace succeeded
@@ -222,6 +547,32 @@ paths:
                 properties:
                   pet:
                     $ref: '#/components/schemas/PetResponse'
+              examples:
+                pet1:
+                  value:
+                    pet:
+                      name: esse
+                      fieldThatIsReadOnly: sunt
+                pet2:
+                  value:
+                    pet:
+                      name: voluptas
+                      fieldThatIsReadOnly: odio
+                pet3:
+                  value:
+                    pet:
+                      name: ipsum
+                      fieldThatIsReadOnly: sit
+                pet4:
+                  value:
+                    pet:
+                      name: in
+                      fieldThatIsReadOnly: et
+                pet5:
+                  value:
+                    pet:
+                      name: assumenda
+                      fieldThatIsReadOnly: officia
         '400':
           description: Bad request
           content:
@@ -264,6 +615,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PetRequest'
+            examples:
+              pet1:
+                value:
+                  name: nemo
+              pet2:
+                value:
+                  name: sed
+              pet3:
+                value:
+                  name: incidunt
+              pet4:
+                value:
+                  name: sint
+              pet5:
+                value:
+                  name: necessitatibus
       responses:
         '200':
           description: Update succeeded
@@ -274,6 +641,32 @@ paths:
                 properties:
                   pet:
                     $ref: '#/components/schemas/PetResponse'
+              examples:
+                pet1:
+                  value:
+                    pet:
+                      name: ipsum
+                      fieldThatIsReadOnly: ipsa
+                pet2:
+                  value:
+                    pet:
+                      name: nostrum
+                      fieldThatIsReadOnly: voluptatem
+                pet3:
+                  value:
+                    pet:
+                      name: laborum
+                      fieldThatIsReadOnly: non
+                pet4:
+                  value:
+                    pet:
+                      name: a
+                      fieldThatIsReadOnly: debitis
+                pet5:
+                  value:
+                    pet:
+                      name: libero
+                      fieldThatIsReadOnly: non
         '400':
           description: Bad request
           content:

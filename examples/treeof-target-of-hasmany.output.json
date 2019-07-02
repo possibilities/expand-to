@@ -63,6 +63,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "nulla"
+                        },
+                        {
+                          "name": "distinctio"
+                        },
+                        {
+                          "name": "voluptas"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "eligendi"
+                        },
+                        {
+                          "name": "quae"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "nisi"
+                        },
+                        {
+                          "name": "atque"
+                        },
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "fugiat"
+                        },
+                        {
+                          "name": "amet"
+                        },
+                        {
+                          "name": "incidunt"
+                        }
+                      ]
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "animi"
+                        },
+                        {
+                          "name": "molestias"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "fugit"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "expedita"
+                        },
+                        {
+                          "name": "earum"
+                        },
+                        {
+                          "name": "illum"
+                        },
+                        {
+                          "name": "rem"
+                        },
+                        {
+                          "name": "maiores"
+                        },
+                        {
+                          "name": "ex"
+                        },
+                        {
+                          "name": "delectus"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "ratione"
+                        },
+                        {
+                          "name": "corporis"
+                        },
+                        {
+                          "name": "ipsum"
+                        },
+                        {
+                          "name": "dolore"
+                        },
+                        {
+                          "name": "dolor"
+                        },
+                        {
+                          "name": "corporis"
+                        },
+                        {
+                          "name": "exercitationem"
+                        }
+                      ]
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "architecto"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "veniam"
+                        },
+                        {
+                          "name": "harum"
+                        },
+                        {
+                          "name": "soluta"
+                        },
+                        {
+                          "name": "quasi"
+                        },
+                        {
+                          "name": "reiciendis"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "nam"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "illo"
+                        },
+                        {
+                          "name": "numquam"
+                        },
+                        {
+                          "name": "dolore"
+                        },
+                        {
+                          "name": "eveniet"
+                        },
+                        {
+                          "name": "a"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "velit"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "consequatur"
+                        }
+                      ]
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "doloribus"
+                        },
+                        {
+                          "name": "repudiandae"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "facilis"
+                        },
+                        {
+                          "name": "dignissimos"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "iure"
+                        },
+                        {
+                          "name": "aperiam"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "magnam"
+                        },
+                        {
+                          "name": "laborum"
+                        },
+                        {
+                          "name": "ex"
+                        },
+                        {
+                          "name": "veritatis"
+                        },
+                        {
+                          "name": "provident"
+                        },
+                        {
+                          "name": "exercitationem"
+                        },
+                        {
+                          "name": "enim"
+                        },
+                        {
+                          "name": "autem"
+                        }
+                      ]
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "alias"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "consequuntur"
+                        },
+                        {
+                          "name": "delectus"
+                        },
+                        {
+                          "name": "beatae"
+                        },
+                        {
+                          "name": "iure"
+                        },
+                        {
+                          "name": "possimus"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "natus"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "minus"
+                        },
+                        {
+                          "name": "maxime"
+                        },
+                        {
+                          "name": "in"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "distinctio"
+                        },
+                        {
+                          "name": "autem"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "ducimus"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "quidem"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -112,6 +474,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/GroupRequest"
+              },
+              "examples": {
+                "group1": {
+                  "value": {
+                    "name": "iusto"
+                  }
+                },
+                "group2": {
+                  "value": {
+                    "name": "blanditiis"
+                  }
+                },
+                "group3": {
+                  "value": {
+                    "name": "harum"
+                  }
+                },
+                "group4": {
+                  "value": {
+                    "name": "et"
+                  }
+                },
+                "group5": {
+                  "value": {
+                    "name": "molestiae"
+                  }
+                }
               }
             }
           }
@@ -126,6 +515,43 @@
                   "properties": {
                     "group": {
                       "$ref": "#/components/schemas/GroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "group": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "group": {
+                        "name": "rerum"
+                      }
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "group": {
+                        "name": "quibusdam"
+                      }
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "group": {
+                        "name": "voluptas"
+                      }
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "group": {
+                        "name": "libero"
+                      }
                     }
                   }
                 }
@@ -265,6 +691,43 @@
                       "$ref": "#/components/schemas/GroupResponse"
                     }
                   }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "group": {
+                        "name": "nisi"
+                      }
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "group": {
+                        "name": "rerum"
+                      }
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "group": {
+                        "name": "laudantium"
+                      }
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "group": {
+                        "name": "quis"
+                      }
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "group": {
+                        "name": "sint"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -334,6 +797,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/GroupRequest"
+              },
+              "examples": {
+                "group1": {
+                  "value": {
+                    "name": "sint"
+                  }
+                },
+                "group2": {
+                  "value": {
+                    "name": "eligendi"
+                  }
+                },
+                "group3": {
+                  "value": {
+                    "name": "nulla"
+                  }
+                },
+                "group4": {
+                  "value": {
+                    "name": "modi"
+                  }
+                },
+                "group5": {
+                  "value": {
+                    "name": "consectetur"
+                  }
+                }
               }
             }
           }
@@ -348,6 +838,43 @@
                   "properties": {
                     "group": {
                       "$ref": "#/components/schemas/GroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "group": {
+                        "name": "magnam"
+                      }
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "group": {
+                        "name": "ipsam"
+                      }
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "group": {
+                        "name": "qui"
+                      }
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "group": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "group": {
+                        "name": "aliquam"
+                      }
                     }
                   }
                 }
@@ -419,6 +946,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/GroupRequest"
+              },
+              "examples": {
+                "group1": {
+                  "value": {
+                    "name": "alias"
+                  }
+                },
+                "group2": {
+                  "value": {
+                    "name": "soluta"
+                  }
+                },
+                "group3": {
+                  "value": {
+                    "name": "quaerat"
+                  }
+                },
+                "group4": {
+                  "value": {
+                    "name": "sunt"
+                  }
+                },
+                "group5": {
+                  "value": {
+                    "name": "hic"
+                  }
+                }
               }
             }
           }
@@ -433,6 +987,43 @@
                   "properties": {
                     "group": {
                       "$ref": "#/components/schemas/GroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "group": {
+                        "name": "enim"
+                      }
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "group": {
+                        "name": "sed"
+                      }
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "group": {
+                        "name": "tenetur"
+                      }
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "group": {
+                        "name": "qui"
+                      }
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "group": {
+                        "name": "culpa"
+                      }
                     }
                   }
                 }
@@ -610,6 +1201,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "region1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regions": [
+                        {
+                          "name": "cum"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "similique"
+                        },
+                        {
+                          "name": "magnam"
+                        },
+                        {
+                          "name": "hic"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "esse"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "sequi"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "a"
+                        },
+                        {
+                          "name": "quibusdam"
+                        },
+                        {
+                          "name": "in"
+                        },
+                        {
+                          "name": "debitis"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "aliquid"
+                        },
+                        {
+                          "name": "dolores"
+                        }
+                      ]
+                    }
+                  },
+                  "region2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regions": [
+                        {
+                          "name": "temporibus"
+                        },
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "iste"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "esse"
+                        },
+                        {
+                          "name": "doloremque"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "in"
+                        },
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "voluptates"
+                        },
+                        {
+                          "name": "cumque"
+                        },
+                        {
+                          "name": "repellat"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "quia"
+                        },
+                        {
+                          "name": "labore"
+                        },
+                        {
+                          "name": "voluptatibus"
+                        },
+                        {
+                          "name": "nihil"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "dolorem"
+                        }
+                      ]
+                    }
+                  },
+                  "region3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regions": [
+                        {
+                          "name": "asperiores"
+                        },
+                        {
+                          "name": "iusto"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "tenetur"
+                        },
+                        {
+                          "name": "esse"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "aliquid"
+                        },
+                        {
+                          "name": "sapiente"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "reprehenderit"
+                        },
+                        {
+                          "name": "amet"
+                        },
+                        {
+                          "name": "officiis"
+                        },
+                        {
+                          "name": "maxime"
+                        },
+                        {
+                          "name": "iusto"
+                        },
+                        {
+                          "name": "fugiat"
+                        },
+                        {
+                          "name": "dolorum"
+                        },
+                        {
+                          "name": "itaque"
+                        },
+                        {
+                          "name": "rem"
+                        },
+                        {
+                          "name": "deserunt"
+                        }
+                      ]
+                    }
+                  },
+                  "region4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regions": [
+                        {
+                          "name": "deserunt"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "nisi"
+                        },
+                        {
+                          "name": "praesentium"
+                        },
+                        {
+                          "name": "fuga"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "autem"
+                        },
+                        {
+                          "name": "earum"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "exercitationem"
+                        },
+                        {
+                          "name": "repellendus"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "tempore"
+                        },
+                        {
+                          "name": "magnam"
+                        },
+                        {
+                          "name": "quo"
+                        },
+                        {
+                          "name": "voluptatum"
+                        },
+                        {
+                          "name": "iste"
+                        },
+                        {
+                          "name": "nemo"
+                        },
+                        {
+                          "name": "est"
+                        }
+                      ]
+                    }
+                  },
+                  "region5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regions": [
+                        {
+                          "name": "laudantium"
+                        },
+                        {
+                          "name": "saepe"
+                        },
+                        {
+                          "name": "porro"
+                        },
+                        {
+                          "name": "quia"
+                        },
+                        {
+                          "name": "dolor"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "sapiente"
+                        },
+                        {
+                          "name": "pariatur"
+                        },
+                        {
+                          "name": "neque"
+                        },
+                        {
+                          "name": "soluta"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "omnis"
+                        },
+                        {
+                          "name": "ex"
+                        },
+                        {
+                          "name": "mollitia"
+                        },
+                        {
+                          "name": "odio"
+                        },
+                        {
+                          "name": "voluptatum"
+                        },
+                        {
+                          "name": "placeat"
+                        },
+                        {
+                          "name": "laudantium"
+                        },
+                        {
+                          "name": "accusamus"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -659,6 +1612,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RegionRequest"
+              },
+              "examples": {
+                "region1": {
+                  "value": {
+                    "name": "doloribus"
+                  }
+                },
+                "region2": {
+                  "value": {
+                    "name": "omnis"
+                  }
+                },
+                "region3": {
+                  "value": {
+                    "name": "corrupti"
+                  }
+                },
+                "region4": {
+                  "value": {
+                    "name": "dolores"
+                  }
+                },
+                "region5": {
+                  "value": {
+                    "name": "unde"
+                  }
+                }
               }
             }
           }
@@ -673,6 +1653,43 @@
                   "properties": {
                     "region": {
                       "$ref": "#/components/schemas/RegionResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "region1": {
+                    "value": {
+                      "region": {
+                        "name": "temporibus"
+                      }
+                    }
+                  },
+                  "region2": {
+                    "value": {
+                      "region": {
+                        "name": "a"
+                      }
+                    }
+                  },
+                  "region3": {
+                    "value": {
+                      "region": {
+                        "name": "aliquam"
+                      }
+                    }
+                  },
+                  "region4": {
+                    "value": {
+                      "region": {
+                        "name": "mollitia"
+                      }
+                    }
+                  },
+                  "region5": {
+                    "value": {
+                      "region": {
+                        "name": "enim"
+                      }
                     }
                   }
                 }
@@ -812,6 +1829,43 @@
                       "$ref": "#/components/schemas/RegionResponse"
                     }
                   }
+                },
+                "examples": {
+                  "region1": {
+                    "value": {
+                      "region": {
+                        "name": "id"
+                      }
+                    }
+                  },
+                  "region2": {
+                    "value": {
+                      "region": {
+                        "name": "nam"
+                      }
+                    }
+                  },
+                  "region3": {
+                    "value": {
+                      "region": {
+                        "name": "eos"
+                      }
+                    }
+                  },
+                  "region4": {
+                    "value": {
+                      "region": {
+                        "name": "voluptatum"
+                      }
+                    }
+                  },
+                  "region5": {
+                    "value": {
+                      "region": {
+                        "name": "illo"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -881,6 +1935,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RegionRequest"
+              },
+              "examples": {
+                "region1": {
+                  "value": {
+                    "name": "illo"
+                  }
+                },
+                "region2": {
+                  "value": {
+                    "name": "voluptatem"
+                  }
+                },
+                "region3": {
+                  "value": {
+                    "name": "molestiae"
+                  }
+                },
+                "region4": {
+                  "value": {
+                    "name": "ut"
+                  }
+                },
+                "region5": {
+                  "value": {
+                    "name": "sequi"
+                  }
+                }
               }
             }
           }
@@ -895,6 +1976,43 @@
                   "properties": {
                     "region": {
                       "$ref": "#/components/schemas/RegionResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "region1": {
+                    "value": {
+                      "region": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "region2": {
+                    "value": {
+                      "region": {
+                        "name": "labore"
+                      }
+                    }
+                  },
+                  "region3": {
+                    "value": {
+                      "region": {
+                        "name": "ullam"
+                      }
+                    }
+                  },
+                  "region4": {
+                    "value": {
+                      "region": {
+                        "name": "magnam"
+                      }
+                    }
+                  },
+                  "region5": {
+                    "value": {
+                      "region": {
+                        "name": "alias"
+                      }
                     }
                   }
                 }
@@ -966,6 +2084,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RegionRequest"
+              },
+              "examples": {
+                "region1": {
+                  "value": {
+                    "name": "praesentium"
+                  }
+                },
+                "region2": {
+                  "value": {
+                    "name": "tenetur"
+                  }
+                },
+                "region3": {
+                  "value": {
+                    "name": "perferendis"
+                  }
+                },
+                "region4": {
+                  "value": {
+                    "name": "aliquam"
+                  }
+                },
+                "region5": {
+                  "value": {
+                    "name": "ullam"
+                  }
+                }
               }
             }
           }
@@ -980,6 +2125,43 @@
                   "properties": {
                     "region": {
                       "$ref": "#/components/schemas/RegionResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "region1": {
+                    "value": {
+                      "region": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "region2": {
+                    "value": {
+                      "region": {
+                        "name": "architecto"
+                      }
+                    }
+                  },
+                  "region3": {
+                    "value": {
+                      "region": {
+                        "name": "consequatur"
+                      }
+                    }
+                  },
+                  "region4": {
+                    "value": {
+                      "region": {
+                        "name": "itaque"
+                      }
+                    }
+                  },
+                  "region5": {
+                    "value": {
+                      "region": {
+                        "name": "consequatur"
+                      }
                     }
                   }
                 }
@@ -1166,6 +2348,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "nam"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "assumenda"
+                        },
+                        {
+                          "name": "culpa"
+                        },
+                        {
+                          "name": "aperiam"
+                        },
+                        {
+                          "name": "vero"
+                        },
+                        {
+                          "name": "tempora"
+                        },
+                        {
+                          "name": "temporibus"
+                        },
+                        {
+                          "name": "ab"
+                        },
+                        {
+                          "name": "magnam"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "maiores"
+                        },
+                        {
+                          "name": "exercitationem"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "porro"
+                        },
+                        {
+                          "name": "expedita"
+                        },
+                        {
+                          "name": "culpa"
+                        }
+                      ]
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "mollitia"
+                        },
+                        {
+                          "name": "debitis"
+                        },
+                        {
+                          "name": "eos"
+                        },
+                        {
+                          "name": "eveniet"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "enim"
+                        },
+                        {
+                          "name": "sed"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "consequatur"
+                        },
+                        {
+                          "name": "veniam"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "deserunt"
+                        },
+                        {
+                          "name": "hic"
+                        },
+                        {
+                          "name": "odit"
+                        },
+                        {
+                          "name": "autem"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "beatae"
+                        }
+                      ]
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "nam"
+                        },
+                        {
+                          "name": "deleniti"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "accusantium"
+                        },
+                        {
+                          "name": "praesentium"
+                        },
+                        {
+                          "name": "vitae"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "ipsam"
+                        },
+                        {
+                          "name": "quia"
+                        },
+                        {
+                          "name": "pariatur"
+                        },
+                        {
+                          "name": "aliquam"
+                        },
+                        {
+                          "name": "reprehenderit"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "harum"
+                        },
+                        {
+                          "name": "numquam"
+                        },
+                        {
+                          "name": "ad"
+                        },
+                        {
+                          "name": "saepe"
+                        },
+                        {
+                          "name": "sequi"
+                        },
+                        {
+                          "name": "officia"
+                        },
+                        {
+                          "name": "assumenda"
+                        }
+                      ]
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "distinctio"
+                        },
+                        {
+                          "name": "sequi"
+                        },
+                        {
+                          "name": "dolores"
+                        },
+                        {
+                          "name": "distinctio"
+                        },
+                        {
+                          "name": "exercitationem"
+                        },
+                        {
+                          "name": "reiciendis"
+                        },
+                        {
+                          "name": "esse"
+                        },
+                        {
+                          "name": "sunt"
+                        },
+                        {
+                          "name": "amet"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "vitae"
+                        },
+                        {
+                          "name": "facere"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "omnis"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "ex"
+                        },
+                        {
+                          "name": "iste"
+                        },
+                        {
+                          "name": "eveniet"
+                        },
+                        {
+                          "name": "debitis"
+                        }
+                      ]
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "groups": [
+                        {
+                          "name": "dolorem"
+                        },
+                        {
+                          "name": "magni"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "dignissimos"
+                        },
+                        {
+                          "name": "eum"
+                        },
+                        {
+                          "name": "hic"
+                        },
+                        {
+                          "name": "tenetur"
+                        },
+                        {
+                          "name": "nostrum"
+                        },
+                        {
+                          "name": "enim"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "aperiam"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "consequatur"
+                        },
+                        {
+                          "name": "repudiandae"
+                        },
+                        {
+                          "name": "in"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "quasi"
+                        },
+                        {
+                          "name": "enim"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -1225,6 +2769,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/GroupRequest"
+              },
+              "examples": {
+                "group1": {
+                  "value": {
+                    "name": "cum"
+                  }
+                },
+                "group2": {
+                  "value": {
+                    "name": "adipisci"
+                  }
+                },
+                "group3": {
+                  "value": {
+                    "name": "consequatur"
+                  }
+                },
+                "group4": {
+                  "value": {
+                    "name": "quae"
+                  }
+                },
+                "group5": {
+                  "value": {
+                    "name": "molestiae"
+                  }
+                }
               }
             }
           }
@@ -1239,6 +2810,43 @@
                   "properties": {
                     "group": {
                       "$ref": "#/components/schemas/GroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "group": {
+                        "name": "quisquam"
+                      }
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "group": {
+                        "name": "quos"
+                      }
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "group": {
+                        "name": "sed"
+                      }
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "group": {
+                        "name": "ex"
+                      }
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "group": {
+                        "name": "et"
+                      }
                     }
                   }
                 }
@@ -1396,6 +3004,43 @@
                       "$ref": "#/components/schemas/GroupResponse"
                     }
                   }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "group": {
+                        "name": "blanditiis"
+                      }
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "group": {
+                        "name": "repellat"
+                      }
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "group": {
+                        "name": "rerum"
+                      }
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "group": {
+                        "name": "dolorum"
+                      }
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "group": {
+                        "name": "earum"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -1474,6 +3119,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/GroupRequest"
+              },
+              "examples": {
+                "group1": {
+                  "value": {
+                    "name": "ut"
+                  }
+                },
+                "group2": {
+                  "value": {
+                    "name": "unde"
+                  }
+                },
+                "group3": {
+                  "value": {
+                    "name": "cum"
+                  }
+                },
+                "group4": {
+                  "value": {
+                    "name": "natus"
+                  }
+                },
+                "group5": {
+                  "value": {
+                    "name": "aut"
+                  }
+                }
               }
             }
           }
@@ -1488,6 +3160,43 @@
                   "properties": {
                     "group": {
                       "$ref": "#/components/schemas/GroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "group": {
+                        "name": "qui"
+                      }
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "group": {
+                        "name": "ab"
+                      }
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "group": {
+                        "name": "error"
+                      }
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "group": {
+                        "name": "qui"
+                      }
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "group": {
+                        "name": "quo"
+                      }
                     }
                   }
                 }
@@ -1568,6 +3277,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/GroupRequest"
+              },
+              "examples": {
+                "group1": {
+                  "value": {
+                    "name": "et"
+                  }
+                },
+                "group2": {
+                  "value": {
+                    "name": "modi"
+                  }
+                },
+                "group3": {
+                  "value": {
+                    "name": "nostrum"
+                  }
+                },
+                "group4": {
+                  "value": {
+                    "name": "aliquam"
+                  }
+                },
+                "group5": {
+                  "value": {
+                    "name": "est"
+                  }
+                }
               }
             }
           }
@@ -1582,6 +3318,43 @@
                   "properties": {
                     "group": {
                       "$ref": "#/components/schemas/GroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "group1": {
+                    "value": {
+                      "group": {
+                        "name": "sit"
+                      }
+                    }
+                  },
+                  "group2": {
+                    "value": {
+                      "group": {
+                        "name": "autem"
+                      }
+                    }
+                  },
+                  "group3": {
+                    "value": {
+                      "group": {
+                        "name": "et"
+                      }
+                    }
+                  },
+                  "group4": {
+                    "value": {
+                      "group": {
+                        "name": "sed"
+                      }
+                    }
+                  },
+                  "group5": {
+                    "value": {
+                      "group": {
+                        "name": "delectus"
+                      }
                     }
                   }
                 }
@@ -1777,6 +3550,368 @@
                       "$ref": "#/components/schemas/PaginationResponse"
                     }
                   }
+                },
+                "examples": {
+                  "regionGroup1": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regionGroups": [
+                        {
+                          "groupId": "voluptatem"
+                        },
+                        {
+                          "groupId": "deleniti"
+                        },
+                        {
+                          "groupId": "nostrum"
+                        },
+                        {
+                          "groupId": "est"
+                        },
+                        {
+                          "groupId": "amet"
+                        },
+                        {
+                          "groupId": "occaecati"
+                        },
+                        {
+                          "groupId": "praesentium"
+                        },
+                        {
+                          "groupId": "consequatur"
+                        },
+                        {
+                          "groupId": "nobis"
+                        },
+                        {
+                          "groupId": "excepturi"
+                        },
+                        {
+                          "groupId": "reprehenderit"
+                        },
+                        {
+                          "groupId": "suscipit"
+                        },
+                        {
+                          "groupId": "qui"
+                        },
+                        {
+                          "groupId": "excepturi"
+                        },
+                        {
+                          "groupId": "minus"
+                        },
+                        {
+                          "groupId": "et"
+                        },
+                        {
+                          "groupId": "quia"
+                        },
+                        {
+                          "groupId": "est"
+                        },
+                        {
+                          "groupId": "qui"
+                        },
+                        {
+                          "groupId": "eos"
+                        }
+                      ]
+                    }
+                  },
+                  "regionGroup2": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regionGroups": [
+                        {
+                          "groupId": "voluptatem"
+                        },
+                        {
+                          "groupId": "sequi"
+                        },
+                        {
+                          "groupId": "voluptatem"
+                        },
+                        {
+                          "groupId": "perferendis"
+                        },
+                        {
+                          "groupId": "voluptatem"
+                        },
+                        {
+                          "groupId": "voluptatibus"
+                        },
+                        {
+                          "groupId": "deleniti"
+                        },
+                        {
+                          "groupId": "rerum"
+                        },
+                        {
+                          "groupId": "corporis"
+                        },
+                        {
+                          "groupId": "sint"
+                        },
+                        {
+                          "groupId": "voluptas"
+                        },
+                        {
+                          "groupId": "sint"
+                        },
+                        {
+                          "groupId": "vel"
+                        },
+                        {
+                          "groupId": "cum"
+                        },
+                        {
+                          "groupId": "officiis"
+                        },
+                        {
+                          "groupId": "impedit"
+                        },
+                        {
+                          "groupId": "necessitatibus"
+                        },
+                        {
+                          "groupId": "officiis"
+                        },
+                        {
+                          "groupId": "nesciunt"
+                        },
+                        {
+                          "groupId": "et"
+                        }
+                      ]
+                    }
+                  },
+                  "regionGroup3": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regionGroups": [
+                        {
+                          "groupId": "ullam"
+                        },
+                        {
+                          "groupId": "non"
+                        },
+                        {
+                          "groupId": "reprehenderit"
+                        },
+                        {
+                          "groupId": "doloribus"
+                        },
+                        {
+                          "groupId": "ut"
+                        },
+                        {
+                          "groupId": "est"
+                        },
+                        {
+                          "groupId": "consequatur"
+                        },
+                        {
+                          "groupId": "ipsa"
+                        },
+                        {
+                          "groupId": "atque"
+                        },
+                        {
+                          "groupId": "similique"
+                        },
+                        {
+                          "groupId": "illo"
+                        },
+                        {
+                          "groupId": "dolorum"
+                        },
+                        {
+                          "groupId": "qui"
+                        },
+                        {
+                          "groupId": "nihil"
+                        },
+                        {
+                          "groupId": "est"
+                        },
+                        {
+                          "groupId": "ratione"
+                        },
+                        {
+                          "groupId": "delectus"
+                        },
+                        {
+                          "groupId": "minima"
+                        },
+                        {
+                          "groupId": "aliquam"
+                        },
+                        {
+                          "groupId": "et"
+                        }
+                      ]
+                    }
+                  },
+                  "regionGroup4": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regionGroups": [
+                        {
+                          "groupId": "veritatis"
+                        },
+                        {
+                          "groupId": "perspiciatis"
+                        },
+                        {
+                          "groupId": "fuga"
+                        },
+                        {
+                          "groupId": "ipsam"
+                        },
+                        {
+                          "groupId": "sit"
+                        },
+                        {
+                          "groupId": "qui"
+                        },
+                        {
+                          "groupId": "impedit"
+                        },
+                        {
+                          "groupId": "voluptas"
+                        },
+                        {
+                          "groupId": "quia"
+                        },
+                        {
+                          "groupId": "facere"
+                        },
+                        {
+                          "groupId": "sed"
+                        },
+                        {
+                          "groupId": "et"
+                        },
+                        {
+                          "groupId": "qui"
+                        },
+                        {
+                          "groupId": "maxime"
+                        },
+                        {
+                          "groupId": "nam"
+                        },
+                        {
+                          "groupId": "enim"
+                        },
+                        {
+                          "groupId": "vero"
+                        },
+                        {
+                          "groupId": "iusto"
+                        },
+                        {
+                          "groupId": "eum"
+                        },
+                        {
+                          "groupId": "sit"
+                        }
+                      ]
+                    }
+                  },
+                  "regionGroup5": {
+                    "value": {
+                      "pagination": {
+                        "firstPage": "1",
+                        "lastPage": "10",
+                        "nextPage": "2",
+                        "prevPage": "1"
+                      },
+                      "regionGroups": [
+                        {
+                          "groupId": "itaque"
+                        },
+                        {
+                          "groupId": "ut"
+                        },
+                        {
+                          "groupId": "atque"
+                        },
+                        {
+                          "groupId": "molestiae"
+                        },
+                        {
+                          "groupId": "nisi"
+                        },
+                        {
+                          "groupId": "qui"
+                        },
+                        {
+                          "groupId": "aut"
+                        },
+                        {
+                          "groupId": "ut"
+                        },
+                        {
+                          "groupId": "et"
+                        },
+                        {
+                          "groupId": "officia"
+                        },
+                        {
+                          "groupId": "rerum"
+                        },
+                        {
+                          "groupId": "non"
+                        },
+                        {
+                          "groupId": "totam"
+                        },
+                        {
+                          "groupId": "tempore"
+                        },
+                        {
+                          "groupId": "in"
+                        },
+                        {
+                          "groupId": "cumque"
+                        },
+                        {
+                          "groupId": "est"
+                        },
+                        {
+                          "groupId": "itaque"
+                        },
+                        {
+                          "groupId": "excepturi"
+                        },
+                        {
+                          "groupId": "soluta"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -1836,6 +3971,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RegionGroupRequest"
+              },
+              "examples": {
+                "regionGroup1": {
+                  "value": {
+                    "groupId": "voluptatem"
+                  }
+                },
+                "regionGroup2": {
+                  "value": {
+                    "groupId": "et"
+                  }
+                },
+                "regionGroup3": {
+                  "value": {
+                    "groupId": "iusto"
+                  }
+                },
+                "regionGroup4": {
+                  "value": {
+                    "groupId": "eligendi"
+                  }
+                },
+                "regionGroup5": {
+                  "value": {
+                    "groupId": "nam"
+                  }
+                }
               }
             }
           }
@@ -1850,6 +4012,43 @@
                   "properties": {
                     "regionGroup": {
                       "$ref": "#/components/schemas/RegionGroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "regionGroup1": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "iusto"
+                      }
+                    }
+                  },
+                  "regionGroup2": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "et"
+                      }
+                    }
+                  },
+                  "regionGroup3": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "adipisci"
+                      }
+                    }
+                  },
+                  "regionGroup4": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "qui"
+                      }
+                    }
+                  },
+                  "regionGroup5": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "voluptatem"
+                      }
                     }
                   }
                 }
@@ -2007,6 +4206,43 @@
                       "$ref": "#/components/schemas/RegionGroupResponse"
                     }
                   }
+                },
+                "examples": {
+                  "regionGroup1": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "sed"
+                      }
+                    }
+                  },
+                  "regionGroup2": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "inventore"
+                      }
+                    }
+                  },
+                  "regionGroup3": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "corrupti"
+                      }
+                    }
+                  },
+                  "regionGroup4": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "facere"
+                      }
+                    }
+                  },
+                  "regionGroup5": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "natus"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -2085,6 +4321,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RegionGroupRequest"
+              },
+              "examples": {
+                "regionGroup1": {
+                  "value": {
+                    "groupId": "architecto"
+                  }
+                },
+                "regionGroup2": {
+                  "value": {
+                    "groupId": "dolor"
+                  }
+                },
+                "regionGroup3": {
+                  "value": {
+                    "groupId": "consequatur"
+                  }
+                },
+                "regionGroup4": {
+                  "value": {
+                    "groupId": "numquam"
+                  }
+                },
+                "regionGroup5": {
+                  "value": {
+                    "groupId": "molestiae"
+                  }
+                }
               }
             }
           }
@@ -2099,6 +4362,43 @@
                   "properties": {
                     "regionGroup": {
                       "$ref": "#/components/schemas/RegionGroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "regionGroup1": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "nam"
+                      }
+                    }
+                  },
+                  "regionGroup2": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "ab"
+                      }
+                    }
+                  },
+                  "regionGroup3": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "iure"
+                      }
+                    }
+                  },
+                  "regionGroup4": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "ut"
+                      }
+                    }
+                  },
+                  "regionGroup5": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "recusandae"
+                      }
                     }
                   }
                 }
@@ -2179,6 +4479,33 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RegionGroupRequest"
+              },
+              "examples": {
+                "regionGroup1": {
+                  "value": {
+                    "groupId": "id"
+                  }
+                },
+                "regionGroup2": {
+                  "value": {
+                    "groupId": "incidunt"
+                  }
+                },
+                "regionGroup3": {
+                  "value": {
+                    "groupId": "nihil"
+                  }
+                },
+                "regionGroup4": {
+                  "value": {
+                    "groupId": "vel"
+                  }
+                },
+                "regionGroup5": {
+                  "value": {
+                    "groupId": "rerum"
+                  }
+                }
               }
             }
           }
@@ -2193,6 +4520,43 @@
                   "properties": {
                     "regionGroup": {
                       "$ref": "#/components/schemas/RegionGroupResponse"
+                    }
+                  }
+                },
+                "examples": {
+                  "regionGroup1": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "eveniet"
+                      }
+                    }
+                  },
+                  "regionGroup2": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "aut"
+                      }
+                    }
+                  },
+                  "regionGroup3": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "quam"
+                      }
+                    }
+                  },
+                  "regionGroup4": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "aut"
+                      }
+                    }
+                  },
+                  "regionGroup5": {
+                    "value": {
+                      "regionGroup": {
+                        "groupId": "et"
+                      }
                     }
                   }
                 }

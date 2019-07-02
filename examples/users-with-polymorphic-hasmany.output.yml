@@ -46,6 +46,147 @@ paths:
                       $ref: '#/components/schemas/CourseResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                course1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: atque
+                      - name: a
+                      - name: ab
+                      - name: culpa
+                      - name: doloribus
+                      - name: voluptatum
+                      - name: maiores
+                      - name: excepturi
+                      - name: tempora
+                      - name: vero
+                      - name: amet
+                      - name: eos
+                      - name: magnam
+                      - name: odit
+                      - name: a
+                      - name: dolor
+                      - name: occaecati
+                      - name: dolorem
+                      - name: aut
+                      - name: fugit
+                course2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: aliquam
+                      - name: voluptatem
+                      - name: necessitatibus
+                      - name: non
+                      - name: ut
+                      - name: molestias
+                      - name: et
+                      - name: quo
+                      - name: aperiam
+                      - name: vel
+                      - name: laboriosam
+                      - name: est
+                      - name: qui
+                      - name: ut
+                      - name: eos
+                      - name: et
+                      - name: ut
+                      - name: quo
+                      - name: debitis
+                      - name: sit
+                course3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: hic
+                      - name: facere
+                      - name: hic
+                      - name: aut
+                      - name: ut
+                      - name: nisi
+                      - name: aut
+                      - name: sed
+                      - name: est
+                      - name: voluptatibus
+                      - name: eum
+                      - name: natus
+                      - name: aut
+                      - name: illo
+                      - name: recusandae
+                      - name: corrupti
+                      - name: aut
+                      - name: voluptatem
+                      - name: autem
+                      - name: aut
+                course4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: et
+                      - name: et
+                      - name: laudantium
+                      - name: aliquid
+                      - name: non
+                      - name: quia
+                      - name: molestias
+                      - name: eos
+                      - name: vel
+                      - name: et
+                      - name: est
+                      - name: numquam
+                      - name: commodi
+                      - name: qui
+                      - name: et
+                      - name: unde
+                      - name: inventore
+                      - name: soluta
+                      - name: necessitatibus
+                      - name: ex
+                course5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: architecto
+                      - name: iste
+                      - name: aut
+                      - name: hic
+                      - name: laborum
+                      - name: illum
+                      - name: odio
+                      - name: fugit
+                      - name: ratione
+                      - name: eaque
+                      - name: neque
+                      - name: beatae
+                      - name: enim
+                      - name: nesciunt
+                      - name: ut
+                      - name: dolorem
+                      - name: impedit
+                      - name: est
+                      - name: nobis
+                      - name: aut
         '400':
           description: Bad request
           content:
@@ -76,6 +217,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: itaque
+              course2:
+                value:
+                  name: qui
+              course3:
+                value:
+                  name: voluptatem
+              course4:
+                value:
+                  name: reiciendis
+              course5:
+                value:
+                  name: officiis
       responses:
         '201':
           description: Create succeeded
@@ -86,6 +243,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: quia
+                course2:
+                  value:
+                    course:
+                      name: molestiae
+                course3:
+                  value:
+                    course:
+                      name: consequatur
+                course4:
+                  value:
+                    course:
+                      name: magnam
+                course5:
+                  value:
+                    course:
+                      name: laboriosam
         '400':
           description: Bad request
           content:
@@ -170,6 +348,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: veniam
+                course2:
+                  value:
+                    course:
+                      name: sequi
+                course3:
+                  value:
+                    course:
+                      name: illum
+                course4:
+                  value:
+                    course:
+                      name: corrupti
+                course5:
+                  value:
+                    course:
+                      name: nisi
         '400':
           description: Bad request
           content:
@@ -212,6 +411,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: velit
+              course2:
+                value:
+                  name: est
+              course3:
+                value:
+                  name: facilis
+              course4:
+                value:
+                  name: fugiat
+              course5:
+                value:
+                  name: placeat
       responses:
         '200':
           description: Replace succeeded
@@ -222,6 +437,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: sint
+                course2:
+                  value:
+                    course:
+                      name: iure
+                course3:
+                  value:
+                    course:
+                      name: aliquam
+                course4:
+                  value:
+                    course:
+                      name: facere
+                course5:
+                  value:
+                    course:
+                      name: eaque
         '400':
           description: Bad request
           content:
@@ -264,6 +500,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: sint
+              course2:
+                value:
+                  name: dolores
+              course3:
+                value:
+                  name: similique
+              course4:
+                value:
+                  name: voluptatem
+              course5:
+                value:
+                  name: debitis
       responses:
         '200':
           description: Update succeeded
@@ -274,6 +526,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: et
+                course2:
+                  value:
+                    course:
+                      name: tenetur
+                course3:
+                  value:
+                    course:
+                      name: voluptatibus
+                course4:
+                  value:
+                    course:
+                      name: explicabo
+                course5:
+                  value:
+                    course:
+                      name: vel
         '400':
           description: Bad request
           content:
@@ -384,6 +657,147 @@ paths:
                       $ref: '#/components/schemas/UserResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                user1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    users:
+                      - name: qui
+                      - name: autem
+                      - name: velit
+                      - name: odit
+                      - name: reprehenderit
+                      - name: voluptate
+                      - name: ullam
+                      - name: nisi
+                      - name: debitis
+                      - name: perspiciatis
+                      - name: eos
+                      - name: ea
+                      - name: voluptatem
+                      - name: velit
+                      - name: cupiditate
+                      - name: consequatur
+                      - name: suscipit
+                      - name: ut
+                      - name: occaecati
+                      - name: provident
+                user2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    users:
+                      - name: eum
+                      - name: odit
+                      - name: optio
+                      - name: aut
+                      - name: et
+                      - name: et
+                      - name: quis
+                      - name: ut
+                      - name: facere
+                      - name: necessitatibus
+                      - name: ducimus
+                      - name: ut
+                      - name: voluptas
+                      - name: voluptates
+                      - name: aperiam
+                      - name: eveniet
+                      - name: atque
+                      - name: dolores
+                      - name: et
+                      - name: sed
+                user3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    users:
+                      - name: iste
+                      - name: consectetur
+                      - name: asperiores
+                      - name: optio
+                      - name: magnam
+                      - name: eum
+                      - name: labore
+                      - name: nisi
+                      - name: deserunt
+                      - name: dolorem
+                      - name: possimus
+                      - name: amet
+                      - name: necessitatibus
+                      - name: qui
+                      - name: id
+                      - name: aut
+                      - name: non
+                      - name: repellendus
+                      - name: natus
+                      - name: dolores
+                user4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    users:
+                      - name: est
+                      - name: omnis
+                      - name: esse
+                      - name: eos
+                      - name: ipsam
+                      - name: at
+                      - name: sit
+                      - name: deserunt
+                      - name: est
+                      - name: ab
+                      - name: ipsa
+                      - name: quae
+                      - name: ut
+                      - name: beatae
+                      - name: aperiam
+                      - name: amet
+                      - name: nisi
+                      - name: exercitationem
+                      - name: dolorem
+                      - name: odit
+                user5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    users:
+                      - name: optio
+                      - name: possimus
+                      - name: minima
+                      - name: est
+                      - name: repudiandae
+                      - name: doloribus
+                      - name: qui
+                      - name: magnam
+                      - name: quis
+                      - name: eum
+                      - name: necessitatibus
+                      - name: est
+                      - name: quisquam
+                      - name: odio
+                      - name: vitae
+                      - name: quia
+                      - name: repudiandae
+                      - name: et
+                      - name: dolorem
+                      - name: autem
         '400':
           description: Bad request
           content:
@@ -414,6 +828,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserRequest'
+            examples:
+              user1:
+                value:
+                  name: quam
+              user2:
+                value:
+                  name: nulla
+              user3:
+                value:
+                  name: error
+              user4:
+                value:
+                  name: animi
+              user5:
+                value:
+                  name: aut
       responses:
         '201':
           description: Create succeeded
@@ -424,6 +854,27 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/UserResponse'
+              examples:
+                user1:
+                  value:
+                    user:
+                      name: quam
+                user2:
+                  value:
+                    user:
+                      name: aut
+                user3:
+                  value:
+                    user:
+                      name: hic
+                user4:
+                  value:
+                    user:
+                      name: aut
+                user5:
+                  value:
+                    user:
+                      name: nam
         '400':
           description: Bad request
           content:
@@ -508,6 +959,27 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/UserResponse'
+              examples:
+                user1:
+                  value:
+                    user:
+                      name: aperiam
+                user2:
+                  value:
+                    user:
+                      name: et
+                user3:
+                  value:
+                    user:
+                      name: eaque
+                user4:
+                  value:
+                    user:
+                      name: ipsam
+                user5:
+                  value:
+                    user:
+                      name: omnis
         '400':
           description: Bad request
           content:
@@ -550,6 +1022,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserRequest'
+            examples:
+              user1:
+                value:
+                  name: doloremque
+              user2:
+                value:
+                  name: ipsa
+              user3:
+                value:
+                  name: non
+              user4:
+                value:
+                  name: nihil
+              user5:
+                value:
+                  name: at
       responses:
         '200':
           description: Replace succeeded
@@ -560,6 +1048,27 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/UserResponse'
+              examples:
+                user1:
+                  value:
+                    user:
+                      name: fuga
+                user2:
+                  value:
+                    user:
+                      name: a
+                user3:
+                  value:
+                    user:
+                      name: architecto
+                user4:
+                  value:
+                    user:
+                      name: provident
+                user5:
+                  value:
+                    user:
+                      name: non
         '400':
           description: Bad request
           content:
@@ -602,6 +1111,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserRequest'
+            examples:
+              user1:
+                value:
+                  name: officia
+              user2:
+                value:
+                  name: illo
+              user3:
+                value:
+                  name: et
+              user4:
+                value:
+                  name: a
+              user5:
+                value:
+                  name: voluptatem
       responses:
         '200':
           description: Update succeeded
@@ -612,6 +1137,27 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/UserResponse'
+              examples:
+                user1:
+                  value:
+                    user:
+                      name: doloribus
+                user2:
+                  value:
+                    user:
+                      name: vero
+                user3:
+                  value:
+                    user:
+                      name: dolores
+                user4:
+                  value:
+                    user:
+                      name: qui
+                user5:
+                  value:
+                    user:
+                      name: ut
         '400':
           description: Bad request
           content:
@@ -696,6 +1242,27 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/UserResponse'
+              examples:
+                user1:
+                  value:
+                    user:
+                      name: iusto
+                user2:
+                  value:
+                    user:
+                      name: deleniti
+                user3:
+                  value:
+                    user:
+                      name: fugit
+                user4:
+                  value:
+                    user:
+                      name: sint
+                user5:
+                  value:
+                    user:
+                      name: omnis
         '400':
           description: Bad request
           content:
@@ -763,6 +1330,147 @@ paths:
                       $ref: '#/components/schemas/UserContributorResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                userContributor1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userContributors:
+                      - contributorId: laboriosam
+                      - contributorId: quis
+                      - contributorId: voluptas
+                      - contributorId: eaque
+                      - contributorId: repellat
+                      - contributorId: aut
+                      - contributorId: excepturi
+                      - contributorId: et
+                      - contributorId: ullam
+                      - contributorId: tempore
+                      - contributorId: id
+                      - contributorId: laborum
+                      - contributorId: aut
+                      - contributorId: esse
+                      - contributorId: perspiciatis
+                      - contributorId: quae
+                      - contributorId: quia
+                      - contributorId: ducimus
+                      - contributorId: odit
+                      - contributorId: magni
+                userContributor2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userContributors:
+                      - contributorId: quo
+                      - contributorId: saepe
+                      - contributorId: dolorem
+                      - contributorId: qui
+                      - contributorId: maiores
+                      - contributorId: et
+                      - contributorId: corrupti
+                      - contributorId: culpa
+                      - contributorId: totam
+                      - contributorId: quo
+                      - contributorId: quibusdam
+                      - contributorId: sed
+                      - contributorId: optio
+                      - contributorId: eum
+                      - contributorId: reiciendis
+                      - contributorId: iste
+                      - contributorId: amet
+                      - contributorId: culpa
+                      - contributorId: praesentium
+                      - contributorId: magnam
+                userContributor3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userContributors:
+                      - contributorId: beatae
+                      - contributorId: est
+                      - contributorId: accusantium
+                      - contributorId: quia
+                      - contributorId: qui
+                      - contributorId: nobis
+                      - contributorId: distinctio
+                      - contributorId: mollitia
+                      - contributorId: aut
+                      - contributorId: vitae
+                      - contributorId: id
+                      - contributorId: accusamus
+                      - contributorId: nemo
+                      - contributorId: pariatur
+                      - contributorId: voluptatem
+                      - contributorId: qui
+                      - contributorId: quo
+                      - contributorId: itaque
+                      - contributorId: vero
+                      - contributorId: facilis
+                userContributor4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userContributors:
+                      - contributorId: accusantium
+                      - contributorId: officia
+                      - contributorId: qui
+                      - contributorId: unde
+                      - contributorId: eos
+                      - contributorId: quibusdam
+                      - contributorId: quo
+                      - contributorId: molestiae
+                      - contributorId: totam
+                      - contributorId: aut
+                      - contributorId: occaecati
+                      - contributorId: perspiciatis
+                      - contributorId: odio
+                      - contributorId: pariatur
+                      - contributorId: sint
+                      - contributorId: ut
+                      - contributorId: quibusdam
+                      - contributorId: aperiam
+                      - contributorId: sed
+                      - contributorId: est
+                userContributor5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userContributors:
+                      - contributorId: cupiditate
+                      - contributorId: autem
+                      - contributorId: voluptatibus
+                      - contributorId: deserunt
+                      - contributorId: est
+                      - contributorId: non
+                      - contributorId: tempore
+                      - contributorId: quos
+                      - contributorId: neque
+                      - contributorId: maxime
+                      - contributorId: velit
+                      - contributorId: aut
+                      - contributorId: quibusdam
+                      - contributorId: necessitatibus
+                      - contributorId: omnis
+                      - contributorId: assumenda
+                      - contributorId: consequuntur
+                      - contributorId: aut
+                      - contributorId: quia
+                      - contributorId: eius
         '400':
           description: Bad request
           content:
@@ -799,6 +1507,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserContributorRequest'
+            examples:
+              userContributor1:
+                value:
+                  contributorId: in
+              userContributor2:
+                value:
+                  contributorId: sed
+              userContributor3:
+                value:
+                  contributorId: aut
+              userContributor4:
+                value:
+                  contributorId: molestiae
+              userContributor5:
+                value:
+                  contributorId: a
       responses:
         '201':
           description: Create succeeded
@@ -809,6 +1533,27 @@ paths:
                 properties:
                   userContributor:
                     $ref: '#/components/schemas/UserContributorResponse'
+              examples:
+                userContributor1:
+                  value:
+                    userContributor:
+                      contributorId: distinctio
+                userContributor2:
+                  value:
+                    userContributor:
+                      contributorId: non
+                userContributor3:
+                  value:
+                    userContributor:
+                      contributorId: omnis
+                userContributor4:
+                  value:
+                    userContributor:
+                      contributorId: eaque
+                userContributor5:
+                  value:
+                    userContributor:
+                      contributorId: atque
         '400':
           description: Bad request
           content:
@@ -905,6 +1650,27 @@ paths:
                 properties:
                   userContributor:
                     $ref: '#/components/schemas/UserContributorResponse'
+              examples:
+                userContributor1:
+                  value:
+                    userContributor:
+                      contributorId: tempora
+                userContributor2:
+                  value:
+                    userContributor:
+                      contributorId: voluptatem
+                userContributor3:
+                  value:
+                    userContributor:
+                      contributorId: enim
+                userContributor4:
+                  value:
+                    userContributor:
+                      contributorId: ut
+                userContributor5:
+                  value:
+                    userContributor:
+                      contributorId: architecto
         '400':
           description: Bad request
           content:
@@ -953,6 +1719,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserContributorRequest'
+            examples:
+              userContributor1:
+                value:
+                  contributorId: nihil
+              userContributor2:
+                value:
+                  contributorId: in
+              userContributor3:
+                value:
+                  contributorId: voluptatem
+              userContributor4:
+                value:
+                  contributorId: quae
+              userContributor5:
+                value:
+                  contributorId: consequatur
       responses:
         '200':
           description: Replace succeeded
@@ -963,6 +1745,27 @@ paths:
                 properties:
                   userContributor:
                     $ref: '#/components/schemas/UserContributorResponse'
+              examples:
+                userContributor1:
+                  value:
+                    userContributor:
+                      contributorId: sit
+                userContributor2:
+                  value:
+                    userContributor:
+                      contributorId: sit
+                userContributor3:
+                  value:
+                    userContributor:
+                      contributorId: animi
+                userContributor4:
+                  value:
+                    userContributor:
+                      contributorId: rerum
+                userContributor5:
+                  value:
+                    userContributor:
+                      contributorId: beatae
         '400':
           description: Bad request
           content:
@@ -1011,6 +1814,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserContributorRequest'
+            examples:
+              userContributor1:
+                value:
+                  contributorId: mollitia
+              userContributor2:
+                value:
+                  contributorId: amet
+              userContributor3:
+                value:
+                  contributorId: accusamus
+              userContributor4:
+                value:
+                  contributorId: nisi
+              userContributor5:
+                value:
+                  contributorId: non
       responses:
         '200':
           description: Update succeeded
@@ -1021,6 +1840,27 @@ paths:
                 properties:
                   userContributor:
                     $ref: '#/components/schemas/UserContributorResponse'
+              examples:
+                userContributor1:
+                  value:
+                    userContributor:
+                      contributorId: dolorum
+                userContributor2:
+                  value:
+                    userContributor:
+                      contributorId: rerum
+                userContributor3:
+                  value:
+                    userContributor:
+                      contributorId: et
+                userContributor4:
+                  value:
+                    userContributor:
+                      contributorId: natus
+                userContributor5:
+                  value:
+                    userContributor:
+                      contributorId: harum
         '400':
           description: Bad request
           content:
@@ -1137,6 +1977,147 @@ paths:
                       $ref: '#/components/schemas/CourseResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                course1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: autem
+                      - name: iste
+                      - name: sunt
+                      - name: mollitia
+                      - name: accusamus
+                      - name: aut
+                      - name: totam
+                      - name: sit
+                      - name: voluptas
+                      - name: reprehenderit
+                      - name: et
+                      - name: mollitia
+                      - name: eligendi
+                      - name: velit
+                      - name: in
+                      - name: id
+                      - name: laborum
+                      - name: rem
+                      - name: voluptatum
+                      - name: id
+                course2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: error
+                      - name: nihil
+                      - name: eum
+                      - name: laboriosam
+                      - name: labore
+                      - name: minus
+                      - name: minus
+                      - name: ducimus
+                      - name: est
+                      - name: doloremque
+                      - name: ducimus
+                      - name: ipsa
+                      - name: minima
+                      - name: eum
+                      - name: omnis
+                      - name: aut
+                      - name: voluptatem
+                      - name: vel
+                      - name: rerum
+                      - name: labore
+                course3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: ut
+                      - name: ea
+                      - name: sed
+                      - name: nostrum
+                      - name: molestiae
+                      - name: laborum
+                      - name: quod
+                      - name: tempora
+                      - name: ut
+                      - name: provident
+                      - name: nobis
+                      - name: fugit
+                      - name: corporis
+                      - name: quis
+                      - name: ab
+                      - name: qui
+                      - name: culpa
+                      - name: provident
+                      - name: deleniti
+                      - name: et
+                course4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: accusantium
+                      - name: enim
+                      - name: illum
+                      - name: voluptatum
+                      - name: doloremque
+                      - name: mollitia
+                      - name: accusamus
+                      - name: et
+                      - name: eos
+                      - name: assumenda
+                      - name: rerum
+                      - name: fugit
+                      - name: quidem
+                      - name: omnis
+                      - name: voluptate
+                      - name: nisi
+                      - name: facere
+                      - name: recusandae
+                      - name: omnis
+                      - name: omnis
+                course5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: et
+                      - name: natus
+                      - name: dolorem
+                      - name: fugiat
+                      - name: pariatur
+                      - name: molestias
+                      - name: dolor
+                      - name: est
+                      - name: recusandae
+                      - name: reiciendis
+                      - name: nulla
+                      - name: inventore
+                      - name: placeat
+                      - name: veritatis
+                      - name: eos
+                      - name: voluptatem
+                      - name: est
+                      - name: molestiae
+                      - name: ut
+                      - name: excepturi
         '400':
           description: Bad request
           content:
@@ -1167,6 +2148,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: numquam
+              course2:
+                value:
+                  name: velit
+              course3:
+                value:
+                  name: non
+              course4:
+                value:
+                  name: laudantium
+              course5:
+                value:
+                  name: non
       responses:
         '201':
           description: Create succeeded
@@ -1177,6 +2174,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: quis
+                course2:
+                  value:
+                    course:
+                      name: ea
+                course3:
+                  value:
+                    course:
+                      name: ut
+                course4:
+                  value:
+                    course:
+                      name: mollitia
+                course5:
+                  value:
+                    course:
+                      name: commodi
         '400':
           description: Bad request
           content:
@@ -1261,6 +2279,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: tempora
+                course2:
+                  value:
+                    course:
+                      name: dolorum
+                course3:
+                  value:
+                    course:
+                      name: iste
+                course4:
+                  value:
+                    course:
+                      name: aspernatur
+                course5:
+                  value:
+                    course:
+                      name: velit
         '400':
           description: Bad request
           content:
@@ -1303,6 +2342,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: maiores
+              course2:
+                value:
+                  name: molestias
+              course3:
+                value:
+                  name: quod
+              course4:
+                value:
+                  name: esse
+              course5:
+                value:
+                  name: et
       responses:
         '200':
           description: Replace succeeded
@@ -1313,6 +2368,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: nesciunt
+                course2:
+                  value:
+                    course:
+                      name: totam
+                course3:
+                  value:
+                    course:
+                      name: quo
+                course4:
+                  value:
+                    course:
+                      name: distinctio
+                course5:
+                  value:
+                    course:
+                      name: inventore
         '400':
           description: Bad request
           content:
@@ -1355,6 +2431,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: sit
+              course2:
+                value:
+                  name: est
+              course3:
+                value:
+                  name: aut
+              course4:
+                value:
+                  name: quaerat
+              course5:
+                value:
+                  name: et
       responses:
         '200':
           description: Update succeeded
@@ -1365,6 +2457,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: praesentium
+                course2:
+                  value:
+                    course:
+                      name: distinctio
+                course3:
+                  value:
+                    course:
+                      name: iure
+                course4:
+                  value:
+                    course:
+                      name: nobis
+                course5:
+                  value:
+                    course:
+                      name: eligendi
         '400':
           description: Bad request
           content:
@@ -1481,6 +2594,147 @@ paths:
                       $ref: '#/components/schemas/UserLearnerResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                userLearner1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userLearners:
+                      - learnerId: repellat
+                      - learnerId: est
+                      - learnerId: ut
+                      - learnerId: ut
+                      - learnerId: est
+                      - learnerId: quis
+                      - learnerId: omnis
+                      - learnerId: quia
+                      - learnerId: impedit
+                      - learnerId: in
+                      - learnerId: omnis
+                      - learnerId: cumque
+                      - learnerId: voluptatem
+                      - learnerId: fugit
+                      - learnerId: necessitatibus
+                      - learnerId: et
+                      - learnerId: eum
+                      - learnerId: aut
+                      - learnerId: ea
+                      - learnerId: omnis
+                userLearner2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userLearners:
+                      - learnerId: dolor
+                      - learnerId: et
+                      - learnerId: harum
+                      - learnerId: eligendi
+                      - learnerId: commodi
+                      - learnerId: sit
+                      - learnerId: dolor
+                      - learnerId: quibusdam
+                      - learnerId: aut
+                      - learnerId: sunt
+                      - learnerId: incidunt
+                      - learnerId: neque
+                      - learnerId: officiis
+                      - learnerId: eius
+                      - learnerId: ut
+                      - learnerId: facilis
+                      - learnerId: sed
+                      - learnerId: placeat
+                      - learnerId: incidunt
+                      - learnerId: dolores
+                userLearner3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userLearners:
+                      - learnerId: et
+                      - learnerId: aliquid
+                      - learnerId: quaerat
+                      - learnerId: nam
+                      - learnerId: quis
+                      - learnerId: adipisci
+                      - learnerId: qui
+                      - learnerId: incidunt
+                      - learnerId: hic
+                      - learnerId: ab
+                      - learnerId: molestiae
+                      - learnerId: dicta
+                      - learnerId: eos
+                      - learnerId: qui
+                      - learnerId: neque
+                      - learnerId: quibusdam
+                      - learnerId: vitae
+                      - learnerId: provident
+                      - learnerId: nemo
+                      - learnerId: dolor
+                userLearner4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userLearners:
+                      - learnerId: debitis
+                      - learnerId: consequatur
+                      - learnerId: rerum
+                      - learnerId: ea
+                      - learnerId: maxime
+                      - learnerId: aut
+                      - learnerId: nesciunt
+                      - learnerId: aspernatur
+                      - learnerId: ut
+                      - learnerId: quidem
+                      - learnerId: dolores
+                      - learnerId: quidem
+                      - learnerId: ut
+                      - learnerId: amet
+                      - learnerId: at
+                      - learnerId: neque
+                      - learnerId: libero
+                      - learnerId: vero
+                      - learnerId: dolores
+                      - learnerId: numquam
+                userLearner5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    userLearners:
+                      - learnerId: accusantium
+                      - learnerId: molestiae
+                      - learnerId: recusandae
+                      - learnerId: et
+                      - learnerId: nobis
+                      - learnerId: voluptates
+                      - learnerId: aliquam
+                      - learnerId: officiis
+                      - learnerId: distinctio
+                      - learnerId: rerum
+                      - learnerId: et
+                      - learnerId: dignissimos
+                      - learnerId: dicta
+                      - learnerId: ipsam
+                      - learnerId: ipsa
+                      - learnerId: adipisci
+                      - learnerId: non
+                      - learnerId: quisquam
+                      - learnerId: nisi
+                      - learnerId: accusamus
         '400':
           description: Bad request
           content:
@@ -1517,6 +2771,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserLearnerRequest'
+            examples:
+              userLearner1:
+                value:
+                  learnerId: ut
+              userLearner2:
+                value:
+                  learnerId: cupiditate
+              userLearner3:
+                value:
+                  learnerId: voluptatum
+              userLearner4:
+                value:
+                  learnerId: magni
+              userLearner5:
+                value:
+                  learnerId: ea
       responses:
         '201':
           description: Create succeeded
@@ -1527,6 +2797,27 @@ paths:
                 properties:
                   userLearner:
                     $ref: '#/components/schemas/UserLearnerResponse'
+              examples:
+                userLearner1:
+                  value:
+                    userLearner:
+                      learnerId: et
+                userLearner2:
+                  value:
+                    userLearner:
+                      learnerId: harum
+                userLearner3:
+                  value:
+                    userLearner:
+                      learnerId: consequatur
+                userLearner4:
+                  value:
+                    userLearner:
+                      learnerId: veritatis
+                userLearner5:
+                  value:
+                    userLearner:
+                      learnerId: et
         '400':
           description: Bad request
           content:
@@ -1623,6 +2914,27 @@ paths:
                 properties:
                   userLearner:
                     $ref: '#/components/schemas/UserLearnerResponse'
+              examples:
+                userLearner1:
+                  value:
+                    userLearner:
+                      learnerId: porro
+                userLearner2:
+                  value:
+                    userLearner:
+                      learnerId: vero
+                userLearner3:
+                  value:
+                    userLearner:
+                      learnerId: quod
+                userLearner4:
+                  value:
+                    userLearner:
+                      learnerId: omnis
+                userLearner5:
+                  value:
+                    userLearner:
+                      learnerId: unde
         '400':
           description: Bad request
           content:
@@ -1671,6 +2983,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserLearnerRequest'
+            examples:
+              userLearner1:
+                value:
+                  learnerId: delectus
+              userLearner2:
+                value:
+                  learnerId: ab
+              userLearner3:
+                value:
+                  learnerId: culpa
+              userLearner4:
+                value:
+                  learnerId: nulla
+              userLearner5:
+                value:
+                  learnerId: non
       responses:
         '200':
           description: Replace succeeded
@@ -1681,6 +3009,27 @@ paths:
                 properties:
                   userLearner:
                     $ref: '#/components/schemas/UserLearnerResponse'
+              examples:
+                userLearner1:
+                  value:
+                    userLearner:
+                      learnerId: tempora
+                userLearner2:
+                  value:
+                    userLearner:
+                      learnerId: eligendi
+                userLearner3:
+                  value:
+                    userLearner:
+                      learnerId: temporibus
+                userLearner4:
+                  value:
+                    userLearner:
+                      learnerId: quasi
+                userLearner5:
+                  value:
+                    userLearner:
+                      learnerId: modi
         '400':
           description: Bad request
           content:
@@ -1729,6 +3078,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserLearnerRequest'
+            examples:
+              userLearner1:
+                value:
+                  learnerId: sunt
+              userLearner2:
+                value:
+                  learnerId: eum
+              userLearner3:
+                value:
+                  learnerId: laudantium
+              userLearner4:
+                value:
+                  learnerId: autem
+              userLearner5:
+                value:
+                  learnerId: error
       responses:
         '200':
           description: Update succeeded
@@ -1739,6 +3104,27 @@ paths:
                 properties:
                   userLearner:
                     $ref: '#/components/schemas/UserLearnerResponse'
+              examples:
+                userLearner1:
+                  value:
+                    userLearner:
+                      learnerId: vero
+                userLearner2:
+                  value:
+                    userLearner:
+                      learnerId: facilis
+                userLearner3:
+                  value:
+                    userLearner:
+                      learnerId: incidunt
+                userLearner4:
+                  value:
+                    userLearner:
+                      learnerId: ad
+                userLearner5:
+                  value:
+                    userLearner:
+                      learnerId: culpa
         '400':
           description: Bad request
           content:
@@ -1855,6 +3241,147 @@ paths:
                       $ref: '#/components/schemas/CourseResponse'
                   pages:
                     $ref: '#/components/schemas/PaginationResponse'
+              examples:
+                course1:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: numquam
+                      - name: ut
+                      - name: veniam
+                      - name: delectus
+                      - name: veritatis
+                      - name: ut
+                      - name: itaque
+                      - name: cum
+                      - name: officiis
+                      - name: voluptas
+                      - name: quo
+                      - name: magnam
+                      - name: quod
+                      - name: et
+                      - name: est
+                      - name: voluptas
+                      - name: quam
+                      - name: mollitia
+                      - name: sequi
+                      - name: ut
+                course2:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: quidem
+                      - name: sunt
+                      - name: aliquid
+                      - name: error
+                      - name: ipsam
+                      - name: qui
+                      - name: maxime
+                      - name: facilis
+                      - name: repellat
+                      - name: sit
+                      - name: veniam
+                      - name: exercitationem
+                      - name: molestiae
+                      - name: unde
+                      - name: tempore
+                      - name: distinctio
+                      - name: quod
+                      - name: autem
+                      - name: totam
+                      - name: esse
+                course3:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: eveniet
+                      - name: asperiores
+                      - name: et
+                      - name: sint
+                      - name: debitis
+                      - name: dolor
+                      - name: ut
+                      - name: repellat
+                      - name: velit
+                      - name: eos
+                      - name: autem
+                      - name: veritatis
+                      - name: hic
+                      - name: consequatur
+                      - name: velit
+                      - name: magni
+                      - name: minima
+                      - name: voluptas
+                      - name: cum
+                      - name: non
+                course4:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: est
+                      - name: at
+                      - name: aut
+                      - name: eum
+                      - name: rem
+                      - name: reiciendis
+                      - name: nam
+                      - name: ut
+                      - name: et
+                      - name: magni
+                      - name: nobis
+                      - name: hic
+                      - name: excepturi
+                      - name: expedita
+                      - name: qui
+                      - name: in
+                      - name: veniam
+                      - name: quos
+                      - name: consequuntur
+                      - name: iste
+                course5:
+                  value:
+                    pagination:
+                      firstPage: '1'
+                      lastPage: '10'
+                      nextPage: '2'
+                      prevPage: '1'
+                    courses:
+                      - name: dolorem
+                      - name: possimus
+                      - name: debitis
+                      - name: facilis
+                      - name: magni
+                      - name: esse
+                      - name: dolorem
+                      - name: sunt
+                      - name: qui
+                      - name: voluptatem
+                      - name: est
+                      - name: natus
+                      - name: unde
+                      - name: labore
+                      - name: est
+                      - name: cum
+                      - name: rerum
+                      - name: blanditiis
+                      - name: omnis
+                      - name: tempore
         '400':
           description: Bad request
           content:
@@ -1885,6 +3412,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: est
+              course2:
+                value:
+                  name: voluptate
+              course3:
+                value:
+                  name: quibusdam
+              course4:
+                value:
+                  name: molestias
+              course5:
+                value:
+                  name: voluptatibus
       responses:
         '201':
           description: Create succeeded
@@ -1895,6 +3438,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: et
+                course2:
+                  value:
+                    course:
+                      name: sed
+                course3:
+                  value:
+                    course:
+                      name: in
+                course4:
+                  value:
+                    course:
+                      name: eaque
+                course5:
+                  value:
+                    course:
+                      name: a
         '400':
           description: Bad request
           content:
@@ -1979,6 +3543,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: asperiores
+                course2:
+                  value:
+                    course:
+                      name: ut
+                course3:
+                  value:
+                    course:
+                      name: sit
+                course4:
+                  value:
+                    course:
+                      name: odit
+                course5:
+                  value:
+                    course:
+                      name: illum
         '400':
           description: Bad request
           content:
@@ -2021,6 +3606,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: non
+              course2:
+                value:
+                  name: ea
+              course3:
+                value:
+                  name: voluptate
+              course4:
+                value:
+                  name: dolorem
+              course5:
+                value:
+                  name: laboriosam
       responses:
         '200':
           description: Replace succeeded
@@ -2031,6 +3632,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: dolor
+                course2:
+                  value:
+                    course:
+                      name: vel
+                course3:
+                  value:
+                    course:
+                      name: blanditiis
+                course4:
+                  value:
+                    course:
+                      name: ut
+                course5:
+                  value:
+                    course:
+                      name: eveniet
         '400':
           description: Bad request
           content:
@@ -2073,6 +3695,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CourseRequest'
+            examples:
+              course1:
+                value:
+                  name: veritatis
+              course2:
+                value:
+                  name: voluptatem
+              course3:
+                value:
+                  name: consequatur
+              course4:
+                value:
+                  name: soluta
+              course5:
+                value:
+                  name: ipsum
       responses:
         '200':
           description: Update succeeded
@@ -2083,6 +3721,27 @@ paths:
                 properties:
                   course:
                     $ref: '#/components/schemas/CourseResponse'
+              examples:
+                course1:
+                  value:
+                    course:
+                      name: ex
+                course2:
+                  value:
+                    course:
+                      name: occaecati
+                course3:
+                  value:
+                    course:
+                      name: aperiam
+                course4:
+                  value:
+                    course:
+                      name: voluptatum
+                course5:
+                  value:
+                    course:
+                      name: qui
         '400':
           description: Bad request
           content:

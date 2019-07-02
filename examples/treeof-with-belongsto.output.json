@@ -17,8 +17,9 @@
             "name": "perPage",
             "description": "Per page",
             "schema": {
-              "type": "string",
-              "default": "20"
+              "type": "integer",
+              "format": "int32",
+              "default": 20
             },
             "in": "query",
             "required": false
@@ -27,8 +28,9 @@
             "name": "page",
             "description": "Page number",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "format": "int32",
+              "default": 1
             },
             "in": "query",
             "required": false
@@ -571,8 +573,9 @@
             "name": "perPage",
             "description": "Per page",
             "schema": {
-              "type": "string",
-              "default": "20"
+              "type": "integer",
+              "format": "int32",
+              "default": 20
             },
             "in": "query",
             "required": false
@@ -581,8 +584,9 @@
             "name": "page",
             "description": "Page number",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "format": "int32",
+              "default": 1
             },
             "in": "query",
             "required": false
@@ -1189,8 +1193,9 @@
             "name": "perPage",
             "description": "Per page",
             "schema": {
-              "type": "string",
-              "default": "20"
+              "type": "integer",
+              "format": "int32",
+              "default": 20
             },
             "in": "query",
             "required": false
@@ -1199,8 +1204,9 @@
             "name": "page",
             "description": "Page number",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "format": "int32",
+              "default": 1
             },
             "in": "query",
             "required": false
@@ -1869,16 +1875,20 @@
         "type": "object",
         "properties": {
           "firstPage": {
-            "type": "number"
+            "type": "integer",
+            "format": "int32"
           },
           "lastPage": {
-            "type": "number"
+            "type": "integer",
+            "format": "int32"
           },
           "nextPage": {
-            "type": "number"
+            "type": "integer",
+            "format": "int32"
           },
           "prevPage": {
-            "type": "number"
+            "type": "integer",
+            "format": "int32"
           }
         },
         "required": [

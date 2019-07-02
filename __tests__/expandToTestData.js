@@ -99,16 +99,16 @@ describe('expandToTestData', () => {
     expect(mapValues(helpers, helper => helper())).toEqual({
       listPets: {
         request: {
-          query: { perPage: '20', page: '1' },
+          query: { perPage: 20, page: 1 },
           params: {}
         },
         response: {
           pets: range(20).map(() => fakePetResponse),
           pagination: {
-            firstPage: '1',
-            lastPage: '10',
-            nextPage: '2',
-            prevPage: '1'
+            firstPage: 1,
+            lastPage: 10,
+            nextPage: 2,
+            prevPage: 1
           }
         }
       },
@@ -162,7 +162,7 @@ describe('expandToTestData', () => {
 
   test('query', () => {
     expect((mapValues(helpers, helper => helper({
-      query: { perPage: '2' }
+      query: { perPage: 2 }
     }).response).listPets.pets)).toEqual([
       fakePetResponse,
       fakePetResponse

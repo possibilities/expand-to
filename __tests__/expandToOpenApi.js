@@ -156,14 +156,14 @@ const paginationParameters = [
     name: 'perPage',
     required: false,
     description: 'Per page',
-    schema: { type: 'string', default: '20' }
+    schema: { type: 'integer', format: 'int32', default: 20 }
   },
   {
     in: 'query',
     name: 'page',
     required: false,
     description: 'Page number',
-    schema: { type: 'string', default: '1' }
+    schema: { type: 'integer', format: 'int32', default: 1 }
   },
   {
     in: 'query',

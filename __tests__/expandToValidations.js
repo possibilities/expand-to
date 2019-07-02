@@ -87,8 +87,8 @@ test('expandToValidations', () => {
                 type: 'object',
                 properties: {
                   orderBy: { type: 'string' },
-                  page: { type: 'string', default: '1' },
-                  perPage: { type: 'string', default: '20' }
+                  page: { type: 'integer', format: 'int32', default: 1 },
+                  perPage: { type: 'integer', format: 'int32', default: 20 }
                 }
               },
               params: { type: 'object', properties: {} }

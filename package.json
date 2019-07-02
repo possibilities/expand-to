@@ -5,6 +5,9 @@
     "test": "jest --verbose",
     "lint": "standard"
   },
+  "files": [
+    "*.js"
+  ],
   "dependencies": {
     "faker": "^4.1.0",
     "inflection": "^1.12.0",

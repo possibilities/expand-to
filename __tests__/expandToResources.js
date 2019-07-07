@@ -381,30 +381,22 @@ describe('expandToResources#fns', () => {
         name: 'customFnWithListAction',
         model: 'pet',
         resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFnWithListAction'],
+        pathParts: ['pets'],
         isCustomFunctionResource: true,
         operations: ['list']
-      },
-      {
-        name: 'customFnWithRequestAndStringyResponse',
-        model: 'customFnWithRequestAndStringyResponse',
-        resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFnWithRequestAndStringyResponse'],
-        isCustomFunctionResource: true,
-        operations: ['post']
       },
       {
         name: 'customFnWithSeparateModels',
         model: 'customFnWithSeparateModels',
         resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFnWithSeparateModels'],
+        pathParts: ['pets'],
         isCustomFunctionResource: true,
         operations: ['post']
       },
       {
         name: 'customFnWithStringyModel',
         model: 'customFnWithStringyModel',
-        pathParts: ['pets', 'invoke.customFnWithStringyModel'],
+        pathParts: ['pets'],
         resourceName: 'pet',
         isCustomFunctionResource: true,
         operations: ['post']
@@ -413,7 +405,7 @@ describe('expandToResources#fns', () => {
         name: 'customFnWithStringyResponseModel',
         model: 'customFnWithStringyResponseModel',
         resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFnWithStringyResponseModel'],
+        pathParts: ['pets'],
         isCustomFunctionResource: true,
         operations: ['post']
       },
@@ -421,7 +413,15 @@ describe('expandToResources#fns', () => {
         name: 'customFnWithStringySeparateModels',
         model: 'customFnWithStringySeparateModels',
         resourceName: 'pet',
-        pathParts: ['pets', 'invoke.customFnWithStringySeparateModels'],
+        pathParts: ['pets'],
+        isCustomFunctionResource: true,
+        operations: ['post']
+      },
+      {
+        name: 'customFnWithRequestAndStringyResponse',
+        model: 'customFnWithRequestAndStringyResponse',
+        resourceName: 'pet',
+        pathParts: ['pets'],
         isCustomFunctionResource: true,
         operations: ['post']
       },
@@ -436,7 +436,7 @@ describe('expandToResources#fns', () => {
         name: 'customFnWithGetAction',
         model: 'pet',
         resourceName: 'pet',
-        pathParts: ['pets', '{petId}', 'invoke.customFnWithGetAction'],
+        pathParts: ['pets', '{petId}'],
         isCustomFunctionResource: true,
         operations: ['get']
       },
@@ -444,7 +444,7 @@ describe('expandToResources#fns', () => {
         name: 'customFnWithModel',
         model: 'customFnWithModel',
         resourceName: 'pet',
-        pathParts: ['pets', '{petId}', 'invoke.customFnWithModel'],
+        pathParts: ['pets', '{petId}'],
         isCustomFunctionResource: true,
         operations: ['get']
       }

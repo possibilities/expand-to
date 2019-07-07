@@ -165,8 +165,7 @@ const expandPaths = mountedResources => {
         pathParts: compact([
           ...resource.mountPath,
           pluralize(resource.name),
-          allEntityVerbs.includes(fn.method) && `{${resource.name}Id}`,
-          `invoke.${fn.name}`
+          allEntityVerbs.includes(fn.method) && `{${resource.name}Id}`
         ])
       })
     })

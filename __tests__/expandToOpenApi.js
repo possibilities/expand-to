@@ -111,7 +111,7 @@ const spec = {
       name: 'customFn',
       resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.customFn'],
+      pathParts: ['pets'],
       operations: ['get']
     },
     {
@@ -119,7 +119,7 @@ const spec = {
       name: 'customFnWithStringyResponse',
       resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.customFnWithStringyResponse'],
+      pathParts: ['pets'],
       operations: ['get']
     },
     {
@@ -127,7 +127,7 @@ const spec = {
       name: 'customFnWithStringyRequestAndResponse',
       resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.customFnWithStringyRequestAndResponse'],
+      pathParts: ['pets'],
       operations: ['post']
     },
     {
@@ -135,7 +135,7 @@ const spec = {
       name: 'customFnWithRequestAndStringyResponse',
       resourceName: 'pet',
       isCustomFunctionResource: true,
-      pathParts: ['pets', 'invoke.customFnWithRequestAndStringyResponse'],
+      pathParts: ['pets'],
       operations: ['post']
     },
     {
@@ -323,16 +323,16 @@ describe('expandToOpenApi#paths', () => {
         get: ['Pets'],
         post: ['Pets']
       },
-      '/pets/invoke.custom_fn': {
+      '/pets.custom_fn': {
         get: ['Pets']
       },
-      '/pets/invoke.custom_fn_with_stringy_response': {
+      '/pets.custom_fn_with_stringy_response': {
         get: ['Pets']
       },
-      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
+      '/pets.custom_fn_with_stringy_request_and_response': {
         post: ['Pets']
       },
-      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
+      '/pets.custom_fn_with_request_and_stringy_response': {
         post: ['Pets']
       },
       '/pets/{petId}': {
@@ -382,16 +382,16 @@ describe('expandToOpenApi#paths', () => {
         patch: 'modifyPet',
         put: 'replacePet'
       },
-      '/pets/invoke.custom_fn': {
+      '/pets.custom_fn': {
         get: 'invokeCustomFnForPet'
       },
-      '/pets/invoke.custom_fn_with_stringy_response': {
+      '/pets.custom_fn_with_stringy_response': {
         get: 'invokeCustomFnWithStringyResponseForPet'
       },
-      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
+      '/pets.custom_fn_with_stringy_request_and_response': {
         post: 'invokeCustomFnWithStringyRequestAndResponseForPet'
       },
-      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
+      '/pets.custom_fn_with_request_and_stringy_response': {
         post: 'invokeCustomFnWithRequestAndStringyResponseForPet'
       },
       '/stores': {
@@ -434,16 +434,16 @@ describe('expandToOpenApi#paths', () => {
         patch: 'Modify pet',
         put: 'Replace pet'
       },
-      '/pets/invoke.custom_fn': {
+      '/pets.custom_fn': {
         get: 'Invoke `customFn` for pet'
       },
-      '/pets/invoke.custom_fn_with_stringy_response': {
+      '/pets.custom_fn_with_stringy_response': {
         get: 'Invoke `customFnWithStringyResponse` for pet'
       },
-      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
+      '/pets.custom_fn_with_stringy_request_and_response': {
         post: 'Invoke `customFnWithStringyRequestAndResponse` for pet'
       },
-      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
+      '/pets.custom_fn_with_request_and_stringy_response': {
         post: 'Invoke `customFnWithRequestAndStringyResponse` for pet'
       },
       '/stores': {
@@ -513,10 +513,10 @@ describe('expandToOpenApi#paths', () => {
         patch: petsParams,
         put: petsParams
       },
-      '/pets/invoke.custom_fn': { get: [] },
-      '/pets/invoke.custom_fn_with_stringy_response': { get: [] },
-      '/pets/invoke.custom_fn_with_stringy_request_and_response': { post: [] },
-      '/pets/invoke.custom_fn_with_request_and_stringy_response': { post: [] },
+      '/pets.custom_fn': { get: [] },
+      '/pets.custom_fn_with_stringy_response': { get: [] },
+      '/pets.custom_fn_with_stringy_request_and_response': { post: [] },
+      '/pets.custom_fn_with_request_and_stringy_response': { post: [] },
       '/stores': { get: paginationParameters, post: [] },
       '/stores/{storeId}': {
         delete: storeParams,
@@ -578,13 +578,13 @@ describe('expandToOpenApi#paths', () => {
           required: true
         }
       },
-      '/pets/invoke.custom_fn': {
+      '/pets.custom_fn': {
         get: undefined
       },
-      '/pets/invoke.custom_fn_with_stringy_response': {
+      '/pets.custom_fn_with_stringy_response': {
         get: undefined
       },
-      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
+      '/pets.custom_fn_with_stringy_request_and_response': {
         post: {
           content: {
             'application/json': {
@@ -601,7 +601,7 @@ describe('expandToOpenApi#paths', () => {
           required: true
         }
       },
-      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
+      '/pets.custom_fn_with_request_and_stringy_response': {
         post: {
           content: {
             'application/json': {
@@ -874,7 +874,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.custom_fn': {
+      '/pets.custom_fn': {
         get: {
           '200': {
             content: {
@@ -895,7 +895,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.custom_fn_with_stringy_response': {
+      '/pets.custom_fn_with_stringy_response': {
         get: {
           '200': {
             content: {
@@ -957,7 +957,7 @@ describe('expandToOpenApi#paths', () => {
           ...entityErrors
         }
       },
-      '/pets/invoke.custom_fn_with_stringy_request_and_response': {
+      '/pets.custom_fn_with_stringy_request_and_response': {
         post: {
           '201': {
             content: {
@@ -994,7 +994,7 @@ describe('expandToOpenApi#paths', () => {
           ...collectionErrors
         }
       },
-      '/pets/invoke.custom_fn_with_request_and_stringy_response': {
+      '/pets.custom_fn_with_request_and_stringy_response': {
         post: {
           '201': {
             content: {

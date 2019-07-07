@@ -30,14 +30,16 @@ const spec = {
     },
     {
       model: 'pet',
-      pathParts: ['pets', 'invoke.requestMedicalRecords'],
+      name: 'requestMedicalRecords',
+      pathParts: ['pets'],
       resourceName: 'pet',
       isCustomFunctionResource: true,
       operations: ['get']
     },
     {
       model: 'pet',
-      pathParts: ['pets', '{petId}', 'invoke.requestMedicalRecordHistory'],
+      name:  'requestMedicalRecordHistory',
+      pathParts: ['pets', '{petId}'],
       resourceName: 'pet',
       isCustomFunctionResource: true,
       operations: ['list']
@@ -255,8 +257,8 @@ describe('expandToOperations', () => {
         expect(expandToOperations(spec).operations.map(op => op.path)).toEqual([
           '/pets',
           '/pets',
-          '/pets/invoke.request_medical_records',
-          '/pets/{petId}/invoke.request_medical_record_history',
+          '/pets.request_medical_records',
+          '/pets/{petId}.request_medical_record_history',
           '/pets/{petId}',
           '/pets/{petId}',
           '/pets/{petId}',

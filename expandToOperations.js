@@ -42,7 +42,7 @@ const getId = (action, path) => {
   if (path.isCustomFunctionResource) {
     return [
       'invoke',
-      upperFirst(last(path.pathParts).split('.').pop()),
+      upperFirst(path.name),
       'For',
       action === 'list'
         ? pluralize(upperFirst(path.resourceName))
@@ -83,7 +83,7 @@ const getSummary = (action, path) => {
     const resourceName = action === 'list'
       ? pluralize(path.resourceName)
       : path.resourceName
-    return `Invoke \`${fnName}\` for ${resourceName}`
+    return `Invoke \`${path.name}\` for ${resourceName}`
   }
   return [
     upperFirst(actionToLabel[action] || action),
@@ -187,11 +187,7 @@ const expandToOperations = ({ paths, models }, options = {}) => {
         ...pick(path, ['name', 'model', 'resourceName']),
         summary: getSummary(action, path),
         path: path.isCustomFunctionResource
-          ? [
-            '',
-            ...initial(path.pathParts),
-            snakeCase(last(path.pathParts)).replace('invoke_', 'invoke.')
-          ].join('/')
+          ? ['', ...initial(path.pathParts), last(path.pathParts) + '.' + snakeCase(path.name)].join('/')
           : `/${path.pathParts.join('/')}`,
         verb: action === 'list' ? 'get' : action,
         namespace: getNamespace(path),

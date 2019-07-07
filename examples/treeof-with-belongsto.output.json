@@ -14,8 +14,8 @@
         "summary": "List regions",
         "parameters": [
           {
-            "name": "perPage",
-            "description": "Per page",
+            "name": "pageSize",
+            "description": "Page size",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -25,12 +25,10 @@
             "required": false
           },
           {
-            "name": "page",
-            "description": "Page number",
+            "name": "pageToken",
+            "description": "Page token",
             "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
+              "type": "string"
             },
             "in": "query",
             "required": false
@@ -51,29 +49,37 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "regions": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/RegionResponse"
-                      }
-                    },
-                    "pages": {
+                  "allOf": [
+                    {
                       "$ref": "#/components/schemas/PaginationResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "regions": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/RegionResponse"
+                          }
+                        }
+                      }
                     }
-                  }
+                  ]
                 },
                 "examples": {
                   "region1": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "7ddd6892-a486-489f-992f-aadb5691d507",
                       "regions": [
+                        {
+                          "name": "harum"
+                        },
+                        {
+                          "name": "pariatur"
+                        },
+                        {
+                          "name": "quidem"
+                        },
                         {
                           "name": "et"
                         },
@@ -81,346 +87,317 @@
                           "name": "est"
                         },
                         {
-                          "name": "magni"
+                          "name": "in"
+                        },
+                        {
+                          "name": "suscipit"
                         },
                         {
                           "name": "ut"
                         },
                         {
-                          "name": "et"
+                          "name": "tempore"
                         },
                         {
-                          "name": "a"
+                          "name": "ipsum"
                         },
                         {
-                          "name": "commodi"
+                          "name": "sapiente"
                         },
                         {
-                          "name": "aut"
+                          "name": "similique"
                         },
                         {
-                          "name": "asperiores"
+                          "name": "dignissimos"
                         },
                         {
-                          "name": "eaque"
+                          "name": "nemo"
                         },
                         {
-                          "name": "voluptatem"
+                          "name": "exercitationem"
                         },
                         {
-                          "name": "ipsam"
+                          "name": "magni"
                         },
                         {
-                          "name": "amet"
+                          "name": "officia"
                         },
                         {
-                          "name": "aut"
+                          "name": "inventore"
                         },
                         {
-                          "name": "dolorum"
+                          "name": "enim"
                         },
                         {
-                          "name": "esse"
-                        },
-                        {
-                          "name": "qui"
-                        },
-                        {
-                          "name": "eius"
-                        },
-                        {
-                          "name": "consequuntur"
-                        },
-                        {
-                          "name": "facere"
+                          "name": "repudiandae"
                         }
                       ]
                     }
                   },
                   "region2": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "3718519d-5aa7-4471-9214-25c0885d704d",
                       "regions": [
-                        {
-                          "name": "explicabo"
-                        },
-                        {
-                          "name": "impedit"
-                        },
-                        {
-                          "name": "ut"
-                        },
-                        {
-                          "name": "qui"
-                        },
-                        {
-                          "name": "qui"
-                        },
-                        {
-                          "name": "est"
-                        },
-                        {
-                          "name": "impedit"
-                        },
-                        {
-                          "name": "sunt"
-                        },
-                        {
-                          "name": "accusamus"
-                        },
-                        {
-                          "name": "ipsam"
-                        },
-                        {
-                          "name": "ut"
-                        },
-                        {
-                          "name": "animi"
-                        },
-                        {
-                          "name": "temporibus"
-                        },
                         {
                           "name": "aut"
                         },
                         {
-                          "name": "numquam"
+                          "name": "eveniet"
                         },
                         {
-                          "name": "consectetur"
+                          "name": "quia"
                         },
                         {
-                          "name": "vero"
+                          "name": "laudantium"
                         },
                         {
-                          "name": "amet"
+                          "name": "repellendus"
                         },
                         {
-                          "name": "perferendis"
+                          "name": "recusandae"
                         },
                         {
-                          "name": "sunt"
+                          "name": "maiores"
+                        },
+                        {
+                          "name": "commodi"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "corrupti"
+                        },
+                        {
+                          "name": "atque"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "pariatur"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "deleniti"
+                        },
+                        {
+                          "name": "dolorum"
+                        },
+                        {
+                          "name": "error"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "sed"
                         }
                       ]
                     }
                   },
                   "region3": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "37996731-201f-4c8d-88cd-89508e6c9d33",
                       "regions": [
+                        {
+                          "name": "quibusdam"
+                        },
+                        {
+                          "name": "odit"
+                        },
+                        {
+                          "name": "occaecati"
+                        },
+                        {
+                          "name": "ut"
+                        },
+                        {
+                          "name": "placeat"
+                        },
+                        {
+                          "name": "nemo"
+                        },
                         {
                           "name": "aut"
                         },
                         {
-                          "name": "nesciunt"
+                          "name": "necessitatibus"
                         },
                         {
-                          "name": "consequatur"
+                          "name": "illo"
                         },
                         {
-                          "name": "ex"
+                          "name": "officiis"
                         },
                         {
-                          "name": "et"
-                        },
-                        {
-                          "name": "quasi"
-                        },
-                        {
-                          "name": "sed"
-                        },
-                        {
-                          "name": "perferendis"
-                        },
-                        {
-                          "name": "corporis"
-                        },
-                        {
-                          "name": "autem"
-                        },
-                        {
-                          "name": "quas"
+                          "name": "quos"
                         },
                         {
                           "name": "et"
-                        },
-                        {
-                          "name": "vel"
-                        },
-                        {
-                          "name": "autem"
                         },
                         {
                           "name": "qui"
                         },
                         {
-                          "name": "sunt"
+                          "name": "rerum"
                         },
                         {
-                          "name": "tenetur"
+                          "name": "in"
                         },
                         {
-                          "name": "non"
+                          "name": "suscipit"
                         },
                         {
-                          "name": "impedit"
+                          "name": "reprehenderit"
                         },
                         {
-                          "name": "dolores"
+                          "name": "alias"
+                        },
+                        {
+                          "name": "repudiandae"
+                        },
+                        {
+                          "name": "praesentium"
                         }
                       ]
                     }
                   },
                   "region4": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "2b9e673f-6623-4daf-b1c9-d9e41a2aff97",
                       "regions": [
                         {
-                          "name": "tempora"
+                          "name": "officiis"
                         },
                         {
-                          "name": "blanditiis"
+                          "name": "error"
                         },
                         {
-                          "name": "voluptatum"
+                          "name": "quos"
                         },
                         {
-                          "name": "minima"
+                          "name": "culpa"
                         },
                         {
-                          "name": "ullam"
+                          "name": "tempore"
                         },
                         {
-                          "name": "rerum"
+                          "name": "voluptas"
                         },
                         {
-                          "name": "quis"
+                          "name": "vitae"
                         },
                         {
-                          "name": "est"
+                          "name": "earum"
                         },
                         {
-                          "name": "eum"
+                          "name": "delectus"
                         },
                         {
-                          "name": "sed"
+                          "name": "inventore"
                         },
                         {
-                          "name": "atque"
+                          "name": "magni"
                         },
                         {
-                          "name": "a"
+                          "name": "laudantium"
                         },
                         {
-                          "name": "omnis"
+                          "name": "eaque"
                         },
                         {
-                          "name": "nihil"
+                          "name": "nam"
                         },
                         {
-                          "name": "et"
+                          "name": "velit"
                         },
                         {
-                          "name": "iste"
+                          "name": "consequatur"
                         },
                         {
-                          "name": "pariatur"
+                          "name": "veritatis"
                         },
                         {
-                          "name": "praesentium"
+                          "name": "magnam"
                         },
                         {
-                          "name": "harum"
+                          "name": "deserunt"
                         },
                         {
-                          "name": "dolores"
+                          "name": "eveniet"
                         }
                       ]
                     }
                   },
                   "region5": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "50b1f4ab-faca-4465-ac34-aeb22847604b",
                       "regions": [
                         {
-                          "name": "et"
+                          "name": "praesentium"
                         },
                         {
-                          "name": "eligendi"
+                          "name": "adipisci"
                         },
                         {
-                          "name": "cupiditate"
-                        },
-                        {
-                          "name": "dignissimos"
-                        },
-                        {
-                          "name": "aut"
-                        },
-                        {
-                          "name": "sed"
-                        },
-                        {
-                          "name": "cupiditate"
+                          "name": "nihil"
                         },
                         {
                           "name": "rerum"
                         },
                         {
-                          "name": "eaque"
+                          "name": "deserunt"
                         },
                         {
-                          "name": "quis"
+                          "name": "voluptate"
                         },
                         {
-                          "name": "nulla"
+                          "name": "deserunt"
                         },
                         {
-                          "name": "omnis"
+                          "name": "expedita"
                         },
                         {
-                          "name": "nulla"
+                          "name": "cumque"
                         },
                         {
-                          "name": "impedit"
+                          "name": "mollitia"
                         },
                         {
-                          "name": "quo"
+                          "name": "atque"
                         },
                         {
-                          "name": "excepturi"
+                          "name": "dolore"
                         },
                         {
-                          "name": "velit"
+                          "name": "autem"
+                        },
+                        {
+                          "name": "corporis"
+                        },
+                        {
+                          "name": "accusantium"
+                        },
+                        {
+                          "name": "id"
                         },
                         {
                           "name": "aut"
                         },
                         {
-                          "name": "natus"
+                          "name": "nihil"
                         },
                         {
-                          "name": "maiores"
+                          "name": "ut"
+                        },
+                        {
+                          "name": "corrupti"
                         }
                       ]
                     }
@@ -478,27 +455,27 @@
               "examples": {
                 "region1": {
                   "value": {
-                    "name": "neque"
+                    "name": "accusamus"
                   }
                 },
                 "region2": {
                   "value": {
-                    "name": "exercitationem"
+                    "name": "aut"
                   }
                 },
                 "region3": {
                   "value": {
-                    "name": "doloremque"
+                    "name": "est"
                   }
                 },
                 "region4": {
                   "value": {
-                    "name": "suscipit"
+                    "name": "perspiciatis"
                   }
                 },
                 "region5": {
                   "value": {
-                    "name": "consequatur"
+                    "name": "quos"
                   }
                 }
               }
@@ -522,35 +499,35 @@
                   "region1": {
                     "value": {
                       "region": {
-                        "name": "eveniet"
+                        "name": "saepe"
                       }
                     }
                   },
                   "region2": {
                     "value": {
                       "region": {
-                        "name": "inventore"
+                        "name": "et"
                       }
                     }
                   },
                   "region3": {
                     "value": {
                       "region": {
-                        "name": "quidem"
+                        "name": "quod"
                       }
                     }
                   },
                   "region4": {
                     "value": {
                       "region": {
-                        "name": "optio"
+                        "name": "culpa"
                       }
                     }
                   },
                   "region5": {
                     "value": {
                       "region": {
-                        "name": "est"
+                        "name": "aut"
                       }
                     }
                   }
@@ -696,35 +673,35 @@
                   "region1": {
                     "value": {
                       "region": {
-                        "name": "sunt"
+                        "name": "veniam"
                       }
                     }
                   },
                   "region2": {
                     "value": {
                       "region": {
-                        "name": "autem"
+                        "name": "alias"
                       }
                     }
                   },
                   "region3": {
                     "value": {
                       "region": {
-                        "name": "aut"
+                        "name": "ducimus"
                       }
                     }
                   },
                   "region4": {
                     "value": {
                       "region": {
-                        "name": "consequatur"
+                        "name": "nostrum"
                       }
                     }
                   },
                   "region5": {
                     "value": {
                       "region": {
-                        "name": "aspernatur"
+                        "name": "quisquam"
                       }
                     }
                   }
@@ -801,27 +778,27 @@
               "examples": {
                 "region1": {
                   "value": {
-                    "name": "rerum"
+                    "name": "delectus"
                   }
                 },
                 "region2": {
                   "value": {
-                    "name": "totam"
+                    "name": "expedita"
                   }
                 },
                 "region3": {
                   "value": {
-                    "name": "voluptas"
+                    "name": "porro"
                   }
                 },
                 "region4": {
                   "value": {
-                    "name": "eligendi"
+                    "name": "quia"
                   }
                 },
                 "region5": {
                   "value": {
-                    "name": "aut"
+                    "name": "eaque"
                   }
                 }
               }
@@ -845,35 +822,35 @@
                   "region1": {
                     "value": {
                       "region": {
-                        "name": "temporibus"
+                        "name": "quia"
                       }
                     }
                   },
                   "region2": {
                     "value": {
                       "region": {
-                        "name": "ut"
+                        "name": "repudiandae"
                       }
                     }
                   },
                   "region3": {
                     "value": {
                       "region": {
-                        "name": "et"
+                        "name": "excepturi"
                       }
                     }
                   },
                   "region4": {
                     "value": {
                       "region": {
-                        "name": "consectetur"
+                        "name": "pariatur"
                       }
                     }
                   },
                   "region5": {
                     "value": {
                       "region": {
-                        "name": "necessitatibus"
+                        "name": "voluptatem"
                       }
                     }
                   }
@@ -950,27 +927,27 @@
               "examples": {
                 "region1": {
                   "value": {
-                    "name": "nihil"
+                    "name": "eum"
                   }
                 },
                 "region2": {
                   "value": {
-                    "name": "et"
+                    "name": "consequuntur"
                   }
                 },
                 "region3": {
                   "value": {
-                    "name": "expedita"
+                    "name": "quos"
                   }
                 },
                 "region4": {
                   "value": {
-                    "name": "iusto"
+                    "name": "qui"
                   }
                 },
                 "region5": {
                   "value": {
-                    "name": "architecto"
+                    "name": "ut"
                   }
                 }
               }
@@ -994,35 +971,35 @@
                   "region1": {
                     "value": {
                       "region": {
-                        "name": "minus"
+                        "name": "accusamus"
                       }
                     }
                   },
                   "region2": {
                     "value": {
                       "region": {
-                        "name": "mollitia"
+                        "name": "sit"
                       }
                     }
                   },
                   "region3": {
                     "value": {
                       "region": {
-                        "name": "explicabo"
+                        "name": "quia"
                       }
                     }
                   },
                   "region4": {
                     "value": {
                       "region": {
-                        "name": "rerum"
+                        "name": "non"
                       }
                     }
                   },
                   "region5": {
                     "value": {
                       "region": {
-                        "name": "quaerat"
+                        "name": "tempore"
                       }
                     }
                   }
@@ -1161,8 +1138,8 @@
             "description": "Region id"
           },
           {
-            "name": "perPage",
-            "description": "Per page",
+            "name": "pageSize",
+            "description": "Page size",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1172,12 +1149,10 @@
             "required": false
           },
           {
-            "name": "page",
-            "description": "Page number",
+            "name": "pageToken",
+            "description": "Page token",
             "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
+              "type": "string"
             },
             "in": "query",
             "required": false
@@ -1198,376 +1173,355 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "groups": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/GroupResponse"
-                      }
-                    },
-                    "pages": {
+                  "allOf": [
+                    {
                       "$ref": "#/components/schemas/PaginationResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "groups": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/GroupResponse"
+                          }
+                        }
+                      }
                     }
-                  }
+                  ]
                 },
                 "examples": {
                   "group1": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "605d0a31-4bb1-4609-a906-a26b919e1898",
                       "groups": [
                         {
-                          "name": "enim"
+                          "name": "et"
                         },
                         {
-                          "name": "harum"
+                          "name": "nihil"
                         },
                         {
-                          "name": "non"
+                          "name": "temporibus"
                         },
                         {
-                          "name": "voluptatem"
+                          "name": "animi"
                         },
                         {
-                          "name": "consequatur"
+                          "name": "ullam"
                         },
                         {
                           "name": "consequuntur"
                         },
                         {
-                          "name": "laboriosam"
+                          "name": "qui"
                         },
                         {
-                          "name": "vero"
+                          "name": "aut"
                         },
                         {
-                          "name": "eum"
+                          "name": "repellat"
                         },
                         {
-                          "name": "adipisci"
+                          "name": "magni"
                         },
                         {
-                          "name": "necessitatibus"
+                          "name": "ut"
                         },
                         {
-                          "name": "sint"
-                        },
-                        {
-                          "name": "quia"
-                        },
-                        {
-                          "name": "veritatis"
-                        },
-                        {
-                          "name": "facere"
-                        },
-                        {
-                          "name": "asperiores"
-                        },
-                        {
-                          "name": "enim"
-                        },
-                        {
-                          "name": "possimus"
+                          "name": "consectetur"
                         },
                         {
                           "name": "et"
                         },
                         {
-                          "name": "sit"
+                          "name": "facilis"
+                        },
+                        {
+                          "name": "sint"
+                        },
+                        {
+                          "name": "sapiente"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "et"
+                        },
+                        {
+                          "name": "ratione"
+                        },
+                        {
+                          "name": "est"
                         }
                       ]
                     }
                   },
                   "group2": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "4874d8ba-d419-443a-a304-64e2558b80c6",
                       "groups": [
                         {
-                          "name": "distinctio"
+                          "name": "quia"
                         },
                         {
-                          "name": "quo"
+                          "name": "quaerat"
                         },
                         {
-                          "name": "vero"
+                          "name": "eaque"
                         },
                         {
-                          "name": "in"
+                          "name": "veritatis"
                         },
                         {
-                          "name": "natus"
+                          "name": "quasi"
+                        },
+                        {
+                          "name": "placeat"
+                        },
+                        {
+                          "name": "nam"
+                        },
+                        {
+                          "name": "beatae"
                         },
                         {
                           "name": "non"
                         },
                         {
-                          "name": "molestiae"
+                          "name": "earum"
                         },
                         {
-                          "name": "sed"
+                          "name": "sunt"
                         },
                         {
-                          "name": "neque"
+                          "name": "excepturi"
                         },
                         {
-                          "name": "harum"
-                        },
-                        {
-                          "name": "sequi"
-                        },
-                        {
-                          "name": "et"
-                        },
-                        {
-                          "name": "voluptates"
-                        },
-                        {
-                          "name": "debitis"
-                        },
-                        {
-                          "name": "vero"
-                        },
-                        {
-                          "name": "saepe"
+                          "name": "aut"
                         },
                         {
                           "name": "qui"
                         },
                         {
-                          "name": "et"
+                          "name": "sit"
                         },
                         {
-                          "name": "ut"
+                          "name": "distinctio"
                         },
                         {
-                          "name": "voluptatibus"
+                          "name": "eligendi"
+                        },
+                        {
+                          "name": "excepturi"
+                        },
+                        {
+                          "name": "laborum"
+                        },
+                        {
+                          "name": "occaecati"
                         }
                       ]
                     }
                   },
                   "group3": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "5152e1cf-ad5e-4175-8304-78a9aac4987c",
                       "groups": [
                         {
-                          "name": "enim"
+                          "name": "et"
                         },
                         {
-                          "name": "ab"
-                        },
-                        {
-                          "name": "pariatur"
-                        },
-                        {
-                          "name": "sed"
-                        },
-                        {
-                          "name": "non"
-                        },
-                        {
-                          "name": "temporibus"
-                        },
-                        {
-                          "name": "error"
-                        },
-                        {
-                          "name": "vitae"
-                        },
-                        {
-                          "name": "dolore"
-                        },
-                        {
-                          "name": "eum"
-                        },
-                        {
-                          "name": "aliquam"
+                          "name": "maiores"
                         },
                         {
                           "name": "et"
+                        },
+                        {
+                          "name": "repellendus"
                         },
                         {
                           "name": "placeat"
                         },
                         {
-                          "name": "ut"
+                          "name": "eaque"
+                        },
+                        {
+                          "name": "consectetur"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "minima"
                         },
                         {
                           "name": "et"
                         },
                         {
-                          "name": "natus"
+                          "name": "tenetur"
                         },
                         {
-                          "name": "itaque"
+                          "name": "iste"
                         },
                         {
-                          "name": "possimus"
+                          "name": "quaerat"
                         },
                         {
-                          "name": "ut"
+                          "name": "cumque"
                         },
                         {
-                          "name": "est"
+                          "name": "repellendus"
+                        },
+                        {
+                          "name": "praesentium"
+                        },
+                        {
+                          "name": "quibusdam"
+                        },
+                        {
+                          "name": "eveniet"
+                        },
+                        {
+                          "name": "voluptates"
+                        },
+                        {
+                          "name": "et"
                         }
                       ]
                     }
                   },
                   "group4": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "22f1128d-4897-4cdb-8b75-95229f555b28",
                       "groups": [
                         {
-                          "name": "dolor"
+                          "name": "nulla"
                         },
                         {
-                          "name": "repellat"
+                          "name": "sunt"
                         },
                         {
-                          "name": "odio"
-                        },
-                        {
-                          "name": "quasi"
-                        },
-                        {
-                          "name": "animi"
-                        },
-                        {
-                          "name": "quis"
-                        },
-                        {
-                          "name": "est"
-                        },
-                        {
-                          "name": "necessitatibus"
-                        },
-                        {
-                          "name": "ad"
-                        },
-                        {
-                          "name": "laborum"
-                        },
-                        {
-                          "name": "dolorum"
-                        },
-                        {
-                          "name": "molestiae"
-                        },
-                        {
-                          "name": "earum"
-                        },
-                        {
-                          "name": "facilis"
-                        },
-                        {
-                          "name": "est"
-                        },
-                        {
-                          "name": "dolor"
-                        },
-                        {
-                          "name": "officia"
-                        },
-                        {
-                          "name": "non"
+                          "name": "consequatur"
                         },
                         {
                           "name": "tempore"
                         },
                         {
-                          "name": "quia"
+                          "name": "ex"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "voluptatum"
+                        },
+                        {
+                          "name": "mollitia"
+                        },
+                        {
+                          "name": "illum"
+                        },
+                        {
+                          "name": "nihil"
+                        },
+                        {
+                          "name": "quaerat"
+                        },
+                        {
+                          "name": "voluptate"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "debitis"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "aspernatur"
+                        },
+                        {
+                          "name": "minus"
+                        },
+                        {
+                          "name": "laborum"
+                        },
+                        {
+                          "name": "unde"
+                        },
+                        {
+                          "name": "voluptas"
                         }
                       ]
                     }
                   },
                   "group5": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "6bb1729d-5d33-4304-b9a2-f81b9b0ebe2f",
                       "groups": [
                         {
-                          "name": "facilis"
+                          "name": "voluptates"
                         },
                         {
-                          "name": "debitis"
+                          "name": "fuga"
                         },
                         {
-                          "name": "dolores"
+                          "name": "sint"
                         },
                         {
-                          "name": "tempora"
+                          "name": "modi"
                         },
                         {
-                          "name": "eveniet"
+                          "name": "qui"
                         },
                         {
-                          "name": "dolorem"
+                          "name": "ut"
                         },
                         {
-                          "name": "optio"
+                          "name": "molestiae"
                         },
                         {
-                          "name": "porro"
+                          "name": "nulla"
                         },
                         {
-                          "name": "deleniti"
+                          "name": "in"
                         },
                         {
-                          "name": "officia"
+                          "name": "voluptate"
                         },
                         {
-                          "name": "ab"
+                          "name": "reiciendis"
                         },
                         {
-                          "name": "sapiente"
+                          "name": "molestias"
                         },
                         {
-                          "name": "quia"
-                        },
-                        {
-                          "name": "repudiandae"
-                        },
-                        {
-                          "name": "sit"
-                        },
-                        {
-                          "name": "et"
-                        },
-                        {
-                          "name": "consectetur"
-                        },
-                        {
-                          "name": "explicabo"
+                          "name": "omnis"
                         },
                         {
                           "name": "voluptatem"
                         },
                         {
-                          "name": "omnis"
+                          "name": "ea"
+                        },
+                        {
+                          "name": "earum"
+                        },
+                        {
+                          "name": "dignissimos"
+                        },
+                        {
+                          "name": "beatae"
+                        },
+                        {
+                          "name": "voluptates"
+                        },
+                        {
+                          "name": "non"
                         }
                       ]
                     }
@@ -1635,27 +1589,27 @@
               "examples": {
                 "group1": {
                   "value": {
-                    "name": "in"
+                    "name": "tenetur"
                   }
                 },
                 "group2": {
                   "value": {
-                    "name": "in"
+                    "name": "incidunt"
                   }
                 },
                 "group3": {
                   "value": {
-                    "name": "sed"
+                    "name": "pariatur"
                   }
                 },
                 "group4": {
                   "value": {
-                    "name": "ad"
+                    "name": "voluptates"
                   }
                 },
                 "group5": {
                   "value": {
-                    "name": "assumenda"
+                    "name": "quia"
                   }
                 }
               }
@@ -1679,35 +1633,35 @@
                   "group1": {
                     "value": {
                       "group": {
-                        "name": "rerum"
+                        "name": "eum"
                       }
                     }
                   },
                   "group2": {
                     "value": {
                       "group": {
-                        "name": "aut"
+                        "name": "error"
                       }
                     }
                   },
                   "group3": {
                     "value": {
                       "group": {
-                        "name": "itaque"
+                        "name": "voluptates"
                       }
                     }
                   },
                   "group4": {
                     "value": {
                       "group": {
-                        "name": "qui"
+                        "name": "rem"
                       }
                     }
                   },
                   "group5": {
                     "value": {
                       "group": {
-                        "name": "officiis"
+                        "name": "dolor"
                       }
                     }
                   }
@@ -1871,35 +1825,35 @@
                   "group1": {
                     "value": {
                       "group": {
-                        "name": "suscipit"
+                        "name": "voluptatem"
                       }
                     }
                   },
                   "group2": {
                     "value": {
                       "group": {
-                        "name": "molestias"
+                        "name": "eos"
                       }
                     }
                   },
                   "group3": {
                     "value": {
                       "group": {
-                        "name": "sint"
+                        "name": "non"
                       }
                     }
                   },
                   "group4": {
                     "value": {
                       "group": {
-                        "name": "ea"
+                        "name": "dicta"
                       }
                     }
                   },
                   "group5": {
                     "value": {
                       "group": {
-                        "name": "totam"
+                        "name": "esse"
                       }
                     }
                   }
@@ -1985,27 +1939,27 @@
               "examples": {
                 "group1": {
                   "value": {
-                    "name": "dignissimos"
+                    "name": "ipsa"
                   }
                 },
                 "group2": {
                   "value": {
-                    "name": "suscipit"
+                    "name": "ut"
                   }
                 },
                 "group3": {
                   "value": {
-                    "name": "qui"
+                    "name": "ipsum"
                   }
                 },
                 "group4": {
                   "value": {
-                    "name": "et"
+                    "name": "quo"
                   }
                 },
                 "group5": {
                   "value": {
-                    "name": "velit"
+                    "name": "repudiandae"
                   }
                 }
               }
@@ -2029,35 +1983,35 @@
                   "group1": {
                     "value": {
                       "group": {
-                        "name": "ab"
+                        "name": "vel"
                       }
                     }
                   },
                   "group2": {
                     "value": {
                       "group": {
-                        "name": "voluptas"
+                        "name": "ut"
                       }
                     }
                   },
                   "group3": {
                     "value": {
                       "group": {
-                        "name": "et"
+                        "name": "ea"
                       }
                     }
                   },
                   "group4": {
                     "value": {
                       "group": {
-                        "name": "voluptatibus"
+                        "name": "doloribus"
                       }
                     }
                   },
                   "group5": {
                     "value": {
                       "group": {
-                        "name": "quisquam"
+                        "name": "omnis"
                       }
                     }
                   }
@@ -2143,27 +2097,27 @@
               "examples": {
                 "group1": {
                   "value": {
-                    "name": "est"
+                    "name": "sint"
                   }
                 },
                 "group2": {
                   "value": {
-                    "name": "aut"
+                    "name": "sit"
                   }
                 },
                 "group3": {
                   "value": {
-                    "name": "placeat"
+                    "name": "excepturi"
                   }
                 },
                 "group4": {
                   "value": {
-                    "name": "illum"
+                    "name": "et"
                   }
                 },
                 "group5": {
                   "value": {
-                    "name": "corrupti"
+                    "name": "voluptatem"
                   }
                 }
               }
@@ -2187,35 +2141,35 @@
                   "group1": {
                     "value": {
                       "group": {
-                        "name": "odio"
+                        "name": "deserunt"
                       }
                     }
                   },
                   "group2": {
                     "value": {
                       "group": {
-                        "name": "modi"
+                        "name": "sunt"
                       }
                     }
                   },
                   "group3": {
                     "value": {
                       "group": {
-                        "name": "perspiciatis"
+                        "name": "animi"
                       }
                     }
                   },
                   "group4": {
                     "value": {
                       "group": {
-                        "name": "sint"
+                        "name": "est"
                       }
                     }
                   },
                   "group5": {
                     "value": {
                       "group": {
-                        "name": "animi"
+                        "name": "culpa"
                       }
                     }
                   }
@@ -2372,8 +2326,8 @@
             "description": "Group id"
           },
           {
-            "name": "perPage",
-            "description": "Per page",
+            "name": "pageSize",
+            "description": "Page size",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -2383,12 +2337,10 @@
             "required": false
           },
           {
-            "name": "page",
-            "description": "Page number",
+            "name": "pageToken",
+            "description": "Page token",
             "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
+              "type": "string"
             },
             "in": "query",
             "required": false
@@ -2409,376 +2361,355 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "groups": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/GroupResponse"
-                      }
-                    },
-                    "pages": {
+                  "allOf": [
+                    {
                       "$ref": "#/components/schemas/PaginationResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "groups": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/GroupResponse"
+                          }
+                        }
+                      }
                     }
-                  }
+                  ]
                 },
                 "examples": {
                   "group1": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "fa793cac-7921-4edc-9ab1-f9af009392ce",
                       "groups": [
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "enim"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "dolorum"
+                        },
                         {
                           "name": "ex"
                         },
                         {
-                          "name": "veritatis"
+                          "name": "dolor"
                         },
                         {
-                          "name": "ipsa"
+                          "name": "libero"
                         },
                         {
-                          "name": "deserunt"
+                          "name": "molestiae"
                         },
                         {
-                          "name": "quo"
+                          "name": "adipisci"
                         },
                         {
-                          "name": "delectus"
-                        },
-                        {
-                          "name": "aut"
-                        },
-                        {
-                          "name": "magnam"
-                        },
-                        {
-                          "name": "necessitatibus"
-                        },
-                        {
-                          "name": "voluptas"
-                        },
-                        {
-                          "name": "voluptas"
+                          "name": "pariatur"
                         },
                         {
                           "name": "et"
                         },
                         {
-                          "name": "dolorem"
+                          "name": "doloribus"
                         },
                         {
-                          "name": "error"
+                          "name": "sapiente"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "maiores"
                         },
                         {
                           "name": "est"
                         },
                         {
-                          "name": "earum"
+                          "name": "quasi"
                         },
                         {
-                          "name": "vitae"
+                          "name": "quia"
                         },
                         {
-                          "name": "a"
+                          "name": "quisquam"
                         },
                         {
-                          "name": "et"
-                        },
-                        {
-                          "name": "neque"
+                          "name": "doloribus"
                         }
                       ]
                     }
                   },
                   "group2": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "21c12d20-ca34-4545-9a15-d02867f5c1f9",
                       "groups": [
                         {
-                          "name": "et"
+                          "name": "hic"
                         },
                         {
-                          "name": "minima"
+                          "name": "non"
                         },
                         {
-                          "name": "earum"
+                          "name": "architecto"
                         },
                         {
-                          "name": "eius"
+                          "name": "fugit"
                         },
                         {
-                          "name": "incidunt"
+                          "name": "quis"
                         },
                         {
-                          "name": "laudantium"
+                          "name": "sint"
                         },
                         {
-                          "name": "eum"
+                          "name": "sint"
                         },
                         {
-                          "name": "excepturi"
+                          "name": "dolores"
                         },
                         {
-                          "name": "aliquid"
+                          "name": "voluptate"
                         },
                         {
-                          "name": "aliquid"
+                          "name": "ad"
                         },
                         {
-                          "name": "excepturi"
+                          "name": "architecto"
                         },
                         {
-                          "name": "voluptas"
+                          "name": "iste"
+                        },
+                        {
+                          "name": "quasi"
+                        },
+                        {
+                          "name": "asperiores"
+                        },
+                        {
+                          "name": "repudiandae"
                         },
                         {
                           "name": "dolor"
                         },
                         {
-                          "name": "aliquid"
+                          "name": "ex"
                         },
                         {
-                          "name": "doloremque"
+                          "name": "quisquam"
                         },
                         {
-                          "name": "est"
+                          "name": "voluptas"
                         },
                         {
-                          "name": "error"
-                        },
-                        {
-                          "name": "possimus"
-                        },
-                        {
-                          "name": "non"
-                        },
-                        {
-                          "name": "non"
+                          "name": "aspernatur"
                         }
                       ]
                     }
                   },
                   "group3": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "9ce2f0ab-d69d-43a1-9c57-61daa6998106",
                       "groups": [
                         {
-                          "name": "aut"
+                          "name": "vel"
                         },
                         {
-                          "name": "magnam"
-                        },
-                        {
-                          "name": "praesentium"
-                        },
-                        {
-                          "name": "corrupti"
-                        },
-                        {
-                          "name": "quibusdam"
-                        },
-                        {
-                          "name": "nam"
-                        },
-                        {
-                          "name": "fugit"
-                        },
-                        {
-                          "name": "sunt"
-                        },
-                        {
-                          "name": "tenetur"
-                        },
-                        {
-                          "name": "ut"
-                        },
-                        {
-                          "name": "quo"
-                        },
-                        {
-                          "name": "vitae"
-                        },
-                        {
-                          "name": "animi"
-                        },
-                        {
-                          "name": "rerum"
-                        },
-                        {
-                          "name": "et"
-                        },
-                        {
-                          "name": "omnis"
+                          "name": "sed"
                         },
                         {
                           "name": "vel"
                         },
                         {
-                          "name": "qui"
+                          "name": "eum"
                         },
                         {
-                          "name": "tempore"
+                          "name": "aut"
                         },
                         {
-                          "name": "et"
+                          "name": "fuga"
+                        },
+                        {
+                          "name": "ipsum"
+                        },
+                        {
+                          "name": "laudantium"
+                        },
+                        {
+                          "name": "est"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "id"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "praesentium"
+                        },
+                        {
+                          "name": "ab"
+                        },
+                        {
+                          "name": "quis"
+                        },
+                        {
+                          "name": "illum"
+                        },
+                        {
+                          "name": "nesciunt"
+                        },
+                        {
+                          "name": "itaque"
+                        },
+                        {
+                          "name": "quo"
                         }
                       ]
                     }
                   },
                   "group4": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "28e7306b-ab05-4a62-b7a1-db5a2873180d",
                       "groups": [
                         {
-                          "name": "fuga"
-                        },
-                        {
-                          "name": "possimus"
-                        },
-                        {
-                          "name": "accusantium"
-                        },
-                        {
-                          "name": "aut"
-                        },
-                        {
-                          "name": "nostrum"
-                        },
-                        {
-                          "name": "est"
-                        },
-                        {
-                          "name": "deserunt"
-                        },
-                        {
-                          "name": "voluptas"
-                        },
-                        {
-                          "name": "nam"
-                        },
-                        {
-                          "name": "iusto"
-                        },
-                        {
-                          "name": "excepturi"
-                        },
-                        {
-                          "name": "ut"
-                        },
-                        {
-                          "name": "cum"
-                        },
-                        {
-                          "name": "officia"
+                          "name": "exercitationem"
                         },
                         {
                           "name": "eaque"
                         },
                         {
-                          "name": "saepe"
+                          "name": "perferendis"
                         },
                         {
-                          "name": "maxime"
+                          "name": "quibusdam"
                         },
                         {
-                          "name": "consequatur"
+                          "name": "sed"
                         },
                         {
-                          "name": "nesciunt"
+                          "name": "repudiandae"
                         },
                         {
-                          "name": "explicabo"
+                          "name": "voluptatibus"
+                        },
+                        {
+                          "name": "molestiae"
+                        },
+                        {
+                          "name": "porro"
+                        },
+                        {
+                          "name": "labore"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "voluptatum"
+                        },
+                        {
+                          "name": "illo"
+                        },
+                        {
+                          "name": "dicta"
+                        },
+                        {
+                          "name": "ab"
+                        },
+                        {
+                          "name": "nihil"
+                        },
+                        {
+                          "name": "incidunt"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "facilis"
                         }
                       ]
                     }
                   },
                   "group5": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "582bcdb0-8f37-4b73-80ec-bcd5e43be2c1",
                       "groups": [
                         {
-                          "name": "vel"
-                        },
-                        {
-                          "name": "ad"
-                        },
-                        {
-                          "name": "unde"
-                        },
-                        {
-                          "name": "corrupti"
-                        },
-                        {
-                          "name": "nobis"
-                        },
-                        {
-                          "name": "aspernatur"
-                        },
-                        {
-                          "name": "temporibus"
-                        },
-                        {
-                          "name": "dignissimos"
-                        },
-                        {
-                          "name": "dolor"
-                        },
-                        {
-                          "name": "sed"
-                        },
-                        {
-                          "name": "qui"
-                        },
-                        {
-                          "name": "error"
-                        },
-                        {
-                          "name": "autem"
+                          "name": "et"
                         },
                         {
                           "name": "voluptatem"
                         },
                         {
-                          "name": "voluptas"
+                          "name": "non"
                         },
                         {
-                          "name": "autem"
+                          "name": "ut"
                         },
                         {
-                          "name": "voluptas"
+                          "name": "ea"
                         },
                         {
-                          "name": "accusantium"
+                          "name": "sunt"
                         },
                         {
-                          "name": "iure"
+                          "name": "provident"
+                        },
+                        {
+                          "name": "eos"
                         },
                         {
                           "name": "cum"
+                        },
+                        {
+                          "name": "hic"
+                        },
+                        {
+                          "name": "rerum"
+                        },
+                        {
+                          "name": "eum"
+                        },
+                        {
+                          "name": "explicabo"
+                        },
+                        {
+                          "name": "minima"
+                        },
+                        {
+                          "name": "ipsum"
+                        },
+                        {
+                          "name": "animi"
+                        },
+                        {
+                          "name": "veritatis"
+                        },
+                        {
+                          "name": "officiis"
+                        },
+                        {
+                          "name": "recusandae"
+                        },
+                        {
+                          "name": "sed"
                         }
                       ]
                     }
@@ -2855,27 +2786,27 @@
               "examples": {
                 "group1": {
                   "value": {
-                    "name": "dolorem"
+                    "name": "culpa"
                   }
                 },
                 "group2": {
                   "value": {
-                    "name": "atque"
+                    "name": "dolore"
                   }
                 },
                 "group3": {
                   "value": {
-                    "name": "nihil"
+                    "name": "officia"
                   }
                 },
                 "group4": {
                   "value": {
-                    "name": "et"
+                    "name": "pariatur"
                   }
                 },
                 "group5": {
                   "value": {
-                    "name": "eveniet"
+                    "name": "esse"
                   }
                 }
               }
@@ -2899,35 +2830,35 @@
                   "group1": {
                     "value": {
                       "group": {
-                        "name": "voluptatum"
+                        "name": "dignissimos"
                       }
                     }
                   },
                   "group2": {
                     "value": {
                       "group": {
-                        "name": "eligendi"
+                        "name": "porro"
                       }
                     }
                   },
                   "group3": {
                     "value": {
                       "group": {
-                        "name": "ipsa"
+                        "name": "unde"
                       }
                     }
                   },
                   "group4": {
                     "value": {
                       "group": {
-                        "name": "rerum"
+                        "name": "amet"
                       }
                     }
                   },
                   "group5": {
                     "value": {
                       "group": {
-                        "name": "corporis"
+                        "name": "distinctio"
                       }
                     }
                   }
@@ -3109,35 +3040,35 @@
                   "group1": {
                     "value": {
                       "group": {
-                        "name": "exercitationem"
+                        "name": "et"
                       }
                     }
                   },
                   "group2": {
                     "value": {
                       "group": {
-                        "name": "mollitia"
+                        "name": "est"
                       }
                     }
                   },
                   "group3": {
                     "value": {
                       "group": {
-                        "name": "sint"
+                        "name": "non"
                       }
                     }
                   },
                   "group4": {
                     "value": {
                       "group": {
-                        "name": "ad"
+                        "name": "debitis"
                       }
                     }
                   },
                   "group5": {
                     "value": {
                       "group": {
-                        "name": "est"
+                        "name": "soluta"
                       }
                     }
                   }
@@ -3232,27 +3163,27 @@
               "examples": {
                 "group1": {
                   "value": {
-                    "name": "dolorem"
+                    "name": "et"
                   }
                 },
                 "group2": {
                   "value": {
-                    "name": "doloremque"
+                    "name": "ut"
                   }
                 },
                 "group3": {
                   "value": {
-                    "name": "dolorem"
+                    "name": "et"
                   }
                 },
                 "group4": {
                   "value": {
-                    "name": "itaque"
+                    "name": "eos"
                   }
                 },
                 "group5": {
                   "value": {
-                    "name": "omnis"
+                    "name": "ut"
                   }
                 }
               }
@@ -3276,35 +3207,35 @@
                   "group1": {
                     "value": {
                       "group": {
-                        "name": "est"
+                        "name": "blanditiis"
                       }
                     }
                   },
                   "group2": {
                     "value": {
                       "group": {
-                        "name": "nam"
+                        "name": "odit"
                       }
                     }
                   },
                   "group3": {
                     "value": {
                       "group": {
-                        "name": "ratione"
+                        "name": "aut"
                       }
                     }
                   },
                   "group4": {
                     "value": {
                       "group": {
-                        "name": "ut"
+                        "name": "consequatur"
                       }
                     }
                   },
                   "group5": {
                     "value": {
                       "group": {
-                        "name": "fugit"
+                        "name": "rerum"
                       }
                     }
                   }
@@ -3399,27 +3330,27 @@
               "examples": {
                 "group1": {
                   "value": {
-                    "name": "quam"
+                    "name": "aliquam"
                   }
                 },
                 "group2": {
                   "value": {
-                    "name": "consequatur"
+                    "name": "ipsum"
                   }
                 },
                 "group3": {
                   "value": {
-                    "name": "voluptatem"
+                    "name": "quia"
                   }
                 },
                 "group4": {
                   "value": {
-                    "name": "dolores"
+                    "name": "dicta"
                   }
                 },
                 "group5": {
                   "value": {
-                    "name": "hic"
+                    "name": "dolore"
                   }
                 }
               }
@@ -3443,35 +3374,35 @@
                   "group1": {
                     "value": {
                       "group": {
-                        "name": "qui"
+                        "name": "voluptas"
                       }
                     }
                   },
                   "group2": {
                     "value": {
                       "group": {
-                        "name": "facilis"
+                        "name": "fugiat"
                       }
                     }
                   },
                   "group3": {
                     "value": {
                       "group": {
-                        "name": "ex"
+                        "name": "rerum"
                       }
                     }
                   },
                   "group4": {
                     "value": {
                       "group": {
-                        "name": "qui"
+                        "name": "id"
                       }
                     }
                   },
                   "group5": {
                     "value": {
                       "group": {
-                        "name": "facilis"
+                        "name": "deleniti"
                       }
                     }
                   }
@@ -3647,28 +3578,13 @@
       "PaginationResponse": {
         "type": "object",
         "properties": {
-          "firstPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "lastPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nextPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "prevPage": {
-            "type": "integer",
-            "format": "int32"
+          "nextPageToken": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "required": [
-          "firstPage",
-          "lastPage",
-          "nextPage",
-          "prevPage"
+          "nextPageToken"
         ]
       },
       "RegionResponse": {

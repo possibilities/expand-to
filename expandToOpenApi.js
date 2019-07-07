@@ -99,16 +99,20 @@ const getResponses = (operation, models) => {
 
   const schema = operation.action === 'list'
     ? {
-      type: 'object',
-      properties: {
-        [pluralize(operation.response.key)]: {
-          type: 'array',
-          items: {
-            '$ref': `#/components/schemas/${upperFirst(operation.response.schema)}Response`
+      allOf: [
+        { '$ref': '#/components/schemas/PaginationResponse' },
+        {
+          type: 'object',
+          properties: {
+            [pluralize(operation.response.key)]: {
+              type: 'array',
+              items: {
+                '$ref': `#/components/schemas/${upperFirst(operation.response.schema)}Response`
+              }
+            }
           }
-        },
-        pages: { '$ref': '#/components/schemas/PaginationResponse' }
-      }
+        }
+      ]
     }
     : {
       type: 'object',

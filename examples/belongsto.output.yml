@@ -10,20 +10,18 @@ paths:
         - Orgs
       summary: List orgs
       parameters:
-        - name: perPage
-          description: Per page
+        - name: pageSize
+          description: Page size
           schema:
             type: integer
             format: int32
             default: 20
           in: query
           required: false
-        - name: page
-          description: Page number
+        - name: pageToken
+          description: Page token
           schema:
-            type: integer
-            format: int32
-            default: 1
+            type: string
           in: query
           required: false
         - name: orderBy
@@ -38,155 +36,135 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  orgs:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/OrgResponse'
-                  pages:
-                    $ref: '#/components/schemas/PaginationResponse'
+                allOf:
+                  - $ref: '#/components/schemas/PaginationResponse'
+                  - type: object
+                    properties:
+                      orgs:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/OrgResponse'
               examples:
                 org1:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 9f3991ba-4314-4977-a952-4851a9297c67
                     orgs:
-                      - name: voluptatem
-                      - name: non
-                      - name: modi
-                      - name: rerum
-                      - name: voluptatem
-                      - name: quo
-                      - name: qui
-                      - name: qui
-                      - name: autem
-                      - name: architecto
-                      - name: id
-                      - name: placeat
-                      - name: quo
                       - name: molestias
-                      - name: dolorum
-                      - name: dolor
-                      - name: repellendus
-                      - name: enim
-                      - name: praesentium
-                      - name: laudantium
-                org2:
-                  value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
-                    orgs:
-                      - name: maxime
-                      - name: quia
-                      - name: at
-                      - name: non
-                      - name: quia
-                      - name: reprehenderit
-                      - name: voluptas
-                      - name: sequi
-                      - name: laborum
+                      - name: impedit
+                      - name: quo
+                      - name: totam
+                      - name: aliquam
+                      - name: id
+                      - name: sapiente
+                      - name: dolorem
+                      - name: itaque
                       - name: et
                       - name: facilis
-                      - name: voluptatem
-                      - name: doloremque
-                      - name: repellat
-                      - name: sint
-                      - name: provident
                       - name: eligendi
-                      - name: ut
-                      - name: molestiae
-                      - name: autem
+                      - name: sint
+                      - name: quas
+                      - name: praesentium
+                      - name: corporis
+                      - name: exercitationem
+                      - name: dignissimos
+                      - name: id
+                      - name: labore
+                org2:
+                  value:
+                    nextPageToken: 6491680b-cc65-49d9-9916-d8adebee2b75
+                    orgs:
+                      - name: quisquam
+                      - name: sit
+                      - name: enim
+                      - name: pariatur
+                      - name: soluta
+                      - name: dolorum
+                      - name: maxime
+                      - name: eum
+                      - name: labore
+                      - name: nisi
+                      - name: est
+                      - name: consequatur
+                      - name: sed
+                      - name: aut
+                      - name: dolor
+                      - name: est
+                      - name: id
+                      - name: voluptas
+                      - name: possimus
+                      - name: dolores
                 org3:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 68f21288-dcb2-4c24-8551-fad520c94934
                     orgs:
+                      - name: excepturi
                       - name: rerum
-                      - name: in
-                      - name: aut
+                      - name: adipisci
                       - name: et
-                      - name: hic
-                      - name: fugit
-                      - name: voluptate
+                      - name: quisquam
+                      - name: debitis
+                      - name: similique
+                      - name: quisquam
+                      - name: sit
+                      - name: sequi
+                      - name: culpa
                       - name: est
-                      - name: assumenda
-                      - name: ipsum
-                      - name: hic
-                      - name: laboriosam
-                      - name: iusto
-                      - name: eos
-                      - name: dolores
-                      - name: facere
-                      - name: voluptate
-                      - name: molestiae
-                      - name: sed
-                      - name: est
+                      - name: omnis
+                      - name: aliquam
+                      - name: et
+                      - name: quo
+                      - name: quo
+                      - name: sint
+                      - name: et
+                      - name: perferendis
                 org4:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 5b94650d-c7cc-4e01-b8c8-01a600014c9b
                     orgs:
-                      - name: voluptate
-                      - name: excepturi
-                      - name: eveniet
-                      - name: a
+                      - name: quo
+                      - name: est
+                      - name: voluptatem
+                      - name: velit
+                      - name: laudantium
+                      - name: repudiandae
                       - name: in
-                      - name: consequatur
-                      - name: et
-                      - name: id
+                      - name: quia
+                      - name: dolorem
+                      - name: explicabo
+                      - name: provident
+                      - name: nisi
+                      - name: culpa
+                      - name: autem
+                      - name: iusto
+                      - name: eligendi
                       - name: rerum
-                      - name: deserunt
-                      - name: molestiae
-                      - name: voluptatum
-                      - name: sit
-                      - name: sint
-                      - name: corporis
-                      - name: officia
-                      - name: aliquid
-                      - name: et
-                      - name: assumenda
-                      - name: molestias
+                      - name: esse
+                      - name: fugiat
+                      - name: quod
                 org5:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: cca318ac-6f38-4e1c-9a3a-cd62ee51512e
                     orgs:
-                      - name: harum
-                      - name: laborum
-                      - name: harum
-                      - name: provident
-                      - name: temporibus
-                      - name: in
-                      - name: aliquid
-                      - name: corrupti
-                      - name: sit
-                      - name: non
-                      - name: labore
-                      - name: molestiae
-                      - name: reprehenderit
-                      - name: consequatur
-                      - name: culpa
+                      - name: blanditiis
+                      - name: facere
+                      - name: sed
+                      - name: deserunt
                       - name: repellendus
-                      - name: nostrum
-                      - name: dicta
-                      - name: molestiae
-                      - name: odio
+                      - name: modi
+                      - name: exercitationem
+                      - name: quae
+                      - name: velit
+                      - name: perferendis
+                      - name: libero
+                      - name: est
+                      - name: ea
+                      - name: ad
+                      - name: pariatur
+                      - name: vero
+                      - name: itaque
+                      - name: iste
+                      - name: hic
+                      - name: earum
         '400':
           description: Bad request
           content:
@@ -220,19 +198,19 @@ paths:
             examples:
               org1:
                 value:
-                  name: magnam
+                  name: alias
               org2:
                 value:
-                  name: quia
+                  name: atque
               org3:
                 value:
-                  name: mollitia
+                  name: veniam
               org4:
                 value:
-                  name: quia
+                  name: nihil
               org5:
                 value:
-                  name: dolorum
+                  name: eum
       responses:
         '201':
           description: Create succeeded
@@ -247,23 +225,23 @@ paths:
                 org1:
                   value:
                     org:
-                      name: commodi
+                      name: libero
                 org2:
                   value:
                     org:
-                      name: est
+                      name: iste
                 org3:
                   value:
                     org:
-                      name: unde
+                      name: ut
                 org4:
                   value:
                     org:
-                      name: nobis
+                      name: rerum
                 org5:
                   value:
                     org:
-                      name: omnis
+                      name: beatae
         '400':
           description: Bad request
           content:
@@ -356,19 +334,19 @@ paths:
                 org2:
                   value:
                     org:
-                      name: porro
+                      name: aut
                 org3:
                   value:
                     org:
-                      name: eaque
+                      name: omnis
                 org4:
                   value:
                     org:
-                      name: rerum
+                      name: illo
                 org5:
                   value:
                     org:
-                      name: facere
+                      name: temporibus
         '400':
           description: Bad request
           content:
@@ -414,19 +392,19 @@ paths:
             examples:
               org1:
                 value:
-                  name: nesciunt
+                  name: architecto
               org2:
                 value:
-                  name: eum
+                  name: molestiae
               org3:
                 value:
-                  name: dolorum
+                  name: quae
               org4:
                 value:
-                  name: ipsam
+                  name: non
               org5:
                 value:
-                  name: provident
+                  name: cupiditate
       responses:
         '200':
           description: Replace succeeded
@@ -441,23 +419,23 @@ paths:
                 org1:
                   value:
                     org:
-                      name: a
+                      name: incidunt
                 org2:
                   value:
                     org:
-                      name: odio
+                      name: et
                 org3:
                   value:
                     org:
-                      name: ipsum
+                      name: voluptate
                 org4:
                   value:
                     org:
-                      name: cupiditate
+                      name: sit
                 org5:
                   value:
                     org:
-                      name: et
+                      name: non
         '400':
           description: Bad request
           content:
@@ -503,19 +481,19 @@ paths:
             examples:
               org1:
                 value:
-                  name: sit
+                  name: pariatur
               org2:
                 value:
-                  name: dignissimos
+                  name: facilis
               org3:
                 value:
-                  name: ab
+                  name: eum
               org4:
                 value:
-                  name: ratione
+                  name: temporibus
               org5:
                 value:
-                  name: voluptate
+                  name: occaecati
       responses:
         '200':
           description: Modify succeeded
@@ -530,23 +508,23 @@ paths:
                 org1:
                   value:
                     org:
-                      name: nulla
+                      name: at
                 org2:
                   value:
                     org:
-                      name: alias
+                      name: voluptas
                 org3:
                   value:
                     org:
-                      name: iusto
+                      name: dicta
                 org4:
                   value:
                     org:
-                      name: reiciendis
+                      name: incidunt
                 org5:
                   value:
                     org:
-                      name: quos
+                      name: saepe
         '400':
           description: Bad request
           content:
@@ -627,20 +605,18 @@ paths:
           schema:
             type: string
           description: Org id
-        - name: perPage
-          description: Per page
+        - name: pageSize
+          description: Page size
           schema:
             type: integer
             format: int32
             default: 20
           in: query
           required: false
-        - name: page
-          description: Page number
+        - name: pageToken
+          description: Page token
           schema:
-            type: integer
-            format: int32
-            default: 1
+            type: string
           in: query
           required: false
         - name: orderBy
@@ -655,155 +631,135 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  repos:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/RepoResponse'
-                  pages:
-                    $ref: '#/components/schemas/PaginationResponse'
+                allOf:
+                  - $ref: '#/components/schemas/PaginationResponse'
+                  - type: object
+                    properties:
+                      repos:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RepoResponse'
               examples:
                 repo1:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
-                    repos:
-                      - name: praesentium
-                      - name: molestias
-                      - name: sed
-                      - name: dolores
-                      - name: ab
-                      - name: facere
-                      - name: tenetur
-                      - name: vel
-                      - name: aliquid
-                      - name: omnis
-                      - name: enim
-                      - name: cum
-                      - name: incidunt
-                      - name: est
-                      - name: deserunt
-                      - name: nulla
-                      - name: debitis
-                      - name: quidem
-                      - name: nesciunt
-                      - name: dolorem
-                repo2:
-                  value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
-                    repos:
-                      - name: itaque
-                      - name: amet
-                      - name: repellat
-                      - name: eius
-                      - name: sint
-                      - name: quisquam
-                      - name: et
-                      - name: tenetur
-                      - name: possimus
-                      - name: voluptas
-                      - name: illum
-                      - name: molestiae
-                      - name: minima
-                      - name: natus
-                      - name: quia
-                      - name: consequatur
-                      - name: maiores
-                      - name: omnis
-                      - name: quia
-                      - name: delectus
-                repo3:
-                  value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: ff78d3e8-01eb-40f7-be22-6613cd808aa5
                     repos:
                       - name: labore
-                      - name: et
-                      - name: ut
-                      - name: animi
-                      - name: et
-                      - name: esse
+                      - name: id
+                      - name: molestiae
+                      - name: in
+                      - name: tempore
+                      - name: blanditiis
+                      - name: quasi
+                      - name: accusamus
+                      - name: exercitationem
+                      - name: tempora
+                      - name: omnis
+                      - name: aut
+                      - name: mollitia
                       - name: qui
-                      - name: debitis
-                      - name: laudantium
-                      - name: ullam
-                      - name: ullam
+                      - name: assumenda
+                      - name: et
+                      - name: et
+                      - name: dignissimos
+                      - name: eligendi
+                      - name: recusandae
+                repo2:
+                  value:
+                    nextPageToken: 7fe938b7-dd82-4782-af30-ddaf3ddba93d
+                    repos:
+                      - name: omnis
+                      - name: molestiae
+                      - name: dolore
+                      - name: vel
+                      - name: reiciendis
+                      - name: odit
+                      - name: et
+                      - name: dolor
+                      - name: laboriosam
+                      - name: dolores
+                      - name: voluptatibus
+                      - name: quia
+                      - name: fuga
                       - name: qui
-                      - name: esse
                       - name: cum
-                      - name: quo
-                      - name: earum
-                      - name: atque
-                      - name: est
-                      - name: libero
+                      - name: cupiditate
                       - name: velit
+                      - name: in
+                      - name: quaerat
+                      - name: in
+                repo3:
+                  value:
+                    nextPageToken: 35b16c34-c21f-42f2-b52f-66c81f173ed9
+                    repos:
+                      - name: dolor
+                      - name: non
+                      - name: consequatur
+                      - name: possimus
+                      - name: rerum
+                      - name: qui
+                      - name: qui
+                      - name: unde
+                      - name: praesentium
+                      - name: et
+                      - name: illum
+                      - name: et
+                      - name: et
+                      - name: unde
+                      - name: quo
+                      - name: maiores
+                      - name: ut
+                      - name: veritatis
+                      - name: praesentium
+                      - name: dolorum
                 repo4:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: cd539c90-d953-4d47-af74-b9a4c5b3e934
                     repos:
-                      - name: deleniti
-                      - name: animi
-                      - name: dolore
-                      - name: quia
-                      - name: odit
+                      - name: fuga
+                      - name: consequatur
+                      - name: dolor
+                      - name: et
+                      - name: dicta
+                      - name: accusantium
+                      - name: esse
+                      - name: velit
+                      - name: dicta
+                      - name: et
                       - name: in
-                      - name: voluptatum
-                      - name: repellat
-                      - name: voluptatem
-                      - name: perferendis
-                      - name: aut
-                      - name: sit
-                      - name: quasi
-                      - name: optio
-                      - name: itaque
-                      - name: ratione
-                      - name: beatae
-                      - name: magnam
-                      - name: dolore
-                      - name: dignissimos
+                      - name: nulla
+                      - name: velit
+                      - name: velit
+                      - name: praesentium
+                      - name: minima
+                      - name: voluptates
+                      - name: iure
+                      - name: hic
+                      - name: et
                 repo5:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 650db7dc-259d-4978-97a2-8a3060fc1b80
                     repos:
-                      - name: facilis
-                      - name: quo
-                      - name: commodi
-                      - name: sint
-                      - name: libero
-                      - name: quos
-                      - name: quia
-                      - name: hic
-                      - name: aliquam
-                      - name: quos
-                      - name: reiciendis
-                      - name: deleniti
-                      - name: totam
-                      - name: in
-                      - name: consequatur
-                      - name: ut
-                      - name: et
+                      - name: dicta
+                      - name: inventore
+                      - name: ipsam
+                      - name: maiores
+                      - name: recusandae
+                      - name: voluptatibus
+                      - name: facere
+                      - name: sit
+                      - name: culpa
+                      - name: corporis
+                      - name: temporibus
+                      - name: rerum
+                      - name: officia
+                      - name: porro
+                      - name: rerum
+                      - name: at
+                      - name: voluptate
+                      - name: id
                       - name: aut
-                      - name: asperiores
-                      - name: mollitia
+                      - name: dicta
         '400':
           description: Bad request
           content:
@@ -843,19 +799,19 @@ paths:
             examples:
               repo1:
                 value:
-                  name: minima
+                  name: tempore
               repo2:
                 value:
-                  name: officia
+                  name: veniam
               repo3:
                 value:
-                  name: fugit
+                  name: ut
               repo4:
                 value:
-                  name: voluptas
+                  name: soluta
               repo5:
                 value:
-                  name: sunt
+                  name: quia
       responses:
         '201':
           description: Create succeeded
@@ -870,23 +826,23 @@ paths:
                 repo1:
                   value:
                     repo:
-                      name: eveniet
+                      name: ullam
                 repo2:
                   value:
                     repo:
-                      name: ut
+                      name: nostrum
                 repo3:
                   value:
                     repo:
-                      name: iure
+                      name: qui
                 repo4:
                   value:
                     repo:
-                      name: sunt
+                      name: explicabo
                 repo5:
                   value:
                     repo:
-                      name: dignissimos
+                      name: quidem
         '400':
           description: Bad request
           content:
@@ -987,23 +943,23 @@ paths:
                 repo1:
                   value:
                     repo:
-                      name: deleniti
+                      name: aut
                 repo2:
                   value:
                     repo:
-                      name: impedit
+                      name: provident
                 repo3:
                   value:
                     repo:
-                      name: voluptatem
+                      name: exercitationem
                 repo4:
                   value:
                     repo:
-                      name: voluptatem
+                      name: dolorum
                 repo5:
                   value:
                     repo:
-                      name: voluptas
+                      name: et
         '400':
           description: Bad request
           content:
@@ -1055,19 +1011,19 @@ paths:
             examples:
               repo1:
                 value:
-                  name: accusantium
+                  name: maiores
               repo2:
                 value:
-                  name: optio
+                  name: excepturi
               repo3:
                 value:
-                  name: sint
+                  name: illo
               repo4:
                 value:
-                  name: molestias
+                  name: voluptatibus
               repo5:
                 value:
-                  name: nam
+                  name: mollitia
       responses:
         '200':
           description: Replace succeeded
@@ -1082,19 +1038,19 @@ paths:
                 repo1:
                   value:
                     repo:
-                      name: qui
+                      name: eius
                 repo2:
                   value:
                     repo:
-                      name: eos
+                      name: autem
                 repo3:
                   value:
                     repo:
-                      name: doloribus
+                      name: et
                 repo4:
                   value:
                     repo:
-                      name: placeat
+                      name: hic
                 repo5:
                   value:
                     repo:
@@ -1150,19 +1106,19 @@ paths:
             examples:
               repo1:
                 value:
-                  name: eius
+                  name: eum
               repo2:
                 value:
-                  name: corrupti
+                  name: optio
               repo3:
                 value:
-                  name: rerum
+                  name: voluptas
               repo4:
                 value:
-                  name: est
+                  name: asperiores
               repo5:
                 value:
-                  name: amet
+                  name: quia
       responses:
         '200':
           description: Modify succeeded
@@ -1177,23 +1133,23 @@ paths:
                 repo1:
                   value:
                     repo:
-                      name: autem
+                      name: ut
                 repo2:
                   value:
                     repo:
-                      name: possimus
+                      name: molestiae
                 repo3:
                   value:
                     repo:
-                      name: eum
+                      name: magni
                 repo4:
                   value:
                     repo:
-                      name: omnis
+                      name: animi
                 repo5:
                   value:
                     repo:
-                      name: aut
+                      name: odio
         '400':
           description: Bad request
           content:
@@ -1286,20 +1242,18 @@ paths:
           schema:
             type: string
           description: Repo id
-        - name: perPage
-          description: Per page
+        - name: pageSize
+          description: Page size
           schema:
             type: integer
             format: int32
             default: 20
           in: query
           required: false
-        - name: page
-          description: Page number
+        - name: pageToken
+          description: Page token
           schema:
-            type: integer
-            format: int32
-            default: 1
+            type: string
           in: query
           required: false
         - name: orderBy
@@ -1314,155 +1268,135 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  commits:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/CommitResponse'
-                  pages:
-                    $ref: '#/components/schemas/PaginationResponse'
+                allOf:
+                  - $ref: '#/components/schemas/PaginationResponse'
+                  - type: object
+                    properties:
+                      commits:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CommitResponse'
               examples:
                 commit1:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: c5bef369-2932-4fd0-a0b7-750b9f9a41b7
                     commits:
+                      - name: optio
+                      - name: sunt
                       - name: aut
-                      - name: quis
-                      - name: quisquam
-                      - name: omnis
+                      - name: officiis
+                      - name: hic
                       - name: et
-                      - name: nesciunt
-                      - name: officia
-                      - name: tempora
-                      - name: suscipit
-                      - name: minus
-                      - name: ullam
-                      - name: nobis
-                      - name: vel
+                      - name: laudantium
+                      - name: aut
+                      - name: esse
+                      - name: quaerat
+                      - name: neque
+                      - name: veniam
+                      - name: unde
+                      - name: velit
                       - name: est
-                      - name: cum
-                      - name: quo
-                      - name: nihil
-                      - name: dolorem
-                      - name: id
-                      - name: fugit
+                      - name: alias
+                      - name: aut
+                      - name: architecto
+                      - name: unde
+                      - name: exercitationem
                 commit2:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 069c8688-7fa9-4225-9f21-c25443577619
                     commits:
-                      - name: illum
-                      - name: sunt
-                      - name: molestiae
-                      - name: libero
-                      - name: tempore
-                      - name: deserunt
-                      - name: voluptates
+                      - name: at
+                      - name: enim
+                      - name: ducimus
+                      - name: qui
+                      - name: unde
+                      - name: totam
+                      - name: debitis
+                      - name: ut
+                      - name: porro
+                      - name: ab
+                      - name: qui
+                      - name: et
+                      - name: pariatur
+                      - name: eveniet
+                      - name: qui
                       - name: incidunt
-                      - name: est
-                      - name: sed
-                      - name: aliquam
-                      - name: doloribus
-                      - name: saepe
-                      - name: neque
-                      - name: dolores
-                      - name: qui
+                      - name: temporibus
+                      - name: atque
                       - name: harum
-                      - name: dicta
-                      - name: harum
-                      - name: qui
+                      - name: id
                 commit3:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 6325c677-d4a9-44a6-82cd-a8df52b751e9
                     commits:
-                      - name: iste
-                      - name: molestias
-                      - name: maiores
-                      - name: consequuntur
-                      - name: voluptates
-                      - name: corporis
-                      - name: nihil
-                      - name: sed
-                      - name: possimus
+                      - name: necessitatibus
+                      - name: sint
+                      - name: iure
+                      - name: fugiat
+                      - name: ad
+                      - name: ipsa
+                      - name: ducimus
+                      - name: omnis
                       - name: qui
-                      - name: esse
-                      - name: provident
-                      - name: fugit
-                      - name: molestiae
-                      - name: molestiae
-                      - name: rerum
-                      - name: sed
-                      - name: vero
-                      - name: sunt
-                      - name: ut
+                      - name: tempore
+                      - name: delectus
+                      - name: autem
+                      - name: autem
+                      - name: voluptatum
+                      - name: vel
+                      - name: consequatur
+                      - name: recusandae
+                      - name: similique
+                      - name: vel
+                      - name: soluta
                 commit4:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 6213e813-5f25-4c62-8f35-55386155fe8b
                     commits:
-                      - name: vero
-                      - name: ipsam
-                      - name: ut
-                      - name: et
-                      - name: incidunt
-                      - name: rem
-                      - name: in
-                      - name: inventore
-                      - name: quis
-                      - name: eos
-                      - name: ipsa
-                      - name: dolorum
-                      - name: laborum
-                      - name: qui
-                      - name: perferendis
-                      - name: omnis
+                      - name: eveniet
+                      - name: autem
                       - name: sit
-                      - name: qui
-                      - name: dolorem
-                      - name: voluptatum
+                      - name: aut
+                      - name: non
+                      - name: rerum
+                      - name: ipsum
+                      - name: ratione
+                      - name: numquam
+                      - name: laboriosam
+                      - name: accusantium
+                      - name: et
+                      - name: rerum
+                      - name: veniam
+                      - name: quam
+                      - name: vel
+                      - name: ducimus
+                      - name: ut
+                      - name: hic
+                      - name: iure
                 commit5:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 43c5c601-4f03-43f6-a612-71fb2750fdd4
                     commits:
-                      - name: omnis
-                      - name: sint
-                      - name: accusantium
-                      - name: rem
-                      - name: reiciendis
-                      - name: dolor
-                      - name: voluptas
-                      - name: numquam
-                      - name: et
-                      - name: et
-                      - name: dolorum
-                      - name: distinctio
-                      - name: consequuntur
-                      - name: sapiente
-                      - name: quis
-                      - name: est
-                      - name: animi
-                      - name: maiores
-                      - name: architecto
+                      - name: officia
+                      - name: voluptatem
+                      - name: assumenda
                       - name: consequatur
+                      - name: velit
+                      - name: quisquam
+                      - name: eos
+                      - name: quia
+                      - name: odit
+                      - name: ut
+                      - name: sapiente
+                      - name: possimus
+                      - name: sed
+                      - name: maiores
+                      - name: perferendis
+                      - name: accusamus
+                      - name: quisquam
+                      - name: veniam
+                      - name: rerum
+                      - name: hic
         '400':
           description: Bad request
           content:
@@ -1508,19 +1442,19 @@ paths:
             examples:
               commit1:
                 value:
-                  name: quis
+                  name: sapiente
               commit2:
                 value:
-                  name: vitae
+                  name: architecto
               commit3:
                 value:
-                  name: reprehenderit
+                  name: nemo
               commit4:
                 value:
-                  name: velit
+                  name: accusamus
               commit5:
                 value:
-                  name: aperiam
+                  name: sint
       responses:
         '201':
           description: Create succeeded
@@ -1535,23 +1469,23 @@ paths:
                 commit1:
                   value:
                     commit:
-                      name: quod
+                      name: nostrum
                 commit2:
                   value:
                     commit:
-                      name: eius
+                      name: amet
                 commit3:
                   value:
                     commit:
-                      name: cum
+                      name: velit
                 commit4:
                   value:
                     commit:
-                      name: voluptas
+                      name: totam
                 commit5:
                   value:
                     commit:
-                      name: ex
+                      name: in
         '400':
           description: Bad request
           content:
@@ -1664,23 +1598,23 @@ paths:
                 commit1:
                   value:
                     commit:
-                      name: mollitia
+                      name: quod
                 commit2:
                   value:
                     commit:
-                      name: sunt
+                      name: est
                 commit3:
                   value:
                     commit:
-                      name: sint
+                      name: perferendis
                 commit4:
                   value:
                     commit:
-                      name: commodi
+                      name: ea
                 commit5:
                   value:
                     commit:
-                      name: nihil
+                      name: repudiandae
         '400':
           description: Bad request
           content:
@@ -1738,19 +1672,19 @@ paths:
             examples:
               commit1:
                 value:
-                  name: ratione
+                  name: iste
               commit2:
                 value:
-                  name: quia
+                  name: explicabo
               commit3:
                 value:
-                  name: qui
+                  name: odio
               commit4:
                 value:
-                  name: corrupti
+                  name: tempore
               commit5:
                 value:
-                  name: voluptas
+                  name: unde
       responses:
         '200':
           description: Replace succeeded
@@ -1765,23 +1699,23 @@ paths:
                 commit1:
                   value:
                     commit:
-                      name: aut
+                      name: sequi
                 commit2:
                   value:
                     commit:
-                      name: delectus
+                      name: et
                 commit3:
                   value:
                     commit:
-                      name: eveniet
+                      name: in
                 commit4:
                   value:
                     commit:
-                      name: laboriosam
+                      name: et
                 commit5:
                   value:
                     commit:
-                      name: doloremque
+                      name: quaerat
         '400':
           description: Bad request
           content:
@@ -1839,19 +1773,19 @@ paths:
             examples:
               commit1:
                 value:
-                  name: qui
+                  name: est
               commit2:
                 value:
-                  name: voluptatem
+                  name: alias
               commit3:
                 value:
-                  name: qui
+                  name: sed
               commit4:
                 value:
-                  name: deleniti
+                  name: rerum
               commit5:
                 value:
-                  name: rem
+                  name: quisquam
       responses:
         '200':
           description: Modify succeeded
@@ -1866,23 +1800,23 @@ paths:
                 commit1:
                   value:
                     commit:
-                      name: sit
+                      name: odit
                 commit2:
                   value:
                     commit:
-                      name: dolorem
+                      name: a
                 commit3:
                   value:
                     commit:
-                      name: quo
+                      name: est
                 commit4:
                   value:
                     commit:
-                      name: possimus
+                      name: omnis
                 commit5:
                   value:
                     commit:
-                      name: dolorum
+                      name: saepe
         '400':
           description: Bad request
           content:
@@ -1989,23 +1923,11 @@ components:
     PaginationResponse:
       type: object
       properties:
-        firstPage:
-          type: integer
-          format: int32
-        lastPage:
-          type: integer
-          format: int32
-        nextPage:
-          type: integer
-          format: int32
-        prevPage:
-          type: integer
-          format: int32
+        nextPageToken:
+          type: string
+          format: uuid
       required:
-        - firstPage
-        - lastPage
-        - nextPage
-        - prevPage
+        - nextPageToken
     OrgResponse:
       properties:
         name:

@@ -10,20 +10,18 @@ paths:
         - Users
       summary: List users
       parameters:
-        - name: perPage
-          description: Per page
+        - name: pageSize
+          description: Page size
           schema:
             type: integer
             format: int32
             default: 20
           in: query
           required: false
-        - name: page
-          description: Page number
+        - name: pageToken
+          description: Page token
           schema:
-            type: integer
-            format: int32
-            default: 1
+            type: string
           in: query
           required: false
         - name: orderBy
@@ -38,155 +36,135 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  users:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/UserResponse'
-                  pages:
-                    $ref: '#/components/schemas/PaginationResponse'
+                allOf:
+                  - $ref: '#/components/schemas/PaginationResponse'
+                  - type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/UserResponse'
               examples:
                 user1:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 48975fb4-6596-4a90-8a7d-00c1943745b9
                     users:
-                      - name: praesentium
-                      - name: dolorem
-                      - name: non
-                      - name: maiores
-                      - name: sint
-                      - name: nemo
-                      - name: velit
-                      - name: voluptas
-                      - name: dolorum
-                      - name: voluptatem
-                      - name: nesciunt
-                      - name: non
-                      - name: fugit
-                      - name: dolorem
-                      - name: et
+                      - name: quia
+                      - name: ad
+                      - name: ut
+                      - name: unde
                       - name: rerum
-                      - name: ut
-                      - name: ut
-                      - name: pariatur
-                      - name: quibusdam
+                      - name: voluptas
+                      - name: non
+                      - name: laborum
+                      - name: fuga
+                      - name: et
+                      - name: aut
+                      - name: totam
+                      - name: maiores
+                      - name: placeat
+                      - name: sunt
+                      - name: qui
+                      - name: sint
+                      - name: corporis
+                      - name: doloribus
+                      - name: vero
                 user2:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 96acf682-e15c-433e-b639-b801c33b4f58
                     users:
-                      - name: accusamus
-                      - name: labore
+                      - name: velit
+                      - name: libero
+                      - name: soluta
+                      - name: quas
+                      - name: repellendus
                       - name: et
-                      - name: est
-                      - name: consequuntur
-                      - name: nihil
+                      - name: dicta
+                      - name: temporibus
+                      - name: inventore
+                      - name: sunt
+                      - name: qui
+                      - name: dolor
                       - name: dolores
-                      - name: accusamus
-                      - name: id
-                      - name: rerum
-                      - name: eos
-                      - name: dolorem
-                      - name: ut
-                      - name: in
+                      - name: accusantium
+                      - name: vel
+                      - name: aut
+                      - name: non
+                      - name: error
                       - name: pariatur
-                      - name: reprehenderit
-                      - name: voluptatem
-                      - name: laborum
-                      - name: pariatur
-                      - name: dolores
+                      - name: et
                 user3:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 9490e6fa-bc4e-4c78-ad4f-7c53085e3c64
                     users:
-                      - name: sint
-                      - name: eum
-                      - name: quia
-                      - name: hic
-                      - name: sapiente
-                      - name: hic
-                      - name: tenetur
-                      - name: aut
-                      - name: voluptas
-                      - name: vitae
-                      - name: sequi
-                      - name: libero
-                      - name: accusantium
-                      - name: sunt
-                      - name: voluptates
-                      - name: recusandae
-                      - name: et
-                      - name: aperiam
+                      - name: qui
+                      - name: consequatur
+                      - name: inventore
                       - name: incidunt
-                      - name: soluta
+                      - name: est
+                      - name: eligendi
+                      - name: vitae
+                      - name: et
+                      - name: eum
+                      - name: quis
+                      - name: quia
+                      - name: animi
+                      - name: cum
+                      - name: tempora
+                      - name: ducimus
+                      - name: vero
+                      - name: ipsa
+                      - name: vero
+                      - name: consectetur
+                      - name: delectus
                 user4:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 9601de2d-b031-4ca1-8e21-0187aac3e353
                     users:
-                      - name: commodi
-                      - name: accusantium
-                      - name: est
-                      - name: facilis
-                      - name: impedit
-                      - name: sequi
-                      - name: rerum
-                      - name: fugiat
-                      - name: libero
-                      - name: voluptatem
-                      - name: molestiae
-                      - name: aspernatur
-                      - name: unde
-                      - name: sed
-                      - name: molestiae
-                      - name: maiores
-                      - name: id
-                      - name: qui
-                      - name: quis
                       - name: vel
+                      - name: libero
+                      - name: sunt
+                      - name: et
+                      - name: id
+                      - name: consectetur
+                      - name: repellat
+                      - name: ut
+                      - name: dolor
+                      - name: velit
+                      - name: aut
+                      - name: laboriosam
+                      - name: et
+                      - name: minus
+                      - name: neque
+                      - name: unde
+                      - name: voluptatibus
+                      - name: qui
+                      - name: et
+                      - name: ducimus
                 user5:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 1b23736b-f6e0-4086-9523-25b0d7749ffd
                     users:
-                      - name: ad
-                      - name: atque
-                      - name: eos
-                      - name: molestias
-                      - name: dolorem
-                      - name: sed
-                      - name: optio
-                      - name: dolor
-                      - name: aperiam
-                      - name: numquam
-                      - name: quam
-                      - name: velit
-                      - name: id
-                      - name: natus
-                      - name: tenetur
-                      - name: voluptatibus
-                      - name: blanditiis
-                      - name: atque
-                      - name: est
+                      - name: voluptatem
                       - name: aut
+                      - name: pariatur
+                      - name: doloremque
+                      - name: iusto
+                      - name: libero
+                      - name: nemo
+                      - name: aut
+                      - name: qui
+                      - name: ut
+                      - name: sapiente
+                      - name: veniam
+                      - name: consequatur
+                      - name: aut
+                      - name: omnis
+                      - name: assumenda
+                      - name: blanditiis
+                      - name: laudantium
+                      - name: nihil
+                      - name: itaque
         '400':
           description: Bad request
           content:
@@ -220,19 +198,19 @@ paths:
             examples:
               user1:
                 value:
-                  name: ipsam
+                  name: iure
               user2:
                 value:
-                  name: illo
+                  name: nam
               user3:
                 value:
-                  name: cumque
+                  name: ex
               user4:
                 value:
-                  name: quasi
+                  name: qui
               user5:
                 value:
-                  name: repudiandae
+                  name: voluptas
       responses:
         '201':
           description: Create succeeded
@@ -247,23 +225,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: dicta
+                      name: possimus
                 user2:
                   value:
                     user:
-                      name: et
+                      name: eos
                 user3:
                   value:
                     user:
-                      name: architecto
+                      name: debitis
                 user4:
                   value:
                     user:
-                      name: aliquid
+                      name: ea
                 user5:
                   value:
                     user:
-                      name: iure
+                      name: quis
         '400':
           description: Bad request
           content:
@@ -352,23 +330,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: optio
+                      name: assumenda
                 user2:
                   value:
                     user:
-                      name: dolores
+                      name: illum
                 user3:
                   value:
                     user:
-                      name: similique
+                      name: aliquid
                 user4:
                   value:
                     user:
-                      name: molestiae
+                      name: consequatur
                 user5:
                   value:
                     user:
-                      name: incidunt
+                      name: molestias
         '400':
           description: Bad request
           content:
@@ -414,19 +392,19 @@ paths:
             examples:
               user1:
                 value:
-                  name: assumenda
+                  name: asperiores
               user2:
                 value:
-                  name: tenetur
+                  name: nemo
               user3:
                 value:
-                  name: alias
+                  name: quo
               user4:
                 value:
-                  name: aliquam
+                  name: ipsa
               user5:
                 value:
-                  name: beatae
+                  name: alias
       responses:
         '200':
           description: Replace succeeded
@@ -441,23 +419,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: minus
+                      name: sapiente
                 user2:
                   value:
                     user:
-                      name: laboriosam
+                      name: ut
                 user3:
                   value:
                     user:
-                      name: necessitatibus
+                      name: et
                 user4:
                   value:
                     user:
-                      name: ipsam
+                      name: earum
                 user5:
                   value:
                     user:
-                      name: nobis
+                      name: a
         '400':
           description: Bad request
           content:
@@ -503,19 +481,19 @@ paths:
             examples:
               user1:
                 value:
-                  name: ad
+                  name: tempore
               user2:
                 value:
-                  name: omnis
+                  name: exercitationem
               user3:
                 value:
-                  name: recusandae
+                  name: distinctio
               user4:
                 value:
-                  name: repellat
+                  name: possimus
               user5:
                 value:
-                  name: odit
+                  name: explicabo
       responses:
         '200':
           description: Modify succeeded
@@ -530,23 +508,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: ducimus
+                      name: dolor
                 user2:
                   value:
                     user:
-                      name: et
+                      name: sit
                 user3:
                   value:
                     user:
-                      name: laborum
+                      name: et
                 user4:
                   value:
                     user:
-                      name: excepturi
+                      name: odio
                 user5:
                   value:
                     user:
-                      name: ratione
+                      name: voluptas
         '400':
           description: Bad request
           content:
@@ -635,23 +613,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: maiores
+                      name: dolorem
                 user2:
                   value:
                     user:
-                      name: deleniti
+                      name: et
                 user3:
                   value:
                     user:
-                      name: placeat
+                      name: asperiores
                 user4:
                   value:
                     user:
-                      name: vel
+                      name: repellat
                 user5:
                   value:
                     user:
-                      name: a
+                      name: est
         '400':
           description: Bad request
           content:
@@ -697,23 +675,11 @@ components:
     PaginationResponse:
       type: object
       properties:
-        firstPage:
-          type: integer
-          format: int32
-        lastPage:
-          type: integer
-          format: int32
-        nextPage:
-          type: integer
-          format: int32
-        prevPage:
-          type: integer
-          format: int32
+        nextPageToken:
+          type: string
+          format: uuid
       required:
-        - firstPage
-        - lastPage
-        - nextPage
-        - prevPage
+        - nextPageToken
     UserResponse:
       properties:
         name:

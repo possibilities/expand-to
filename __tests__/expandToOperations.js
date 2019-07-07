@@ -529,14 +529,14 @@ describe('expandToOperations', () => {
       test('query', () => {
         const paginationParams = [
           {
-            name: 'perPage',
-            description: 'Per page',
+            name: 'pageSize',
+            description: 'Page size',
             schema: { type: 'integer', format: 'int32', default: 20 }
           },
           {
-            name: 'page',
-            description: 'Page number',
-            schema: { type: 'integer', format: 'int32', default: 1 }
+            name: 'pageToken',
+            description: 'Page token',
+            schema: { type: 'string' }
           },
           {
             name: 'orderBy',

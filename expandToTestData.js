@@ -1,3 +1,4 @@
+const uuid = require('uuid/v4')
 const get = require('lodash/get')
 const fromPairs = require('lodash/fromPairs')
 const mapValues = require('lodash/mapValues')
@@ -34,28 +35,27 @@ const getFakeValue = (name, schema, options) => {
 }
 
 const expandToTestData = ({ operations, models }, options = {}) => {
+  // For testing purposes only you can pass in a mocked helpers
+  const faker = get(options, 'fake.generator', fake)
+  const reverseRegexp = get(options, 'fake.reverseRegexp', randomRegexp)
+
   let testData = {}
   operations.forEach(operation => {
     testData = {
       ...testData,
       [operation.id]: (req = {}) => {
         if (operation.action === 'list') {
-          const { default: perPage } =
-            operation.query.find(q => q.name === 'perPage').schema
+          const { default: pageSize } =
+            operation.query.find(q => q.name === 'pageSize').schema
           return {
             request: {
               params: {},
-              query: { perPage: 20, page: 1 }
+              query: { pageSize: 20, pageToken: faker.random.uuid() }
             },
             response: {
-              pagination: {
-                firstPage: 1,
-                lastPage: 10,
-                nextPage: 2,
-                prevPage: 1
-              },
+              nextPageToken: faker.random.uuid(),
               [pluralize(operation.response.key)]:
-                range(parseInt(get(req, 'query.perPage') || perPage, 10))
+                range(parseInt(get(req, 'query.pageSize') || pageSize, 10))
                   .map(n => mapValues(
                     models[operation.response.schema].response.properties,
                     (schema, name) => getFakeValue(name, schema, options)

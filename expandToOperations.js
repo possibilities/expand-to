@@ -112,8 +112,8 @@ const getQuery = (action, path) => {
   if (action === 'list') {
     return [
 
-      { name: 'perPage', description: 'Per page', schema: { type: 'integer', format: 'int32', default: 20 } },
-      { name: 'page', description: 'Page number', schema: { type: 'integer', format: 'int32', default: 1 } },
+      { name: 'pageSize', description: 'Page size', schema: { type: 'integer', format: 'int32', default: 20 } },
+      { name: 'pageToken', description: 'Page token', schema: { type: 'string' } },
       { name: 'orderBy', description: 'Order by', schema: { type: 'string' } }
     ]
   }

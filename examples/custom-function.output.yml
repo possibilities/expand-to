@@ -10,20 +10,18 @@ paths:
         - Pets
       summary: List pets
       parameters:
-        - name: perPage
-          description: Per page
+        - name: pageSize
+          description: Page size
           schema:
             type: integer
             format: int32
             default: 20
           in: query
           required: false
-        - name: page
-          description: Page number
+        - name: pageToken
+          description: Page token
           schema:
-            type: integer
-            format: int32
-            default: 1
+            type: string
           in: query
           required: false
         - name: orderBy
@@ -38,155 +36,135 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  pets:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/PetResponse'
-                  pages:
-                    $ref: '#/components/schemas/PaginationResponse'
+                allOf:
+                  - $ref: '#/components/schemas/PaginationResponse'
+                  - type: object
+                    properties:
+                      pets:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PetResponse'
               examples:
                 pet1:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: a8a3dc5c-ed34-41f3-ba2d-20d15e08d3d1
                     pets:
-                      - name: quo
-                      - name: beatae
-                      - name: voluptates
-                      - name: explicabo
-                      - name: ullam
-                      - name: aut
-                      - name: sequi
-                      - name: perferendis
                       - name: et
-                      - name: ea
-                      - name: voluptate
-                      - name: inventore
-                      - name: qui
-                      - name: exercitationem
+                      - name: ut
+                      - name: quis
+                      - name: nemo
                       - name: et
-                      - name: quo
-                      - name: et
-                      - name: unde
-                      - name: optio
-                      - name: ullam
+                      - name: esse
+                      - name: porro
+                      - name: tempore
+                      - name: porro
+                      - name: ut
+                      - name: fugit
+                      - name: omnis
+                      - name: incidunt
+                      - name: doloremque
+                      - name: doloremque
+                      - name: eos
+                      - name: quaerat
+                      - name: culpa
+                      - name: aliquam
+                      - name: quas
                 pet2:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 66824b6a-fd1a-4ed7-b50d-59a0e59bd2a6
                     pets:
-                      - name: cumque
-                      - name: quas
-                      - name: perspiciatis
-                      - name: vero
-                      - name: aut
-                      - name: quas
-                      - name: assumenda
                       - name: molestiae
+                      - name: illo
+                      - name: molestiae
+                      - name: occaecati
+                      - name: explicabo
+                      - name: harum
+                      - name: et
+                      - name: suscipit
                       - name: sed
+                      - name: modi
                       - name: rerum
-                      - name: cumque
-                      - name: laborum
-                      - name: itaque
-                      - name: nemo
-                      - name: quod
-                      - name: culpa
-                      - name: hic
-                      - name: quia
-                      - name: beatae
+                      - name: eum
+                      - name: suscipit
+                      - name: excepturi
+                      - name: ullam
                       - name: ut
+                      - name: dignissimos
+                      - name: minima
+                      - name: libero
+                      - name: illum
                 pet3:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 9589b377-cb74-4ce8-96b2-bd9d0032f383
                     pets:
-                      - name: quia
-                      - name: rerum
-                      - name: voluptas
-                      - name: sint
-                      - name: maiores
-                      - name: quisquam
-                      - name: voluptatibus
-                      - name: velit
-                      - name: non
-                      - name: consequuntur
-                      - name: labore
-                      - name: saepe
-                      - name: ea
-                      - name: earum
-                      - name: et
-                      - name: repudiandae
-                      - name: ipsum
-                      - name: at
-                      - name: tempora
+                      - name: inventore
                       - name: omnis
+                      - name: impedit
+                      - name: porro
+                      - name: expedita
+                      - name: temporibus
+                      - name: eligendi
+                      - name: est
+                      - name: voluptas
+                      - name: adipisci
+                      - name: delectus
+                      - name: quas
+                      - name: praesentium
+                      - name: dignissimos
+                      - name: possimus
+                      - name: tenetur
+                      - name: voluptas
+                      - name: eum
+                      - name: facilis
+                      - name: esse
                 pet4:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: bc1477ac-7013-47fa-b244-e4c60c573a05
                     pets:
+                      - name: eaque
                       - name: aut
-                      - name: doloremque
-                      - name: eum
-                      - name: est
-                      - name: aut
+                      - name: alias
                       - name: non
+                      - name: deleniti
+                      - name: eum
+                      - name: impedit
                       - name: eligendi
+                      - name: vel
+                      - name: et
+                      - name: sit
+                      - name: odit
+                      - name: assumenda
+                      - name: et
+                      - name: dicta
+                      - name: vel
+                      - name: ut
+                      - name: et
+                      - name: ut
                       - name: rerum
-                      - name: tenetur
-                      - name: earum
-                      - name: iure
-                      - name: nesciunt
-                      - name: dolor
-                      - name: enim
-                      - name: iure
-                      - name: autem
-                      - name: quia
-                      - name: voluptatem
-                      - name: doloribus
-                      - name: quas
                 pet5:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: b8860eac-6893-4351-a9e9-0d85677514e9
                     pets:
-                      - name: repudiandae
-                      - name: soluta
-                      - name: ad
-                      - name: debitis
-                      - name: consequatur
-                      - name: dolorum
-                      - name: tenetur
-                      - name: dolores
-                      - name: autem
-                      - name: nihil
-                      - name: a
-                      - name: sed
-                      - name: perferendis
-                      - name: dignissimos
-                      - name: et
-                      - name: et
-                      - name: et
-                      - name: ab
+                      - name: qui
                       - name: quibusdam
-                      - name: sed
+                      - name: facere
+                      - name: omnis
+                      - name: placeat
+                      - name: amet
+                      - name: doloremque
+                      - name: aspernatur
+                      - name: sit
+                      - name: aut
+                      - name: quia
+                      - name: cupiditate
+                      - name: nesciunt
+                      - name: laudantium
+                      - name: iusto
+                      - name: et
+                      - name: dolore
+                      - name: nulla
+                      - name: quibusdam
+                      - name: veritatis
         '400':
           description: Bad request
           content:
@@ -220,19 +198,19 @@ paths:
             examples:
               pet1:
                 value:
-                  name: iusto
+                  name: illum
               pet2:
                 value:
-                  name: temporibus
+                  name: sapiente
               pet3:
                 value:
-                  name: dolorem
+                  name: eos
               pet4:
                 value:
-                  name: qui
+                  name: sed
               pet5:
                 value:
-                  name: consequatur
+                  name: ut
       responses:
         '201':
           description: Create succeeded
@@ -247,23 +225,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: est
+                      name: et
                 pet2:
                   value:
                     pet:
-                      name: sed
+                      name: minima
                 pet3:
                   value:
                     pet:
-                      name: molestiae
+                      name: ea
                 pet4:
                   value:
                     pet:
-                      name: saepe
+                      name: nostrum
                 pet5:
                   value:
                     pet:
-                      name: blanditiis
+                      name: eius
         '400':
           description: Bad request
           content:
@@ -352,23 +330,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: rerum
+                      name: reprehenderit
                 pet2:
                   value:
                     pet:
-                      name: excepturi
+                      name: voluptates
                 pet3:
                   value:
                     pet:
-                      name: nobis
+                      name: non
                 pet4:
                   value:
                     pet:
-                      name: esse
+                      name: saepe
                 pet5:
                   value:
                     pet:
-                      name: minus
+                      name: porro
         '400':
           description: Bad request
           content:
@@ -414,19 +392,19 @@ paths:
             examples:
               pet1:
                 value:
-                  name: autem
+                  name: corrupti
               pet2:
                 value:
-                  name: et
+                  name: soluta
               pet3:
                 value:
-                  name: sapiente
+                  name: delectus
               pet4:
                 value:
-                  name: blanditiis
+                  name: optio
               pet5:
                 value:
-                  name: omnis
+                  name: eum
       responses:
         '200':
           description: Replace succeeded
@@ -441,23 +419,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: explicabo
+                      name: quae
                 pet2:
                   value:
                     pet:
-                      name: aperiam
+                      name: at
                 pet3:
                   value:
                     pet:
-                      name: ipsum
+                      name: distinctio
                 pet4:
                   value:
                     pet:
-                      name: ipsa
+                      name: culpa
                 pet5:
                   value:
                     pet:
-                      name: deserunt
+                      name: ea
         '400':
           description: Bad request
           content:
@@ -503,19 +481,19 @@ paths:
             examples:
               pet1:
                 value:
-                  name: nulla
+                  name: fuga
               pet2:
                 value:
-                  name: ut
+                  name: repellat
               pet3:
                 value:
-                  name: temporibus
+                  name: tempore
               pet4:
                 value:
-                  name: enim
+                  name: rem
               pet5:
                 value:
-                  name: consequatur
+                  name: ut
       responses:
         '200':
           description: Modify succeeded
@@ -530,23 +508,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: voluptates
+                      name: qui
                 pet2:
                   value:
                     pet:
-                      name: molestiae
+                      name: ut
                 pet3:
                   value:
                     pet:
-                      name: sint
+                      name: dolorem
                 pet4:
                   value:
                     pet:
-                      name: autem
+                      name: iste
                 pet5:
                   value:
                     pet:
-                      name: reprehenderit
+                      name: dolores
         '400':
           description: Bad request
           content:
@@ -641,23 +619,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: et
+                      name: alias
                 pet2:
                   value:
                     pet:
-                      name: reiciendis
+                      name: maxime
                 pet3:
                   value:
                     pet:
-                      name: ea
+                      name: minus
                 pet4:
                   value:
                     pet:
-                      name: deleniti
+                      name: voluptas
                 pet5:
                   value:
                     pet:
-                      name: fugiat
+                      name: et
         '400':
           description: Bad request
           content:
@@ -689,20 +667,18 @@ paths:
         - Pets
       summary: Invoke `customFnWithListAction` for pets
       parameters:
-        - name: perPage
-          description: Per page
+        - name: pageSize
+          description: Page size
           schema:
             type: integer
             format: int32
             default: 20
           in: query
           required: false
-        - name: page
-          description: Page number
+        - name: pageToken
+          description: Page token
           schema:
-            type: integer
-            format: int32
-            default: 1
+            type: string
           in: query
           required: false
         - name: orderBy
@@ -717,155 +693,135 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  pets:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/PetResponse'
-                  pages:
-                    $ref: '#/components/schemas/PaginationResponse'
+                allOf:
+                  - $ref: '#/components/schemas/PaginationResponse'
+                  - type: object
+                    properties:
+                      pets:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PetResponse'
               examples:
                 pet1:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 5b2ec9d2-9f29-4371-a9ac-3cd2808095e9
                     pets:
-                      - name: non
-                      - name: distinctio
-                      - name: qui
-                      - name: perferendis
                       - name: error
-                      - name: blanditiis
-                      - name: eos
+                      - name: sed
+                      - name: perferendis
+                      - name: quia
+                      - name: vero
+                      - name: quia
+                      - name: voluptatem
+                      - name: nesciunt
+                      - name: sit
+                      - name: perferendis
+                      - name: est
+                      - name: atque
+                      - name: laborum
+                      - name: ea
+                      - name: ex
                       - name: aut
-                      - name: voluptas
-                      - name: harum
-                      - name: commodi
-                      - name: molestiae
-                      - name: quae
-                      - name: aut
-                      - name: sapiente
-                      - name: eos
-                      - name: ipsa
-                      - name: quasi
-                      - name: doloremque
-                      - name: eveniet
+                      - name: ea
+                      - name: et
+                      - name: et
+                      - name: nisi
                 pet2:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 963f82a9-2789-423f-9f72-471077fb0e30
                     pets:
-                      - name: assumenda
-                      - name: ut
-                      - name: tempora
-                      - name: ad
-                      - name: laudantium
-                      - name: omnis
-                      - name: blanditiis
-                      - name: quae
-                      - name: quas
-                      - name: vero
-                      - name: est
-                      - name: omnis
-                      - name: quibusdam
-                      - name: cumque
-                      - name: ea
+                      - name: accusamus
+                      - name: consequatur
+                      - name: quod
+                      - name: et
+                      - name: fuga
+                      - name: dolores
+                      - name: sed
+                      - name: saepe
+                      - name: fugiat
+                      - name: aspernatur
+                      - name: earum
                       - name: quaerat
+                      - name: repellat
+                      - name: vel
+                      - name: natus
+                      - name: rerum
+                      - name: nobis
                       - name: maxime
-                      - name: commodi
-                      - name: nesciunt
-                      - name: perferendis
+                      - name: rem
+                      - name: nisi
                 pet3:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: b0223a00-bda5-4832-aab7-2e9ee1ceb0d1
                     pets:
-                      - name: quis
-                      - name: ea
-                      - name: saepe
+                      - name: quasi
+                      - name: aspernatur
+                      - name: in
                       - name: a
-                      - name: ex
-                      - name: minus
-                      - name: omnis
-                      - name: ea
-                      - name: sunt
-                      - name: optio
-                      - name: ullam
-                      - name: repellendus
-                      - name: mollitia
-                      - name: aperiam
-                      - name: voluptas
-                      - name: eos
-                      - name: est
-                      - name: vitae
-                      - name: accusantium
-                      - name: quae
-                pet4:
-                  value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
-                    pets:
-                      - name: itaque
-                      - name: adipisci
-                      - name: eaque
-                      - name: qui
-                      - name: et
                       - name: necessitatibus
-                      - name: provident
-                      - name: dignissimos
-                      - name: ut
-                      - name: qui
-                      - name: non
-                      - name: sint
-                      - name: exercitationem
-                      - name: quae
-                      - name: numquam
-                      - name: minima
-                      - name: mollitia
                       - name: optio
                       - name: enim
+                      - name: esse
+                      - name: sequi
+                      - name: eum
+                      - name: quidem
                       - name: aut
+                      - name: qui
+                      - name: mollitia
+                      - name: praesentium
+                      - name: ullam
+                      - name: vero
+                      - name: minima
+                      - name: quisquam
+                      - name: veritatis
+                pet4:
+                  value:
+                    nextPageToken: 44c2d217-9af8-4d97-bf20-914b5e2b8697
+                    pets:
+                      - name: repellat
+                      - name: eius
+                      - name: dolores
+                      - name: omnis
+                      - name: expedita
+                      - name: distinctio
+                      - name: neque
+                      - name: impedit
+                      - name: et
+                      - name: veritatis
+                      - name: quasi
+                      - name: vitae
+                      - name: sed
+                      - name: quis
+                      - name: quia
+                      - name: tempore
+                      - name: assumenda
+                      - name: dolores
+                      - name: adipisci
+                      - name: itaque
                 pet5:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 91adee93-a1af-4452-a9e3-1f98a82691f9
                     pets:
-                      - name: autem
-                      - name: ut
-                      - name: doloribus
-                      - name: iusto
-                      - name: expedita
+                      - name: error
                       - name: voluptas
-                      - name: non
-                      - name: provident
-                      - name: accusamus
-                      - name: doloremque
+                      - name: occaecati
+                      - name: in
+                      - name: quisquam
+                      - name: nesciunt
+                      - name: repudiandae
+                      - name: eius
+                      - name: tempore
+                      - name: aspernatur
                       - name: et
-                      - name: voluptas
-                      - name: sint
-                      - name: ut
-                      - name: itaque
-                      - name: ut
-                      - name: provident
+                      - name: reiciendis
+                      - name: commodi
+                      - name: aut
+                      - name: dolor
+                      - name: praesentium
+                      - name: reprehenderit
                       - name: non
-                      - name: non
-                      - name: ut
+                      - name: nam
+                      - name: iusto
         '400':
           description: Bad request
           content:
@@ -911,23 +867,23 @@ paths:
                 customFnWithModel1:
                   value:
                     customFnWithModel:
-                      customFnField: temporibus
+                      customFnField: ut
                 customFnWithModel2:
                   value:
                     customFnWithModel:
-                      customFnField: natus
+                      customFnField: tempore
                 customFnWithModel3:
                   value:
                     customFnWithModel:
-                      customFnField: et
+                      customFnField: dignissimos
                 customFnWithModel4:
                   value:
                     customFnWithModel:
-                      customFnField: autem
+                      customFnField: possimus
                 customFnWithModel5:
                   value:
                     customFnWithModel:
-                      customFnField: tenetur
+                      customFnField: numquam
         '400':
           description: Bad request
           content:
@@ -968,19 +924,19 @@ paths:
             examples:
               customFnWithSeparateModels1:
                 value:
-                  customFnRequestModelField: pariatur
+                  customFnRequestModelField: odit
               customFnWithSeparateModels2:
                 value:
-                  customFnRequestModelField: unde
+                  customFnRequestModelField: laboriosam
               customFnWithSeparateModels3:
                 value:
-                  customFnRequestModelField: ratione
+                  customFnRequestModelField: officiis
               customFnWithSeparateModels4:
                 value:
-                  customFnRequestModelField: laborum
+                  customFnRequestModelField: quos
               customFnWithSeparateModels5:
                 value:
-                  customFnRequestModelField: quo
+                  customFnRequestModelField: sed
       responses:
         '201':
           description: Create succeeded
@@ -995,23 +951,23 @@ paths:
                 customFnWithSeparateModels1:
                   value:
                     customFnWithSeparateModels:
-                      customFnResponseModelField: velit
+                      customFnResponseModelField: nihil
                 customFnWithSeparateModels2:
                   value:
                     customFnWithSeparateModels:
-                      customFnResponseModelField: voluptatum
+                      customFnResponseModelField: id
                 customFnWithSeparateModels3:
                   value:
                     customFnWithSeparateModels:
-                      customFnResponseModelField: quis
+                      customFnResponseModelField: illo
                 customFnWithSeparateModels4:
                   value:
                     customFnWithSeparateModels:
-                      customFnResponseModelField: cum
+                      customFnResponseModelField: et
                 customFnWithSeparateModels5:
                   value:
                     customFnWithSeparateModels:
-                      customFnResponseModelField: ut
+                      customFnResponseModelField: voluptate
         '400':
           description: Bad request
           content:
@@ -1046,19 +1002,19 @@ paths:
             examples:
               customFnWithStringyModel1:
                 value:
-                  name: magni
+                  name: corporis
               customFnWithStringyModel2:
                 value:
-                  name: dolor
+                  name: magni
               customFnWithStringyModel3:
                 value:
-                  name: quia
+                  name: qui
               customFnWithStringyModel4:
                 value:
-                  name: repellat
+                  name: neque
               customFnWithStringyModel5:
                 value:
-                  name: qui
+                  name: dolorum
       responses:
         '201':
           description: Create succeeded
@@ -1077,19 +1033,19 @@ paths:
                 customFnWithStringyModel2:
                   value:
                     pet:
-                      name: et
+                      name: maxime
                 customFnWithStringyModel3:
                   value:
                     pet:
-                      name: eos
+                      name: provident
                 customFnWithStringyModel4:
                   value:
                     pet:
-                      name: error
+                      name: rem
                 customFnWithStringyModel5:
                   value:
                     pet:
-                      name: id
+                      name: rem
         '400':
           description: Bad request
           content:
@@ -1124,19 +1080,19 @@ paths:
             examples:
               customFnWithStringyResponseModel1:
                 value:
-                  name: quas
+                  name: sapiente
               customFnWithStringyResponseModel2:
                 value:
-                  name: qui
+                  name: et
               customFnWithStringyResponseModel3:
                 value:
-                  name: aliquam
+                  name: explicabo
               customFnWithStringyResponseModel4:
                 value:
-                  name: sequi
+                  name: qui
               customFnWithStringyResponseModel5:
                 value:
-                  name: suscipit
+                  name: nam
       responses:
         '201':
           description: Create succeeded
@@ -1151,23 +1107,23 @@ paths:
                 customFnWithStringyResponseModel1:
                   value:
                     pet:
-                      name: eveniet
+                      name: non
                 customFnWithStringyResponseModel2:
                   value:
                     pet:
-                      name: sed
+                      name: sit
                 customFnWithStringyResponseModel3:
                   value:
                     pet:
-                      name: odio
+                      name: facilis
                 customFnWithStringyResponseModel4:
                   value:
                     pet:
-                      name: laboriosam
+                      name: iure
                 customFnWithStringyResponseModel5:
                   value:
                     pet:
-                      name: expedita
+                      name: suscipit
         '400':
           description: Bad request
           content:
@@ -1202,19 +1158,19 @@ paths:
             examples:
               customFnWithStringySeparateModels1:
                 value:
-                  name: quisquam
+                  name: facere
               customFnWithStringySeparateModels2:
                 value:
-                  name: nam
+                  name: praesentium
               customFnWithStringySeparateModels3:
                 value:
-                  name: adipisci
+                  name: ratione
               customFnWithStringySeparateModels4:
                 value:
-                  name: aut
+                  name: ea
               customFnWithStringySeparateModels5:
                 value:
-                  name: sint
+                  name: cum
       responses:
         '201':
           description: Create succeeded
@@ -1233,19 +1189,19 @@ paths:
                 customFnWithStringySeparateModels2:
                   value:
                     pet:
-                      name: ratione
+                      name: quo
                 customFnWithStringySeparateModels3:
                   value:
                     pet:
-                      name: doloribus
+                      name: qui
                 customFnWithStringySeparateModels4:
                   value:
                     pet:
-                      name: dignissimos
+                      name: fugiat
                 customFnWithStringySeparateModels5:
                   value:
                     pet:
-                      name: perferendis
+                      name: sequi
         '400':
           description: Bad request
           content:
@@ -1281,19 +1237,19 @@ paths:
             examples:
               customFnWithRequestAndStringyResponse1:
                 value:
-                  customFnWithRequestAndStringyResponseField: inventore
+                  customFnWithRequestAndStringyResponseField: error
               customFnWithRequestAndStringyResponse2:
                 value:
-                  customFnWithRequestAndStringyResponseField: aspernatur
+                  customFnWithRequestAndStringyResponseField: eum
               customFnWithRequestAndStringyResponse3:
                 value:
-                  customFnWithRequestAndStringyResponseField: facilis
+                  customFnWithRequestAndStringyResponseField: consequatur
               customFnWithRequestAndStringyResponse4:
                 value:
-                  customFnWithRequestAndStringyResponseField: et
+                  customFnWithRequestAndStringyResponseField: officia
               customFnWithRequestAndStringyResponse5:
                 value:
-                  customFnWithRequestAndStringyResponseField: rerum
+                  customFnWithRequestAndStringyResponseField: corrupti
       responses:
         '201':
           description: Create succeeded
@@ -1308,23 +1264,23 @@ paths:
                 customFnWithRequestAndStringyResponse1:
                   value:
                     pet:
-                      name: natus
+                      name: ex
                 customFnWithRequestAndStringyResponse2:
                   value:
                     pet:
-                      name: labore
+                      name: culpa
                 customFnWithRequestAndStringyResponse3:
                   value:
                     pet:
-                      name: praesentium
+                      name: explicabo
                 customFnWithRequestAndStringyResponse4:
                   value:
                     pet:
-                      name: distinctio
+                      name: blanditiis
                 customFnWithRequestAndStringyResponse5:
                   value:
                     pet:
-                      name: dolor
+                      name: qui
         '400':
           description: Bad request
           content:
@@ -1370,23 +1326,11 @@ components:
     PaginationResponse:
       type: object
       properties:
-        firstPage:
-          type: integer
-          format: int32
-        lastPage:
-          type: integer
-          format: int32
-        nextPage:
-          type: integer
-          format: int32
-        prevPage:
-          type: integer
-          format: int32
+        nextPageToken:
+          type: string
+          format: uuid
       required:
-        - firstPage
-        - lastPage
-        - nextPage
-        - prevPage
+        - nextPageToken
     PetResponse:
       properties:
         name:

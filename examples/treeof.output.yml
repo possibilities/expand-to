@@ -10,20 +10,18 @@ paths:
         - Groups
       summary: List groups
       parameters:
-        - name: perPage
-          description: Per page
+        - name: pageSize
+          description: Page size
           schema:
             type: integer
             format: int32
             default: 20
           in: query
           required: false
-        - name: page
-          description: Page number
+        - name: pageToken
+          description: Page token
           schema:
-            type: integer
-            format: int32
-            default: 1
+            type: string
           in: query
           required: false
         - name: orderBy
@@ -38,155 +36,135 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  groups:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/GroupResponse'
-                  pages:
-                    $ref: '#/components/schemas/PaginationResponse'
+                allOf:
+                  - $ref: '#/components/schemas/PaginationResponse'
+                  - type: object
+                    properties:
+                      groups:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/GroupResponse'
               examples:
                 group1:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: ac1f9bdb-4fc8-4729-bec5-873aa14fa6fb
                     groups:
-                      - name: et
-                      - name: est
-                      - name: ea
-                      - name: natus
-                      - name: explicabo
-                      - name: dolorem
-                      - name: nemo
-                      - name: ea
-                      - name: dolorem
-                      - name: sunt
-                      - name: voluptatem
-                      - name: sunt
                       - name: laboriosam
-                      - name: accusamus
-                      - name: commodi
-                      - name: quis
-                      - name: fugit
-                      - name: beatae
-                      - name: fugit
-                      - name: eaque
+                      - name: aut
+                      - name: id
+                      - name: quasi
+                      - name: minus
+                      - name: saepe
+                      - name: ut
+                      - name: aliquam
+                      - name: ipsa
+                      - name: voluptate
+                      - name: voluptas
+                      - name: voluptate
+                      - name: odit
+                      - name: et
+                      - name: consectetur
+                      - name: qui
+                      - name: quaerat
+                      - name: magnam
+                      - name: velit
+                      - name: minus
                 group2:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: f2cd565a-1077-4322-9135-801a7c5b223d
                     groups:
-                      - name: omnis
-                      - name: doloribus
-                      - name: laboriosam
-                      - name: fugit
-                      - name: voluptatem
-                      - name: libero
-                      - name: dolore
-                      - name: aut
-                      - name: similique
-                      - name: sit
-                      - name: a
-                      - name: corporis
-                      - name: non
-                      - name: perspiciatis
-                      - name: et
-                      - name: perspiciatis
+                      - name: earum
+                      - name: sint
+                      - name: cum
                       - name: eos
-                      - name: ex
-                      - name: dolores
-                      - name: voluptas
+                      - name: tenetur
+                      - name: repellendus
+                      - name: et
+                      - name: natus
+                      - name: quasi
+                      - name: nam
+                      - name: tempore
+                      - name: inventore
+                      - name: amet
+                      - name: exercitationem
+                      - name: maxime
+                      - name: temporibus
+                      - name: corrupti
+                      - name: repellendus
+                      - name: provident
+                      - name: culpa
                 group3:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 1f6236f5-e3e1-45a5-af4f-9009d0747d4e
                     groups:
-                      - name: et
-                      - name: repellat
-                      - name: beatae
-                      - name: et
-                      - name: accusamus
-                      - name: voluptatum
+                      - name: dolores
+                      - name: culpa
+                      - name: voluptates
+                      - name: sit
+                      - name: ipsa
+                      - name: nulla
+                      - name: harum
+                      - name: sequi
                       - name: qui
-                      - name: enim
-                      - name: aut
-                      - name: autem
-                      - name: aut
-                      - name: fugiat
-                      - name: non
-                      - name: dolor
-                      - name: illum
-                      - name: similique
-                      - name: non
-                      - name: est
-                      - name: odio
-                      - name: doloribus
+                      - name: laborum
+                      - name: molestiae
+                      - name: accusantium
+                      - name: officia
+                      - name: veniam
+                      - name: qui
+                      - name: quibusdam
+                      - name: aliquid
+                      - name: eos
+                      - name: ex
+                      - name: repudiandae
                 group4:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 854682db-118d-4fd2-bff8-a9c3ca2e848d
                     groups:
-                      - name: inventore
-                      - name: consequatur
-                      - name: alias
-                      - name: nam
-                      - name: magnam
-                      - name: odio
-                      - name: accusantium
-                      - name: eum
-                      - name: quidem
-                      - name: facilis
-                      - name: commodi
-                      - name: veritatis
-                      - name: rerum
-                      - name: aut
-                      - name: vitae
-                      - name: quas
-                      - name: sequi
-                      - name: consequatur
-                      - name: sit
-                      - name: magni
-                group5:
-                  value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
-                    groups:
-                      - name: repudiandae
-                      - name: alias
-                      - name: occaecati
-                      - name: voluptatem
-                      - name: quisquam
-                      - name: sint
-                      - name: nemo
-                      - name: et
-                      - name: illo
-                      - name: eveniet
-                      - name: quidem
-                      - name: et
-                      - name: voluptas
-                      - name: quia
-                      - name: dolor
-                      - name: suscipit
-                      - name: aut
                       - name: omnis
                       - name: debitis
-                      - name: id
+                      - name: facere
+                      - name: autem
+                      - name: aliquam
+                      - name: quia
+                      - name: tempora
+                      - name: corrupti
+                      - name: corrupti
+                      - name: qui
+                      - name: tempora
+                      - name: velit
+                      - name: magni
+                      - name: voluptatum
+                      - name: distinctio
+                      - name: rerum
+                      - name: quia
+                      - name: hic
+                      - name: nulla
+                      - name: veniam
+                group5:
+                  value:
+                    nextPageToken: 6dd07a2a-26db-4dff-a52c-65a74d1778df
+                    groups:
+                      - name: maxime
+                      - name: dolor
+                      - name: voluptatem
+                      - name: similique
+                      - name: repellendus
+                      - name: aliquam
+                      - name: minima
+                      - name: laborum
+                      - name: iure
+                      - name: possimus
+                      - name: accusantium
+                      - name: veritatis
+                      - name: libero
+                      - name: consequuntur
+                      - name: voluptas
+                      - name: enim
+                      - name: quaerat
+                      - name: facere
+                      - name: molestiae
+                      - name: tempore
         '400':
           description: Bad request
           content:
@@ -220,19 +198,19 @@ paths:
             examples:
               group1:
                 value:
-                  name: deserunt
+                  name: rerum
               group2:
                 value:
-                  name: explicabo
+                  name: ipsum
               group3:
                 value:
-                  name: possimus
+                  name: iste
               group4:
                 value:
-                  name: corrupti
+                  name: sed
               group5:
                 value:
-                  name: inventore
+                  name: ut
       responses:
         '201':
           description: Create succeeded
@@ -247,23 +225,23 @@ paths:
                 group1:
                   value:
                     group:
-                      name: facere
+                      name: sequi
                 group2:
                   value:
                     group:
-                      name: qui
+                      name: repellat
                 group3:
                   value:
                     group:
-                      name: numquam
+                      name: vero
                 group4:
                   value:
                     group:
-                      name: earum
+                      name: explicabo
                 group5:
                   value:
                     group:
-                      name: optio
+                      name: dignissimos
         '400':
           description: Bad request
           content:
@@ -352,23 +330,23 @@ paths:
                 group1:
                   value:
                     group:
-                      name: repellendus
+                      name: ducimus
                 group2:
                   value:
                     group:
-                      name: iste
+                      name: est
                 group3:
                   value:
                     group:
-                      name: ipsum
+                      name: tempora
                 group4:
                   value:
                     group:
-                      name: libero
+                      name: quod
                 group5:
                   value:
                     group:
-                      name: error
+                      name: maiores
         '400':
           description: Bad request
           content:
@@ -414,19 +392,19 @@ paths:
             examples:
               group1:
                 value:
-                  name: adipisci
+                  name: sapiente
               group2:
                 value:
-                  name: tempore
+                  name: fuga
               group3:
                 value:
-                  name: id
+                  name: laborum
               group4:
                 value:
-                  name: ea
+                  name: explicabo
               group5:
                 value:
-                  name: labore
+                  name: non
       responses:
         '200':
           description: Replace succeeded
@@ -441,23 +419,23 @@ paths:
                 group1:
                   value:
                     group:
-                      name: est
+                      name: voluptatem
                 group2:
                   value:
                     group:
-                      name: similique
+                      name: aperiam
                 group3:
                   value:
                     group:
-                      name: alias
+                      name: in
                 group4:
                   value:
                     group:
-                      name: non
+                      name: vel
                 group5:
                   value:
                     group:
-                      name: optio
+                      name: magnam
         '400':
           description: Bad request
           content:
@@ -503,19 +481,19 @@ paths:
             examples:
               group1:
                 value:
-                  name: facilis
+                  name: dolorum
               group2:
                 value:
-                  name: voluptatem
+                  name: quia
               group3:
                 value:
-                  name: blanditiis
+                  name: consequatur
               group4:
                 value:
-                  name: inventore
+                  name: architecto
               group5:
                 value:
-                  name: et
+                  name: molestias
       responses:
         '200':
           description: Modify succeeded
@@ -530,23 +508,23 @@ paths:
                 group1:
                   value:
                     group:
-                      name: quisquam
+                      name: et
                 group2:
                   value:
                     group:
-                      name: rerum
+                      name: voluptate
                 group3:
                   value:
                     group:
-                      name: quo
+                      name: ratione
                 group4:
                   value:
                     group:
-                      name: fuga
+                      name: voluptatem
                 group5:
                   value:
                     group:
-                      name: doloremque
+                      name: autem
         '400':
           description: Bad request
           content:
@@ -627,20 +605,18 @@ paths:
           schema:
             type: string
           description: Group id
-        - name: perPage
-          description: Per page
+        - name: pageSize
+          description: Page size
           schema:
             type: integer
             format: int32
             default: 20
           in: query
           required: false
-        - name: page
-          description: Page number
+        - name: pageToken
+          description: Page token
           schema:
-            type: integer
-            format: int32
-            default: 1
+            type: string
           in: query
           required: false
         - name: orderBy
@@ -655,155 +631,135 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  groups:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/GroupResponse'
-                  pages:
-                    $ref: '#/components/schemas/PaginationResponse'
+                allOf:
+                  - $ref: '#/components/schemas/PaginationResponse'
+                  - type: object
+                    properties:
+                      groups:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/GroupResponse'
               examples:
                 group1:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 04cce15d-7e7b-4a40-bf44-098947b6fd8c
                     groups:
-                      - name: veritatis
-                      - name: est
-                      - name: rerum
-                      - name: odit
-                      - name: deserunt
-                      - name: consequuntur
-                      - name: reprehenderit
-                      - name: voluptatem
-                      - name: dolorum
-                      - name: eum
-                      - name: qui
-                      - name: ut
-                      - name: ut
-                      - name: neque
-                      - name: excepturi
-                      - name: sit
+                      - name: eius
+                      - name: cum
+                      - name: ex
+                      - name: illo
+                      - name: architecto
                       - name: quia
-                      - name: maxime
-                      - name: odit
-                      - name: sunt
+                      - name: asperiores
+                      - name: quia
+                      - name: cum
+                      - name: cumque
+                      - name: voluptates
+                      - name: corporis
+                      - name: voluptates
+                      - name: occaecati
+                      - name: quisquam
+                      - name: omnis
+                      - name: molestias
+                      - name: autem
+                      - name: aut
+                      - name: ut
                 group2:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 62f4baca-0bfe-4b2f-83ea-c93d355bcc0f
                     groups:
-                      - name: non
-                      - name: commodi
-                      - name: voluptatibus
-                      - name: fugiat
+                      - name: cupiditate
+                      - name: aut
+                      - name: repellendus
+                      - name: ut
+                      - name: dicta
+                      - name: aut
+                      - name: debitis
+                      - name: maiores
+                      - name: id
+                      - name: modi
+                      - name: est
+                      - name: et
+                      - name: amet
+                      - name: molestiae
+                      - name: necessitatibus
+                      - name: dignissimos
                       - name: dolores
-                      - name: rem
-                      - name: tempore
-                      - name: qui
-                      - name: illum
-                      - name: eum
-                      - name: nobis
-                      - name: hic
-                      - name: officiis
-                      - name: dolore
-                      - name: consequatur
-                      - name: sit
-                      - name: aspernatur
-                      - name: tenetur
-                      - name: saepe
-                      - name: non
+                      - name: laboriosam
+                      - name: et
+                      - name: recusandae
                 group3:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: f9aff682-ffa6-4abe-acca-0df8c5da3683
                     groups:
-                      - name: asperiores
                       - name: et
-                      - name: dignissimos
-                      - name: ut
+                      - name: consequatur
+                      - name: provident
+                      - name: est
+                      - name: perspiciatis
+                      - name: est
+                      - name: totam
+                      - name: debitis
+                      - name: libero
+                      - name: aut
+                      - name: ducimus
+                      - name: facere
                       - name: neque
-                      - name: nesciunt
-                      - name: officia
-                      - name: illum
-                      - name: explicabo
-                      - name: id
+                      - name: est
+                      - name: eaque
+                      - name: facilis
                       - name: ut
-                      - name: corporis
-                      - name: praesentium
-                      - name: ipsam
-                      - name: ea
-                      - name: ea
-                      - name: sit
-                      - name: amet
-                      - name: accusantium
-                      - name: repellat
+                      - name: officiis
+                      - name: eveniet
+                      - name: nesciunt
                 group4:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: 96397a02-e50e-47c2-a4c0-15c3b644af86
                     groups:
-                      - name: doloremque
-                      - name: ipsum
-                      - name: consequatur
-                      - name: non
-                      - name: doloremque
-                      - name: vel
-                      - name: aut
-                      - name: qui
-                      - name: qui
+                      - name: porro
+                      - name: ut
+                      - name: ullam
+                      - name: vitae
+                      - name: rerum
+                      - name: inventore
+                      - name: dolorum
+                      - name: quos
+                      - name: enim
+                      - name: tenetur
                       - name: et
-                      - name: consequuntur
-                      - name: suscipit
-                      - name: sunt
-                      - name: minus
-                      - name: aut
-                      - name: nihil
-                      - name: officia
-                      - name: iusto
-                      - name: aut
-                      - name: nihil
+                      - name: vel
+                      - name: ipsum
+                      - name: omnis
+                      - name: voluptatem
+                      - name: quidem
+                      - name: blanditiis
+                      - name: qui
+                      - name: est
+                      - name: et
                 group5:
                   value:
-                    pagination:
-                      firstPage: 1
-                      lastPage: 10
-                      nextPage: 2
-                      prevPage: 1
+                    nextPageToken: ee1a9e92-a12c-48ef-a96b-f9eb90afdb2b
                     groups:
-                      - name: eligendi
-                      - name: asperiores
-                      - name: blanditiis
+                      - name: accusamus
                       - name: impedit
-                      - name: nihil
-                      - name: fugit
-                      - name: in
                       - name: voluptatem
-                      - name: autem
+                      - name: asperiores
+                      - name: quia
+                      - name: voluptatem
+                      - name: adipisci
+                      - name: neque
+                      - name: consequatur
+                      - name: ipsa
+                      - name: expedita
+                      - name: eos
                       - name: qui
-                      - name: sint
-                      - name: accusantium
-                      - name: debitis
-                      - name: odio
-                      - name: et
-                      - name: alias
-                      - name: ea
-                      - name: hic
+                      - name: natus
                       - name: reiciendis
-                      - name: possimus
+                      - name: eos
+                      - name: tenetur
+                      - name: est
+                      - name: est
+                      - name: et
         '400':
           description: Bad request
           content:
@@ -843,19 +799,19 @@ paths:
             examples:
               group1:
                 value:
-                  name: debitis
+                  name: repellat
               group2:
                 value:
-                  name: omnis
+                  name: facilis
               group3:
                 value:
-                  name: magni
+                  name: impedit
               group4:
                 value:
-                  name: asperiores
+                  name: sed
               group5:
                 value:
-                  name: non
+                  name: reprehenderit
       responses:
         '201':
           description: Create succeeded
@@ -870,15 +826,15 @@ paths:
                 group1:
                   value:
                     group:
-                      name: sit
+                      name: et
                 group2:
                   value:
                     group:
-                      name: est
+                      name: suscipit
                 group3:
                   value:
                     group:
-                      name: dignissimos
+                      name: molestiae
                 group4:
                   value:
                     group:
@@ -886,7 +842,7 @@ paths:
                 group5:
                   value:
                     group:
-                      name: voluptatem
+                      name: qui
         '400':
           description: Bad request
           content:
@@ -987,23 +943,23 @@ paths:
                 group1:
                   value:
                     group:
-                      name: nobis
+                      name: qui
                 group2:
                   value:
                     group:
-                      name: harum
+                      name: asperiores
                 group3:
                   value:
                     group:
-                      name: quia
+                      name: dolores
                 group4:
                   value:
                     group:
-                      name: non
+                      name: adipisci
                 group5:
                   value:
                     group:
-                      name: voluptas
+                      name: ut
         '400':
           description: Bad request
           content:
@@ -1055,19 +1011,19 @@ paths:
             examples:
               group1:
                 value:
-                  name: natus
+                  name: ipsam
               group2:
                 value:
-                  name: veritatis
+                  name: sunt
               group3:
                 value:
-                  name: rerum
+                  name: natus
               group4:
                 value:
-                  name: asperiores
+                  name: voluptas
               group5:
                 value:
-                  name: est
+                  name: possimus
       responses:
         '200':
           description: Replace succeeded
@@ -1082,23 +1038,23 @@ paths:
                 group1:
                   value:
                     group:
-                      name: inventore
+                      name: iure
                 group2:
                   value:
                     group:
-                      name: et
+                      name: minus
                 group3:
                   value:
                     group:
-                      name: eaque
+                      name: ad
                 group4:
                   value:
                     group:
-                      name: distinctio
+                      name: quasi
                 group5:
                   value:
                     group:
-                      name: magnam
+                      name: soluta
         '400':
           description: Bad request
           content:
@@ -1150,19 +1106,19 @@ paths:
             examples:
               group1:
                 value:
-                  name: enim
+                  name: dolores
               group2:
                 value:
-                  name: temporibus
+                  name: illo
               group3:
                 value:
-                  name: qui
+                  name: enim
               group4:
                 value:
                   name: ut
               group5:
                 value:
-                  name: et
+                  name: nobis
       responses:
         '200':
           description: Modify succeeded
@@ -1177,19 +1133,19 @@ paths:
                 group1:
                   value:
                     group:
-                      name: consequuntur
+                      name: doloremque
                 group2:
                   value:
                     group:
-                      name: nostrum
+                      name: ex
                 group3:
                   value:
                     group:
-                      name: cum
+                      name: voluptates
                 group4:
                   value:
                     group:
-                      name: vero
+                      name: officiis
                 group5:
                   value:
                     group:
@@ -1294,23 +1250,11 @@ components:
     PaginationResponse:
       type: object
       properties:
-        firstPage:
-          type: integer
-          format: int32
-        lastPage:
-          type: integer
-          format: int32
-        nextPage:
-          type: integer
-          format: int32
-        prevPage:
-          type: integer
-          format: int32
+        nextPageToken:
+          type: string
+          format: uuid
       required:
-        - firstPage
-        - lastPage
-        - nextPage
-        - prevPage
+        - nextPageToken
     GroupResponse:
       properties:
         name:

@@ -72,30 +72,30 @@ const petsResponseExamples = {
   pet5: { value: { pet: { id: 'random-word', name: 'random-firstname' } } }
 }
 
-const pagination = { firstPage: 1, lastPage: 10, nextPage: 2, prevPage: 1 }
+const pagination = { nextPageToken: 'random-uuid' }
 
 const managersListResponseExamples = {
-  manager1: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
-  manager2: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
-  manager3: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
-  manager4: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
-  manager5: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } }
+  manager1: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), ...pagination } },
+  manager2: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), ...pagination } },
+  manager3: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), ...pagination } },
+  manager4: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), ...pagination } },
+  manager5: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), ...pagination } }
 }
 
 const storesListResponseExamples = {
-  store1: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  store2: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  store3: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  store4: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  store5: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } }
+  store1: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } },
+  store2: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } },
+  store3: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } },
+  store4: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } },
+  store5: { value: { stores: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } }
 }
 
 const petsListResponseExamples = {
-  pet1: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  pet2: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  pet3: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  pet4: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } },
-  pet5: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), pagination } }
+  pet1: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } },
+  pet2: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } },
+  pet3: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } },
+  pet4: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } },
+  pet5: { value: { pets: range(20).map(n => ({ name: 'random-firstname', id: 'random-word' })), ...pagination } }
 }
 
 const spec = {
@@ -246,17 +246,17 @@ const fake = {
 const paginationParameters = [
   {
     in: 'query',
-    name: 'perPage',
+    name: 'pageSize',
     required: false,
-    description: 'Per page',
+    description: 'Page size',
     schema: { type: 'integer', format: 'int32', default: 20 }
   },
   {
     in: 'query',
-    name: 'page',
+    name: 'pageToken',
     required: false,
-    description: 'Page number',
-    schema: { type: 'integer', format: 'int32', default: 1 }
+    description: 'Page token',
+    schema: { type: 'string' }
   },
   {
     in: 'query',
@@ -731,18 +731,20 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  type: 'object',
-                  properties: {
-                    pets: {
-                      type: 'array',
-                      items: {
-                        '$ref': `#/components/schemas/PetResponse`
+                  allOf: [
+                    { '$ref': `#/components/schemas/PaginationResponse` },
+                    {
+                      type: 'object',
+                      properties: {
+                        pets: {
+                          type: 'array',
+                          items: {
+                            '$ref': `#/components/schemas/PetResponse`
+                          }
+                        },
                       }
-                    },
-                    pages: {
-                      '$ref': `#/components/schemas/PaginationResponse`
                     }
-                  }
+                  ]
                 },
                 examples: petsListResponseExamples
               }
@@ -1035,18 +1037,20 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  type: 'object',
-                  properties: {
-                    stores: {
-                      type: 'array',
-                      items: {
-                        '$ref': `#/components/schemas/StoreResponse`
+                  allOf: [
+                    { '$ref': `#/components/schemas/PaginationResponse` },
+                    {
+                      type: 'object',
+                      properties: {
+                        stores: {
+                          type: 'array',
+                          items: {
+                            '$ref': `#/components/schemas/StoreResponse`
+                          }
+                        },
                       }
-                    },
-                    pages: {
-                      '$ref': `#/components/schemas/PaginationResponse`
                     }
-                  }
+                  ]
                 },
                 examples: storesListResponseExamples
               }
@@ -1166,18 +1170,20 @@ describe('expandToOpenApi#paths', () => {
             content: {
               'application/json': {
                 schema: {
-                  type: 'object',
-                  properties: {
-                    managers: {
-                      type: 'array',
-                      items: {
-                        '$ref': `#/components/schemas/ManagerResponse`
+                  allOf: [
+                    { '$ref': `#/components/schemas/PaginationResponse` },
+                    {
+                      type: 'object',
+                      properties: {
+                        managers: {
+                          type: 'array',
+                          items: {
+                            '$ref': `#/components/schemas/ManagerResponse`
+                          }
+                        },
                       }
-                    },
-                    pages: {
-                      '$ref': `#/components/schemas/PaginationResponse`
                     }
-                  }
+                  ]
                 },
                 examples: managersListResponseExamples
               }

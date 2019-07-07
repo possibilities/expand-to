@@ -14,8 +14,8 @@
         "summary": "List people",
         "parameters": [
           {
-            "name": "perPage",
-            "description": "Per page",
+            "name": "pageSize",
+            "description": "Page size",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -25,12 +25,10 @@
             "required": false
           },
           {
-            "name": "page",
-            "description": "Page number",
+            "name": "pageToken",
+            "description": "Page token",
             "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
+              "type": "string"
             },
             "in": "query",
             "required": false
@@ -51,376 +49,355 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "people": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/PersonResponse"
-                      }
-                    },
-                    "pages": {
+                  "allOf": [
+                    {
                       "$ref": "#/components/schemas/PaginationResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "people": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/PersonResponse"
+                          }
+                        }
+                      }
                     }
-                  }
+                  ]
                 },
                 "examples": {
                   "person1": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "6c2ca202-2822-4c76-828f-bc63251fbd26",
                       "people": [
                         {
-                          "name": "mollitia"
+                          "name": "laudantium"
                         },
                         {
-                          "name": "natus"
-                        },
-                        {
-                          "name": "voluptate"
-                        },
-                        {
-                          "name": "optio"
-                        },
-                        {
-                          "name": "similique"
-                        },
-                        {
-                          "name": "sit"
-                        },
-                        {
-                          "name": "dolorem"
-                        },
-                        {
-                          "name": "voluptas"
-                        },
-                        {
-                          "name": "et"
-                        },
-                        {
-                          "name": "assumenda"
-                        },
-                        {
-                          "name": "et"
-                        },
-                        {
-                          "name": "voluptas"
-                        },
-                        {
-                          "name": "voluptatem"
-                        },
-                        {
-                          "name": "sit"
-                        },
-                        {
-                          "name": "sint"
-                        },
-                        {
-                          "name": "voluptatem"
+                          "name": "quia"
                         },
                         {
                           "name": "tempore"
                         },
                         {
-                          "name": "eum"
+                          "name": "quisquam"
                         },
                         {
-                          "name": "minima"
+                          "name": "quae"
+                        },
+                        {
+                          "name": "doloribus"
                         },
                         {
                           "name": "earum"
+                        },
+                        {
+                          "name": "nobis"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "ea"
+                        },
+                        {
+                          "name": "nulla"
+                        },
+                        {
+                          "name": "deserunt"
+                        },
+                        {
+                          "name": "accusantium"
+                        },
+                        {
+                          "name": "molestias"
+                        },
+                        {
+                          "name": "qui"
+                        },
+                        {
+                          "name": "voluptatum"
+                        },
+                        {
+                          "name": "repudiandae"
+                        },
+                        {
+                          "name": "totam"
+                        },
+                        {
+                          "name": "nisi"
+                        },
+                        {
+                          "name": "autem"
                         }
                       ]
                     }
                   },
                   "person2": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "ff9b6387-5555-4ae6-98f0-06ef14c9fc8e",
                       "people": [
                         {
-                          "name": "magnam"
+                          "name": "ut"
                         },
                         {
-                          "name": "qui"
-                        },
-                        {
-                          "name": "temporibus"
-                        },
-                        {
-                          "name": "totam"
-                        },
-                        {
-                          "name": "facere"
-                        },
-                        {
-                          "name": "omnis"
-                        },
-                        {
-                          "name": "rem"
-                        },
-                        {
-                          "name": "commodi"
-                        },
-                        {
-                          "name": "est"
-                        },
-                        {
-                          "name": "nemo"
-                        },
-                        {
-                          "name": "ab"
-                        },
-                        {
-                          "name": "quo"
-                        },
-                        {
-                          "name": "aut"
-                        },
-                        {
-                          "name": "nobis"
-                        },
-                        {
-                          "name": "et"
-                        },
-                        {
-                          "name": "exercitationem"
+                          "name": "aperiam"
                         },
                         {
                           "name": "tempora"
                         },
                         {
-                          "name": "corporis"
+                          "name": "vel"
                         },
                         {
-                          "name": "ratione"
+                          "name": "ea"
                         },
                         {
-                          "name": "distinctio"
+                          "name": "ipsa"
+                        },
+                        {
+                          "name": "temporibus"
+                        },
+                        {
+                          "name": "voluptas"
+                        },
+                        {
+                          "name": "saepe"
+                        },
+                        {
+                          "name": "illum"
+                        },
+                        {
+                          "name": "dicta"
+                        },
+                        {
+                          "name": "corrupti"
+                        },
+                        {
+                          "name": "eligendi"
+                        },
+                        {
+                          "name": "voluptates"
+                        },
+                        {
+                          "name": "voluptas"
+                        },
+                        {
+                          "name": "error"
+                        },
+                        {
+                          "name": "officiis"
+                        },
+                        {
+                          "name": "non"
+                        },
+                        {
+                          "name": "sapiente"
+                        },
+                        {
+                          "name": "minus"
                         }
                       ]
                     }
                   },
                   "person3": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "62ecfe7d-4cc0-42e6-832f-730afeebbf14",
                       "people": [
                         {
-                          "name": "sit"
+                          "name": "exercitationem"
                         },
                         {
-                          "name": "vel"
+                          "name": "atque"
                         },
                         {
-                          "name": "ipsa"
-                        },
-                        {
-                          "name": "aut"
-                        },
-                        {
-                          "name": "id"
-                        },
-                        {
-                          "name": "nihil"
+                          "name": "praesentium"
                         },
                         {
                           "name": "voluptas"
                         },
                         {
-                          "name": "voluptatem"
+                          "name": "voluptatum"
                         },
                         {
-                          "name": "velit"
+                          "name": "sit"
                         },
                         {
-                          "name": "ut"
+                          "name": "quo"
                         },
                         {
-                          "name": "omnis"
+                          "name": "nesciunt"
                         },
                         {
-                          "name": "ab"
-                        },
-                        {
-                          "name": "iusto"
-                        },
-                        {
-                          "name": "sed"
-                        },
-                        {
-                          "name": "et"
-                        },
-                        {
-                          "name": "in"
-                        },
-                        {
-                          "name": "quos"
+                          "name": "aut"
                         },
                         {
                           "name": "inventore"
                         },
                         {
-                          "name": "cumque"
+                          "name": "corrupti"
                         },
                         {
-                          "name": "numquam"
+                          "name": "eos"
+                        },
+                        {
+                          "name": "sit"
+                        },
+                        {
+                          "name": "repudiandae"
+                        },
+                        {
+                          "name": "aut"
+                        },
+                        {
+                          "name": "quos"
+                        },
+                        {
+                          "name": "earum"
+                        },
+                        {
+                          "name": "quos"
+                        },
+                        {
+                          "name": "libero"
+                        },
+                        {
+                          "name": "veritatis"
                         }
                       ]
                     }
                   },
                   "person4": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "80c6cce4-3e56-4786-9c44-88e9f4531e6a",
                       "people": [
                         {
-                          "name": "ut"
+                          "name": "facere"
+                        },
+                        {
+                          "name": "voluptatem"
+                        },
+                        {
+                          "name": "reiciendis"
+                        },
+                        {
+                          "name": "veritatis"
+                        },
+                        {
+                          "name": "dolores"
                         },
                         {
                           "name": "non"
                         },
                         {
-                          "name": "dolor"
+                          "name": "ut"
                         },
                         {
-                          "name": "consequuntur"
+                          "name": "tempora"
+                        },
+                        {
+                          "name": "nulla"
+                        },
+                        {
+                          "name": "animi"
+                        },
+                        {
+                          "name": "quisquam"
+                        },
+                        {
+                          "name": "vel"
+                        },
+                        {
+                          "name": "similique"
+                        },
+                        {
+                          "name": "veritatis"
                         },
                         {
                           "name": "sit"
                         },
                         {
-                          "name": "at"
+                          "name": "deleniti"
                         },
                         {
-                          "name": "ut"
+                          "name": "aspernatur"
                         },
                         {
-                          "name": "modi"
+                          "name": "in"
                         },
                         {
-                          "name": "dolore"
+                          "name": "laudantium"
                         },
                         {
-                          "name": "laborum"
-                        },
-                        {
-                          "name": "adipisci"
-                        },
-                        {
-                          "name": "eos"
-                        },
-                        {
-                          "name": "et"
-                        },
-                        {
-                          "name": "architecto"
-                        },
-                        {
-                          "name": "necessitatibus"
-                        },
-                        {
-                          "name": "consequatur"
-                        },
-                        {
-                          "name": "perspiciatis"
-                        },
-                        {
-                          "name": "qui"
-                        },
-                        {
-                          "name": "facere"
-                        },
-                        {
-                          "name": "rerum"
+                          "name": "a"
                         }
                       ]
                     }
                   },
                   "person5": {
                     "value": {
-                      "pagination": {
-                        "firstPage": 1,
-                        "lastPage": 10,
-                        "nextPage": 2,
-                        "prevPage": 1
-                      },
+                      "nextPageToken": "91eed7f5-5803-40e8-8215-a5ed2680466a",
                       "people": [
-                        {
-                          "name": "labore"
-                        },
-                        {
-                          "name": "laborum"
-                        },
-                        {
-                          "name": "minus"
-                        },
-                        {
-                          "name": "voluptatem"
-                        },
                         {
                           "name": "velit"
                         },
                         {
-                          "name": "sunt"
+                          "name": "magnam"
                         },
                         {
-                          "name": "laudantium"
+                          "name": "non"
                         },
                         {
-                          "name": "ab"
+                          "name": "neque"
+                        },
+                        {
+                          "name": "atque"
                         },
                         {
                           "name": "a"
                         },
                         {
-                          "name": "voluptas"
+                          "name": "harum"
                         },
                         {
-                          "name": "vitae"
+                          "name": "voluptate"
                         },
                         {
-                          "name": "porro"
+                          "name": "inventore"
                         },
                         {
-                          "name": "deserunt"
+                          "name": "qui"
                         },
                         {
-                          "name": "saepe"
+                          "name": "dolor"
                         },
                         {
-                          "name": "adipisci"
+                          "name": "enim"
                         },
                         {
-                          "name": "corrupti"
+                          "name": "hic"
                         },
                         {
-                          "name": "ipsam"
+                          "name": "ut"
                         },
                         {
-                          "name": "quia"
+                          "name": "earum"
                         },
                         {
                           "name": "voluptatem"
                         },
                         {
-                          "name": "quam"
+                          "name": "eos"
+                        },
+                        {
+                          "name": "hic"
+                        },
+                        {
+                          "name": "tempore"
+                        },
+                        {
+                          "name": "explicabo"
                         }
                       ]
                     }
@@ -478,27 +455,27 @@
               "examples": {
                 "person1": {
                   "value": {
-                    "name": "ea"
+                    "name": "quidem"
                   }
                 },
                 "person2": {
                   "value": {
-                    "name": "ut"
+                    "name": "consectetur"
                   }
                 },
                 "person3": {
                   "value": {
-                    "name": "doloremque"
+                    "name": "quidem"
                   }
                 },
                 "person4": {
                   "value": {
-                    "name": "tenetur"
+                    "name": "rerum"
                   }
                 },
                 "person5": {
                   "value": {
-                    "name": "eveniet"
+                    "name": "velit"
                   }
                 }
               }
@@ -522,28 +499,28 @@
                   "person1": {
                     "value": {
                       "person": {
-                        "name": "blanditiis"
+                        "name": "velit"
                       }
                     }
                   },
                   "person2": {
                     "value": {
                       "person": {
-                        "name": "minus"
+                        "name": "ex"
                       }
                     }
                   },
                   "person3": {
                     "value": {
                       "person": {
-                        "name": "debitis"
+                        "name": "quae"
                       }
                     }
                   },
                   "person4": {
                     "value": {
                       "person": {
-                        "name": "sapiente"
+                        "name": "excepturi"
                       }
                     }
                   },
@@ -696,35 +673,35 @@
                   "person1": {
                     "value": {
                       "person": {
-                        "name": "quaerat"
+                        "name": "enim"
                       }
                     }
                   },
                   "person2": {
                     "value": {
                       "person": {
-                        "name": "qui"
+                        "name": "dolor"
                       }
                     }
                   },
                   "person3": {
                     "value": {
                       "person": {
-                        "name": "provident"
+                        "name": "ipsum"
                       }
                     }
                   },
                   "person4": {
                     "value": {
                       "person": {
-                        "name": "quae"
+                        "name": "natus"
                       }
                     }
                   },
                   "person5": {
                     "value": {
                       "person": {
-                        "name": "odio"
+                        "name": "necessitatibus"
                       }
                     }
                   }
@@ -801,27 +778,27 @@
               "examples": {
                 "person1": {
                   "value": {
-                    "name": "in"
+                    "name": "sit"
                   }
                 },
                 "person2": {
                   "value": {
-                    "name": "reiciendis"
+                    "name": "sed"
                   }
                 },
                 "person3": {
                   "value": {
-                    "name": "perspiciatis"
+                    "name": "quam"
                   }
                 },
                 "person4": {
                   "value": {
-                    "name": "nihil"
+                    "name": "tenetur"
                   }
                 },
                 "person5": {
                   "value": {
-                    "name": "error"
+                    "name": "voluptatem"
                   }
                 }
               }
@@ -845,35 +822,35 @@
                   "person1": {
                     "value": {
                       "person": {
-                        "name": "deserunt"
+                        "name": "tempora"
                       }
                     }
                   },
                   "person2": {
                     "value": {
                       "person": {
-                        "name": "adipisci"
+                        "name": "est"
                       }
                     }
                   },
                   "person3": {
                     "value": {
                       "person": {
-                        "name": "autem"
+                        "name": "dolorem"
                       }
                     }
                   },
                   "person4": {
                     "value": {
                       "person": {
-                        "name": "cumque"
+                        "name": "officiis"
                       }
                     }
                   },
                   "person5": {
                     "value": {
                       "person": {
-                        "name": "molestiae"
+                        "name": "cupiditate"
                       }
                     }
                   }
@@ -950,27 +927,27 @@
               "examples": {
                 "person1": {
                   "value": {
-                    "name": "molestiae"
+                    "name": "officiis"
                   }
                 },
                 "person2": {
                   "value": {
-                    "name": "aliquid"
+                    "name": "nesciunt"
                   }
                 },
                 "person3": {
                   "value": {
-                    "name": "sint"
+                    "name": "consequuntur"
                   }
                 },
                 "person4": {
                   "value": {
-                    "name": "facilis"
+                    "name": "amet"
                   }
                 },
                 "person5": {
                   "value": {
-                    "name": "et"
+                    "name": "qui"
                   }
                 }
               }
@@ -994,35 +971,35 @@
                   "person1": {
                     "value": {
                       "person": {
-                        "name": "necessitatibus"
+                        "name": "provident"
                       }
                     }
                   },
                   "person2": {
                     "value": {
                       "person": {
-                        "name": "fugit"
+                        "name": "dolore"
                       }
                     }
                   },
                   "person3": {
                     "value": {
                       "person": {
-                        "name": "et"
+                        "name": "reiciendis"
                       }
                     }
                   },
                   "person4": {
                     "value": {
                       "person": {
-                        "name": "qui"
+                        "name": "praesentium"
                       }
                     }
                   },
                   "person5": {
                     "value": {
                       "person": {
-                        "name": "aut"
+                        "name": "qui"
                       }
                     }
                   }
@@ -1180,28 +1157,13 @@
       "PaginationResponse": {
         "type": "object",
         "properties": {
-          "firstPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "lastPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nextPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "prevPage": {
-            "type": "integer",
-            "format": "int32"
+          "nextPageToken": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "required": [
-          "firstPage",
-          "lastPage",
-          "nextPage",
-          "prevPage"
+          "nextPageToken"
         ]
       },
       "PersonResponse": {

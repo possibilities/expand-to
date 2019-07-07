@@ -72,7 +72,7 @@ const petsResponseExamples = {
   pet5: { value: { pet: { id: 'random-word', name: 'random-firstname' } } }
 }
 
-const pagination = { firstPage: '1', lastPage: '10', nextPage: '2', prevPage: '1' }
+const pagination = { firstPage: 1, lastPage: 10, nextPage: 2, prevPage: 1 }
 
 const managersListResponseExamples = {
   manager1: { value: { managers: range(20).map(n => ({ name: 'random-firstname', id: 'random-uuid' })), pagination } },
@@ -379,7 +379,7 @@ describe('expandToOpenApi#paths', () => {
         delete: 'deletePet',
         get: 'getPet',
         head: 'checkPet',
-        patch: 'updatePet',
+        patch: 'modifyPet',
         put: 'replacePet'
       },
       '/pets/invoke.custom_fn': {
@@ -402,7 +402,7 @@ describe('expandToOpenApi#paths', () => {
         delete: 'deleteStore',
         get: 'getStore',
         head: 'checkStore',
-        patch: 'updateStore',
+        patch: 'modifyStore',
         put: 'replaceStore'
       },
       '/stores/{storeId}/managers': {
@@ -413,7 +413,7 @@ describe('expandToOpenApi#paths', () => {
         delete: 'deleteStoreManager',
         get: 'getStoreManager',
         head: 'checkStoreManager',
-        patch: 'updateStoreManager',
+        patch: 'modifyStoreManager',
         put: 'replaceStoreManager'
       }
     })
@@ -431,7 +431,7 @@ describe('expandToOpenApi#paths', () => {
         delete: 'Delete pet',
         get: 'Get pet',
         head: 'Check pet',
-        patch: 'Update pet',
+        patch: 'Modify pet',
         put: 'Replace pet'
       },
       '/pets/invoke.custom_fn': {
@@ -454,7 +454,7 @@ describe('expandToOpenApi#paths', () => {
         delete: 'Delete store',
         get: 'Get store',
         head: 'Check store',
-        patch: 'Update store',
+        patch: 'Modify store',
         put: 'Replace store'
       },
       '/stores/{storeId}/managers': {
@@ -465,7 +465,7 @@ describe('expandToOpenApi#paths', () => {
         delete: 'Delete store manager',
         get: 'Get store manager',
         head: 'Check store manager',
-        patch: 'Update store manager',
+        patch: 'Modify store manager',
         put: 'Replace store manager'
       }
     })
@@ -848,7 +848,7 @@ describe('expandToOpenApi#paths', () => {
                 examples: petsResponseExamples
               }
             },
-            description: 'Update succeeded'
+            description: 'Modify succeeded'
           },
           ...entityErrors
         },
@@ -1136,7 +1136,7 @@ describe('expandToOpenApi#paths', () => {
                 examples: storesResponseExamples
               }
             },
-            description: 'Update succeeded'
+            description: 'Modify succeeded'
           },
           ...entityErrors
         },
@@ -1267,7 +1267,7 @@ describe('expandToOpenApi#paths', () => {
                 examples: managersResponseExamples
               }
             },
-            description: 'Update succeeded'
+            description: 'Modify succeeded'
           },
           ...entityErrors
         },

@@ -127,7 +127,7 @@ describe('expandToTestData', () => {
         },
         response: { pet: fakePetResponse }
       },
-      updatePet: {
+      modifyPet: {
         request: {
           body: fakePetRequest,
           query: {},

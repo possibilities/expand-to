@@ -50,143 +50,143 @@ paths:
                 user1:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     users:
-                      - name: ut
-                      - name: est
-                      - name: in
-                      - name: nobis
-                      - name: minus
-                      - name: fuga
+                      - name: quos
+                      - name: consequatur
                       - name: asperiores
-                      - name: architecto
-                      - name: vel
+                      - name: ut
+                      - name: non
+                      - name: quia
+                      - name: illum
+                      - name: nulla
+                      - name: repudiandae
+                      - name: suscipit
+                      - name: iure
+                      - name: delectus
+                      - name: assumenda
+                      - name: a
+                      - name: delectus
+                      - name: similique
+                      - name: doloremque
+                      - name: quidem
+                      - name: repudiandae
                       - name: voluptas
-                      - name: id
-                      - name: aliquid
-                      - name: officia
-                      - name: iste
-                      - name: quam
-                      - name: officia
-                      - name: et
-                      - name: voluptas
-                      - name: sunt
-                      - name: blanditiis
                 user2:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     users:
-                      - name: itaque
-                      - name: aut
-                      - name: debitis
-                      - name: dolorem
-                      - name: placeat
-                      - name: odit
-                      - name: dignissimos
-                      - name: quis
-                      - name: consectetur
-                      - name: perspiciatis
-                      - name: ratione
+                      - name: exercitationem
+                      - name: fuga
+                      - name: eos
+                      - name: eos
+                      - name: quas
+                      - name: consequatur
+                      - name: assumenda
+                      - name: officia
+                      - name: maiores
+                      - name: non
+                      - name: est
+                      - name: ad
+                      - name: laboriosam
+                      - name: exercitationem
+                      - name: fugit
+                      - name: repellendus
                       - name: id
-                      - name: dolor
-                      - name: sit
-                      - name: rem
-                      - name: quibusdam
-                      - name: quo
-                      - name: et
-                      - name: voluptate
-                      - name: ut
+                      - name: quia
+                      - name: laboriosam
+                      - name: qui
                 user3:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     users:
-                      - name: dicta
-                      - name: sed
-                      - name: eos
-                      - name: tempore
-                      - name: aut
-                      - name: est
-                      - name: beatae
+                      - name: necessitatibus
+                      - name: architecto
                       - name: et
-                      - name: est
-                      - name: at
-                      - name: labore
+                      - name: quis
+                      - name: omnis
+                      - name: sint
+                      - name: architecto
                       - name: et
-                      - name: praesentium
-                      - name: cumque
-                      - name: velit
-                      - name: cum
-                      - name: quam
-                      - name: quia
+                      - name: aliquid
+                      - name: nulla
                       - name: repudiandae
-                      - name: debitis
+                      - name: velit
+                      - name: rerum
+                      - name: incidunt
+                      - name: tempore
+                      - name: in
+                      - name: adipisci
+                      - name: iste
+                      - name: ut
+                      - name: quasi
                 user4:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     users:
+                      - name: ut
+                      - name: illum
                       - name: aut
-                      - name: ab
+                      - name: sit
+                      - name: ut
                       - name: rem
-                      - name: dignissimos
-                      - name: non
-                      - name: qui
+                      - name: dolores
+                      - name: consequatur
+                      - name: est
+                      - name: nihil
+                      - name: aut
+                      - name: nulla
+                      - name: et
+                      - name: debitis
                       - name: impedit
-                      - name: ea
-                      - name: ipsam
-                      - name: vero
-                      - name: cumque
-                      - name: sapiente
-                      - name: sunt
-                      - name: hic
-                      - name: ab
-                      - name: facilis
-                      - name: harum
+                      - name: aperiam
                       - name: officia
-                      - name: animi
-                      - name: facilis
+                      - name: modi
+                      - name: tempore
+                      - name: voluptate
                 user5:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     users:
                       - name: ut
-                      - name: nisi
-                      - name: ducimus
-                      - name: enim
-                      - name: nulla
-                      - name: ex
-                      - name: sapiente
-                      - name: commodi
-                      - name: dignissimos
-                      - name: ea
-                      - name: necessitatibus
-                      - name: rerum
+                      - name: officiis
+                      - name: voluptatem
+                      - name: quibusdam
+                      - name: vel
+                      - name: iusto
+                      - name: quaerat
                       - name: et
-                      - name: molestiae
-                      - name: blanditiis
-                      - name: esse
-                      - name: dolores
+                      - name: cum
+                      - name: quibusdam
+                      - name: aliquid
                       - name: sit
-                      - name: laboriosam
-                      - name: nisi
+                      - name: illum
+                      - name: soluta
+                      - name: consequatur
+                      - name: tempore
+                      - name: est
+                      - name: et
+                      - name: voluptatem
+                      - name: amet
         '400':
           description: Bad request
           content:
@@ -220,19 +220,19 @@ paths:
             examples:
               user1:
                 value:
-                  name: velit
+                  name: molestiae
               user2:
                 value:
-                  name: sit
+                  name: similique
               user3:
                 value:
-                  name: dolorum
+                  name: amet
               user4:
                 value:
-                  name: vel
+                  name: et
               user5:
                 value:
-                  name: voluptatem
+                  name: soluta
       responses:
         '201':
           description: Create succeeded
@@ -247,23 +247,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: ipsa
+                      name: voluptatem
                 user2:
                   value:
                     user:
-                      name: iusto
+                      name: eos
                 user3:
                   value:
                     user:
-                      name: ea
+                      name: omnis
                 user4:
                   value:
                     user:
-                      name: quas
+                      name: neque
                 user5:
                   value:
                     user:
-                      name: voluptatem
+                      name: temporibus
         '400':
           description: Bad request
           content:
@@ -352,23 +352,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: quia
+                      name: distinctio
                 user2:
                   value:
                     user:
-                      name: voluptatem
+                      name: quia
                 user3:
                   value:
                     user:
-                      name: dolore
+                      name: est
                 user4:
                   value:
                     user:
-                      name: accusantium
+                      name: rem
                 user5:
                   value:
                     user:
-                      name: iste
+                      name: ipsa
         '400':
           description: Bad request
           content:
@@ -414,19 +414,19 @@ paths:
             examples:
               user1:
                 value:
-                  name: aliquam
+                  name: at
               user2:
                 value:
-                  name: expedita
+                  name: enim
               user3:
                 value:
-                  name: ut
+                  name: cumque
               user4:
                 value:
                   name: nesciunt
               user5:
                 value:
-                  name: non
+                  name: quo
       responses:
         '200':
           description: Replace succeeded
@@ -441,23 +441,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: magnam
+                      name: asperiores
                 user2:
                   value:
                     user:
-                      name: eum
+                      name: qui
                 user3:
                   value:
                     user:
-                      name: magnam
+                      name: aperiam
                 user4:
                   value:
                     user:
-                      name: mollitia
+                      name: autem
                 user5:
                   value:
                     user:
-                      name: sunt
+                      name: iure
         '400':
           description: Bad request
           content:
@@ -483,10 +483,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
-      operationId: updateUser
+      operationId: modifyUser
       tags:
         - Users
-      summary: Update user
+      summary: Modify user
       parameters:
         - in: path
           required: true
@@ -503,22 +503,22 @@ paths:
             examples:
               user1:
                 value:
-                  name: ab
+                  name: quaerat
               user2:
                 value:
-                  name: et
+                  name: eum
               user3:
                 value:
-                  name: nostrum
+                  name: quis
               user4:
                 value:
-                  name: iusto
+                  name: doloribus
               user5:
                 value:
-                  name: neque
+                  name: autem
       responses:
         '200':
-          description: Update succeeded
+          description: Modify succeeded
           content:
             application/json:
               schema:
@@ -530,23 +530,23 @@ paths:
                 user1:
                   value:
                     user:
-                      name: culpa
+                      name: corporis
                 user2:
                   value:
                     user:
-                      name: perferendis
+                      name: ad
                 user3:
                   value:
                     user:
-                      name: corrupti
+                      name: necessitatibus
                 user4:
                   value:
                     user:
-                      name: omnis
+                      name: voluptas
                 user5:
                   value:
                     user:
-                      name: sit
+                      name: quaerat
         '400':
           description: Bad request
           content:
@@ -661,143 +661,143 @@ paths:
                 pet1:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: voluptatem
-                      - name: ullam
-                      - name: et
-                      - name: maxime
-                      - name: corporis
-                      - name: aut
-                      - name: accusantium
-                      - name: qui
-                      - name: voluptatem
+                      - name: officiis
+                      - name: quaerat
                       - name: blanditiis
-                      - name: eum
-                      - name: neque
-                      - name: veniam
-                      - name: omnis
-                      - name: ab
-                      - name: debitis
-                      - name: a
-                      - name: laborum
-                      - name: non
-                      - name: eius
+                      - name: sequi
+                      - name: similique
+                      - name: atque
+                      - name: et
+                      - name: architecto
+                      - name: reiciendis
+                      - name: unde
+                      - name: laudantium
+                      - name: deleniti
+                      - name: aut
+                      - name: vero
+                      - name: sapiente
+                      - name: voluptatibus
+                      - name: quidem
+                      - name: consequatur
+                      - name: iste
+                      - name: aut
                 pet2:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: voluptates
-                      - name: nulla
-                      - name: architecto
-                      - name: id
-                      - name: id
-                      - name: cumque
-                      - name: sed
-                      - name: autem
-                      - name: omnis
-                      - name: accusantium
-                      - name: quod
-                      - name: sit
-                      - name: molestiae
-                      - name: et
-                      - name: quae
-                      - name: et
-                      - name: ut
-                      - name: provident
-                      - name: neque
+                      - name: at
+                      - name: nisi
+                      - name: placeat
+                      - name: vitae
+                      - name: nisi
+                      - name: quo
+                      - name: repellendus
                       - name: aut
+                      - name: voluptate
+                      - name: et
+                      - name: harum
+                      - name: et
+                      - name: sunt
+                      - name: culpa
+                      - name: ut
+                      - name: iure
+                      - name: consequatur
+                      - name: saepe
+                      - name: animi
+                      - name: labore
                 pet3:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: commodi
-                      - name: odio
-                      - name: fugiat
-                      - name: voluptas
-                      - name: et
-                      - name: et
-                      - name: eos
+                      - name: suscipit
+                      - name: distinctio
+                      - name: eveniet
+                      - name: facere
+                      - name: repellendus
+                      - name: autem
                       - name: esse
-                      - name: dolorem
-                      - name: veniam
-                      - name: blanditiis
-                      - name: rem
-                      - name: et
-                      - name: voluptas
-                      - name: sint
-                      - name: et
-                      - name: ad
-                      - name: eaque
-                      - name: maiores
-                      - name: accusamus
+                      - name: quos
+                      - name: dolor
+                      - name: quis
+                      - name: quisquam
+                      - name: dolore
+                      - name: hic
+                      - name: sequi
+                      - name: officiis
+                      - name: dolor
+                      - name: voluptatibus
+                      - name: id
+                      - name: hic
+                      - name: quaerat
                 pet4:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: ut
                       - name: est
-                      - name: dolorem
-                      - name: dolorum
+                      - name: explicabo
+                      - name: quam
+                      - name: omnis
+                      - name: beatae
+                      - name: ea
+                      - name: explicabo
+                      - name: ratione
                       - name: et
-                      - name: quaerat
+                      - name: occaecati
+                      - name: omnis
+                      - name: et
+                      - name: et
+                      - name: est
+                      - name: consequatur
+                      - name: sint
+                      - name: voluptate
+                      - name: eos
                       - name: voluptas
-                      - name: dolor
-                      - name: adipisci
-                      - name: magnam
-                      - name: facere
-                      - name: inventore
-                      - name: architecto
-                      - name: dolorum
-                      - name: quia
-                      - name: inventore
-                      - name: perferendis
-                      - name: qui
-                      - name: dignissimos
-                      - name: et
+                      - name: in
                 pet5:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: rerum
-                      - name: assumenda
-                      - name: beatae
-                      - name: alias
+                      - name: autem
+                      - name: vel
+                      - name: aut
+                      - name: libero
+                      - name: a
+                      - name: natus
+                      - name: ullam
+                      - name: doloremque
+                      - name: inventore
                       - name: aperiam
-                      - name: cupiditate
-                      - name: doloribus
-                      - name: dignissimos
-                      - name: velit
-                      - name: consequuntur
-                      - name: sint
-                      - name: deleniti
-                      - name: quisquam
+                      - name: eum
+                      - name: vel
                       - name: totam
-                      - name: exercitationem
-                      - name: impedit
-                      - name: recusandae
-                      - name: eligendi
-                      - name: voluptatem
-                      - name: velit
+                      - name: nobis
+                      - name: provident
+                      - name: porro
+                      - name: doloremque
+                      - name: quia
+                      - name: sit
+                      - name: quibusdam
         '400':
           description: Bad request
           content:
@@ -831,19 +831,19 @@ paths:
             examples:
               pet1:
                 value:
-                  name: ab
+                  name: delectus
               pet2:
                 value:
-                  name: quam
+                  name: distinctio
               pet3:
                 value:
-                  name: commodi
+                  name: in
               pet4:
                 value:
-                  name: eos
+                  name: saepe
               pet5:
                 value:
-                  name: ullam
+                  name: quis
       responses:
         '201':
           description: Create succeeded
@@ -858,23 +858,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: consequatur
+                      name: aliquid
                 pet2:
                   value:
                     pet:
-                      name: est
+                      name: non
                 pet3:
                   value:
                     pet:
-                      name: nihil
+                      name: ut
                 pet4:
                   value:
                     pet:
-                      name: quasi
+                      name: soluta
                 pet5:
                   value:
                     pet:
-                      name: placeat
+                      name: totam
         '400':
           description: Bad request
           content:
@@ -963,23 +963,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: aut
+                      name: quo
                 pet2:
                   value:
                     pet:
-                      name: dolore
+                      name: quibusdam
                 pet3:
                   value:
                     pet:
-                      name: et
+                      name: exercitationem
                 pet4:
                   value:
                     pet:
-                      name: exercitationem
+                      name: molestias
                 pet5:
                   value:
                     pet:
-                      name: dolor
+                      name: omnis
         '400':
           description: Bad request
           content:
@@ -1025,19 +1025,19 @@ paths:
             examples:
               pet1:
                 value:
-                  name: accusamus
+                  name: reprehenderit
               pet2:
                 value:
-                  name: voluptatem
+                  name: soluta
               pet3:
                 value:
-                  name: voluptates
+                  name: veritatis
               pet4:
                 value:
-                  name: qui
+                  name: nesciunt
               pet5:
                 value:
-                  name: officiis
+                  name: enim
       responses:
         '200':
           description: Replace succeeded
@@ -1052,23 +1052,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: consequuntur
+                      name: voluptatum
                 pet2:
                   value:
                     pet:
-                      name: in
+                      name: ut
                 pet3:
                   value:
                     pet:
-                      name: nihil
+                      name: dolorem
                 pet4:
                   value:
                     pet:
-                      name: atque
+                      name: minus
                 pet5:
                   value:
                     pet:
-                      name: magnam
+                      name: sapiente
         '400':
           description: Bad request
           content:
@@ -1094,10 +1094,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
-      operationId: updatePet
+      operationId: modifyPet
       tags:
         - Pets
-      summary: Update pet
+      summary: Modify pet
       parameters:
         - in: path
           required: true
@@ -1114,22 +1114,22 @@ paths:
             examples:
               pet1:
                 value:
-                  name: cum
+                  name: nemo
               pet2:
                 value:
-                  name: recusandae
+                  name: tempore
               pet3:
                 value:
-                  name: vel
+                  name: et
               pet4:
                 value:
                   name: dolorem
               pet5:
                 value:
-                  name: et
+                  name: quas
       responses:
         '200':
-          description: Update succeeded
+          description: Modify succeeded
           content:
             application/json:
               schema:
@@ -1141,23 +1141,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: enim
+                      name: id
                 pet2:
                   value:
                     pet:
-                      name: dignissimos
+                      name: natus
                 pet3:
                   value:
                     pet:
-                      name: iusto
+                      name: hic
                 pet4:
                   value:
                     pet:
-                      name: quis
+                      name: accusamus
                 pet5:
                   value:
                     pet:
-                      name: ad
+                      name: et
         '400':
           description: Bad request
           content:
@@ -1246,7 +1246,7 @@ paths:
                 user1:
                   value:
                     user:
-                      name: enim
+                      name: autem
                 user2:
                   value:
                     user:
@@ -1254,15 +1254,15 @@ paths:
                 user3:
                   value:
                     user:
-                      name: odio
+                      name: vel
                 user4:
                   value:
                     user:
-                      name: ut
+                      name: excepturi
                 user5:
                   value:
                     user:
-                      name: omnis
+                      name: natus
         '400':
           description: Bad request
           content:
@@ -1334,143 +1334,143 @@ paths:
                 petUser1:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     petUsers:
-                      - userId: explicabo
-                      - userId: voluptatem
-                      - userId: voluptates
+                      - userId: qui
                       - userId: et
+                      - userId: excepturi
+                      - userId: ea
+                      - userId: dolorum
+                      - userId: quia
+                      - userId: voluptatum
+                      - userId: quibusdam
+                      - userId: in
+                      - userId: sit
+                      - userId: aut
+                      - userId: doloribus
+                      - userId: inventore
                       - userId: sint
-                      - userId: non
-                      - userId: enim
-                      - userId: quis
-                      - userId: provident
-                      - userId: voluptas
-                      - userId: aliquid
-                      - userId: eligendi
-                      - userId: vitae
-                      - userId: assumenda
-                      - userId: aliquid
-                      - userId: temporibus
-                      - userId: perspiciatis
-                      - userId: sunt
+                      - userId: unde
                       - userId: et
-                      - userId: blanditiis
+                      - userId: assumenda
+                      - userId: pariatur
+                      - userId: minus
+                      - userId: deserunt
                 petUser2:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     petUsers:
-                      - userId: occaecati
-                      - userId: non
-                      - userId: voluptas
-                      - userId: corrupti
-                      - userId: ratione
-                      - userId: laborum
-                      - userId: rerum
-                      - userId: voluptas
-                      - userId: et
-                      - userId: consequatur
-                      - userId: itaque
-                      - userId: laboriosam
+                      - userId: eos
+                      - userId: explicabo
+                      - userId: illo
+                      - userId: aperiam
                       - userId: dolores
-                      - userId: occaecati
-                      - userId: animi
-                      - userId: aut
-                      - userId: beatae
-                      - userId: ducimus
+                      - userId: voluptatem
+                      - userId: et
                       - userId: ea
-                      - userId: inventore
+                      - userId: rem
+                      - userId: et
+                      - userId: ut
+                      - userId: dolores
+                      - userId: labore
+                      - userId: explicabo
+                      - userId: ullam
+                      - userId: corporis
+                      - userId: eum
+                      - userId: aut
+                      - userId: quo
+                      - userId: dolor
                 petUser3:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     petUsers:
-                      - userId: id
-                      - userId: unde
-                      - userId: ipsam
-                      - userId: natus
-                      - userId: incidunt
-                      - userId: aut
-                      - userId: nisi
-                      - userId: magni
+                      - userId: quo
+                      - userId: repellendus
+                      - userId: dolore
+                      - userId: nemo
                       - userId: laboriosam
-                      - userId: beatae
-                      - userId: earum
-                      - userId: suscipit
-                      - userId: nihil
-                      - userId: nobis
-                      - userId: fugiat
-                      - userId: veritatis
-                      - userId: enim
-                      - userId: animi
-                      - userId: iste
+                      - userId: accusantium
+                      - userId: et
+                      - userId: maxime
+                      - userId: consequatur
+                      - userId: explicabo
+                      - userId: aliquam
+                      - userId: qui
+                      - userId: quo
                       - userId: non
+                      - userId: numquam
+                      - userId: sit
+                      - userId: est
+                      - userId: qui
+                      - userId: et
+                      - userId: quam
                 petUser4:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     petUsers:
-                      - userId: eligendi
-                      - userId: rerum
+                      - userId: nulla
+                      - userId: aspernatur
                       - userId: qui
-                      - userId: sit
-                      - userId: tempore
-                      - userId: provident
-                      - userId: earum
+                      - userId: corporis
+                      - userId: dolorem
+                      - userId: ex
+                      - userId: dolorum
                       - userId: accusamus
-                      - userId: et
-                      - userId: inventore
-                      - userId: eos
-                      - userId: nobis
-                      - userId: culpa
-                      - userId: rem
-                      - userId: maxime
-                      - userId: dicta
-                      - userId: natus
-                      - userId: debitis
-                      - userId: in
-                      - userId: quis
+                      - userId: placeat
+                      - userId: facilis
+                      - userId: numquam
+                      - userId: totam
+                      - userId: qui
+                      - userId: cum
+                      - userId: eum
+                      - userId: exercitationem
+                      - userId: nisi
+                      - userId: consequatur
+                      - userId: non
+                      - userId: magnam
                 petUser5:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     petUsers:
-                      - userId: in
-                      - userId: aperiam
-                      - userId: ab
-                      - userId: quas
-                      - userId: nobis
-                      - userId: tempora
-                      - userId: quasi
-                      - userId: ducimus
-                      - userId: et
-                      - userId: suscipit
-                      - userId: qui
-                      - userId: repellendus
-                      - userId: voluptatem
-                      - userId: nisi
-                      - userId: et
-                      - userId: similique
-                      - userId: similique
-                      - userId: quo
-                      - userId: quam
                       - userId: consequatur
+                      - userId: voluptatem
+                      - userId: dolorem
+                      - userId: ut
+                      - userId: ea
+                      - userId: omnis
+                      - userId: aut
+                      - userId: rerum
+                      - userId: sed
+                      - userId: sed
+                      - userId: sit
+                      - userId: ut
+                      - userId: dolorem
+                      - userId: sed
+                      - userId: numquam
+                      - userId: qui
+                      - userId: aut
+                      - userId: rerum
+                      - userId: itaque
+                      - userId: doloremque
         '400':
           description: Bad request
           content:
@@ -1510,19 +1510,19 @@ paths:
             examples:
               petUser1:
                 value:
-                  userId: aut
+                  userId: ut
               petUser2:
                 value:
                   userId: quis
               petUser3:
                 value:
-                  userId: consequuntur
+                  userId: officiis
               petUser4:
                 value:
-                  userId: alias
+                  userId: tenetur
               petUser5:
                 value:
-                  userId: porro
+                  userId: natus
       responses:
         '201':
           description: Create succeeded
@@ -1537,23 +1537,23 @@ paths:
                 petUser1:
                   value:
                     petUser:
-                      userId: suscipit
+                      userId: corporis
                 petUser2:
                   value:
                     petUser:
-                      userId: et
+                      userId: aperiam
                 petUser3:
                   value:
                     petUser:
-                      userId: ab
+                      userId: assumenda
                 petUser4:
                   value:
                     petUser:
-                      userId: natus
+                      userId: excepturi
                 petUser5:
                   value:
                     petUser:
-                      userId: eaque
+                      userId: fugit
         '400':
           description: Bad request
           content:
@@ -1654,23 +1654,23 @@ paths:
                 petUser1:
                   value:
                     petUser:
-                      userId: fugit
+                      userId: aliquid
                 petUser2:
                   value:
                     petUser:
-                      userId: quisquam
+                      userId: nemo
                 petUser3:
                   value:
                     petUser:
-                      userId: nemo
+                      userId: expedita
                 petUser4:
                   value:
                     petUser:
-                      userId: culpa
+                      userId: sed
                 petUser5:
                   value:
                     petUser:
-                      userId: error
+                      userId: autem
         '400':
           description: Bad request
           content:
@@ -1722,19 +1722,19 @@ paths:
             examples:
               petUser1:
                 value:
-                  userId: sit
+                  userId: impedit
               petUser2:
                 value:
-                  userId: sit
+                  userId: saepe
               petUser3:
                 value:
-                  userId: non
+                  userId: quos
               petUser4:
                 value:
-                  userId: ipsam
+                  userId: ea
               petUser5:
                 value:
-                  userId: suscipit
+                  userId: ut
       responses:
         '200':
           description: Replace succeeded
@@ -1749,23 +1749,23 @@ paths:
                 petUser1:
                   value:
                     petUser:
-                      userId: aspernatur
+                      userId: debitis
                 petUser2:
                   value:
                     petUser:
-                      userId: rerum
+                      userId: pariatur
                 petUser3:
                   value:
                     petUser:
-                      userId: quo
+                      userId: consequatur
                 petUser4:
                   value:
                     petUser:
-                      userId: sint
+                      userId: velit
                 petUser5:
                   value:
                     petUser:
-                      userId: neque
+                      userId: adipisci
         '400':
           description: Bad request
           content:
@@ -1791,10 +1791,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
-      operationId: updatePetUser
+      operationId: modifyPetUser
       tags:
         - Pets
-      summary: Update pet user
+      summary: Modify pet user
       parameters:
         - in: path
           required: true
@@ -1817,22 +1817,22 @@ paths:
             examples:
               petUser1:
                 value:
-                  userId: architecto
+                  userId: et
               petUser2:
                 value:
-                  userId: vero
+                  userId: quis
               petUser3:
                 value:
-                  userId: eos
+                  userId: magnam
               petUser4:
                 value:
-                  userId: sit
+                  userId: repellendus
               petUser5:
                 value:
-                  userId: ut
+                  userId: deleniti
       responses:
         '200':
-          description: Update succeeded
+          description: Modify succeeded
           content:
             application/json:
               schema:
@@ -1844,23 +1844,23 @@ paths:
                 petUser1:
                   value:
                     petUser:
-                      userId: hic
+                      userId: ut
                 petUser2:
                   value:
                     petUser:
-                      userId: veniam
+                      userId: beatae
                 petUser3:
                   value:
                     petUser:
-                      userId: commodi
+                      userId: architecto
                 petUser4:
                   value:
                     petUser:
-                      userId: officiis
+                      userId: culpa
                 petUser5:
                   value:
                     petUser:
-                      userId: dolor
+                      userId: incidunt
         '400':
           description: Bad request
           content:
@@ -1981,143 +1981,143 @@ paths:
                 pet1:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: dolor
-                      - name: occaecati
-                      - name: a
-                      - name: vel
-                      - name: beatae
-                      - name: nobis
-                      - name: aliquam
-                      - name: aperiam
+                      - name: quam
+                      - name: qui
+                      - name: perferendis
+                      - name: error
+                      - name: ratione
+                      - name: perferendis
+                      - name: eos
+                      - name: quidem
+                      - name: cupiditate
+                      - name: et
+                      - name: unde
+                      - name: ea
+                      - name: harum
                       - name: non
-                      - name: dolorum
-                      - name: distinctio
-                      - name: at
-                      - name: architecto
-                      - name: dicta
-                      - name: sint
-                      - name: sed
-                      - name: dolorum
-                      - name: est
-                      - name: assumenda
-                      - name: vel
+                      - name: laboriosam
+                      - name: omnis
+                      - name: voluptas
+                      - name: labore
+                      - name: amet
+                      - name: corporis
                 pet2:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: accusamus
-                      - name: alias
-                      - name: dolore
-                      - name: corrupti
-                      - name: autem
-                      - name: incidunt
-                      - name: fuga
-                      - name: libero
-                      - name: qui
-                      - name: sed
-                      - name: voluptatum
-                      - name: nisi
-                      - name: rem
-                      - name: consequuntur
-                      - name: amet
-                      - name: repellat
+                      - name: tenetur
+                      - name: voluptatem
+                      - name: nam
+                      - name: doloremque
+                      - name: non
+                      - name: at
                       - name: nemo
+                      - name: possimus
+                      - name: ipsam
+                      - name: voluptates
+                      - name: enim
+                      - name: assumenda
                       - name: omnis
-                      - name: totam
-                      - name: ratione
+                      - name: modi
+                      - name: non
+                      - name: et
+                      - name: fuga
+                      - name: amet
+                      - name: dolorem
+                      - name: consequatur
                 pet3:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: exercitationem
-                      - name: asperiores
-                      - name: iusto
-                      - name: quisquam
-                      - name: nihil
-                      - name: perspiciatis
-                      - name: fuga
-                      - name: aut
-                      - name: libero
-                      - name: deserunt
-                      - name: qui
+                      - name: quibusdam
+                      - name: repudiandae
+                      - name: sint
+                      - name: quam
+                      - name: eius
+                      - name: eligendi
+                      - name: saepe
+                      - name: unde
                       - name: sed
-                      - name: maxime
-                      - name: qui
+                      - name: doloremque
                       - name: eos
+                      - name: et
+                      - name: voluptatum
+                      - name: omnis
+                      - name: necessitatibus
                       - name: aut
-                      - name: aperiam
-                      - name: aut
-                      - name: quidem
-                      - name: reprehenderit
+                      - name: et
+                      - name: et
+                      - name: reiciendis
+                      - name: consequatur
                 pet4:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
-                      - name: totam
-                      - name: aspernatur
-                      - name: error
-                      - name: non
-                      - name: eum
-                      - name: dolore
-                      - name: totam
-                      - name: vero
-                      - name: nisi
-                      - name: et
-                      - name: minima
-                      - name: quae
-                      - name: eos
-                      - name: et
-                      - name: sint
-                      - name: deserunt
-                      - name: ipsam
-                      - name: nisi
-                      - name: ipsa
-                      - name: saepe
+                      - name: harum
+                      - name: dolor
+                      - name: molestiae
+                      - name: veritatis
+                      - name: ut
+                      - name: repudiandae
+                      - name: quos
+                      - name: hic
+                      - name: voluptatem
+                      - name: eligendi
+                      - name: expedita
+                      - name: sed
+                      - name: vel
+                      - name: rerum
+                      - name: iusto
+                      - name: omnis
+                      - name: quam
+                      - name: maxime
+                      - name: blanditiis
+                      - name: dolor
                 pet5:
                   value:
                     pagination:
-                      firstPage: '1'
-                      lastPage: '10'
-                      nextPage: '2'
-                      prevPage: '1'
+                      firstPage: 1
+                      lastPage: 10
+                      nextPage: 2
+                      prevPage: 1
                     pets:
+                      - name: quas
+                      - name: numquam
+                      - name: porro
+                      - name: repellendus
+                      - name: assumenda
+                      - name: laborum
+                      - name: sint
                       - name: nemo
-                      - name: qui
-                      - name: non
-                      - name: et
-                      - name: maxime
-                      - name: voluptatum
-                      - name: cupiditate
-                      - name: consectetur
-                      - name: rerum
+                      - name: dolor
+                      - name: in
+                      - name: neque
+                      - name: soluta
+                      - name: atque
                       - name: velit
-                      - name: quia
-                      - name: voluptatem
-                      - name: sed
-                      - name: explicabo
-                      - name: quia
-                      - name: alias
+                      - name: quod
                       - name: et
-                      - name: sit
-                      - name: error
-                      - name: nihil
+                      - name: harum
+                      - name: facilis
+                      - name: nisi
+                      - name: quis
         '400':
           description: Bad request
           content:
@@ -2151,19 +2151,19 @@ paths:
             examples:
               pet1:
                 value:
-                  name: at
+                  name: debitis
               pet2:
                 value:
                   name: et
               pet3:
                 value:
-                  name: occaecati
+                  name: qui
               pet4:
                 value:
-                  name: voluptatem
+                  name: sequi
               pet5:
                 value:
-                  name: voluptas
+                  name: beatae
       responses:
         '201':
           description: Create succeeded
@@ -2178,23 +2178,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: iure
+                      name: quidem
                 pet2:
                   value:
                     pet:
-                      name: et
+                      name: minus
                 pet3:
                   value:
                     pet:
-                      name: nulla
+                      name: aut
                 pet4:
                   value:
                     pet:
-                      name: nobis
+                      name: reiciendis
                 pet5:
                   value:
                     pet:
-                      name: repudiandae
+                      name: et
         '400':
           description: Bad request
           content:
@@ -2283,23 +2283,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: quos
+                      name: ea
                 pet2:
                   value:
                     pet:
-                      name: amet
+                      name: eos
                 pet3:
                   value:
                     pet:
-                      name: inventore
+                      name: exercitationem
                 pet4:
                   value:
                     pet:
-                      name: sed
+                      name: nobis
                 pet5:
                   value:
                     pet:
-                      name: cumque
+                      name: eius
         '400':
           description: Bad request
           content:
@@ -2345,19 +2345,19 @@ paths:
             examples:
               pet1:
                 value:
-                  name: aut
+                  name: odit
               pet2:
                 value:
-                  name: beatae
+                  name: doloremque
               pet3:
                 value:
-                  name: soluta
+                  name: praesentium
               pet4:
                 value:
-                  name: et
+                  name: autem
               pet5:
                 value:
-                  name: commodi
+                  name: vel
       responses:
         '200':
           description: Replace succeeded
@@ -2372,23 +2372,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: quibusdam
+                      name: aperiam
                 pet2:
                   value:
                     pet:
-                      name: aut
+                      name: recusandae
                 pet3:
                   value:
                     pet:
-                      name: ipsa
+                      name: error
                 pet4:
                   value:
                     pet:
-                      name: earum
+                      name: quam
                 pet5:
                   value:
                     pet:
-                      name: fuga
+                      name: qui
         '400':
           description: Bad request
           content:
@@ -2414,10 +2414,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
-      operationId: updatePetAsUser
+      operationId: modifyPetAsUser
       tags:
         - User
-      summary: Update pet for user
+      summary: Modify pet for user
       parameters:
         - in: path
           required: true
@@ -2434,22 +2434,22 @@ paths:
             examples:
               pet1:
                 value:
-                  name: adipisci
+                  name: dignissimos
               pet2:
                 value:
-                  name: placeat
+                  name: voluptatibus
               pet3:
                 value:
-                  name: illum
+                  name: et
               pet4:
                 value:
-                  name: corporis
+                  name: aliquam
               pet5:
                 value:
-                  name: dolor
+                  name: sit
       responses:
         '200':
-          description: Update succeeded
+          description: Modify succeeded
           content:
             application/json:
               schema:
@@ -2461,23 +2461,23 @@ paths:
                 pet1:
                   value:
                     pet:
-                      name: molestiae
+                      name: expedita
                 pet2:
                   value:
                     pet:
-                      name: omnis
+                      name: eligendi
                 pet3:
                   value:
                     pet:
-                      name: enim
+                      name: aut
                 pet4:
                   value:
                     pet:
-                      name: unde
+                      name: deleniti
                 pet5:
                   value:
                     pet:
-                      name: officiis
+                      name: voluptatem
         '400':
           description: Bad request
           content:

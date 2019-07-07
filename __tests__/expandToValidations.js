@@ -225,7 +225,7 @@ test('expandToValidations', () => {
         required: ['input', 'identity']
       }
     },
-    updatePet: {
+    modifyPet: {
       response: {
         type: 'object',
         properties: { pet: petSchemaResponse },

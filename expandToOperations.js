@@ -26,7 +26,7 @@ const actionToLabel = {
   post: 'create',
   head: 'check',
   put: 'replace',
-  patch: 'update'
+  patch: 'modify'
 }
 
 const getNamespace = path =>
@@ -129,7 +129,7 @@ const successResponses = {
   get: { code: 200, description: 'Get succeeded' },
   head: { code: 200, description: 'Check succeeded' },
   put: { code: 200, description: 'Replace succeeded' },
-  patch: { code: 200, description: 'Update succeeded' }
+  patch: { code: 200, description: 'Modify succeeded' }
 }
 
 const expandModels = models => ({

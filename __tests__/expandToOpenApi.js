@@ -741,7 +741,7 @@ describe('expandToOpenApi#paths', () => {
                           items: {
                             '$ref': `#/components/schemas/PetResponse`
                           }
-                        },
+                        }
                       }
                     }
                   ]
@@ -1047,7 +1047,7 @@ describe('expandToOpenApi#paths', () => {
                           items: {
                             '$ref': `#/components/schemas/StoreResponse`
                           }
-                        },
+                        }
                       }
                     }
                   ]
@@ -1180,7 +1180,7 @@ describe('expandToOpenApi#paths', () => {
                           items: {
                             '$ref': `#/components/schemas/ManagerResponse`
                           }
-                        },
+                        }
                       }
                     }
                   ]

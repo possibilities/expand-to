@@ -79,7 +79,6 @@ const getSummary = (action, path) => {
     ].filter(Boolean).join(' ')
   }
   if (path.isCustomFunctionResource) {
-    const fnName = last(path.pathParts).split('.').slice(1).join('.')
     const resourceName = action === 'list'
       ? pluralize(path.resourceName)
       : path.resourceName

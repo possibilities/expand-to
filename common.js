@@ -33,7 +33,7 @@ module.exports.errorResponse = {
 
 module.exports.paginationResponse = {
   type: 'object',
-  properties: { nextPageToken: { type: 'string', format: 'uuid' }, },
+  properties: { nextPageToken: { type: 'string', format: 'uuid' } },
   required: ['nextPageToken']
 }
 

@@ -38,7 +38,7 @@ const spec = {
     },
     {
       model: 'pet',
-      name:  'requestMedicalRecordHistory',
+      name: 'requestMedicalRecordHistory',
       pathParts: ['pets', '{petId}'],
       resourceName: 'pet',
       isCustomFunctionResource: true,

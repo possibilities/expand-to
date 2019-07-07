@@ -1,4 +1,3 @@
-const uuid = require('uuid/v4')
 const get = require('lodash/get')
 const fromPairs = require('lodash/fromPairs')
 const mapValues = require('lodash/mapValues')
@@ -37,7 +36,6 @@ const getFakeValue = (name, schema, options) => {
 const expandToTestData = ({ operations, models }, options = {}) => {
   // For testing purposes only you can pass in a mocked helpers
   const faker = get(options, 'fake.generator', fake)
-  const reverseRegexp = get(options, 'fake.reverseRegexp', randomRegexp)
 
   let testData = {}
   operations.forEach(operation => {

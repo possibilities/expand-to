@@ -7,12 +7,7 @@ const groupBy = require('lodash/groupBy')
 const expandToOperations = require('./expandToOperations')
 const upperFirst = require('lodash/upperFirst')
 const forEach = require('lodash/forEach')
-const inflection = require('inflection')
 const { emptyRequestActions, emptyResponseActions } = require('./common')
-
-// Make map safe
-const pluralize = str => inflection.pluralize(str)
-const singularize = str => inflection.singularize(str)
 
 const getErrorResponses = (...errors) => {
   let responses = {}
@@ -104,7 +99,7 @@ const getResponses = (operation, models) => {
         {
           type: 'object',
           properties: {
-            [pluralize(operation.response.key)]: {
+            [operation.response.key]: {
               type: 'array',
               items: {
                 '$ref': `#/components/schemas/${upperFirst(operation.response.schema)}Response`
@@ -117,7 +112,7 @@ const getResponses = (operation, models) => {
     : {
       type: 'object',
       properties: {
-        [singularize(operation.response.key)]: {
+        [operation.response.key]: {
           '$ref': `#/components/schemas/${upperFirst(operation.response.schema)}Response`
         }
       }

@@ -139,7 +139,8 @@ const expandModels = models => ({
 })
 
 const createModelResponse = (action, code, description, schema) => {
-  const key = lowerFirst(schema)
+  const keyName = lowerFirst(schema)
+  const key = action === 'list' ? pluralize(keyName) : schema
   return { key, code, schema, description }
 }
 
